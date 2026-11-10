@@ -1,0 +1,130 @@
+{
+  "document": "Silvengard_Correcoes_e_Acrescentimos_Sem_Culturas_Inativas.md",
+  "changes": [
+    {
+      "correction": "C01",
+      "file": "HG",
+      "retifiedPassages": 2
+    },
+    {
+      "correction": "C02",
+      "file": "EST",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C02",
+      "file": "CUL",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C03",
+      "file": "HG",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C04",
+      "file": "HG",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C05",
+      "file": "HG",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C05",
+      "file": "EST",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C06",
+      "file": "HG",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C07",
+      "file": "EST",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C07",
+      "file": "CUL",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C08",
+      "file": "HG",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C09",
+      "file": "HG",
+      "retifiedPassages": 1
+    },
+    {
+      "correction": "C09",
+      "file": "EST",
+      "retifiedPassages": 6
+    },
+    {
+      "correction": "C09",
+      "file": "CUL",
+      "retifiedPassages": 2
+    },
+    {
+      "dossier": "Piglia",
+      "characters": 2931
+    },
+    {
+      "dossier": "Sete Cidades",
+      "characters": 2323
+    },
+    {
+      "dossier": "Valar",
+      "characters": 1990
+    },
+    {
+      "dossier": "Veniun",
+      "characters": 3391
+    }
+  ],
+  "latestMarketDecisionsOverrideDocument": true,
+  "unknownCityHistoriesInvented": false,
+  "correctionsReviewed": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25",
+    "C26",
+    "C27",
+    "C28",
+    "C29",
+    "C30",
+    "C31",
+    "C32",
+    "C33",
+    "C34"
+  ],
+  "scope": "Correções canônicas, complementos culturais e arqueológicos; mistérios mantidos. Decisões comerciais posteriores prevalecem. C25 é regra da interface econômica e C34 impede acrescentar continentes não aprovados."
+}

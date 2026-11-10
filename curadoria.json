@@ -1,0 +1,102 @@
+{
+  "original_active": 239,
+  "selected": 128,
+  "added_reference_approximate": 17,
+  "states": [
+    {
+      "name": "Dragonfall",
+      "original": 31,
+      "selected": 13
+    },
+    {
+      "name": "Elucitor ",
+      "original": 65,
+      "selected": 23
+    },
+    {
+      "name": "Navï Velaffëll",
+      "original": 35,
+      "selected": 11
+    },
+    {
+      "name": "Valar",
+      "original": 1,
+      "selected": 0
+    },
+    {
+      "name": "Drácon ",
+      "original": 19,
+      "selected": 10
+    },
+    {
+      "name": "Sete Cidades",
+      "original": 7,
+      "selected": 7
+    },
+    {
+      "name": "Husaj",
+      "original": 1,
+      "selected": 1
+    },
+    {
+      "name": "Khajataad",
+      "original": 2,
+      "selected": 1
+    },
+    {
+      "name": "Veniun",
+      "original": 3,
+      "selected": 3
+    },
+    {
+      "name": "Território Orc ",
+      "original": 4,
+      "selected": 2
+    },
+    {
+      "name": "Mountport",
+      "original": 7,
+      "selected": 6
+    },
+    {
+      "name": "Goblinburgo ",
+      "original": 1,
+      "selected": 1
+    },
+    {
+      "name": "Piglia",
+      "original": 5,
+      "selected": 3
+    },
+    {
+      "name": "Marshell ",
+      "original": 16,
+      "selected": 9
+    },
+    {
+      "name": "Duräk",
+      "original": 3,
+      "selected": 3
+    },
+    {
+      "name": "Reinos Médios",
+      "original": 11,
+      "selected": 9
+    },
+    {
+      "name": "Vitravion",
+      "original": 15,
+      "selected": 13
+    },
+    {
+      "name": "Osmorn",
+      "original": 6,
+      "selected": 6
+    },
+    {
+      "name": "Batovia",
+      "original": 7,
+      "selected": 7
+    }
+  ]
+}

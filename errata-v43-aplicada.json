@@ -1,0 +1,21 @@
+{
+  "source": "Silvengard_Errata_Historica_e_Cultural_Sem_Mercados.md",
+  "files": [
+    {
+      "file": "Silvengard_Culturas_Religioes_e_Instituicoes_Consolidadas.md",
+      "changed": true
+    },
+    {
+      "file": "Silvengard_Estados_Historias_Provincias_e_Cidades.md",
+      "changed": true
+    },
+    {
+      "file": "Silvengard_Historia_Geral_e_Cronologia_Consolidada.md",
+      "changed": true
+    }
+  ],
+  "existingCulturesAndReligionsPreserved": true,
+  "newDormantCultures": false,
+  "duplicatedVitravionDossiers": false,
+  "marketDecision": "Toda Veniun em Alqa, por instrução separada do autor"
+}

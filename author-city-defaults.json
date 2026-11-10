@@ -1,0 +1,341 @@
+{
+  "sourceFile": "silvengard-edicao (9).json",
+  "exportedAt": "2026-11-06T16:56:01.219Z",
+  "edits": {
+    "cities": {
+      "7": {
+        "name": "Elucitor",
+        "notes": "",
+        "visible": true
+      },
+      "8": {
+        "name": "Valari",
+        "notes": "",
+        "visible": true
+      },
+      "14": {
+        "name": "Gugacon",
+        "notes": "",
+        "visible": true
+      },
+      "34": {
+        "name": "Rinnton",
+        "notes": "",
+        "visible": true
+      },
+      "36": {
+        "name": "Grenolk",
+        "notes": "",
+        "visible": true
+      },
+      "51": {
+        "name": "Clifshore",
+        "notes": "",
+        "visible": true
+      },
+      "61": {
+        "name": "Allanan",
+        "notes": "",
+        "visible": true
+      },
+      "62": {
+        "name": "Vilenages",
+        "notes": "",
+        "visible": true
+      },
+      "65": {
+        "name": "Davumbia",
+        "notes": "",
+        "visible": false
+      },
+      "67": {
+        "name": "Himlumn",
+        "notes": "",
+        "visible": true
+      },
+      "68": {
+        "name": "Parnum",
+        "notes": "",
+        "visible": true
+      },
+      "69": {
+        "name": "Odira",
+        "notes": "",
+        "visible": true
+      },
+      "70": {
+        "name": "Sel-Shofela",
+        "notes": "",
+        "visible": true
+      },
+      "75": {
+        "name": "Tserost",
+        "notes": "",
+        "visible": true
+      },
+      "90": {
+        "name": "Vilaguezejo",
+        "notes": "",
+        "visible": true
+      },
+      "92": {
+        "name": "Allos",
+        "notes": "",
+        "visible": true
+      },
+      "97": {
+        "name": "Coentral",
+        "notes": "",
+        "visible": false
+      },
+      "99": {
+        "name": "Braveira",
+        "notes": "",
+        "visible": true
+      },
+      "101": {
+        "name": "Enquertei",
+        "notes": "",
+        "visible": false
+      },
+      "104": {
+        "name": "Cananhos",
+        "notes": "",
+        "visible": true
+      },
+      "105": {
+        "name": "Alhaf",
+        "notes": "",
+        "visible": false
+      },
+      "109": {
+        "name": "Vedioria",
+        "notes": "",
+        "visible": true
+      },
+      "113": {
+        "name": "Nirgona",
+        "notes": "",
+        "visible": true
+      },
+      "116": {
+        "name": "Feixos",
+        "notes": "",
+        "visible": true
+      },
+      "119": {
+        "name": "Nudh",
+        "notes": "",
+        "visible": true
+      },
+      "120": {
+        "name": "Lakenford",
+        "notes": "",
+        "visible": true
+      },
+      "133": {
+        "name": "Bariner",
+        "notes": "",
+        "visible": false
+      },
+      "135": {
+        "name": "Sanha",
+        "notes": "",
+        "visible": true
+      },
+      "137": {
+        "name": "Vinquertiro",
+        "notes": "",
+        "visible": true
+      },
+      "140": {
+        "name": "Tog Iret",
+        "notes": "",
+        "visible": true
+      },
+      "141": {
+        "name": "Gurmendal",
+        "notes": "",
+        "visible": false
+      },
+      "142": {
+        "name": "Urlyzaak",
+        "notes": "",
+        "visible": true
+      },
+      "147": {
+        "name": "Litorum",
+        "notes": "",
+        "visible": true
+      },
+      "153": {
+        "name": "Guiras",
+        "notes": "",
+        "visible": true
+      },
+      "168": {
+        "name": "Pyrenor",
+        "notes": "",
+        "visible": true
+      },
+      "174": {
+        "name": "Caspinho",
+        "notes": "",
+        "visible": true
+      },
+      "180": {
+        "name": "Orgener",
+        "notes": "",
+        "visible": true
+      },
+      "182": {
+        "name": "Tessert",
+        "notes": "",
+        "visible": true
+      },
+      "183": {
+        "name": "Mestrina",
+        "notes": "",
+        "visible": true
+      },
+      "189": {
+        "name": "Garnalos",
+        "notes": "",
+        "visible": true
+      },
+      "201": {
+        "name": "Matheas",
+        "notes": "",
+        "visible": false
+      },
+      "202": {
+        "name": "Nythan",
+        "notes": "",
+        "visible": true
+      },
+      "210": {
+        "name": "Nigrona",
+        "notes": "",
+        "visible": false
+      },
+      "214": {
+        "name": "Khegosla",
+        "notes": "",
+        "visible": true
+      },
+      "216": {
+        "name": "Gunbadush",
+        "notes": "",
+        "visible": false
+      },
+      "218": {
+        "name": "Ausontatum",
+        "notes": "",
+        "visible": false
+      },
+      "229": {
+        "name": "Malegreiro",
+        "notes": "",
+        "visible": true
+      },
+      "230": {
+        "name": "Veltidin",
+        "notes": "",
+        "visible": true
+      },
+      "233": {
+        "name": "Metiscina",
+        "notes": "",
+        "visible": true
+      },
+      "130": {
+        "name": "Gannas",
+        "notes": "",
+        "visible": true
+      }
+    },
+    "states": {}
+  },
+  "positions": {
+    "70": [
+      1320.4,
+      624.5
+    ],
+    "104": [
+      397.26,
+      470.4
+    ],
+    "140": [
+      605.5,
+      512.5
+    ],
+    "149": [
+      615.41,
+      563.085
+    ]
+  },
+  "ports": [
+    61
+  ],
+  "magicSchools": [
+    5,
+    4003,
+    168,
+    189,
+    226,
+    2000,
+    4002
+  ],
+  "additions": [
+    {
+      "i": 4002,
+      "name": "Sahtalys",
+      "x": 1434.0,
+      "y": 686.0,
+      "cell": 0,
+      "state": 14,
+      "culture": 11,
+      "capital": 0,
+      "port": 0,
+      "citadel": 0,
+      "walls": 0,
+      "temple": 0,
+      "population": null,
+      "type": "Escola de magia",
+      "settlementClass": "Cidade",
+      "visible": true,
+      "source": "Cidade e nome aprovados pelo autor · ilha em frente a Allanan",
+      "reference": false,
+      "notes": "Escola de magia na ilha em frente a Allanan."
+    },
+    {
+      "i": 4003,
+      "name": "Aleravum",
+      "x": 823.0,
+      "y": 449.0,
+      "cell": 0,
+      "state": 28,
+      "culture": 10,
+      "capital": 0,
+      "port": 0,
+      "citadel": 0,
+      "walls": 0,
+      "temple": 0,
+      "population": null,
+      "type": "Escola de magia",
+      "settlementClass": "Cidade",
+      "visible": true,
+      "source": "Cidade em Veniun ao sopé do Monte Vathnis · posição solicitada pelo autor",
+      "reference": false,
+      "notes": "Escola de magia na margem oriental do Ghol-Cha, ao norte do sopé do Monte Vathnis, com a passagem do rio livre."
+    }
+  ],
+  "capitals": {
+    "34": 140
+  },
+  "removedCities": [
+    103,
+    175,
+    192
+  ]
+}
