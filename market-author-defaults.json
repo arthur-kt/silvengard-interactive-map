@@ -1,0 +1,1139 @@
+{
+  "markets": [
+    {
+      "i": 2,
+      "name": "Velaffeld",
+      "centerCity": 1,
+      "cities": [
+        77,
+        220,
+        96,
+        181,
+        128,
+        53,
+        81,
+        78,
+        1
+      ]
+    },
+    {
+      "i": 3,
+      "name": "Loueixo",
+      "centerCity": 224,
+      "cities": [
+        89,
+        164,
+        88,
+        13,
+        224,
+        236,
+        235,
+        228,
+        227,
+        226,
+        225,
+        232,
+        229,
+        230,
+        242,
+        56,
+        211,
+        115,
+        90
+      ]
+    },
+    {
+      "i": 4,
+      "name": "Porto do Álamo",
+      "centerCity": 30,
+      "cities": [
+        22,
+        136,
+        132,
+        21,
+        2007,
+        31,
+        32,
+        30,
+        4001,
+        14,
+        2006,
+        2008,
+        25,
+        29,
+        168,
+        26,
+        19,
+        16,
+        52,
+        142,
+        233
+      ]
+    },
+    {
+      "i": 5,
+      "name": "Khegosla",
+      "centerCity": 214,
+      "cities": [
+        119,
+        214,
+        75,
+        179,
+        93,
+        177,
+        176,
+        127,
+        238,
+        237,
+        92,
+        239,
+        170,
+        169,
+        72
+      ]
+    },
+    {
+      "i": 6,
+      "name": "Ros Leones",
+      "centerCity": 2002,
+      "cities": [
+        2002,
+        35,
+        1240,
+        1241,
+        113,
+        2000,
+        116,
+        69,
+        160,
+        223,
+        62,
+        2001,
+        1239
+      ]
+    },
+    {
+      "i": 7,
+      "name": "Asgorath",
+      "centerCity": 3,
+      "cities": [
+        3,
+        4,
+        2003,
+        2,
+        10001,
+        51,
+        18,
+        5,
+        2004,
+        33,
+        10002,
+        34,
+        23
+      ]
+    },
+    {
+      "i": 8,
+      "name": "Grenolk",
+      "centerCity": 36,
+      "cities": [
+        85,
+        153,
+        38,
+        199,
+        108,
+        110,
+        150,
+        36,
+        143,
+        149,
+        140,
+        138,
+        158,
+        154,
+        104,
+        135,
+        137,
+        45,
+        99,
+        102,
+        100,
+        174,
+        159,
+        207
+      ]
+    },
+    {
+      "i": 9,
+      "name": "Allanan",
+      "centerCity": 61,
+      "cities": [
+        189,
+        67,
+        70,
+        61,
+        4002,
+        202
+      ]
+    },
+    {
+      "i": 10,
+      "name": "Elucitor",
+      "centerCity": 7,
+      "cities": [
+        24,
+        1244,
+        147,
+        1242,
+        7,
+        191,
+        197,
+        20,
+        27,
+        1243,
+        4000,
+        68,
+        109,
+        161,
+        15,
+        17,
+        28
+      ]
+    },
+    {
+      "i": 11,
+      "name": "Alqa",
+      "centerCity": 9,
+      "cities": [
+        120,
+        11,
+        12,
+        10,
+        183,
+        9,
+        130,
+        129,
+        180,
+        182,
+        6,
+        4003,
+        184,
+        134
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "city": 77,
+      "state": 14,
+      "province": "Principado de Selne",
+      "market": 2
+    },
+    {
+      "city": 220,
+      "state": 14,
+      "province": "Principado de Selne",
+      "market": 2
+    },
+    {
+      "city": 96,
+      "state": 14,
+      "province": "Principado de Selne",
+      "market": 2
+    },
+    {
+      "city": 181,
+      "state": 14,
+      "province": "Costa de Natheas",
+      "market": 2
+    },
+    {
+      "city": 128,
+      "state": 14,
+      "province": "Costa de Natheas",
+      "market": 2
+    },
+    {
+      "city": 53,
+      "state": 14,
+      "province": "Principado de Selne",
+      "market": 2
+    },
+    {
+      "city": 81,
+      "state": 14,
+      "province": "Ducado de Velaffeld",
+      "market": 2
+    },
+    {
+      "city": 78,
+      "state": 14,
+      "province": "Ducado de Velaffeld",
+      "market": 2
+    },
+    {
+      "city": 1,
+      "state": 14,
+      "province": "Ducado de Velaffeld",
+      "market": 2
+    },
+    {
+      "city": 89,
+      "state": 31,
+      "province": "Condado de Sobrirosen",
+      "market": 3
+    },
+    {
+      "city": 164,
+      "state": 31,
+      "province": "Distrito de Vilaguezejo",
+      "market": 3
+    },
+    {
+      "city": 88,
+      "state": 31,
+      "province": "Distrito de Vilaguezejo",
+      "market": 3
+    },
+    {
+      "city": 13,
+      "state": 48,
+      "province": "Ducado de Candelápria",
+      "market": 3
+    },
+    {
+      "city": 224,
+      "state": 49,
+      "province": "Ducado de Loueixo",
+      "market": 3
+    },
+    {
+      "city": 236,
+      "state": 49,
+      "province": "Ducado de Loueixo",
+      "market": 3
+    },
+    {
+      "city": 235,
+      "state": 49,
+      "province": "Ducado de Loueixo",
+      "market": 3
+    },
+    {
+      "city": 228,
+      "state": 49,
+      "province": "Ilhas Adinhoes",
+      "market": 3
+    },
+    {
+      "city": 227,
+      "state": 49,
+      "province": "Ilhas Adinhoes",
+      "market": 3
+    },
+    {
+      "city": 226,
+      "state": 49,
+      "province": "lha Panhadaril",
+      "market": 3
+    },
+    {
+      "city": 225,
+      "state": 49,
+      "province": "Senhorio de Forteirosin",
+      "market": 3
+    },
+    {
+      "city": 232,
+      "state": 20,
+      "province": "Ilhas de Man'naar",
+      "market": 3
+    },
+    {
+      "city": 229,
+      "state": 20,
+      "province": "Ilhas de Man'naar",
+      "market": 3
+    },
+    {
+      "city": 230,
+      "state": 20,
+      "province": "Ilhas de Man'naar",
+      "market": 3
+    },
+    {
+      "city": 242,
+      "state": 48,
+      "province": "Ilha Corujos",
+      "market": 3
+    },
+    {
+      "city": 56,
+      "state": 31,
+      "province": "Costa de Viras",
+      "market": 3
+    },
+    {
+      "city": 211,
+      "state": 31,
+      "province": "Distrito de Vilaguezejo",
+      "market": 3
+    },
+    {
+      "city": 115,
+      "state": 31,
+      "province": "Distrito de Vilaguezejo",
+      "market": 3
+    },
+    {
+      "city": 90,
+      "state": 31,
+      "province": "Distrito de Vilaguezejo",
+      "market": 3
+    },
+    {
+      "city": 22,
+      "state": 20,
+      "province": "Capital Imperial de Drácon",
+      "market": 4
+    },
+    {
+      "city": 136,
+      "state": 20,
+      "province": "Capital Imperial de Drácon",
+      "market": 4
+    },
+    {
+      "city": 132,
+      "state": 20,
+      "province": "Domínio de Pinhem",
+      "market": 4
+    },
+    {
+      "city": 21,
+      "state": 47,
+      "province": "Baronato de Guernica",
+      "market": 4
+    },
+    {
+      "city": 2007,
+      "state": 47,
+      "province": "Baronato de Guernica",
+      "market": 4
+    },
+    {
+      "city": 31,
+      "state": 47,
+      "province": "Baronato de Guernica",
+      "market": 4
+    },
+    {
+      "city": 32,
+      "state": 47,
+      "province": "Baronato de Guernica",
+      "market": 4
+    },
+    {
+      "city": 30,
+      "state": 47,
+      "province": "Costa do Álamo",
+      "market": 4
+    },
+    {
+      "city": 4001,
+      "state": 47,
+      "province": "Costa do Álamo",
+      "market": 4
+    },
+    {
+      "city": 14,
+      "state": 47,
+      "province": "Ducado de Supla",
+      "market": 4
+    },
+    {
+      "city": 2006,
+      "state": 47,
+      "province": "Ducado de Supla",
+      "market": 4
+    },
+    {
+      "city": 2008,
+      "state": 47,
+      "province": "Ilhas de Vitravion",
+      "market": 4
+    },
+    {
+      "city": 25,
+      "state": 47,
+      "province": "Marca de Kyon",
+      "market": 4
+    },
+    {
+      "city": 29,
+      "state": 47,
+      "province": "Marca de Kyon",
+      "market": 4
+    },
+    {
+      "city": 168,
+      "state": 47,
+      "province": "Marca de Kyon",
+      "market": 4
+    },
+    {
+      "city": 26,
+      "state": 47,
+      "province": "Tríplice Élfica",
+      "market": 4
+    },
+    {
+      "city": 19,
+      "state": 47,
+      "province": "Tríplice Élfica",
+      "market": 4
+    },
+    {
+      "city": 16,
+      "state": 47,
+      "province": "Tríplice Élfica",
+      "market": 4
+    },
+    {
+      "city": 52,
+      "state": 20,
+      "province": "Domínio de Pinhem",
+      "market": 4
+    },
+    {
+      "city": 142,
+      "state": 20,
+      "province": "Capital Imperial de Drácon",
+      "market": 4
+    },
+    {
+      "city": 233,
+      "state": 20,
+      "province": "Ilhas de Metiscina",
+      "market": 4
+    },
+    {
+      "city": 119,
+      "state": 29,
+      "province": "Marca de Nudh",
+      "market": 5
+    },
+    {
+      "city": 214,
+      "state": 26,
+      "province": "Domínio de Khegosla",
+      "market": 5
+    },
+    {
+      "city": 75,
+      "state": 34,
+      "province": "Marca das Estepes de Tserost",
+      "market": 5
+    },
+    {
+      "city": 179,
+      "state": 34,
+      "province": "Marca das Estepes de Tserost",
+      "market": 5
+    },
+    {
+      "city": 93,
+      "state": 46,
+      "province": "Marca de Bral",
+      "market": 5
+    },
+    {
+      "city": 177,
+      "state": 23,
+      "province": "Domínio de Pedra de Shunzargil",
+      "market": 5
+    },
+    {
+      "city": 176,
+      "state": 23,
+      "province": "Domínio de Pedra de Shunzargil",
+      "market": 5
+    },
+    {
+      "city": 127,
+      "state": 23,
+      "province": "Domínio de Pedra de Shunzargil",
+      "market": 5
+    },
+    {
+      "city": 238,
+      "state": 23,
+      "province": "Salão de Adush",
+      "market": 5
+    },
+    {
+      "city": 237,
+      "state": 23,
+      "province": "Salão de Adush",
+      "market": 5
+    },
+    {
+      "city": 92,
+      "state": 23,
+      "province": "Senhorio das Forjas de Allos",
+      "market": 5
+    },
+    {
+      "city": 239,
+      "state": 23,
+      "province": "Senhorio das Forjas de Allos",
+      "market": 5
+    },
+    {
+      "city": 170,
+      "state": 29,
+      "province": "Território do Clã de Lulgard",
+      "market": 5
+    },
+    {
+      "city": 169,
+      "state": 29,
+      "province": "Território do Clã de Lulgard",
+      "market": 5
+    },
+    {
+      "city": 72,
+      "state": 29,
+      "province": "Território do Clã de Lulgard",
+      "market": 5
+    },
+    {
+      "city": 2002,
+      "state": 13,
+      "province": "Ilha de Ros Leones",
+      "market": 6
+    },
+    {
+      "city": 35,
+      "state": 13,
+      "province": "Marca de Castamor",
+      "market": 6
+    },
+    {
+      "city": 1240,
+      "state": 13,
+      "province": "Marca de Castamor",
+      "market": 6
+    },
+    {
+      "city": 1241,
+      "state": 13,
+      "province": "Marca de Castamor",
+      "market": 6
+    },
+    {
+      "city": 113,
+      "state": 13,
+      "province": "Marca de Castamor",
+      "market": 6
+    },
+    {
+      "city": 2000,
+      "state": 13,
+      "province": "Protetorado de Nùnar",
+      "market": 6
+    },
+    {
+      "city": 116,
+      "state": 13,
+      "province": "Protetorado de Nùnar",
+      "market": 6
+    },
+    {
+      "city": 69,
+      "state": 13,
+      "province": "Protetorado de Nùnar",
+      "market": 6
+    },
+    {
+      "city": 160,
+      "state": 13,
+      "province": "Protetorado de Nùnar",
+      "market": 6
+    },
+    {
+      "city": 223,
+      "state": 32,
+      "province": "Burgo de Crild",
+      "market": 6
+    },
+    {
+      "city": 62,
+      "state": 13,
+      "province": "Marca de Althor",
+      "market": 6
+    },
+    {
+      "city": 2001,
+      "state": 13,
+      "province": "Senhorio de Adhuc Vivere",
+      "market": 6
+    },
+    {
+      "city": 1239,
+      "state": 13,
+      "province": "Marca de Arenor",
+      "market": 6
+    },
+    {
+      "city": 3,
+      "state": 12,
+      "province": "Ducado de Asgorath",
+      "market": 7
+    },
+    {
+      "city": 4,
+      "state": 12,
+      "province": "Ducado de Asgorath",
+      "market": 7
+    },
+    {
+      "city": 2003,
+      "state": 12,
+      "province": "Ducado de Asgorath",
+      "market": 7
+    },
+    {
+      "city": 2,
+      "state": 12,
+      "province": "Ducado de Ereth",
+      "market": 7
+    },
+    {
+      "city": 10001,
+      "state": 12,
+      "province": "Ducado de Ereth",
+      "market": 7
+    },
+    {
+      "city": 51,
+      "state": 12,
+      "province": "Enseada das Cinzas",
+      "market": 7
+    },
+    {
+      "city": 18,
+      "state": 12,
+      "province": "Enseada das Cinzas",
+      "market": 7
+    },
+    {
+      "city": 5,
+      "state": 12,
+      "province": "Enseada das Cinzas",
+      "market": 7
+    },
+    {
+      "city": 2004,
+      "state": 12,
+      "province": "Enseada das Cinzas",
+      "market": 7
+    },
+    {
+      "city": 33,
+      "state": 12,
+      "province": "Ilha de Gugacon",
+      "market": 7
+    },
+    {
+      "city": 10002,
+      "state": 12,
+      "province": "Ilha de Gugacon",
+      "market": 7
+    },
+    {
+      "city": 34,
+      "state": 12,
+      "province": "Marca de Winterhelm",
+      "market": 7
+    },
+    {
+      "city": 23,
+      "state": 12,
+      "province": "Marca de Winterhelm",
+      "market": 7
+    },
+    {
+      "city": 85,
+      "state": 20,
+      "province": "Domínio de Guiras",
+      "market": 8
+    },
+    {
+      "city": 153,
+      "state": 20,
+      "province": "Domínio de Guiras",
+      "market": 8
+    },
+    {
+      "city": 38,
+      "state": 20,
+      "province": "Domínio de Guiras",
+      "market": 8
+    },
+    {
+      "city": 199,
+      "state": 20,
+      "province": "Domínio de Guiras",
+      "market": 8
+    },
+    {
+      "city": 108,
+      "state": 20,
+      "province": "Domínio de Pinhem",
+      "market": 8
+    },
+    {
+      "city": 110,
+      "state": 35,
+      "province": "Salão de Grenolk",
+      "market": 8
+    },
+    {
+      "city": 150,
+      "state": 35,
+      "province": "Salão de Grenolk",
+      "market": 8
+    },
+    {
+      "city": 36,
+      "state": 35,
+      "province": "Salão de Grenolk",
+      "market": 8
+    },
+    {
+      "city": 143,
+      "state": 34,
+      "province": "Campinas de Tog Iret",
+      "market": 8
+    },
+    {
+      "city": 149,
+      "state": 34,
+      "province": "Campinas de Tog Iret",
+      "market": 8
+    },
+    {
+      "city": 140,
+      "state": 34,
+      "province": "Campinas de Tog Iret",
+      "market": 8
+    },
+    {
+      "city": 138,
+      "state": 34,
+      "province": "Campinas de Tog Iret",
+      "market": 8
+    },
+    {
+      "city": 158,
+      "state": 48,
+      "province": "Ducado de Alveiras",
+      "market": 8
+    },
+    {
+      "city": 154,
+      "state": 48,
+      "province": "Ducado de Alveiras",
+      "market": 8
+    },
+    {
+      "city": 104,
+      "state": 46,
+      "province": "Condado de Vinquertiro",
+      "market": 8
+    },
+    {
+      "city": 135,
+      "state": 46,
+      "province": "Condado de Vinquertiro",
+      "market": 8
+    },
+    {
+      "city": 137,
+      "state": 46,
+      "province": "Condado de Vinquertiro",
+      "market": 8
+    },
+    {
+      "city": 45,
+      "state": 46,
+      "province": "Costa de Almirarem",
+      "market": 8
+    },
+    {
+      "city": 99,
+      "state": 46,
+      "province": "Costa de Almirarem",
+      "market": 8
+    },
+    {
+      "city": 102,
+      "state": 46,
+      "province": "Costa de Almirarem",
+      "market": 8
+    },
+    {
+      "city": 100,
+      "state": 46,
+      "province": "Costa de Almirarem",
+      "market": 8
+    },
+    {
+      "city": 174,
+      "state": 46,
+      "province": "Marca de Bral",
+      "market": 8
+    },
+    {
+      "city": 159,
+      "state": 48,
+      "province": "Ducado de Alveiras",
+      "market": 8
+    },
+    {
+      "city": 207,
+      "state": 48,
+      "province": "Ducado de Candelápria",
+      "market": 8
+    },
+    {
+      "city": 189,
+      "state": 14,
+      "province": "Dioocese de Garnalos",
+      "market": 9
+    },
+    {
+      "city": 67,
+      "state": 14,
+      "province": "Dioocese de Garnalos",
+      "market": 9
+    },
+    {
+      "city": 70,
+      "state": 14,
+      "province": "Ducado de Navï",
+      "market": 9
+    },
+    {
+      "city": 61,
+      "state": 14,
+      "province": "Ducado de Navï",
+      "market": 9
+    },
+    {
+      "city": 4002,
+      "state": 14,
+      "province": "Ducado de Navï",
+      "market": 9
+    },
+    {
+      "city": 202,
+      "state": 14,
+      "province": "Ducado de Navï",
+      "market": 9
+    },
+    {
+      "city": 24,
+      "state": 13,
+      "province": "Protetorado de Drakis",
+      "market": 10
+    },
+    {
+      "city": 1244,
+      "state": 13,
+      "province": "Condado de Alia",
+      "market": 10
+    },
+    {
+      "city": 147,
+      "state": 13,
+      "province": "Alia",
+      "market": 10
+    },
+    {
+      "city": 1242,
+      "state": 13,
+      "province": "Alia",
+      "market": 10
+    },
+    {
+      "city": 7,
+      "state": 13,
+      "province": "Distrito Imperial de Elucitor",
+      "market": 10
+    },
+    {
+      "city": 191,
+      "state": 13,
+      "province": "Distrito Imperial de Elucitor",
+      "market": 10
+    },
+    {
+      "city": 197,
+      "state": 13,
+      "province": "Marca de Althor",
+      "market": 10
+    },
+    {
+      "city": 20,
+      "state": 13,
+      "province": "Marca de Althor",
+      "market": 10
+    },
+    {
+      "city": 27,
+      "state": 13,
+      "province": "Marca de Althor",
+      "market": 10
+    },
+    {
+      "city": 1243,
+      "state": 13,
+      "province": "Marca de Arenor",
+      "market": 10
+    },
+    {
+      "city": 4000,
+      "state": 13,
+      "province": "Marca de Arenor",
+      "market": 10
+    },
+    {
+      "city": 68,
+      "state": 13,
+      "province": "Marca de Arenor",
+      "market": 10
+    },
+    {
+      "city": 109,
+      "state": 13,
+      "province": "Marca de Arenor",
+      "market": 10
+    },
+    {
+      "city": 161,
+      "state": 13,
+      "province": "Protetorado de Rimae",
+      "market": 10
+    },
+    {
+      "city": 15,
+      "state": 13,
+      "province": "Protetorado de Rimae",
+      "market": 10
+    },
+    {
+      "city": 17,
+      "state": 13,
+      "province": "Protetorado de Rimae",
+      "market": 10
+    },
+    {
+      "city": 28,
+      "state": 13,
+      "province": "Protetorado de Rimae",
+      "market": 10
+    },
+    {
+      "city": 120,
+      "state": 12,
+      "province": "Marca de Winterhelm",
+      "market": 11
+    },
+    {
+      "city": 11,
+      "state": 12,
+      "province": "Capitania de Amestrina",
+      "market": 11
+    },
+    {
+      "city": 12,
+      "state": 12,
+      "province": "Capitania de Amestrina",
+      "market": 11
+    },
+    {
+      "city": 10,
+      "state": 12,
+      "province": "Salão de Dagorah",
+      "market": 11
+    },
+    {
+      "city": 183,
+      "state": 13,
+      "province": "Protetorado de Drakis",
+      "market": 11
+    },
+    {
+      "city": 9,
+      "state": 24,
+      "province": "Emirado de Alqa",
+      "market": 11
+    },
+    {
+      "city": 130,
+      "state": 33,
+      "province": "Condado de Gannas",
+      "market": 11
+    },
+    {
+      "city": 129,
+      "state": 33,
+      "province": "Principado de Hellas",
+      "market": 11
+    },
+    {
+      "city": 180,
+      "state": 33,
+      "province": "Principado de Hellas",
+      "market": 11
+    },
+    {
+      "city": 182,
+      "state": 33,
+      "province": "Principado de Hellas",
+      "market": 11
+    },
+    {
+      "city": 6,
+      "state": 28,
+      "province": "Ducado de Anteventium",
+      "market": 11
+    },
+    {
+      "city": 4003,
+      "state": 28,
+      "province": "Ducado de Anteventium",
+      "market": 11
+    },
+    {
+      "city": 184,
+      "state": 28,
+      "province": "Condado de Fovium",
+      "market": 11
+    },
+    {
+      "city": 134,
+      "state": 28,
+      "province": "Condado de Fovium",
+      "market": 11
+    },
+    {
+      "city": 8,
+      "state": 17,
+      "province": "Terra morta de Valar",
+      "market": null
+    }
+  ]
+}

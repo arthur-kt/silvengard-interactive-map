@@ -1,0 +1,332 @@
+[
+  {
+    "estado": 13,
+    "nome": "Elucitor",
+    "id": 7,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Dracofortis",
+    "id": 24,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Vostris",
+    "id": 28,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Ignis",
+    "id": 15,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Nostris",
+    "id": 17,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Althor",
+    "id": 197,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Vennoduro",
+    "id": 191,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Lorvus",
+    "id": 20,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Tramor",
+    "id": 27,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Cetolo",
+    "id": 1243,
+    "origem": "Desenho de Elucitor e emblema original · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Arenor",
+    "id": 1239,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Danumbria",
+    "id": 2000,
+    "origem": "Desenho de Elucitor e emblema original · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Condado de Alhia",
+    "id": 1244,
+    "origem": "Desenho de Elucitor e emblema original · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Meriadoc",
+    "id": 1242,
+    "origem": "Desenho de Elucitor e emblema original · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Bomaria",
+    "id": 161,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Adhuc Vivere",
+    "id": 2001,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Ros Leones",
+    "id": 2002,
+    "origem": "Desenho de Elucitor e emblema original · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Argendau",
+    "id": 35,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Castamor",
+    "id": 1240,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Nediora",
+    "id": 1241,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Pantos",
+    "id": 160,
+    "origem": "Desenho de Elucitor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Asgorath",
+    "id": 3,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Winterhelm",
+    "id": 23,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Dagorah",
+    "id": 10,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Malacatt",
+    "id": 11,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Savhalla",
+    "id": 12,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Porto das Cinzas",
+    "id": 18,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Torre Solitária",
+    "id": 5,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Ereth",
+    "id": 2,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Rivertown",
+    "id": 4,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Gugacon",
+    "id": 33,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Vila Rinus",
+    "id": 34,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Nilhelm",
+    "id": 2003,
+    "origem": "Dragonfall digital e papel revisado e correção do autor · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Vila Sardinhas",
+    "id": 2004,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 12,
+    "nome": "Ermo Limiar",
+    "id": 2005,
+    "origem": "Dragonfall digital e papel revisado · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Guernica",
+    "id": 21,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Mauron",
+    "id": 29,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Sulpa",
+    "id": 2006,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Triovorn",
+    "id": 19,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Lirion",
+    "id": 31,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Oregon",
+    "id": 32,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Guil",
+    "id": 2007,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Vyoh",
+    "id": 25,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Vir",
+    "id": 16,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Porto do Álamo",
+    "id": 30,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Porto de Vern",
+    "id": 26,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 47,
+    "nome": "Bernut",
+    "id": 2008,
+    "origem": "Mapa digital de Vitravion · posição adaptada ao mapa 3D"
+  },
+  {
+    "estado": 13,
+    "nome": "Ergasixeza",
+    "id": 63,
+    "origem": "Vila reincluída do .map · próxima a caminhos ou água"
+  },
+  {
+    "estado": 13,
+    "nome": "Fermaletim",
+    "id": 62,
+    "origem": "Vila reincluída do .map · próxima a caminhos ou água"
+  },
+  {
+    "estado": 13,
+    "nome": "Vicrem",
+    "id": 46,
+    "origem": "Vila reincluída do .map · próxima a caminhos ou água"
+  },
+  {
+    "estado": 13,
+    "nome": "Pinjeimeiro",
+    "id": 91,
+    "origem": "Vila reincluída do .map · próxima a caminhos ou água"
+  },
+  {
+    "estado": 12,
+    "nome": "Oxlightford",
+    "id": 122,
+    "origem": "Vila reincluída do .map · próxima a caminhos ou água"
+  },
+  {
+    "estado": 12,
+    "nome": "Caderebonf",
+    "id": 43,
+    "origem": "Vila reincluída do .map · próxima a caminhos ou água"
+  },
+  {
+    "estado": 12,
+    "nome": "Thornhol",
+    "id": 123,
+    "origem": "Vila reincluída do .map · próxima a caminhos ou água"
+  },
+  {
+    "estado": 12,
+    "nome": "Thvethetha",
+    "id": 50,
+    "origem": "Vila reincluída do .map · próxima a caminhos ou água"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "corridors": [
+    {
+      "market": 6,
+      "fromCity": 62,
+      "toCity": 2000,
+      "radius": 20,
+      "state": 13,
+      "excludeProvinces": []
+    }
+  ],
+  "excludedStates": [
+    0
+  ],
+  "stateMarkets": {
+    "28": 11
+  }
+}

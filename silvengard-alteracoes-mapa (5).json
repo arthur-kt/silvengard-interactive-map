@@ -1,0 +1,2823 @@
+{
+  "format": "silvengard-map-edits-v1",
+  "baseRevision": 9,
+  "grid": {
+    "columns": 480,
+    "rows": 234,
+    "stepX": 4,
+    "stepY": 4.004273504273504
+  },
+  "cells": [
+    {
+      "i": 68381,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68382,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68859,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68860,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68861,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68862,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68863,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68864,
+      "woodland": 0.7
+    },
+    {
+      "i": 68865,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68866,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68867,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68868,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68869,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 68870,
+      "woodland": 0.7
+    },
+    {
+      "i": 68871,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69339,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69340,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69341,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69342,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69343,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69344,
+      "woodland": 0.7
+    },
+    {
+      "i": 69345,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69346,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69347,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69348,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69349,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69350,
+      "woodland": 0.7
+    },
+    {
+      "i": 69351,
+      "woodland": 0.7
+    },
+    {
+      "i": 69352,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69818,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69819,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69820,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69821,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69822,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69823,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69824,
+      "woodland": 0.7
+    },
+    {
+      "i": 69825,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69826,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69827,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69828,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69829,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69830,
+      "woodland": 0.7
+    },
+    {
+      "i": 69831,
+      "woodland": 0.7
+    },
+    {
+      "i": 69832,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 69833,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70297,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70298,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70299,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70300,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70301,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70302,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70303,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70304,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70305,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70306,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70307,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70308,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70309,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70310,
+      "woodland": 0.7
+    },
+    {
+      "i": 70311,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70312,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70313,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70776,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70777,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70778,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70779,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70780,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70781,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70782,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70783,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70784,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70785,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70786,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70787,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70788,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70789,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70790,
+      "woodland": 0.7
+    },
+    {
+      "i": 70791,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70792,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 70793,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71256,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71257,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71258,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71259,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71260,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71261,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71262,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71263,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71264,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71265,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71266,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71267,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71268,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71269,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71270,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71271,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71272,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71273,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71274,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71736,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71737,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71738,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71739,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71740,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71741,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71742,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71743,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71744,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71745,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71746,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71747,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71748,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71749,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71750,
+      "woodland": 0.7
+    },
+    {
+      "i": 71751,
+      "woodland": 0.7
+    },
+    {
+      "i": 71752,
+      "woodland": 0.7
+    },
+    {
+      "i": 71753,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 71754,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72216,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72217,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72218,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72219,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72220,
+      "woodland": 0.7
+    },
+    {
+      "i": 72221,
+      "woodland": 0.7
+    },
+    {
+      "i": 72222,
+      "woodland": 0.7
+    },
+    {
+      "i": 72223,
+      "woodland": 0.7
+    },
+    {
+      "i": 72224,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72225,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72226,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72227,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72228,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72229,
+      "woodland": 0.7
+    },
+    {
+      "i": 72230,
+      "woodland": 0.7
+    },
+    {
+      "i": 72231,
+      "woodland": 0.7
+    },
+    {
+      "i": 72232,
+      "woodland": 0.7
+    },
+    {
+      "i": 72233,
+      "woodland": 0.7
+    },
+    {
+      "i": 72234,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72696,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72697,
+      "woodland": 0.7
+    },
+    {
+      "i": 72698,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72699,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72700,
+      "woodland": 0.7
+    },
+    {
+      "i": 72701,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72702,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72703,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72704,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72705,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72706,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 72707,
+      "woodland": 0.7
+    },
+    {
+      "i": 72708,
+      "woodland": 0.7
+    },
+    {
+      "i": 72709,
+      "woodland": 0.7
+    },
+    {
+      "i": 72710,
+      "woodland": 0.7
+    },
+    {
+      "i": 72711,
+      "woodland": 0.7
+    },
+    {
+      "i": 72712,
+      "woodland": 0.7
+    },
+    {
+      "i": 72713,
+      "woodland": 0.7
+    },
+    {
+      "i": 73175,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73176,
+      "woodland": 0.7
+    },
+    {
+      "i": 73177,
+      "woodland": 0.7
+    },
+    {
+      "i": 73178,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73179,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73180,
+      "woodland": 0.7
+    },
+    {
+      "i": 73181,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73182,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73183,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73185,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73186,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73187,
+      "woodland": 0.7
+    },
+    {
+      "i": 73188,
+      "woodland": 0.7
+    },
+    {
+      "i": 73189,
+      "woodland": 0.7
+    },
+    {
+      "i": 73191,
+      "woodland": 0.7
+    },
+    {
+      "i": 73192,
+      "woodland": 0.7
+    },
+    {
+      "i": 73655,
+      "woodland": 0.7
+    },
+    {
+      "i": 73656,
+      "woodland": 0.7
+    },
+    {
+      "i": 73657,
+      "woodland": 0.7
+    },
+    {
+      "i": 73658,
+      "woodland": 0.7
+    },
+    {
+      "i": 73659,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73660,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73661,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73662,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73663,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73664,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 73665,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74135,
+      "woodland": 0.7
+    },
+    {
+      "i": 74136,
+      "woodland": 0.7
+    },
+    {
+      "i": 74137,
+      "woodland": 0.7
+    },
+    {
+      "i": 74138,
+      "woodland": 0.7
+    },
+    {
+      "i": 74139,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74140,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74141,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74142,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74143,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74144,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74145,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74146,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74147,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74616,
+      "woodland": 0.7
+    },
+    {
+      "i": 74617,
+      "woodland": 0.7
+    },
+    {
+      "i": 74618,
+      "woodland": 0.7
+    },
+    {
+      "i": 74619,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74620,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74621,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74622,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74623,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74624,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74625,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74626,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74627,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74628,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74629,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74630,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74631,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 74632,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75095,
+      "woodland": 0.7
+    },
+    {
+      "i": 75096,
+      "woodland": 0.7
+    },
+    {
+      "i": 75097,
+      "woodland": 0.7
+    },
+    {
+      "i": 75098,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75099,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75100,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75101,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75102,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75103,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75104,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75105,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75106,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75107,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75108,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75109,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75110,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75111,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75112,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75113,
+      "woodland": 0.7
+    },
+    {
+      "i": 75574,
+      "woodland": 0.7
+    },
+    {
+      "i": 75575,
+      "woodland": 0.7
+    },
+    {
+      "i": 75576,
+      "woodland": 0.7
+    },
+    {
+      "i": 75577,
+      "woodland": 0.7
+    },
+    {
+      "i": 75578,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75579,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75580,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75581,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75582,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75583,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75584,
+      "woodland": 0.7
+    },
+    {
+      "i": 75585,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75586,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75587,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75588,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75589,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75590,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75591,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75592,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 75593,
+      "woodland": 0.7
+    },
+    {
+      "i": 75594,
+      "woodland": 0.7
+    },
+    {
+      "i": 76054,
+      "woodland": 0.7
+    },
+    {
+      "i": 76055,
+      "woodland": 0.7
+    },
+    {
+      "i": 76056,
+      "woodland": 0.7
+    },
+    {
+      "i": 76057,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76058,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76059,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76060,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76061,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76062,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76063,
+      "woodland": 0.7
+    },
+    {
+      "i": 76064,
+      "woodland": 0.7
+    },
+    {
+      "i": 76065,
+      "woodland": 0.7
+    },
+    {
+      "i": 76066,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76067,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76068,
+      "woodland": 0.7
+    },
+    {
+      "i": 76069,
+      "woodland": 0.7
+    },
+    {
+      "i": 76070,
+      "woodland": 0.7
+    },
+    {
+      "i": 76071,
+      "woodland": 0.7
+    },
+    {
+      "i": 76072,
+      "woodland": 0.7
+    },
+    {
+      "i": 76073,
+      "woodland": 0.7
+    },
+    {
+      "i": 76074,
+      "woodland": 0.7
+    },
+    {
+      "i": 76075,
+      "woodland": 0.7
+    },
+    {
+      "i": 76533,
+      "woodland": 0.7
+    },
+    {
+      "i": 76534,
+      "woodland": 0.7
+    },
+    {
+      "i": 76535,
+      "woodland": 0.7
+    },
+    {
+      "i": 76536,
+      "woodland": 0.7
+    },
+    {
+      "i": 76537,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76538,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76539,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76540,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76541,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76542,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76543,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76544,
+      "woodland": 0.7
+    },
+    {
+      "i": 76545,
+      "woodland": 0.7
+    },
+    {
+      "i": 76546,
+      "woodland": 0.7
+    },
+    {
+      "i": 76547,
+      "woodland": 0.7
+    },
+    {
+      "i": 76548,
+      "woodland": 0.7
+    },
+    {
+      "i": 76549,
+      "woodland": 0.7
+    },
+    {
+      "i": 76550,
+      "woodland": 0.7
+    },
+    {
+      "i": 76551,
+      "woodland": 0.7
+    },
+    {
+      "i": 76552,
+      "woodland": 0.7
+    },
+    {
+      "i": 76553,
+      "woodland": 0.7
+    },
+    {
+      "i": 76554,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76555,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 76556,
+      "woodland": 0.7
+    },
+    {
+      "i": 77013,
+      "woodland": 0.7
+    },
+    {
+      "i": 77014,
+      "woodland": 0.7
+    },
+    {
+      "i": 77015,
+      "woodland": 0.7
+    },
+    {
+      "i": 77016,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77017,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77018,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77019,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77020,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77021,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77022,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77023,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77024,
+      "woodland": 0.7
+    },
+    {
+      "i": 77025,
+      "woodland": 0.7
+    },
+    {
+      "i": 77026,
+      "woodland": 0.7
+    },
+    {
+      "i": 77027,
+      "woodland": 0.7
+    },
+    {
+      "i": 77028,
+      "woodland": 0.7
+    },
+    {
+      "i": 77029,
+      "woodland": 0.7
+    },
+    {
+      "i": 77030,
+      "woodland": 0.7
+    },
+    {
+      "i": 77031,
+      "woodland": 0.7
+    },
+    {
+      "i": 77032,
+      "woodland": 0.7
+    },
+    {
+      "i": 77033,
+      "woodland": 0.7
+    },
+    {
+      "i": 77034,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77035,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77036,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77493,
+      "woodland": 0.7
+    },
+    {
+      "i": 77494,
+      "woodland": 0.7
+    },
+    {
+      "i": 77495,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77496,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77497,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77498,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77499,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77500,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77501,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77502,
+      "woodland": 0.7
+    },
+    {
+      "i": 77503,
+      "woodland": 0.7
+    },
+    {
+      "i": 77504,
+      "woodland": 0.7
+    },
+    {
+      "i": 77505,
+      "woodland": 0.7
+    },
+    {
+      "i": 77506,
+      "woodland": 0.7
+    },
+    {
+      "i": 77507,
+      "woodland": 0.7
+    },
+    {
+      "i": 77508,
+      "woodland": 0.7
+    },
+    {
+      "i": 77509,
+      "woodland": 0.7
+    },
+    {
+      "i": 77510,
+      "woodland": 0.7
+    },
+    {
+      "i": 77511,
+      "woodland": 0.7
+    },
+    {
+      "i": 77512,
+      "woodland": 0.7
+    },
+    {
+      "i": 77513,
+      "woodland": 0.7
+    },
+    {
+      "i": 77514,
+      "woodland": 0.7
+    },
+    {
+      "i": 77515,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77516,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77517,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77973,
+      "woodland": 0.7
+    },
+    {
+      "i": 77974,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77975,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77976,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77977,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77978,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77979,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77980,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77981,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77982,
+      "woodland": 0.7
+    },
+    {
+      "i": 77983,
+      "woodland": 0.7
+    },
+    {
+      "i": 77984,
+      "woodland": 0.7
+    },
+    {
+      "i": 77985,
+      "woodland": 0.7
+    },
+    {
+      "i": 77986,
+      "woodland": 0.7
+    },
+    {
+      "i": 77987,
+      "woodland": 0.7
+    },
+    {
+      "i": 77988,
+      "woodland": 0.7
+    },
+    {
+      "i": 77989,
+      "woodland": 0.7
+    },
+    {
+      "i": 77990,
+      "woodland": 0.7
+    },
+    {
+      "i": 77991,
+      "woodland": 0.7
+    },
+    {
+      "i": 77992,
+      "woodland": 0.7
+    },
+    {
+      "i": 77993,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77994,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77995,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77996,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77997,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 77998,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78452,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 78453,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 78456,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78457,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78458,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78459,
+      "woodland": 0.7
+    },
+    {
+      "i": 78460,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78461,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78462,
+      "woodland": 0.7
+    },
+    {
+      "i": 78463,
+      "woodland": 0.7
+    },
+    {
+      "i": 78464,
+      "woodland": 0.7
+    },
+    {
+      "i": 78465,
+      "woodland": 0.7
+    },
+    {
+      "i": 78466,
+      "woodland": 0.7
+    },
+    {
+      "i": 78467,
+      "woodland": 0.7
+    },
+    {
+      "i": 78468,
+      "woodland": 0.7
+    },
+    {
+      "i": 78469,
+      "woodland": 0.7
+    },
+    {
+      "i": 78470,
+      "woodland": 0.7
+    },
+    {
+      "i": 78471,
+      "woodland": 0.7
+    },
+    {
+      "i": 78472,
+      "woodland": 0.7
+    },
+    {
+      "i": 78473,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78474,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78475,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78476,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78477,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78478,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78479,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 78931,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 78932,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 78939,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 78940,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 78941,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 78942,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 78943,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 78944,
+      "woodland": 0.7
+    },
+    {
+      "i": 78945,
+      "woodland": 0.7
+    },
+    {
+      "i": 78946,
+      "woodland": 0.7
+    },
+    {
+      "i": 78947,
+      "woodland": 0.7
+    },
+    {
+      "i": 78948,
+      "woodland": 0.7
+    },
+    {
+      "i": 78949,
+      "woodland": 0.7
+    },
+    {
+      "i": 78950,
+      "woodland": 0.7
+    },
+    {
+      "i": 78951,
+      "woodland": 0.7
+    },
+    {
+      "i": 78952,
+      "woodland": 0.7
+    },
+    {
+      "i": 78953,
+      "woodland": 0.7
+    },
+    {
+      "i": 78954,
+      "woodland": 0.7
+    },
+    {
+      "i": 78955,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78956,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 78957,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 79410,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 79411,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 79412,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 79413,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 79418,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79419,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79420,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79421,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79422,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79423,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79424,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79425,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79426,
+      "woodland": 0.7
+    },
+    {
+      "i": 79427,
+      "woodland": 0.7
+    },
+    {
+      "i": 79428,
+      "woodland": 0.7
+    },
+    {
+      "i": 79429,
+      "woodland": 0.7
+    },
+    {
+      "i": 79430,
+      "woodland": 0.7
+    },
+    {
+      "i": 79431,
+      "woodland": 0.7
+    },
+    {
+      "i": 79432,
+      "woodland": 0.7
+    },
+    {
+      "i": 79433,
+      "woodland": 0.7
+    },
+    {
+      "i": 79434,
+      "woodland": 0.7
+    },
+    {
+      "i": 79435,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 79436,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 79437,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 79439,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79890,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 79891,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 79892,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 79893,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 79898,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79899,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79900,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79901,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79902,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79903,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79904,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79905,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79906,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79907,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79908,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 79909,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 79910,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 79911,
+      "woodland": 0.7
+    },
+    {
+      "i": 79912,
+      "woodland": 0.7
+    },
+    {
+      "i": 79913,
+      "woodland": 0.7
+    },
+    {
+      "i": 79914,
+      "woodland": 0.7
+    },
+    {
+      "i": 79915,
+      "woodland": 0.7
+    },
+    {
+      "i": 79916,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 79917,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 79918,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 80371,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80372,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80378,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80379,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80380,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80381,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80382,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80383,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80384,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80385,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80386,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80387,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80388,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80389,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80390,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80391,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80392,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80393,
+      "woodland": 0.7
+    },
+    {
+      "i": 80394,
+      "woodland": 0.7
+    },
+    {
+      "i": 80395,
+      "woodland": 0.7
+    },
+    {
+      "i": 80396,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 80397,
+      "woodland": 0.7,
+      "vegetation": "conifer"
+    },
+    {
+      "i": 80863,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80864,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80865,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80866,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 80867,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80868,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80869,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80870,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80871,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80872,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 80873,
+      "woodland": 0.7
+    },
+    {
+      "i": 80874,
+      "woodland": 0.7
+    },
+    {
+      "i": 80875,
+      "woodland": 0.7
+    },
+    {
+      "i": 81346,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 81347,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 81348,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 81349,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 81832,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 85698,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 85699,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 86210,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 86663,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 86689,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 86690,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 86691,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 86692,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 87136,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 87142,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 87143,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 87169,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 87170,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 87171,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 87172,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 87173,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 87617,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 87620,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 87621,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 87622,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 87648,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 87649,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 87650,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 87651,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 87652,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 87653,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 87654,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 88097,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 88098,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 88099,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 88100,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 88101,
+      "woodland": 0,
+      "vegetation": "none"
+    },
+    {
+      "i": 88128,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88129,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88130,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88131,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88132,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88134,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 88135,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 88607,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88608,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88609,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88610,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88611,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88612,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 88613,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 88614,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 88615,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 88616,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 89087,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 89088,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 89089,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 89090,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 89091,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 89092,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 89093,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 89094,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 89095,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 89096,
+      "woodland": 0.7,
+      "vegetation": "auto"
+    },
+    {
+      "i": 89568,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 89569,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 89570,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 89571,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 90049,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 90050,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    },
+    {
+      "i": 90051,
+      "woodland": 0.65,
+      "vegetation": "broadleaf"
+    }
+  ],
+  "exportedAt": "2026-11-05T21:30:14.320Z",
+  "legend": {
+    "states": [
+      {
+        "i": 0,
+        "name": "Neutrals"
+      },
+      {
+        "i": 12,
+        "name": "Dragonfall"
+      },
+      {
+        "i": 13,
+        "name": "Elucitor "
+      },
+      {
+        "i": 14,
+        "name": "Navï Velaffëll"
+      },
+      {
+        "i": 17,
+        "name": "Valar"
+      },
+      {
+        "i": 20,
+        "name": "Drácon "
+      },
+      {
+        "i": 23,
+        "name": "Sete Cidades"
+      },
+      {
+        "i": 24,
+        "name": "Husaj"
+      },
+      {
+        "i": 26,
+        "name": "Khajataad"
+      },
+      {
+        "i": 28,
+        "name": "Veniun"
+      },
+      {
+        "i": 29,
+        "name": "Território Orc "
+      },
+      {
+        "i": 31,
+        "name": "Mountport"
+      },
+      {
+        "i": 32,
+        "name": "Goblinburgo "
+      },
+      {
+        "i": 33,
+        "name": "Piglia"
+      },
+      {
+        "i": 34,
+        "name": "Marshell "
+      },
+      {
+        "i": 35,
+        "name": "Duräk"
+      },
+      {
+        "i": 46,
+        "name": "Reinos Médios"
+      },
+      {
+        "i": 47,
+        "name": "Vitravion"
+      },
+      {
+        "i": 48,
+        "name": "Osmorn"
+      },
+      {
+        "i": 49,
+        "name": "Batovia"
+      }
+    ],
+    "biomes": [
+      "Oceano",
+      "Deserto quente",
+      "Deserto frio",
+      "Savana",
+      "Pradaria",
+      "Floresta tropical sazonal",
+      "Floresta temperada",
+      "Floresta tropical úmida",
+      "Floresta temperada úmida",
+      "Taiga",
+      "Tundra",
+      "Geleira",
+      "Pântano",
+      "Floresta morta",
+      "Terras desoladas · névoa",
+      "Terreno vulcânico",
+      "Floresta temperada de outono"
+    ]
+  }
+}

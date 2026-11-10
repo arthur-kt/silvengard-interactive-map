@@ -1,0 +1,547 @@
+{
+  "format": "silvengard-atlas-v1",
+  "exportedAt": "2026-11-06T15:08:33.543Z",
+  "edits": {
+    "cities": {
+      "7": {
+        "name": "Elucitor",
+        "notes": "",
+        "visible": true
+      },
+      "8": {
+        "name": "Valari",
+        "notes": "",
+        "visible": true
+      },
+      "14": {
+        "name": "Gugacon",
+        "notes": "",
+        "visible": true
+      },
+      "36": {
+        "name": "Grenolk",
+        "notes": "",
+        "visible": true
+      },
+      "51": {
+        "name": "Clifshiel",
+        "notes": "",
+        "visible": true
+      },
+      "61": {
+        "name": "Allanan",
+        "notes": "",
+        "visible": true
+      },
+      "62": {
+        "name": "Vilenages",
+        "notes": "",
+        "visible": true
+      },
+      "65": {
+        "name": "Davumbia",
+        "notes": "",
+        "visible": false
+      },
+      "67": {
+        "name": "Himlumn",
+        "notes": "",
+        "visible": true
+      },
+      "68": {
+        "name": "Parnum",
+        "notes": "",
+        "visible": true
+      },
+      "69": {
+        "name": "Odira",
+        "notes": "",
+        "visible": true
+      },
+      "70": {
+        "name": "Sel-Shofela",
+        "notes": "",
+        "visible": true
+      },
+      "75": {
+        "name": "Tserost",
+        "notes": "",
+        "visible": true
+      },
+      "90": {
+        "name": "Vilaguezejo",
+        "notes": "",
+        "visible": true
+      },
+      "92": {
+        "name": "Allos",
+        "notes": "",
+        "visible": true
+      },
+      "99": {
+        "name": "Braveira",
+        "notes": "",
+        "visible": true
+      },
+      "101": {
+        "name": "Enquertei",
+        "notes": "",
+        "visible": false
+      },
+      "104": {
+        "name": "Cananhos",
+        "notes": "",
+        "visible": true
+      },
+      "109": {
+        "name": "Vedioria",
+        "notes": "",
+        "visible": true
+      },
+      "113": {
+        "name": "Premapuri",
+        "notes": "",
+        "visible": true
+      },
+      "116": {
+        "name": "Feixos",
+        "notes": "",
+        "visible": true
+      },
+      "119": {
+        "name": "Nudh",
+        "notes": "",
+        "visible": true
+      },
+      "120": {
+        "name": "Steamouth",
+        "notes": "",
+        "visible": true
+      },
+      "133": {
+        "name": "Bariner",
+        "notes": "",
+        "visible": true
+      },
+      "135": {
+        "name": "Sanha",
+        "notes": "",
+        "visible": true
+      },
+      "140": {
+        "name": "Tog Iret",
+        "notes": "",
+        "visible": true
+      },
+      "141": {
+        "name": "Gurmendal",
+        "notes": "",
+        "visible": true
+      },
+      "142": {
+        "name": "Urlyzaak",
+        "notes": "",
+        "visible": true
+      },
+      "147": {
+        "name": "Litorum",
+        "notes": "",
+        "visible": true
+      },
+      "153": {
+        "name": "Guiras",
+        "notes": "",
+        "visible": true
+      },
+      "168": {
+        "name": "Pirerewick",
+        "notes": "",
+        "visible": true
+      },
+      "174": {
+        "name": "Caspinho",
+        "notes": "",
+        "visible": true
+      },
+      "180": {
+        "name": "Orgener",
+        "notes": "",
+        "visible": true
+      },
+      "182": {
+        "name": "Tessert",
+        "notes": "",
+        "visible": true
+      },
+      "183": {
+        "name": "Mestrina",
+        "notes": "",
+        "visible": true
+      },
+      "189": {
+        "name": "Ganarlos",
+        "notes": "",
+        "visible": true
+      },
+      "201": {
+        "name": "Matheas",
+        "notes": "",
+        "visible": false
+      },
+      "202": {
+        "name": "Nythan",
+        "notes": "",
+        "visible": true
+      },
+      "210": {
+        "name": "Nigrona",
+        "notes": "",
+        "visible": true
+      },
+      "214": {
+        "name": "Khegosla",
+        "notes": "",
+        "visible": true
+      },
+      "216": {
+        "name": "Gunbadush",
+        "notes": "",
+        "visible": false
+      },
+      "218": {
+        "name": "Ausontatum",
+        "notes": "",
+        "visible": true
+      },
+      "229": {
+        "name": "Malegreiro",
+        "notes": "",
+        "visible": true
+      },
+      "230": {
+        "name": "Veltidin",
+        "notes": "",
+        "visible": true
+      },
+      "233": {
+        "name": "Metiscina",
+        "notes": "",
+        "visible": true
+      }
+    },
+    "states": {}
+  },
+  "journeys": {
+    "version": 1,
+    "scaleVersion": 12,
+    "defaultScale": 1.5,
+    "active": "d5ff8192-6dbe-42fa-8659-f8e3f093abf4",
+    "parties": [
+      {
+        "id": "d5ff8192-6dbe-42fa-8659-f8e3f093abf4",
+        "name": "Elucitor",
+        "players": "",
+        "location": {
+          "xy": [
+            1044.32,
+            565.9
+          ],
+          "label": "Vennoduro"
+        },
+        "waypoints": [
+          {
+            "xy": [
+              1044.32,
+              565.9
+            ],
+            "label": "Vennoduro"
+          },
+          {
+            "xy": [
+              1078.279549949646,
+              642.87354534573
+            ],
+            "label": "Ponto 1.078,3, 642,9"
+          },
+          {
+            "xy": [
+              1154.2035514305323,
+              601.3952504140361
+            ],
+            "label": "Ponto 1.154,2, 601,4"
+          },
+          {
+            "xy": [
+              1095.973536602145,
+              681.1489006873167
+            ],
+            "label": "Ponto 1.096, 681,1"
+          },
+          {
+            "xy": [
+              1165.5179082172303,
+              670.6329773301426
+            ],
+            "label": "Ponto 1.165,5, 670,6"
+          }
+        ],
+        "settings": {
+          "pace": "fast",
+          "mode": "mount",
+          "hours": 8,
+          "scale": 1.5,
+          "terrain": "auto",
+          "gallop": false,
+          "rest": 8,
+          "fresh": false,
+          "load": 0,
+          "capacity": 0,
+          "shipSpeed": 4.5
+        },
+        "history": [
+          {
+            "name": "Trecho 1",
+            "date": "2026-11-05T08:45:12.752Z",
+            "points": [
+              [
+                954.3199999999999,
+                623.4
+              ],
+              [
+                954,
+                622.6645
+              ],
+              [
+                954,
+                618.6603
+              ],
+              [
+                958,
+                614.656
+              ],
+              [
+                958,
+                610.6517
+              ],
+              [
+                962,
+                606.6474
+              ],
+              [
+                962,
+                602.6432
+              ],
+              [
+                962,
+                598.6389
+              ],
+              [
+                966,
+                594.6346
+              ],
+              [
+                966,
+                590.6303
+              ],
+              [
+                966,
+                586.6261
+              ],
+              [
+                966,
+                582.6218
+              ],
+              [
+                966.3199999999999,
+                583.4
+              ],
+              [
+                966,
+                582.6218
+              ],
+              [
+                962,
+                578.6175
+              ],
+              [
+                958,
+                574.6132
+              ],
+              [
+                958,
+                570.609
+              ],
+              [
+                954,
+                566.6047
+              ],
+              [
+                950,
+                562.6004
+              ],
+              [
+                950,
+                558.5962
+              ],
+              [
+                946,
+                554.5919
+              ],
+              [
+                942,
+                550.5876
+              ],
+              [
+                938,
+                546.5833
+              ],
+              [
+                936.3199999999999,
+                548.4
+              ],
+              [
+                938,
+                546.5833
+              ],
+              [
+                942,
+                546.5833
+              ],
+              [
+                946,
+                546.5833
+              ],
+              [
+                950,
+                546.5833
+              ],
+              [
+                954,
+                546.5833
+              ],
+              [
+                958,
+                546.5833
+              ],
+              [
+                962,
+                546.5833
+              ],
+              [
+                966,
+                546.5833
+              ],
+              [
+                970,
+                546.5833
+              ],
+              [
+                974,
+                546.5833
+              ],
+              [
+                978,
+                546.5833
+              ],
+              [
+                982,
+                546.5833
+              ],
+              [
+                986,
+                550.5876
+              ],
+              [
+                990,
+                554.5919
+              ],
+              [
+                994,
+                558.5962
+              ],
+              [
+                998,
+                558.5962
+              ],
+              [
+                1002,
+                558.5962
+              ],
+              [
+                1006,
+                558.5962
+              ],
+              [
+                1010,
+                558.5962
+              ],
+              [
+                1014,
+                558.5962
+              ],
+              [
+                1018,
+                558.5962
+              ],
+              [
+                1022,
+                558.5962
+              ],
+              [
+                1026,
+                558.5962
+              ],
+              [
+                1030,
+                558.5962
+              ],
+              [
+                1034,
+                558.5962
+              ],
+              [
+                1038,
+                558.5962
+              ],
+              [
+                1042,
+                562.6004
+              ],
+              [
+                1046,
+                566.6047
+              ],
+              [
+                1044.32,
+                565.9
+              ]
+            ],
+            "distance": 2181.921809631621,
+            "moving": 969.7430265029426,
+            "elapsed": 2905.7430265029425,
+            "from": "Tramor",
+            "to": "Vennoduro"
+          }
+        ],
+        "plans": []
+      }
+    ]
+  },
+  "mapEdits": {
+    "format": "silvengard-map-edits-v1",
+    "baseRevision": 9,
+    "grid": {
+      "columns": 480,
+      "rows": 234,
+      "stepX": 4,
+      "stepY": 4.004273504273504
+    },
+    "cells": []
+  },
+  "networkEdits": {
+    "format": "silvengard-network-v1",
+    "baseVersion": 13,
+    "routes": [],
+    "deleted": []
+  }
+}

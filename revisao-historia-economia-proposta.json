@@ -1,0 +1,1223 @@
+{
+  "status": "proposal-only",
+  "date": "2026-11-09",
+  "applied": false,
+  "cities": [
+    {
+      "city": 3,
+      "name": "Asgorath",
+      "currentPopulation": 450985,
+      "proposedPopulation": 450985,
+      "populationApplied": false,
+      "productionProposal": "Separar construção lacustre de navios marítimos; manter abastecimento, artesanato e administração."
+    },
+    {
+      "city": 51,
+      "name": "Clifshore",
+      "currentPopulation": 16596,
+      "proposedPopulation": 16596,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 10,
+      "name": "Dagorah",
+      "currentPopulation": 7408,
+      "proposedPopulation": 18000,
+      "populationApplied": false,
+      "productionProposal": "Reforçar forja anã e ferramentas; clãs não devem ser apenas descrição sem reflexo econômico."
+    },
+    {
+      "city": 2,
+      "name": "Ereth",
+      "currentPopulation": 27310,
+      "proposedPopulation": 27310,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 33,
+      "name": "Gugacon",
+      "currentPopulation": 4200,
+      "proposedPopulation": 4200,
+      "populationApplied": false,
+      "productionProposal": "Manter 3 lotes de Lavanthir e 2 conjuntos de armas como ponto de partida; não duplicar a origem."
+    },
+    {
+      "city": 120,
+      "name": "Lakenford",
+      "currentPopulation": 27782,
+      "proposedPopulation": 27782,
+      "populationApplied": false,
+      "productionProposal": "Reduzir o protagonismo da artilharia; provisões, ferramentas e atividades lacustres adequadas ao lugar."
+    },
+    {
+      "city": 11,
+      "name": "Malacatt",
+      "currentPopulation": 12084,
+      "proposedPopulation": 12084,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 2003,
+      "name": "Nilhelm",
+      "currentPopulation": 0,
+      "proposedPopulation": 0,
+      "populationApplied": false,
+      "productionProposal": "Manter zero habitantes e nenhuma produção, conforme a catástrofe já definida."
+    },
+    {
+      "city": 10001,
+      "name": "Porto Naril",
+      "currentPopulation": 10230,
+      "proposedPopulation": 10230,
+      "populationApplied": false,
+      "productionProposal": "Abastecimento naval e ligação com Ereth; preservar o perfil alto-élfico."
+    },
+    {
+      "city": 10002,
+      "name": "Porto Sarandir",
+      "currentPopulation": 22043,
+      "proposedPopulation": 22043,
+      "populationApplied": false,
+      "productionProposal": "Perfil portuário hoje vazio: propor pesca/conservas, reparos e renda de docas/comércio."
+    },
+    {
+      "city": 18,
+      "name": "Porto das Cinzas",
+      "currentPopulation": 39208,
+      "proposedPopulation": 39208,
+      "populationApplied": false,
+      "productionProposal": "Pesca/conservas, cordas e reparos navais; retomar a ligação com Gugacon/Sarandir."
+    },
+    {
+      "city": 34,
+      "name": "Rinnton",
+      "currentPopulation": 25078,
+      "proposedPopulation": 25078,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 4,
+      "name": "Rivertown",
+      "currentPopulation": 28344,
+      "proposedPopulation": 28344,
+      "populationApplied": false,
+      "productionProposal": "Manter 120 cargas de grãos/mês e fortalecer moagem/conservação e seus vínculos rurais."
+    },
+    {
+      "city": 12,
+      "name": "Savhalla",
+      "currentPopulation": 1130,
+      "proposedPopulation": 5000,
+      "populationApplied": false,
+      "productionProposal": "Provisões, couro, arreios e comércio de caravanas; joias podem permanecer como atividade secundária."
+    },
+    {
+      "city": 5,
+      "name": "Torre Solitária",
+      "currentPopulation": 19140,
+      "proposedPopulation": 8000,
+      "populationApplied": false,
+      "productionProposal": "Pesquisa, livros, tinta e instrumentos; retirar criação de gado do perfil principal da escola."
+    },
+    {
+      "city": 2004,
+      "name": "Vila Sardinhas",
+      "currentPopulation": 2500,
+      "proposedPopulation": 2500,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 23,
+      "name": "Winterhelm",
+      "currentPopulation": 51874,
+      "proposedPopulation": 51874,
+      "populationApplied": false,
+      "productionProposal": "Manter ossos de dragão e suas armas; indústria rara, não extração ilimitada."
+    },
+    {
+      "city": 2001,
+      "name": "Adhuc Vivere",
+      "currentPopulation": 3200,
+      "proposedPopulation": 3200,
+      "populationApplied": false,
+      "productionProposal": "Manter ferramentas/armas e nenhum alimento local; abastecimento externo e natureza da população preservados."
+    },
+    {
+      "city": 197,
+      "name": "Althor",
+      "currentPopulation": 11209,
+      "proposedPopulation": 11209,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 1239,
+      "name": "Arenor",
+      "currentPopulation": 3900,
+      "proposedPopulation": 10000,
+      "populationApplied": false,
+      "productionProposal": "Armas/equipamento e oficinas de uma marca marcial; não apenas velas e couro."
+    },
+    {
+      "city": 35,
+      "name": "Argendau",
+      "currentPopulation": 57316,
+      "proposedPopulation": 57316,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 161,
+      "name": "Bomaria",
+      "currentPopulation": 3222,
+      "proposedPopulation": 3222,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 1240,
+      "name": "Castamor",
+      "currentPopulation": 5500,
+      "proposedPopulation": 10000,
+      "populationApplied": false,
+      "productionProposal": "Forjas menores, equipamento, couro e suprimentos; importações por passagens montanhosas."
+    },
+    {
+      "city": 1243,
+      "name": "Cetolo",
+      "currentPopulation": 24800,
+      "proposedPopulation": 24800,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 1244,
+      "name": "Condado de Alia",
+      "currentPopulation": 13000,
+      "proposedPopulation": 13000,
+      "populationApplied": false,
+      "productionProposal": "Priorizar a agricultura da província e processamento/mercado local; não concentrar todos os lavradores na cidade."
+    },
+    {
+      "city": 2000,
+      "name": "Danumbria",
+      "currentPopulation": 15400,
+      "proposedPopulation": 15400,
+      "populationApplied": false,
+      "productionProposal": "Pesquisa arcana, manuscritos e insumos acadêmicos; manter abastecimento regional."
+    },
+    {
+      "city": 7,
+      "name": "Elucitor",
+      "currentPopulation": 1005030,
+      "proposedPopulation": 1005030,
+      "populationApplied": false,
+      "productionProposal": "Centro imperial diversificado; abastecimento, livros, administração e manufatura; rever escala antes de cortar capacidade."
+    },
+    {
+      "city": 116,
+      "name": "Feixos",
+      "currentPopulation": 32108,
+      "proposedPopulation": 32108,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 24,
+      "name": "Forte Drakis",
+      "currentPopulation": 3620,
+      "proposedPopulation": 3620,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 15,
+      "name": "Ignis",
+      "currentPopulation": 8636,
+      "proposedPopulation": 8636,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 4000,
+      "name": "Liotorn",
+      "currentPopulation": 13800,
+      "proposedPopulation": 13800,
+      "populationApplied": false,
+      "productionProposal": "Manter prata, ferramentas e forja anã; preservar a decisão de não ser a principal origem do ouro."
+    },
+    {
+      "city": 147,
+      "name": "Litorum",
+      "currentPopulation": 10354,
+      "proposedPopulation": 10354,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 20,
+      "name": "Lorvus",
+      "currentPopulation": 2267,
+      "proposedPopulation": 2267,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 1242,
+      "name": "Meriadoc",
+      "currentPopulation": 10400,
+      "proposedPopulation": 10400,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 183,
+      "name": "Mestrina",
+      "currentPopulation": 29382,
+      "proposedPopulation": 29382,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 1241,
+      "name": "Nediora",
+      "currentPopulation": 27000,
+      "proposedPopulation": 27000,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 113,
+      "name": "Nirgona",
+      "currentPopulation": 4678,
+      "proposedPopulation": 4678,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 17,
+      "name": "Nostris",
+      "currentPopulation": 12248,
+      "proposedPopulation": 12248,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 69,
+      "name": "Odira",
+      "currentPopulation": 18246,
+      "proposedPopulation": 18246,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 160,
+      "name": "Pantos",
+      "currentPopulation": 17674,
+      "proposedPopulation": 17674,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 68,
+      "name": "Parnum",
+      "currentPopulation": 20772,
+      "proposedPopulation": 20772,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 2002,
+      "name": "Ros Leones",
+      "currentPopulation": 22200,
+      "proposedPopulation": 22200,
+      "populationApplied": false,
+      "productionProposal": "Armazéns, docas, reparos e redistribuição do Mar de Nur/Levante."
+    },
+    {
+      "city": 27,
+      "name": "Tramor",
+      "currentPopulation": 3792,
+      "proposedPopulation": 3792,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 109,
+      "name": "Vedioria",
+      "currentPopulation": 3888,
+      "proposedPopulation": 3888,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 191,
+      "name": "Vennoduro",
+      "currentPopulation": 3634,
+      "proposedPopulation": 12000,
+      "populationApplied": false,
+      "productionProposal": "Transporte do lago, hospedagem e torneios; gemas não precisam ser sua atividade principal."
+    },
+    {
+      "city": 62,
+      "name": "Vilenages",
+      "currentPopulation": 5272,
+      "proposedPopulation": 5272,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 28,
+      "name": "Vostris",
+      "currentPopulation": 4678,
+      "proposedPopulation": 4678,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 61,
+      "name": "Allanan",
+      "currentPopulation": 5984,
+      "proposedPopulation": 14000,
+      "populationApplied": false,
+      "productionProposal": "Reparos, provisões marítimas e redistribuição do mercado de Allanan."
+    },
+    {
+      "city": 81,
+      "name": "Chaundor",
+      "currentPopulation": 19680,
+      "proposedPopulation": 19680,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 189,
+      "name": "Garnalos",
+      "currentPopulation": 21410,
+      "proposedPopulation": 21410,
+      "populationApplied": false,
+      "productionProposal": "Pesquisa e livros ligados ao centro religioso/arcano; armas como complemento, não identidade dominante."
+    },
+    {
+      "city": 67,
+      "name": "Himlumn",
+      "currentPopulation": 27322,
+      "proposedPopulation": 27322,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 77,
+      "name": "Jalha",
+      "currentPopulation": 27922,
+      "proposedPopulation": 27922,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 220,
+      "name": "Karno'ande",
+      "currentPopulation": 36880,
+      "proposedPopulation": 36880,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 181,
+      "name": "Liriathyr",
+      "currentPopulation": 21190,
+      "proposedPopulation": 21190,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 78,
+      "name": "Lyadargor",
+      "currentPopulation": 34712,
+      "proposedPopulation": 34712,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 128,
+      "name": "Natheas",
+      "currentPopulation": 31556,
+      "proposedPopulation": 31556,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 202,
+      "name": "Nythan",
+      "currentPopulation": 3098,
+      "proposedPopulation": 3098,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 53,
+      "name": "Oraland Ise",
+      "currentPopulation": 20136,
+      "proposedPopulation": 20136,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 4002,
+      "name": "Sahtalys",
+      "currentPopulation": 17600,
+      "proposedPopulation": 17600,
+      "populationApplied": false,
+      "productionProposal": "Pesquisa e saberes antigos; não inventar produção em massa de artefatos sombrios."
+    },
+    {
+      "city": 70,
+      "name": "Sel-Shofela",
+      "currentPopulation": 5006,
+      "proposedPopulation": 5006,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 96,
+      "name": "Selne",
+      "currentPopulation": 34340,
+      "proposedPopulation": 34340,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 1,
+      "name": "Velaffeld",
+      "currentPopulation": 850985,
+      "proposedPopulation": 850985,
+      "populationApplied": false,
+      "productionProposal": "Grande estaleiro e centro mercantil/arcano; separar navios novos de manutenção da frota."
+    },
+    {
+      "city": 8,
+      "name": "Valari",
+      "currentPopulation": 0,
+      "proposedPopulation": 0,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 199,
+      "name": "Amrithruk",
+      "currentPopulation": 46208,
+      "proposedPopulation": 46208,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 132,
+      "name": "Auyalalagh",
+      "currentPopulation": 22790,
+      "proposedPopulation": 22790,
+      "populationApplied": false,
+      "productionProposal": "Captivos vinculados a eventos de conquista, não extração mensal espontânea de pessoas."
+    },
+    {
+      "city": 22,
+      "name": "Drácon",
+      "currentPopulation": 44164,
+      "proposedPopulation": 44164,
+      "populationApplied": false,
+      "productionProposal": "Reforçar armas, pólvora e artilharia do núcleo imperial, com insumos reais."
+    },
+    {
+      "city": 85,
+      "name": "Glouyaloss",
+      "currentPopulation": 5794,
+      "proposedPopulation": 5794,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 153,
+      "name": "Guiras",
+      "currentPopulation": 3242,
+      "proposedPopulation": 3242,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 52,
+      "name": "Hethlothloth",
+      "currentPopulation": 57604,
+      "proposedPopulation": 57604,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 232,
+      "name": "Ma'naar",
+      "currentPopulation": 13977,
+      "proposedPopulation": 13977,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 229,
+      "name": "Malegreiro",
+      "currentPopulation": 11233,
+      "proposedPopulation": 11233,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 233,
+      "name": "Metiscina",
+      "currentPopulation": 13987,
+      "proposedPopulation": 13987,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 108,
+      "name": "Pinhem",
+      "currentPopulation": 23322,
+      "proposedPopulation": 23322,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 136,
+      "name": "Sharntosz",
+      "currentPopulation": 17330,
+      "proposedPopulation": 17330,
+      "populationApplied": false,
+      "productionProposal": "Oficinas militares e apoio logístico; suprir salitre, carvão e metais."
+    },
+    {
+      "city": 142,
+      "name": "Urlyzaak",
+      "currentPopulation": 35264,
+      "proposedPopulation": 35264,
+      "populationApplied": false,
+      "productionProposal": "Polo naval do império: propor estaleiro, reparos, cordas e provisões."
+    },
+    {
+      "city": 230,
+      "name": "Veltidin",
+      "currentPopulation": 12610,
+      "proposedPopulation": 12610,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 38,
+      "name": "Viacaledebo",
+      "currentPopulation": 10578,
+      "proposedPopulation": 10578,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 238,
+      "name": "Adush",
+      "currentPopulation": 46643,
+      "proposedPopulation": 46643,
+      "populationApplied": false,
+      "productionProposal": "Ampliar forja especializada sem retirar a autonomia das outras cidades anãs."
+    },
+    {
+      "city": 92,
+      "name": "Allos",
+      "currentPopulation": 11064,
+      "proposedPopulation": 11064,
+      "populationApplied": false,
+      "productionProposal": "Oficinas de forja anã apoiadas em ferro/cobre e carvão."
+    },
+    {
+      "city": 177,
+      "name": "Kharagz",
+      "currentPopulation": 13798,
+      "proposedPopulation": 13798,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 176,
+      "name": "Khizdush",
+      "currentPopulation": 6654,
+      "proposedPopulation": 6654,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 237,
+      "name": "Shaled",
+      "currentPopulation": 13967,
+      "proposedPopulation": 13967,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 239,
+      "name": "Shararukthu",
+      "currentPopulation": 4576,
+      "proposedPopulation": 4576,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 127,
+      "name": "Shunzargil",
+      "currentPopulation": 48564,
+      "proposedPopulation": 48564,
+      "populationApplied": false,
+      "productionProposal": "Manter extração mineral e ferramentas; substituir parte de armas genéricas por forja anã."
+    },
+    {
+      "city": 9,
+      "name": "Alqa",
+      "currentPopulation": 29848,
+      "proposedPopulation": 29848,
+      "populationApplied": false,
+      "productionProposal": "Reorientar de artilharia para logística de caravanas, camelos, couro e provisões."
+    },
+    {
+      "city": 214,
+      "name": "Khegosla",
+      "currentPopulation": 12534,
+      "proposedPopulation": 12534,
+      "populationApplied": false,
+      "productionProposal": "Rever prata e moedas; dar espaço a peregrinação, intermediação, caça/couro e alimentos locais."
+    },
+    {
+      "city": 4003,
+      "name": "Aleravum",
+      "currentPopulation": 22600,
+      "proposedPopulation": 12000,
+      "populationApplied": false,
+      "productionProposal": "Separar pesquisa/livros do perfil de cobre/armas herdado de Fovium."
+    },
+    {
+      "city": 6,
+      "name": "Anteventium",
+      "currentPopulation": 4498,
+      "proposedPopulation": 18000,
+      "populationApplied": false,
+      "productionProposal": "Equipamento de aventura, provisões e contratos das guildas; não só mel, armas e carvão."
+    },
+    {
+      "city": 184,
+      "name": "Fovium",
+      "currentPopulation": 22588,
+      "proposedPopulation": 22588,
+      "populationApplied": false,
+      "productionProposal": "Manter o ouro definido pelo autor; extração e apoio logístico, sem deslocá-lo de volta a Liotorn."
+    },
+    {
+      "city": 134,
+      "name": "Odusonsium",
+      "currentPopulation": 35730,
+      "proposedPopulation": 35730,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 170,
+      "name": "Ginar",
+      "currentPopulation": 58848,
+      "proposedPopulation": 58848,
+      "populationApplied": false,
+      "productionProposal": "Retirar fabricação automática de artilharia; diferenciar comércio/forja e armamento adquirido."
+    },
+    {
+      "city": 169,
+      "name": "Irkudh",
+      "currentPopulation": 28034,
+      "proposedPopulation": 28034,
+      "populationApplied": false,
+      "productionProposal": "Rever artilharia e cunhagem; produtos locais e comércio do clã."
+    },
+    {
+      "city": 72,
+      "name": "Lulgard",
+      "currentPopulation": 26010,
+      "proposedPopulation": 26010,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 119,
+      "name": "Nudh",
+      "currentPopulation": 21814,
+      "proposedPopulation": 21814,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 164,
+      "name": "Calha",
+      "currentPopulation": 3374,
+      "proposedPopulation": 3374,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 211,
+      "name": "Coliras",
+      "currentPopulation": 13574,
+      "proposedPopulation": 13574,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 88,
+      "name": "Maleluz",
+      "currentPopulation": 3900,
+      "proposedPopulation": 3900,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 115,
+      "name": "Ridualhos",
+      "currentPopulation": 26884,
+      "proposedPopulation": 26884,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 89,
+      "name": "Sobrirosen",
+      "currentPopulation": 31036,
+      "proposedPopulation": 31036,
+      "populationApplied": false,
+      "productionProposal": "Rever predomínio bélico e ausência de agricultura rural no condado."
+    },
+    {
+      "city": 90,
+      "name": "Vilaguezejo",
+      "currentPopulation": 13152,
+      "proposedPopulation": 13152,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 56,
+      "name": "Viras",
+      "currentPopulation": 27630,
+      "proposedPopulation": 27630,
+      "populationApplied": false,
+      "productionProposal": "Reforçar atividade naval, alimentos e hospitalidade; ligação mercantil com Loueixo."
+    },
+    {
+      "city": 223,
+      "name": "Crild",
+      "currentPopulation": 6400,
+      "proposedPopulation": 6400,
+      "populationApplied": false,
+      "productionProposal": "Pesca, reparos, intermediação e rede clandestina; não fazer de Crild todo Goblinburgo."
+    },
+    {
+      "city": 130,
+      "name": "Gannas",
+      "currentPopulation": 21350,
+      "proposedPopulation": 21350,
+      "populationApplied": false,
+      "productionProposal": "Livros e atividade civil; sem recolocar a escola de Aleravum em Gannas."
+    },
+    {
+      "city": 129,
+      "name": "Hellas",
+      "currentPopulation": 6552,
+      "proposedPopulation": 12000,
+      "populationApplied": false,
+      "productionProposal": "Livros, assistência, provisões e hospedagem; defesa como atividade complementar."
+    },
+    {
+      "city": 180,
+      "name": "Orgener",
+      "currentPopulation": 3592,
+      "proposedPopulation": 3592,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 182,
+      "name": "Tessert",
+      "currentPopulation": 3890,
+      "proposedPopulation": 3890,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 143,
+      "name": "Chulagtoh",
+      "currentPopulation": 33066,
+      "proposedPopulation": 33066,
+      "populationApplied": false,
+      "productionProposal": "Rebanhos, couro, arreios e provisões; vidro só com infraestrutura/insumos justificados."
+    },
+    {
+      "city": 149,
+      "name": "Grainhem",
+      "currentPopulation": 13660,
+      "proposedPopulation": 13660,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 140,
+      "name": "Tog Iret",
+      "currentPopulation": 31836,
+      "proposedPopulation": 31836,
+      "populationApplied": false,
+      "productionProposal": "Cavalos, arreios, couro e feira sazonal; retirar velas como especialização principal."
+    },
+    {
+      "city": 138,
+      "name": "Tonkhet",
+      "currentPopulation": 3638,
+      "proposedPopulation": 3638,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 75,
+      "name": "Tserost",
+      "currentPopulation": 6424,
+      "proposedPopulation": 6424,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 179,
+      "name": "Urentog",
+      "currentPopulation": 36208,
+      "proposedPopulation": 36208,
+      "populationApplied": false,
+      "productionProposal": "Equipamento de caravana/rebanhos e processamento de alimentos; distinguir assentamento e horda itinerante."
+    },
+    {
+      "city": 110,
+      "name": "Bilnulbun",
+      "currentPopulation": 24840,
+      "proposedPopulation": 24840,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 150,
+      "name": "Brelas",
+      "currentPopulation": 35834,
+      "proposedPopulation": 35834,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 36,
+      "name": "Grenolk",
+      "currentPopulation": 7180,
+      "proposedPopulation": 18000,
+      "populationApplied": false,
+      "productionProposal": "Forja, ferramentas, equipamento e comércio; minérios importados em vez de minas presumidas."
+    },
+    {
+      "city": 45,
+      "name": "Almirarem",
+      "currentPopulation": 7492,
+      "proposedPopulation": 15000,
+      "populationApplied": false,
+      "productionProposal": "Porto de acesso a Grenolk: armazéns, reparos e provisões marítimas."
+    },
+    {
+      "city": 93,
+      "name": "Bral",
+      "currentPopulation": 54472,
+      "proposedPopulation": 54472,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 99,
+      "name": "Braveira",
+      "currentPopulation": 3476,
+      "proposedPopulation": 3476,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 104,
+      "name": "Cananhos",
+      "currentPopulation": 8200,
+      "proposedPopulation": 8200,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 174,
+      "name": "Caspinho",
+      "currentPopulation": 3694,
+      "proposedPopulation": 3694,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 102,
+      "name": "Paiaga",
+      "currentPopulation": 25484,
+      "proposedPopulation": 25484,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 135,
+      "name": "Sanha",
+      "currentPopulation": 3572,
+      "proposedPopulation": 3572,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 100,
+      "name": "Varta",
+      "currentPopulation": 13468,
+      "proposedPopulation": 13468,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 137,
+      "name": "Vinquertiro",
+      "currentPopulation": 31158,
+      "proposedPopulation": 31158,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 2008,
+      "name": "Bernut",
+      "currentPopulation": 4400,
+      "proposedPopulation": 4400,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 21,
+      "name": "Guernica",
+      "currentPopulation": 52690,
+      "proposedPopulation": 52690,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 14,
+      "name": "Gugacon",
+      "currentPopulation": 3460,
+      "proposedPopulation": null,
+      "populationApplied": false,
+      "productionProposal": "Cidade perdida: sem população conhecida nem comércio regular; situação real mantida como mistério."
+    },
+    {
+      "city": 2007,
+      "name": "Guil",
+      "currentPopulation": 13400,
+      "proposedPopulation": 13400,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 25,
+      "name": "Kyon",
+      "currentPopulation": 27786,
+      "proposedPopulation": 27786,
+      "populationApplied": false,
+      "productionProposal": "Manter população civil e apoio à Patrulha; reduzir fabricação de artilharia."
+    },
+    {
+      "city": 31,
+      "name": "Lirion",
+      "currentPopulation": 13382,
+      "proposedPopulation": 13382,
+      "populationApplied": false,
+      "productionProposal": "Manter núcleo humano; não o recolocar na Tríplice Élfica nem inventar uma vocação rural obrigatória."
+    },
+    {
+      "city": 29,
+      "name": "Mauron",
+      "currentPopulation": 8842,
+      "proposedPopulation": 8842,
+      "populationApplied": false,
+      "productionProposal": "Fortalecer mineração e forja anã no território conhecido."
+    },
+    {
+      "city": 32,
+      "name": "Oregon",
+      "currentPopulation": 2857,
+      "proposedPopulation": 2857,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 26,
+      "name": "Porto de Vern",
+      "currentPopulation": 10444,
+      "proposedPopulation": 10444,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 30,
+      "name": "Porto do Álamo",
+      "currentPopulation": 4360,
+      "proposedPopulation": 18000,
+      "populationApplied": false,
+      "productionProposal": "Polo mercantil/portuário; docas, pesca/conservas e reparos, não apenas armas e couro."
+    },
+    {
+      "city": 168,
+      "name": "Pyrenor",
+      "currentPopulation": 4214,
+      "proposedPopulation": 4214,
+      "populationApplied": false,
+      "productionProposal": "Pesquisa dos mistérios do Norte; retirar artilharia como especialização da escola."
+    },
+    {
+      "city": 2006,
+      "name": "Sulpa",
+      "currentPopulation": 13400,
+      "proposedPopulation": 13400,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 19,
+      "name": "Triovorn",
+      "currentPopulation": 3286,
+      "proposedPopulation": 6000,
+      "populationApplied": false,
+      "productionProposal": "Oficinas, provisões e defesa da Tríplice Élfica; cunhagem não precisa ser o produto principal."
+    },
+    {
+      "city": 16,
+      "name": "Vir",
+      "currentPopulation": 7230,
+      "proposedPopulation": 7230,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 4001,
+      "name": "Vyoh",
+      "currentPopulation": 4400,
+      "proposedPopulation": 4400,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 158,
+      "name": "Alsas",
+      "currentPopulation": 8136,
+      "proposedPopulation": 8136,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 154,
+      "name": "Alveiras",
+      "currentPopulation": 15174,
+      "proposedPopulation": 15174,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 159,
+      "name": "Olcanha",
+      "currentPopulation": 45698,
+      "proposedPopulation": 45698,
+      "populationApplied": false,
+      "productionProposal": "Artesanato e abastecimento; manter vidro se houver insumos, rever artilharia genérica."
+    },
+    {
+      "city": 242,
+      "name": "Porto Corujos",
+      "currentPopulation": 564,
+      "proposedPopulation": 3500,
+      "populationApplied": false,
+      "productionProposal": "Porto de apoio: reparos, provisões e renda de docas; cunhagem/argila não expressam seu papel."
+    },
+    {
+      "city": 207,
+      "name": "Sobral",
+      "currentPopulation": 11096,
+      "proposedPopulation": 11096,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 13,
+      "name": "Vila Candelápria",
+      "currentPopulation": 50232,
+      "proposedPopulation": 50232,
+      "populationApplied": false,
+      "productionProposal": "Cavalaria, equipamento e atividade civil; confirmar se embarcações são fluviais/lacustres."
+    },
+    {
+      "city": 228,
+      "name": "Adinhoes",
+      "currentPopulation": 13885,
+      "proposedPopulation": 13885,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 225,
+      "name": "Forteirosin",
+      "currentPopulation": 11185,
+      "proposedPopulation": 11185,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 224,
+      "name": "Loueixo",
+      "currentPopulation": 85490,
+      "proposedPopulation": 85490,
+      "populationApplied": false,
+      "productionProposal": "Reforçar estaleiros e instrumentos de navegação; papel central na federação e no Pacto."
+    },
+    {
+      "city": 236,
+      "name": "Osagos",
+      "currentPopulation": 13889,
+      "proposedPopulation": 13889,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 226,
+      "name": "Panhadaril",
+      "currentPopulation": 13937,
+      "proposedPopulation": 13937,
+      "populationApplied": false,
+      "productionProposal": "Pesquisa experimental e instrumentos; relação com Pyrenor sem subordinação institucional."
+    },
+    {
+      "city": 235,
+      "name": "Sobrizeloba",
+      "currentPopulation": 13853,
+      "proposedPopulation": 13853,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    },
+    {
+      "city": 227,
+      "name": "Tarinquer",
+      "currentPopulation": 11259,
+      "proposedPopulation": 11259,
+      "populationApplied": false,
+      "productionProposal": "Manter o núcleo; ajustar a carteira segundo o perfil estadual acima e o terreno local, sem criar história ou indústria exclusiva nova."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+SILVENGARD ATLAS - v34: CIDADES MAIS REALISTAS + MODO "VER NO LOCAL"
+Extrair por cima da pasta silvengard-atlas. Só toca em ficheiros de dist/; world.json e a logica de dados ficam intactos.
+
+NOVOS      dist/settlements.js  casas, torres, igreja, salao, fortaleza, muralhas, cais com navio e farol; materiais procedurais
+                                (alvenaria, telhas, reboco, madeira, palha, tecido) calculados no shader, sem imagens
+           dist/street.js       modo "Ver no local": andar a pe, chao fino, relva, floresta detalhada, vila a escala humana, hora do dia
+           dist/ui-v34.css      HUD do modo local, selecao do ponto, transicoes
+ALTERADOS  dist/app.js          usa os novos modelos nas cidades/fortalezas/portos; liga o modo local; botao "Ver no local" na ficha da cidade
+           dist/features.js, dist/visuals.js   (versao do import; arvores do mapa somem dentro do raio local; relogio da noite)
+           dist/index.html, dist/ui-polish.js  (botao na barra superior e atalho V)
+
+USO: botao "Ver no local" na barra do mapa (ou tecla V) -> clicar no mapa ou numa cidade. Tambem ha o botao na ficha de cada cidade.
+  WASD / setas mover - Shift correr - rato olhar (clicar para capturar o rato) - T muda a hora - Esc volta ao mapa.
+REVERTER: repor app.js, features.js, visuals.js, index.html e ui-polish.js do teu zip anterior e apagar os 3 ficheiros novos.

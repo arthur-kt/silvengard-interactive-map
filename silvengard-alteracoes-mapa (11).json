@@ -1,0 +1,128 @@
+{
+  "format": "silvengard-map-edits-v1",
+  "baseRevision": 9,
+  "grid": {
+    "columns": 480,
+    "rows": 234,
+    "stepX": 4,
+    "stepY": 4.004273504273504
+  },
+  "cells": [
+    {
+      "i": 43034,
+      "state": 12
+    },
+    {
+      "i": 43042,
+      "state": 12
+    },
+    {
+      "i": 43515,
+      "state": 12
+    }
+  ],
+  "exportedAt": "2026-11-07T20:37:12.666Z",
+  "legend": {
+    "states": [
+      {
+        "i": 0,
+        "name": "Neutrals"
+      },
+      {
+        "i": 12,
+        "name": "Dragonfall"
+      },
+      {
+        "i": 13,
+        "name": "Elucitor "
+      },
+      {
+        "i": 14,
+        "name": "Navï Velaffëll"
+      },
+      {
+        "i": 17,
+        "name": "Valar"
+      },
+      {
+        "i": 20,
+        "name": "Drácon "
+      },
+      {
+        "i": 23,
+        "name": "Sete Cidades"
+      },
+      {
+        "i": 24,
+        "name": "Husaj"
+      },
+      {
+        "i": 26,
+        "name": "Khajataad"
+      },
+      {
+        "i": 28,
+        "name": "Veniun"
+      },
+      {
+        "i": 29,
+        "name": "Território Orc "
+      },
+      {
+        "i": 31,
+        "name": "Mountport"
+      },
+      {
+        "i": 32,
+        "name": "Goblinburgo "
+      },
+      {
+        "i": 33,
+        "name": "Piglia"
+      },
+      {
+        "i": 34,
+        "name": "Marshell "
+      },
+      {
+        "i": 35,
+        "name": "Duräk"
+      },
+      {
+        "i": 46,
+        "name": "Reinos Médios"
+      },
+      {
+        "i": 47,
+        "name": "Vitravion"
+      },
+      {
+        "i": 48,
+        "name": "Osmorn"
+      },
+      {
+        "i": 49,
+        "name": "Batovia"
+      }
+    ],
+    "biomes": [
+      "Oceano",
+      "Deserto quente",
+      "Deserto frio",
+      "Savana",
+      "Pradaria",
+      "Floresta tropical sazonal",
+      "Floresta temperada",
+      "Floresta tropical úmida",
+      "Floresta temperada úmida",
+      "Taiga",
+      "Tundra",
+      "Geleira",
+      "Pântano",
+      "Floresta morta",
+      "Terras desoladas · névoa",
+      "Terreno vulcânico",
+      "Floresta temperada de outono"
+    ]
+  }
+}

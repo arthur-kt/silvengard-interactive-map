@@ -1,0 +1,523 @@
+{
+  "edits": {
+    "cities": {
+      "7": {
+        "name": "Elucitor",
+        "notes": "",
+        "visible": true
+      },
+      "8": {
+        "name": "Valari",
+        "notes": "",
+        "visible": true
+      },
+      "12": {
+        "inhabitants": 1130,
+        "culture": 14,
+        "religion": 40,
+        "settlementClass": "Cidade",
+        "features": {
+          "port": false,
+          "majorPort": false,
+          "citadel": false,
+          "walls": false,
+          "temple": false,
+          "plaza": false,
+          "shanty": false,
+          "magicSchool": false,
+          "dwarvenFortress": false
+        },
+        "name": "Savhalla",
+        "notes": "",
+        "visible": true
+      },
+      "14": {
+        "name": "Gugacon",
+        "notes": "",
+        "visible": true
+      },
+      "34": {
+        "name": "Rinnton",
+        "notes": "",
+        "visible": true
+      },
+      "36": {
+        "name": "Grenolk",
+        "notes": "",
+        "visible": true
+      },
+      "51": {
+        "name": "Clifshore",
+        "notes": "",
+        "visible": true
+      },
+      "61": {
+        "name": "Allanan",
+        "notes": "",
+        "visible": true
+      },
+      "62": {
+        "name": "Vilenages",
+        "notes": "",
+        "visible": true
+      },
+      "65": {
+        "name": "Davumbia",
+        "notes": "",
+        "visible": false
+      },
+      "67": {
+        "name": "Himlumn",
+        "notes": "",
+        "visible": true
+      },
+      "68": {
+        "name": "Parnum",
+        "notes": "",
+        "visible": true
+      },
+      "69": {
+        "name": "Odira",
+        "notes": "",
+        "visible": true
+      },
+      "70": {
+        "name": "Sel-Shofela",
+        "notes": "",
+        "visible": true
+      },
+      "75": {
+        "name": "Tserost",
+        "notes": "",
+        "visible": true
+      },
+      "90": {
+        "name": "Vilaguezejo",
+        "notes": "",
+        "visible": true
+      },
+      "92": {
+        "name": "Allos",
+        "notes": "",
+        "visible": true
+      },
+      "97": {
+        "name": "Coentral",
+        "notes": "",
+        "visible": false
+      },
+      "99": {
+        "name": "Braveira",
+        "notes": "",
+        "visible": true
+      },
+      "101": {
+        "name": "Enquertei",
+        "notes": "",
+        "visible": false
+      },
+      "104": {
+        "name": "Cananhos",
+        "notes": "",
+        "visible": true
+      },
+      "105": {
+        "name": "Alhaf",
+        "notes": "",
+        "visible": false
+      },
+      "109": {
+        "name": "Vedioria",
+        "notes": "",
+        "visible": true
+      },
+      "113": {
+        "name": "Nirgona",
+        "notes": "",
+        "visible": true
+      },
+      "116": {
+        "name": "Feixos",
+        "notes": "",
+        "visible": true
+      },
+      "119": {
+        "name": "Nudh",
+        "notes": "",
+        "visible": true
+      },
+      "120": {
+        "name": "Lakenford",
+        "notes": "",
+        "visible": true
+      },
+      "133": {
+        "name": "Bariner",
+        "notes": "",
+        "visible": false
+      },
+      "135": {
+        "name": "Sanha",
+        "notes": "",
+        "visible": true
+      },
+      "137": {
+        "name": "Vinquertiro",
+        "notes": "",
+        "visible": true
+      },
+      "140": {
+        "name": "Tog Iret",
+        "notes": "",
+        "visible": true
+      },
+      "141": {
+        "name": "Gurmendal",
+        "notes": "",
+        "visible": false
+      },
+      "142": {
+        "name": "Urlyzaak",
+        "notes": "",
+        "visible": true
+      },
+      "147": {
+        "name": "Litorum",
+        "notes": "",
+        "visible": true
+      },
+      "153": {
+        "name": "Guiras",
+        "notes": "",
+        "visible": true
+      },
+      "168": {
+        "name": "Pyrenor",
+        "notes": "",
+        "visible": true
+      },
+      "174": {
+        "name": "Caspinho",
+        "notes": "",
+        "visible": true
+      },
+      "180": {
+        "name": "Orgener",
+        "notes": "",
+        "visible": true
+      },
+      "182": {
+        "name": "Tessert",
+        "notes": "",
+        "visible": true
+      },
+      "183": {
+        "name": "Mestrina",
+        "notes": "",
+        "visible": true
+      },
+      "189": {
+        "name": "Garnalos",
+        "notes": "",
+        "visible": true
+      },
+      "201": {
+        "name": "Matheas",
+        "notes": "",
+        "visible": false
+      },
+      "202": {
+        "name": "Nythan",
+        "notes": "",
+        "visible": true
+      },
+      "210": {
+        "name": "Nigrona",
+        "notes": "",
+        "visible": false
+      },
+      "214": {
+        "name": "Khegosla",
+        "notes": "",
+        "visible": true
+      },
+      "216": {
+        "name": "Gunbadush",
+        "notes": "",
+        "visible": false
+      },
+      "218": {
+        "name": "Ausontatum",
+        "notes": "",
+        "visible": false
+      },
+      "229": {
+        "name": "Malegreiro",
+        "notes": "",
+        "visible": true
+      },
+      "230": {
+        "name": "Veltidin",
+        "notes": "",
+        "visible": true
+      },
+      "233": {
+        "name": "Metiscina",
+        "notes": "",
+        "visible": true
+      },
+      "10001": {
+        "name": "Porto Naril",
+        "inhabitants": 10230,
+        "religion": 43,
+        "connect": true,
+        "culture": 11,
+        "created": true,
+        "position": [
+          1273.2885973236198,
+          360.1591982159795
+        ],
+        "visible": true,
+        "settlementClass": "Cidade",
+        "features": {
+          "port": false,
+          "majorPort": false,
+          "citadel": false,
+          "walls": false,
+          "temple": false,
+          "plaza": false,
+          "shanty": false,
+          "magicSchool": false,
+          "dwarvenFortress": false
+        },
+        "notes": ""
+      },
+      "10002": {
+        "name": "Porto de Sarandir",
+        "inhabitants": 22043,
+        "religion": 34,
+        "connect": true,
+        "culture": 13,
+        "created": true,
+        "position": [
+          1294.8657667921493,
+          271.1498663545663
+        ],
+        "visible": true
+      }
+    },
+    "states": {}
+  },
+  "networkEdits": {
+    "format": "silvengard-network-v1",
+    "baseVersion": 13,
+    "routes": [
+      {
+        "id": "city-link-10001",
+        "kind": "road",
+        "group": "roads",
+        "name": "Caminho local · Porto Naril → Ereth",
+        "majorRoute": false,
+        "enabled": true,
+        "fromCity": 10001,
+        "toCity": 2,
+        "stateIds": [
+          12
+        ],
+        "points": [
+          [
+            1273.2885973236198,
+            360.1591982159795
+          ],
+          [
+            1274,
+            358.3825
+          ],
+          [
+            1274,
+            362.3868
+          ],
+          [
+            1274,
+            366.391
+          ],
+          [
+            1274,
+            370.3953
+          ],
+          [
+            1274,
+            374.3996
+          ],
+          [
+            1274,
+            378.4038
+          ],
+          [
+            1274,
+            382.4081
+          ],
+          [
+            1274,
+            386.4124
+          ],
+          [
+            1274,
+            390.4167
+          ],
+          [
+            1274,
+            394.4209
+          ],
+          [
+            1274,
+            398.4252
+          ],
+          [
+            1274,
+            402.4295
+          ],
+          [
+            1274,
+            406.4338
+          ],
+          [
+            1274,
+            410.438
+          ],
+          [
+            1274,
+            414.4423
+          ],
+          [
+            1274,
+            418.4466
+          ],
+          [
+            1270,
+            422.4509
+          ],
+          [
+            1270,
+            426.4551
+          ],
+          [
+            1270.9299999999998,
+            426.27
+          ]
+        ],
+        "controls": [
+          [
+            1273.2885973236198,
+            360.1591982159795
+          ],
+          [
+            1270.9299999999998,
+            426.27
+          ]
+        ]
+      },
+      {
+        "id": "city-link-10002",
+        "kind": "road",
+        "group": "roads",
+        "name": "Caminho local · Porto de Sarandir → Gugacon",
+        "majorRoute": false,
+        "enabled": true,
+        "fromCity": 10002,
+        "toCity": 33,
+        "stateIds": [
+          12
+        ],
+        "points": [
+          [
+            1294.8657667921493,
+            271.1498663545663
+          ],
+          [
+            1294,
+            270.2885
+          ],
+          [
+            1294,
+            266.2842
+          ],
+          [
+            1294,
+            262.2799
+          ],
+          [
+            1294,
+            258.2756
+          ],
+          [
+            1294,
+            254.2714
+          ],
+          [
+            1290,
+            250.2671
+          ],
+          [
+            1290,
+            246.2628
+          ],
+          [
+            1286,
+            242.2585
+          ],
+          [
+            1286,
+            243.99999999999997
+          ]
+        ],
+        "controls": [
+          [
+            1294.8657667921493,
+            271.1498663545663
+          ],
+          [
+            1294,
+            254.2714
+          ],
+          [
+            1286,
+            243.99999999999997
+          ]
+        ]
+      }
+    ],
+    "deleted": []
+  },
+  "portOverrides": {
+    "96": false,
+    "128": true,
+    "10001": true,
+    "10002": true
+  },
+  "riverNames": {
+    "Rio Colozard": "Rio Aquozard",
+    "Rio das Cinzas": "Rio Aldain",
+    "Rio Celsano": "Rio Auror",
+    "Rio Celsano · fronteira": "Rio Auror · fronteira",
+    "Rio de Ereth": "Rio Nilnor"
+  },
+  "removedRivers": [
+    "Stormouth"
+  ],
+  "seaTrunks": {
+    "sea-trunk-north": [
+      26,
+      18,
+      10001,
+      10002,
+      128
+    ],
+    "sea-trunk-east": [
+      128,
+      1,
+      61,
+      2002
+    ]
+  }
+}

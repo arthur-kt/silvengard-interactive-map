@@ -1,0 +1,128 @@
+{
+  "population": 4224858,
+  "classes": {
+    "peasant": 3452267.409999999,
+    "modest": 473378.92,
+    "comfortable": 230146.56599999993,
+    "wealthy": 61595.317,
+    "aristocratic": 7469.786999999998
+  },
+  "peasantShare": 81.7132175803305,
+  "householdIncome": {
+    "gross": 23719714.024199992,
+    "cash": 13059296.725620003,
+    "disposable": 3403225.6106199985,
+    "peasantCash": 686567.9848200005,
+    "peasantDisposable": 6797.70282
+  },
+  "specialization": [
+    {
+      "good": "Grãos",
+      "provinces": 16
+    },
+    {
+      "good": "Lavanthir",
+      "provinces": 1
+    },
+    {
+      "good": "Madeira",
+      "provinces": 7
+    },
+    {
+      "good": "Corantes",
+      "provinces": 2
+    },
+    {
+      "good": "Bronze",
+      "provinces": 6
+    },
+    {
+      "good": "Couro",
+      "provinces": 9
+    },
+    {
+      "good": "Armas",
+      "provinces": 1
+    },
+    {
+      "good": "Navios marítimos",
+      "provinces": 2
+    },
+    {
+      "good": "Vidro",
+      "provinces": 1
+    },
+    {
+      "good": "Cerâmica",
+      "provinces": 1
+    },
+    {
+      "good": "Ferro",
+      "provinces": 3
+    },
+    {
+      "good": "Estanho",
+      "provinces": 1
+    },
+    {
+      "good": "Sal",
+      "provinces": 1
+    },
+    {
+      "good": "Papel",
+      "provinces": 1
+    },
+    {
+      "good": "Cobre",
+      "provinces": 1
+    },
+    {
+      "good": "Cordas",
+      "provinces": 1
+    },
+    {
+      "good": "Livros",
+      "provinces": 3
+    },
+    {
+      "good": "Carvão",
+      "provinces": 1
+    },
+    {
+      "good": "Mel",
+      "provinces": 1
+    },
+    {
+      "good": "Argila",
+      "provinces": 2
+    }
+  ],
+  "totalProduction": [
+    {
+      "good": "Grãos",
+      "provinces": 58
+    },
+    {
+      "good": "Madeira",
+      "provinces": 1
+    },
+    {
+      "good": "Armas",
+      "provinces": 1
+    },
+    {
+      "good": "Tâmaras",
+      "provinces": 1
+    }
+  ],
+  "forcedLabor": {
+    "registered": 53416,
+    "afterFirst": 53416,
+    "afterSecond": 53416,
+    "transfers": 25,
+    "peopleTransferred": 7246,
+    "turnoverPO": 62428.58
+  },
+  "productionPO": 1719338.9899327646,
+  "tradePO": 854300.16
+}

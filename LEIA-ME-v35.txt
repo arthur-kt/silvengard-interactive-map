@@ -1,0 +1,24 @@
+SILVENGARD ATLAS - v35: LOCALIDADE ISOLADA + CIDADES REFEITAS
+Extrair por cima da pasta silvengard-atlas (substitui os ficheiros da v34). So toca em dist/; world.json fica intacto.
+
+COMO FUNCIONA O "VER NO LOCAL"
+- Escolhes o RAIO (250 m, 500 m ou 800 m) no cartao que aparece ao clicar em "Ver no local" (ou tecla V), e clicas no mapa ou numa cidade.
+- Entra SO essa localidade: o mapa inteiro e escondido (sem montanhas do mapa ao fundo). Fora do raio ha nevoa e horizonte; nao se consegue sair do limite.
+- Cada lugar tem o seu estilo, conforme clima/bioma: temperado (enxaimel + telha), frio (toros + neve nos telhados), arido (adobe de telhado plano + toldos),
+  tropical (palha, cores vivas, estacas), alpino (pedra + madeira), alagadico (palafitas). Cais com barco se houver agua por perto.
+- Ermo: 3-4 pontos de interesse proprios (acampamento, ruinas, circulo de pedras, cabana, torre de vigia) conforme o clima.
+
+CIDADES (novo gerador)
+- Ruas organicas (avenida, travessas, anel da praca, vielas), lotes ao longo das ruas: casas geminadas no centro, quintais e hortas fora.
+- Praca com fonte, igreja, camara (ou palacio na capital), taberna, barracas; ferrarias, lojas, celeiros, quintas com campos e cercas, moinho com pas giratorias,
+  muralha com torres e portoes quando a cidade e murada, fumo nas chamines, lampioes que acendem a noite, moradores.
+- Tamanho conforme a populacao.
+
+FICHEIROS
+NOVOS     dist/town.js          gerador de localidades e pontos de interesse
+ALTERADOS dist/street.js        modo local (isolamento, raio, agua local, campos, moinho, fumo, cais)
+          dist/settlements.js   estilos por clima, edificios detalhados, igreja, camara, fonte, cercas e outras pecas
+          dist/app.js, features.js, visuals.js, index.html, ui-polish.js, ui-v34.css   (ligacoes e versao ?v=35)
+
+CONTROLOS: WASD/setas, Shift correr, rato olhar (clicar para capturar), T hora do dia, Esc volta ao mapa.
+REVERTER: repor os ficheiros da v34.

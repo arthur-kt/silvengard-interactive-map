@@ -1,0 +1,6885 @@
+{
+  "source": {
+    "version": 18,
+    "sourceFile": "Silvangad 5.0.map",
+    "sha256": "d1b6ce825651321f80855feac5cde9a62561dd9d9aee120b2922cf7c46e1ece8",
+    "originalCities": 132,
+    "estimatedCities": 18,
+    "diplomaticEvents": 63,
+    "calendar": {
+      "year": 1083,
+      "era": "Quarta Era",
+      "eraShort": "AE"
+    },
+    "available": {
+      "populations": true,
+      "cultures": true,
+      "religions": true,
+      "heraldry": true,
+      "diplomacy": true,
+      "rulers": false,
+      "dynasties": false,
+      "languages": false
+    }
+  },
+  "cities": [
+    {
+      "i": 1,
+      "name": "Velaffeld",
+      "state": 14,
+      "population": {
+        "population": 850985,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 1,
+        "sourceCityName": "Velaffeld",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1459.5,
+          550.5
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-1.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 2,
+      "name": "Ereth",
+      "state": 12,
+      "population": {
+        "population": 27310,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 2,
+        "sourceCityName": "Ereth",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1358.51,
+          320.41
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-2.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 3,
+      "name": "Asgorath",
+      "state": 12,
+      "population": {
+        "population": 450985,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 3,
+        "sourceCityName": "Asghorat",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1129,
+          381.5
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 9,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-3.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 4,
+      "name": "Rivertown",
+      "state": 12,
+      "population": {
+        "population": 28344,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 4,
+        "sourceCityName": "Rivertown",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1220.34,
+          365.87
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 21,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-4.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 5,
+      "name": "Torre Solitária",
+      "state": 12,
+      "population": {
+        "population": 39208,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 5,
+        "sourceCityName": "Torre Solitária",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1203.04,
+          278.72
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 9,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-5.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 6,
+      "name": "Anteventium",
+      "state": 28,
+      "population": {
+        "population": 4498,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 6,
+        "sourceCityName": "Anteventium",
+        "sourceStateId": 28,
+        "sourcePosition": [
+          829.31,
+          489.67
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-6.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 7,
+      "name": "Elucitor",
+      "state": 13,
+      "population": {
+        "population": 1005030,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 7,
+        "sourceCityName": "Elucitor",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1071.32,
+          530.9
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/elucitor-county.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 8,
+      "name": "Valari",
+      "state": 17,
+      "population": {
+        "population": 0,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 8,
+        "sourceCityName": "Valari",
+        "sourceStateId": 17,
+        "sourcePosition": [
+          1366,
+          737.5
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 0,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-8.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 9,
+      "name": "Alqa",
+      "state": 24,
+      "population": {
+        "population": 29848,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 9,
+        "sourceCityName": "Alqa",
+        "sourceStateId": 24,
+        "sourcePosition": [
+          943.86,
+          418.51
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 14,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-9.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 10,
+      "name": "Dagorah",
+      "state": 12,
+      "population": {
+        "population": 7408,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 10,
+        "sourceCityName": "Dagorah",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          942.87,
+          260.37
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-10.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 11,
+      "name": "Malacatt",
+      "state": 12,
+      "population": {
+        "population": 12084,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 11,
+        "sourceCityName": "Mallacatt",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          986.1,
+          334.32
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 16,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-11.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 12,
+      "name": "Savhalla",
+      "state": 12,
+      "population": {
+        "population": 1130,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 12,
+        "sourceCityName": "Savhala",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          977.91,
+          382.44
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 14,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-12.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 13,
+      "name": "Vila Candelápria",
+      "state": 48,
+      "population": {
+        "population": 50232,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 13,
+        "sourceCityName": "Vila Candelápria",
+        "sourceStateId": 48,
+        "sourcePosition": [
+          507.5,
+          714
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-13.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 14,
+      "name": "Gugacon",
+      "state": 47,
+      "population": {
+        "population": 3460,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 14,
+        "sourceCityName": "Gugacon",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          440.4,
+          318.69
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-14.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 15,
+      "name": "Ignis",
+      "state": 13,
+      "population": {
+        "population": 8636,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 15,
+        "sourceCityName": "Ignis",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1162.34,
+          432.18
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/ignis.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 16,
+      "name": "Vir",
+      "state": 47,
+      "population": {
+        "population": 7230,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 16,
+        "sourceCityName": "Wirion",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          381.79,
+          360.66
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 12,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-16.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 17,
+      "name": "Nostris",
+      "state": 13,
+      "population": {
+        "population": 12248,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 17,
+        "sourceCityName": "Nostris",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1164.62,
+          452.09
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/nostris.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 18,
+      "name": "Porto das Cinzas",
+      "state": 12,
+      "population": {
+        "population": 19140,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 18,
+        "sourceCityName": "Porto das Cinzas",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1251.65,
+          282.43
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 9,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-18.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 19,
+      "name": "Triovorn",
+      "state": 47,
+      "population": {
+        "population": 3286,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 19,
+        "sourceCityName": "Triovorn",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          365.27,
+          338.04
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 12,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-19.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 20,
+      "name": "Lorvus",
+      "state": 13,
+      "population": {
+        "population": 2267,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 20,
+        "sourceCityName": "Lorvus",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          994.15,
+          631.52
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-20.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 21,
+      "name": "Guernica",
+      "state": 47,
+      "population": {
+        "population": 52690,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 21,
+        "sourceCityName": "Guernica",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          291.86,
+          369.1
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-21.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 22,
+      "name": "Drácon",
+      "state": 20,
+      "population": {
+        "population": 44164,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 22,
+        "sourceCityName": "Drácon",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          184.95,
+          470.17
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-22.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 23,
+      "name": "Winterhelm",
+      "state": 12,
+      "population": {
+        "population": 25078,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 23,
+        "sourceCityName": "Winterhelm",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1090.33,
+          283.77
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 9,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-23.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 24,
+      "name": "Forte Drakis",
+      "state": 13,
+      "population": {
+        "population": 3620,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 24,
+        "sourceCityName": "Dracofortis",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1064.76,
+          424.33
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-24.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 25,
+      "name": "Kyon",
+      "state": 47,
+      "population": {
+        "population": 27786,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 25,
+        "sourceCityName": "Kyon",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          304.27,
+          299.42
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 9,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-25.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 26,
+      "name": "Porto de Vern",
+      "state": 47,
+      "population": {
+        "population": 10444,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 26,
+        "sourceCityName": "Vern",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          405.14,
+          322.26
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 12,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-26.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 27,
+      "name": "Tramor",
+      "state": 13,
+      "population": {
+        "population": 3792,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 27,
+        "sourceCityName": "Tramor",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          981.21,
+          669.35
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-27.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 28,
+      "name": "Vostris",
+      "state": 13,
+      "population": {
+        "population": 4678,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 28,
+        "sourceCityName": "Vostris",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1185.97,
+          407.2
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/vostris.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 29,
+      "name": "Mauron",
+      "state": 47,
+      "population": {
+        "population": 8842,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 29,
+        "sourceCityName": "Mauron",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          243.56,
+          301.86
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-29.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 30,
+      "name": "Porto do Álamo",
+      "state": 47,
+      "population": {
+        "population": 4360,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 30,
+        "sourceCityName": "Porto do Álamo",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          180.71,
+          363.05
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/porto-do-alamo.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 31,
+      "name": "Lirion",
+      "state": 47,
+      "population": {
+        "population": 13382,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 31,
+        "sourceCityName": "Lirion",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          291.93,
+          393.87
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-31.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 32,
+      "name": "Oregon",
+      "state": 47,
+      "population": {
+        "population": 2857,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 32,
+        "sourceCityName": "Oregon",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          264.89,
+          356.06
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-32.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 33,
+      "name": "Gugacon",
+      "state": 12,
+      "population": {
+        "population": 0,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 33,
+        "sourceCityName": "Gugacon",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1286,
+          244
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-33.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 34,
+      "name": "Rinnton",
+      "state": 12,
+      "population": {
+        "population": 51874,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 34,
+        "sourceCityName": "Timber",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1182.8,
+          338.46
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 9,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-34.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 35,
+      "name": "Argendau",
+      "state": 13,
+      "population": {
+        "population": 57316,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 35,
+        "sourceCityName": "Argendau",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1100.74,
+          704.53
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/argendau.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 36,
+      "name": "Grenolk",
+      "state": 35,
+      "population": {
+        "population": 7180,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 36,
+        "sourceCityName": "Gulukkharb",
+        "sourceStateId": 35,
+        "sourcePosition": [
+          441.57,
+          563.45
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-36.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 38,
+      "name": "Viacaledebo",
+      "state": 20,
+      "population": {
+        "population": 10578,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 38,
+        "sourceCityName": "Viacaledebo",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          386.3,
+          584.9
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-38.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 45,
+      "name": "Almirarem",
+      "state": 46,
+      "population": {
+        "population": 7492,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 45,
+        "sourceCityName": "Almirarem",
+        "sourceStateId": 46,
+        "sourcePosition": [
+          463,
+          400
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-45.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 51,
+      "name": "Clifshore",
+      "state": 12,
+      "population": {
+        "population": 16596,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 51,
+        "sourceCityName": "Clifshiel",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1214.41,
+          339.4
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 9,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-51.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 52,
+      "name": "Hethlothloth",
+      "state": 20,
+      "population": {
+        "population": 57604,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 52,
+        "sourceCityName": "Hethlothloth",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          371,
+          501
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-52.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 53,
+      "name": "Oraland Ise",
+      "state": 14,
+      "population": {
+        "population": 20136,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 53,
+        "sourceCityName": "Oraland Ise",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1374.08,
+          431.8
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 12,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-53.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 56,
+      "name": "Viras",
+      "state": 31,
+      "population": {
+        "population": 27630,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 56,
+        "sourceCityName": "Viras",
+        "sourceStateId": 31,
+        "sourcePosition": [
+          333.5,
+          777.5
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 21,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-56.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 61,
+      "name": "Allanan",
+      "state": 14,
+      "population": {
+        "population": 5984,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 61,
+        "sourceCityName": "Nanalyelumy",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1405.13,
+          662.65
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-61.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 62,
+      "name": "Vilenages",
+      "state": 13,
+      "population": {
+        "population": 5272,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 62,
+        "sourceCityName": "Fermaletim",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          883.5,
+          710.5
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-62.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 67,
+      "name": "Himlumn",
+      "state": 14,
+      "population": {
+        "population": 27322,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 67,
+        "sourceCityName": "Himlumytenor",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1280.16,
+          571.81
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-67.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 68,
+      "name": "Parnum",
+      "state": 13,
+      "population": {
+        "population": 20772,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 68,
+        "sourceCityName": "Parnum",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          696.6,
+          580.2
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-68.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 69,
+      "name": "Odira",
+      "state": 13,
+      "population": {
+        "population": 18246,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 69,
+        "sourceCityName": "Odira",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          721.03,
+          649.46
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-69.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 70,
+      "name": "Sel-Shofela",
+      "state": 14,
+      "population": {
+        "population": 5006,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 70,
+        "sourceCityName": "Sel-Shofela",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1349.36,
+          653.34
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-70.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 72,
+      "name": "Lulgard",
+      "state": 29,
+      "population": {
+        "population": 26010,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 72,
+        "sourceCityName": "Lulgard",
+        "sourceStateId": 29,
+        "sourcePosition": [
+          598.97,
+          302.12
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 19,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-72.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 75,
+      "name": "Tserost",
+      "state": 34,
+      "population": {
+        "population": 6424,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 75,
+        "sourceCityName": "Tsetsogt",
+        "sourceStateId": 34,
+        "sourcePosition": [
+          555.47,
+          393.34
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 22,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-75.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 77,
+      "name": "Jalha",
+      "state": 14,
+      "population": {
+        "population": 27922,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 77,
+        "sourceCityName": "Jalha",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1319.11,
+          445.15
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 12,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-77.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 78,
+      "name": "Lyadargor",
+      "state": 14,
+      "population": {
+        "population": 34712,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 78,
+        "sourceCityName": "Lyadargor",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1447.67,
+          473.37
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-78.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 81,
+      "name": "Chaundor",
+      "state": 14,
+      "population": {
+        "population": 19680,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 81,
+        "sourceCityName": "Chaundor",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1438.7,
+          525.45
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-81.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 85,
+      "name": "Glouyaloss",
+      "state": 20,
+      "population": {
+        "population": 5794,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 85,
+        "sourceCityName": "Glouyaloss",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          384,
+          645
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-85.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 88,
+      "name": "Maleluz",
+      "state": 31,
+      "population": {
+        "population": 3900,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 88,
+        "sourceCityName": "Maleluz",
+        "sourceStateId": 31,
+        "sourcePosition": [
+          389.66,
+          696.5
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 21,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-88.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 89,
+      "name": "Sobrirosen",
+      "state": 31,
+      "population": {
+        "population": 31036,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 89,
+        "sourceCityName": "Sobrirosen",
+        "sourceStateId": 31,
+        "sourcePosition": [
+          450.84,
+          706.03
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-89.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 90,
+      "name": "Vilaguezejo",
+      "state": 31,
+      "population": {
+        "population": 13152,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 90,
+        "sourceCityName": "Vilaguezejo",
+        "sourceStateId": 31,
+        "sourcePosition": [
+          389,
+          721.5
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 21,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-90.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 92,
+      "name": "Allos",
+      "state": 23,
+      "population": {
+        "population": 11064,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 92,
+        "sourceCityName": "Allos",
+        "sourceStateId": 26,
+        "sourcePosition": [
+          826.18,
+          267.02
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 16,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-92.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 93,
+      "name": "Bral",
+      "state": 46,
+      "population": {
+        "population": 54472,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 93,
+        "sourceCityName": "Bral",
+        "sourceStateId": 46,
+        "sourcePosition": [
+          515.03,
+          312
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 19,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-93.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 96,
+      "name": "Selne",
+      "state": 14,
+      "population": {
+        "population": 34340,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 96,
+        "sourceCityName": "Selne",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1371.11,
+          359.34
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-96.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 99,
+      "name": "Braveira",
+      "state": 46,
+      "population": {
+        "population": 3476,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 99,
+        "sourceCityName": "Braveira",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          424.71,
+          413.09
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-99.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 100,
+      "name": "Varta",
+      "state": 46,
+      "population": {
+        "population": 13468,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 100,
+        "sourceCityName": "Varta",
+        "sourceStateId": 46,
+        "sourcePosition": [
+          526.42,
+          416.43
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 21,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-100.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 102,
+      "name": "Paiaga",
+      "state": 46,
+      "population": {
+        "population": 25484,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 102,
+        "sourceCityName": "Paiaga",
+        "sourceStateId": 46,
+        "sourcePosition": [
+          476.97,
+          445.08
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 21,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-102.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 104,
+      "name": "Cananhos",
+      "state": 46,
+      "population": {
+        "population": 8200,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 104,
+        "sourceCityName": "Caganho",
+        "sourceStateId": 46,
+        "sourcePosition": [
+          397.26,
+          481.4
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-104.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 108,
+      "name": "Pinhem",
+      "state": 20,
+      "population": {
+        "population": 23322,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 108,
+        "sourceCityName": "Pinhem",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          387.02,
+          532.98
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-108.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 109,
+      "name": "Vedioria",
+      "state": 13,
+      "population": {
+        "population": 3888,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 109,
+        "sourceCityName": "Vedioria",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          749.02,
+          544.96
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-109.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 110,
+      "name": "Bilnulbun",
+      "state": 35,
+      "population": {
+        "population": 24840,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 110,
+        "sourceCityName": "Bilnulbun",
+        "sourceStateId": 35,
+        "sourcePosition": [
+          485.9,
+          559.87
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-110.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 113,
+      "name": "Nirgona",
+      "state": 13,
+      "population": {
+        "population": 4678,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 113,
+        "sourceCityName": "Premapuri",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1007.99,
+          711.98
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-113.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 115,
+      "name": "Ridualhos",
+      "state": 31,
+      "population": {
+        "population": 26884,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 115,
+        "sourceCityName": "Ridualhos",
+        "sourceStateId": 31,
+        "sourcePosition": [
+          421.69,
+          754.03
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 21,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-115.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 116,
+      "name": "Feixos",
+      "state": 13,
+      "population": {
+        "population": 32108,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 116,
+        "sourceCityName": "Funco",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          733,
+          773
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-116.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 119,
+      "name": "Nudh",
+      "state": 29,
+      "population": {
+        "population": 21814,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 119,
+        "sourceCityName": "Nudh",
+        "sourceStateId": 29,
+        "sourcePosition": [
+          529.47,
+          273.24
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 19,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-119.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 120,
+      "name": "Lakenford",
+      "state": 12,
+      "population": {
+        "population": 27782,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 120,
+        "sourceCityName": "Steamouth",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          993.17,
+          303.44
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 9,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-120.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 127,
+      "name": "Shunzargil",
+      "state": 23,
+      "population": {
+        "population": 48564,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 127,
+        "sourceCityName": "Shunzargil",
+        "sourceStateId": 23,
+        "sourcePosition": [
+          637.18,
+          370.65
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-127.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 128,
+      "name": "Natheas",
+      "state": 14,
+      "population": {
+        "population": 31556,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 128,
+        "sourceCityName": "Natheas",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1550,
+          422.5
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-128.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 129,
+      "name": "Hellas",
+      "state": 33,
+      "population": {
+        "population": 6552,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 129,
+        "sourceCityName": "Hellas",
+        "sourceStateId": 33,
+        "sourcePosition": [
+          718.27,
+          439.95
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-129.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 130,
+      "name": "Gannas",
+      "state": 33,
+      "population": {
+        "population": 21350,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 130,
+        "sourceCityName": "Aleravum",
+        "sourceStateId": 33,
+        "sourcePosition": [
+          774.98,
+          431.02
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-130.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 132,
+      "name": "Auyalalagh",
+      "state": 20,
+      "population": {
+        "population": 22790,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 132,
+        "sourceCityName": "Auyalalagh",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          335.7,
+          467.5
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-132.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 134,
+      "name": "Odusonsium",
+      "state": 28,
+      "population": {
+        "population": 35730,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 134,
+        "sourceCityName": "Odusonsium",
+        "sourceStateId": 28,
+        "sourcePosition": [
+          720.63,
+          479.97
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-134.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 135,
+      "name": "Sanha",
+      "state": 46,
+      "population": {
+        "population": 3572,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 135,
+        "sourceCityName": "Sanha",
+        "sourceStateId": 46,
+        "sourcePosition": [
+          487.36,
+          492.51
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-135.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 136,
+      "name": "Sharntosz",
+      "state": 20,
+      "population": {
+        "population": 17330,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 136,
+        "sourceCityName": "Sharntosz",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          249.46,
+          500.55
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-136.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 137,
+      "name": "Vinquertiro",
+      "state": 46,
+      "population": {
+        "population": 31158,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 137,
+        "sourceCityName": "Vinquertiro",
+        "sourceStateId": 46,
+        "sourcePosition": [
+          414.11,
+          504.31
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-137.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 138,
+      "name": "Tonkhet",
+      "state": 34,
+      "population": {
+        "population": 31836,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 138,
+        "sourceCityName": "Tonkhet",
+        "sourceStateId": 34,
+        "sourcePosition": [
+          668.05,
+          503.83
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 22,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-138.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 140,
+      "name": "Tog Iret",
+      "state": 34,
+      "population": {
+        "population": 3638,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 140,
+        "sourceCityName": "Tog Iret",
+        "sourceStateId": 34,
+        "sourcePosition": [
+          581.32,
+          520.95
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 22,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-140.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 142,
+      "name": "Urlyzaak",
+      "state": 20,
+      "population": {
+        "population": 35264,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 142,
+        "sourceCityName": "Urlylithalazak",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          230.46,
+          533.29
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-142.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 143,
+      "name": "Chulagtoh",
+      "state": 34,
+      "population": {
+        "population": 33066,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 143,
+        "sourceCityName": "Chulagtoh",
+        "sourceStateId": 34,
+        "sourcePosition": [
+          521.8,
+          534.97
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 22,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-143.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 147,
+      "name": "Litorum",
+      "state": 13,
+      "population": {
+        "population": 10354,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 147,
+        "sourceCityName": "Litorum",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1124.34,
+          554.17
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/litorum.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 149,
+      "name": "Grainhem",
+      "state": 34,
+      "population": {
+        "population": 13660,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 149,
+        "sourceCityName": "Grainhem",
+        "sourceStateId": 34,
+        "sourcePosition": [
+          593.54,
+          571.2
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-149.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 150,
+      "name": "Brelas",
+      "state": 35,
+      "population": {
+        "population": 35834,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 150,
+        "sourceCityName": "Brelas",
+        "sourceStateId": 35,
+        "sourcePosition": [
+          433.29,
+          585.21
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-150.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 153,
+      "name": "Guiras",
+      "state": 20,
+      "population": {
+        "population": 3242,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 153,
+        "sourceCityName": "Guiras",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          419.94,
+          615.37
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-153.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 154,
+      "name": "Alveiras",
+      "state": 48,
+      "population": {
+        "population": 15174,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 154,
+        "sourceCityName": "Alveiras",
+        "sourceStateId": 48,
+        "sourcePosition": [
+          470.14,
+          612.37
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-154.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 158,
+      "name": "Alsas",
+      "state": 48,
+      "population": {
+        "population": 8136,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 158,
+        "sourceCityName": "Alsas",
+        "sourceStateId": 48,
+        "sourcePosition": [
+          513.28,
+          634.18
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-158.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 159,
+      "name": "Olcanha",
+      "state": 48,
+      "population": {
+        "population": 45698,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 159,
+        "sourceCityName": "Olcanha",
+        "sourceStateId": 48,
+        "sourcePosition": [
+          561.79,
+          633.31
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-159.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 160,
+      "name": "Pantos",
+      "state": 13,
+      "population": {
+        "population": 17674,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 160,
+        "sourceCityName": "Pantos",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          644.57,
+          637.77
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-160.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 161,
+      "name": "Bomaria",
+      "state": 13,
+      "population": {
+        "population": 3222,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 161,
+        "sourceCityName": "Bomaria",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1164.66,
+          648.84
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/bomaria.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 164,
+      "name": "Calha",
+      "state": 31,
+      "population": {
+        "population": 3374,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 164,
+        "sourceCityName": "Calha",
+        "sourceStateId": 31,
+        "sourcePosition": [
+          410.82,
+          681.13
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-164.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 168,
+      "name": "Pyrenor",
+      "state": 47,
+      "population": {
+        "population": 4214,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 168,
+        "sourceCityName": "Pirerewick",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          167.4,
+          308.43
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 9,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-168.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 169,
+      "name": "Irkudh",
+      "state": 29,
+      "population": {
+        "population": 28034,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 169,
+        "sourceCityName": "Irkudh",
+        "sourceStateId": 34,
+        "sourcePosition": [
+          566.35,
+          318.46
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 19,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-169.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 170,
+      "name": "Ginar",
+      "state": 29,
+      "population": {
+        "population": 58848,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 170,
+        "sourceCityName": "Ginar",
+        "sourceStateId": 29,
+        "sourcePosition": [
+          624.6,
+          314.77
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-170.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 174,
+      "name": "Caspinho",
+      "state": 46,
+      "population": {
+        "population": 3694,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 174,
+        "sourceCityName": "Caspinho",
+        "sourceStateId": 46,
+        "sourcePosition": [
+          489.43,
+          359.18
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-174.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 176,
+      "name": "Khizdush",
+      "state": 23,
+      "population": {
+        "population": 6654,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 176,
+        "sourceCityName": "Khizdush",
+        "sourceStateId": 23,
+        "sourcePosition": [
+          664.61,
+          372.22
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-176.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 177,
+      "name": "Kharagz",
+      "state": 23,
+      "population": {
+        "population": 13798,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 177,
+        "sourceCityName": "Kharagz",
+        "sourceStateId": 23,
+        "sourcePosition": [
+          700.8,
+          372.55
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-177.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 179,
+      "name": "Urentog",
+      "state": 34,
+      "population": {
+        "population": 36208,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 179,
+        "sourceCityName": "Urentog",
+        "sourceStateId": 34,
+        "sourcePosition": [
+          619.03,
+          414.01
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 22,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-179.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 180,
+      "name": "Orgener",
+      "state": 33,
+      "population": {
+        "population": 3592,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 180,
+        "sourceCityName": "Orgayankher",
+        "sourceStateId": 33,
+        "sourcePosition": [
+          672.14,
+          427.5
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 22,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-180.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 181,
+      "name": "Liriathyr",
+      "state": 14,
+      "population": {
+        "population": 21190,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 181,
+        "sourceCityName": "Liriathyr",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1478.21,
+          420.77
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-181.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 182,
+      "name": "Tessert",
+      "state": 33,
+      "population": {
+        "population": 3890,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 182,
+        "sourceCityName": "Tsogtsogt",
+        "sourceStateId": 33,
+        "sourcePosition": [
+          681.17,
+          450.25
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 22,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-182.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 183,
+      "name": "Mestrina",
+      "state": 13,
+      "population": {
+        "population": 29382,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 183,
+        "sourceCityName": "Momaco",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          901.18,
+          472.96
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-183.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 184,
+      "name": "Fovium",
+      "state": 28,
+      "population": {
+        "population": 22588,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 184,
+        "sourceCityName": "Fovium",
+        "sourceStateId": 28,
+        "sourcePosition": [
+          773.37,
+          484.21
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-184.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 189,
+      "name": "Garnalos",
+      "state": 14,
+      "population": {
+        "population": 21410,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 189,
+        "sourceCityName": "Oshanalos",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1305.9,
+          521.09
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-189.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 191,
+      "name": "Vennoduro",
+      "state": 13,
+      "population": {
+        "population": 3634,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 191,
+        "sourceCityName": "Vennoduro",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1017.01,
+          548.17
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/vennoduro.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 197,
+      "name": "Althor",
+      "state": 13,
+      "population": {
+        "population": 11209,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 197,
+        "sourceCityName": "Althor",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          988.24,
+          579.67
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/althor.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 199,
+      "name": "Amrithruk",
+      "state": 20,
+      "population": {
+        "population": 46208,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 199,
+        "sourceCityName": "Amrithruk",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          316.96,
+          599.18
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-199.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 202,
+      "name": "Nythan",
+      "state": 14,
+      "population": {
+        "population": 3098,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 202,
+        "sourceCityName": "Nythan",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1364.69,
+          597.36
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-202.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 207,
+      "name": "Sobral",
+      "state": 48,
+      "population": {
+        "population": 11096,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 207,
+        "sourceCityName": "Sobral",
+        "sourceStateId": 48,
+        "sourcePosition": [
+          534.49,
+          660.26
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-207.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 211,
+      "name": "Coliras",
+      "state": 31,
+      "population": {
+        "population": 13574,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 211,
+        "sourceCityName": "Coliras",
+        "sourceStateId": 31,
+        "sourcePosition": [
+          389.74,
+          773.24
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 21,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-211.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 214,
+      "name": "Khegosla",
+      "state": 26,
+      "population": {
+        "population": 12534,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 214,
+        "sourceCityName": "Quegosola",
+        "sourceStateId": 26,
+        "sourcePosition": [
+          838.26,
+          310.79
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 16,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-214.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 220,
+      "name": "Karno'ande",
+      "state": 14,
+      "population": {
+        "population": 36880,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 220,
+        "sourceCityName": "Karno'ande",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1325.15,
+          409.67
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 12,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-220.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 223,
+      "name": "Crild",
+      "state": 32,
+      "population": {
+        "population": 6400,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 223,
+        "sourceCityName": "Crild",
+        "sourceStateId": 32,
+        "sourcePosition": [
+          556,
+          725
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 20,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-223.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 224,
+      "name": "Loueixo",
+      "state": 49,
+      "population": {
+        "population": 85490,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 224,
+        "sourceCityName": "Loueixo",
+        "sourceStateId": 49,
+        "sourcePosition": [
+          192,
+          697
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 18,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-224.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 225,
+      "name": "Forteirosin",
+      "state": 49,
+      "population": {
+        "population": 11185,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 225,
+        "sourceCityName": "Forteirosin",
+        "sourceStateId": 49,
+        "sourcePosition": [
+          121.63,
+          731.33
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 18,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-225.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 226,
+      "name": "Panhadaril",
+      "state": 49,
+      "population": {
+        "population": 13937,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 226,
+        "sourceCityName": "Panhadaril",
+        "sourceStateId": 49,
+        "sourcePosition": [
+          233.6,
+          741.94
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 18,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-226.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 227,
+      "name": "Tarinquer",
+      "state": 49,
+      "population": {
+        "population": 11259,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 227,
+        "sourceCityName": "Tarinquer",
+        "sourceStateId": 49,
+        "sourcePosition": [
+          219.98,
+          674.72
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 18,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-227.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 228,
+      "name": "Adinhoes",
+      "state": 49,
+      "population": {
+        "population": 13885,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 228,
+        "sourceCityName": "Adinhoes",
+        "sourceStateId": 49,
+        "sourcePosition": [
+          152.2,
+          632.21
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 18,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-228.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 229,
+      "name": "Malegreiro",
+      "state": 20,
+      "population": {
+        "population": 11233,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 229,
+        "sourceCityName": "Malegreiro",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          207.05,
+          635.37
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 18,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-229.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 230,
+      "name": "Veltidin",
+      "state": 20,
+      "population": {
+        "population": 12610,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 230,
+        "sourceCityName": "Veltidikivgit",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          301.25,
+          676.44
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-230.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 232,
+      "name": "Ma'naar",
+      "state": 20,
+      "population": {
+        "population": 13977,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 232,
+        "sourceCityName": "Ma'naar",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          265.64,
+          564.15
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-232.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 233,
+      "name": "Metiscina",
+      "state": 20,
+      "population": {
+        "population": 13987,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 233,
+        "sourceCityName": "Metiscinthaxis",
+        "sourceStateId": 20,
+        "sourcePosition": [
+          142.44,
+          487.19
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 13,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-233.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 235,
+      "name": "Sobrizeloba",
+      "state": 49,
+      "population": {
+        "population": 13853,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 235,
+        "sourceCityName": "Sobrizeloba",
+        "sourceStateId": 49,
+        "sourcePosition": [
+          161.38,
+          721.56
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 18,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-235.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 236,
+      "name": "Osagos",
+      "state": 49,
+      "population": {
+        "population": 13889,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 236,
+        "sourceCityName": "Osagos",
+        "sourceStateId": 49,
+        "sourcePosition": [
+          190.25,
+          731.55
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 18,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-236.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 237,
+      "name": "Shaled",
+      "state": 23,
+      "population": {
+        "population": 13967,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 237,
+        "sourceCityName": "Shaled",
+        "sourceStateId": 23,
+        "sourcePosition": [
+          758.55,
+          311.37
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-237.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 238,
+      "name": "Adush",
+      "state": 23,
+      "population": {
+        "population": 46643,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 238,
+        "sourceCityName": "Adush",
+        "sourceStateId": 23,
+        "sourcePosition": [
+          728.11,
+          325.15
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-238.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 239,
+      "name": "Shararukthu",
+      "state": 23,
+      "population": {
+        "population": 4576,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 239,
+        "sourceCityName": "Shararukthu",
+        "sourceStateId": 23,
+        "sourcePosition": [
+          801.34,
+          284.37
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-239.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 242,
+      "name": "Porto Corujos",
+      "state": 48,
+      "population": {
+        "population": 564,
+        "estimated": false,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": null
+      },
+      "reference": {
+        "kind": "original",
+        "sourceCityId": 242,
+        "sourceCityName": "Porto Corujos",
+        "sourceStateId": 48,
+        "sourcePosition": [
+          513.2,
+          752.37
+        ],
+        "method": "Identidade da cidade no arquivo .map",
+        "originalCulture": 0,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-242.svg",
+      "emblemOrigin": {
+        "kind": "original",
+        "label": "Brasão da cidade no .map"
+      }
+    },
+    {
+      "i": 1239,
+      "name": "Arenor",
+      "state": 13,
+      "population": {
+        "population": 3900,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Vedioria"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 109,
+        "sourceCityName": "Vedioria",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          749.02,
+          544.96
+        ],
+        "method": "Proximidade, cultura e porte compatível com fortaleza",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/arenor.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 1240,
+      "name": "Castamor",
+      "state": 13,
+      "population": {
+        "population": 5500,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Adfluentium"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 41,
+        "sourceCityName": "Adfluentium",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1094.64,
+          721.2
+        ],
+        "method": "Proximidade, cultura e porte compatível com fortaleza",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/castamor-county.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 1241,
+      "name": "Nediora",
+      "state": 13,
+      "population": {
+        "population": 27000,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Tredevara"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 117,
+        "sourceCityName": "Tredevara",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          997.28,
+          770.92
+        ],
+        "method": "Proximidade, cultura e porte compatível com porto principal",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-117.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Tredevara"
+      }
+    },
+    {
+      "i": 1242,
+      "name": "Meriadoc",
+      "state": 13,
+      "population": {
+        "population": 10400,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Litorum"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 147,
+        "sourceCityName": "Litorum",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1124.34,
+          554.17
+        ],
+        "method": "Proximidade, cultura e porte compatível com cidade",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/meriadoc.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 1243,
+      "name": "Cetolo",
+      "state": 13,
+      "population": {
+        "population": 24800,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Nigripina"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 152,
+        "sourceCityName": "Nigripina",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          810.89,
+          592.54
+        ],
+        "method": "Proximidade, cultura e porte compatível com cidade",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/cetolo-shire.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 1244,
+      "name": "Condado de Alia",
+      "state": 13,
+      "population": {
+        "population": 13000,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Rodutum"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 39,
+        "sourceCityName": "Rodutum",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1112.1,
+          671.36
+        ],
+        "method": "Proximidade, cultura e porte compatível com cidade",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/alhia.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 2000,
+      "name": "Danumbria",
+      "state": 13,
+      "population": {
+        "population": 15400,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Cacho"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 163,
+        "sourceCityName": "Cacho",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          771.64,
+          661
+        ],
+        "method": "Proximidade, cultura e porte compatível com academia",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/danumbria.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 2001,
+      "name": "Adhuc Vivere",
+      "state": 13,
+      "population": {
+        "population": 3200,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Bomaria"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 161,
+        "sourceCityName": "Bomaria",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1164.66,
+          648.84
+        ],
+        "method": "Proximidade, cultura e porte compatível com fortaleza",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-161.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Bomaria"
+      }
+    },
+    {
+      "i": 2002,
+      "name": "Ros Leones",
+      "state": 13,
+      "population": {
+        "population": 22200,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Marnovium"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 205,
+        "sourceCityName": "Marnovium",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          1120.99,
+          637.23
+        ],
+        "method": "Proximidade, cultura e porte compatível com porto principal",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "emblems/ros-leones.png",
+      "emblemOrigin": {
+        "kind": "provided",
+        "label": "Brasão original fornecido"
+      }
+    },
+    {
+      "i": 2003,
+      "name": "Nilhelm",
+      "state": 12,
+      "population": {
+        "population": 4200,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Ausontatum"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 218,
+        "sourceCityName": "Ausontatum",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1135.62,
+          393.93
+        ],
+        "method": "Proximidade, cultura e porte compatível com cidade",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-218.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Ausontatum"
+      }
+    },
+    {
+      "i": 2004,
+      "name": "Vila Sardinhas",
+      "state": 12,
+      "population": {
+        "population": 2500,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Sherin"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 219,
+        "sourceCityName": "Sherin",
+        "sourceStateId": 12,
+        "sourcePosition": [
+          1163.37,
+          400.35
+        ],
+        "method": "Proximidade, cultura e porte compatível com vila",
+        "originalCulture": 12,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-219.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Sherin"
+      }
+    },
+    {
+      "i": 2006,
+      "name": "Sulpa",
+      "state": 47,
+      "population": {
+        "population": 13400,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Lirion"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 31,
+        "sourceCityName": "Lirion",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          291.93,
+          393.87
+        ],
+        "method": "Proximidade, cultura e porte compatível com cidade",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-31.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Lirion"
+      }
+    },
+    {
+      "i": 2007,
+      "name": "Guil",
+      "state": 47,
+      "population": {
+        "population": 13400,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Lirion"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 31,
+        "sourceCityName": "Lirion",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          291.93,
+          393.87
+        ],
+        "method": "Proximidade, cultura e porte compatível com cidade",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-31.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Lirion"
+      }
+    },
+    {
+      "i": 2008,
+      "name": "Bernut",
+      "state": 47,
+      "population": {
+        "population": 4400,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Porto do Álamo"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 30,
+        "sourceCityName": "Porto do Álamo",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          180.71,
+          363.05
+        ],
+        "method": "Proximidade, cultura e porte compatível com cidade",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-30.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Porto do Álamo"
+      }
+    },
+    {
+      "i": 4000,
+      "name": "Liotorn",
+      "state": 13,
+      "population": {
+        "population": 13800,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Nunar"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 241,
+        "sourceCityName": "Nunar",
+        "sourceStateId": 13,
+        "sourcePosition": [
+          822.29,
+          540.79
+        ],
+        "method": "Proximidade, cultura e porte compatível com fortaleza anã",
+        "originalCulture": 15,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-241.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Nunar"
+      }
+    },
+    {
+      "i": 4001,
+      "name": "Vyoh",
+      "state": 47,
+      "population": {
+        "population": 4400,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Porto do Álamo"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 30,
+        "sourceCityName": "Porto do Álamo",
+        "sourceStateId": 47,
+        "sourcePosition": [
+          180.71,
+          363.05
+        ],
+        "method": "Proximidade, cultura e porte compatível com cidade",
+        "originalCulture": 17,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-30.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Porto do Álamo"
+      }
+    },
+    {
+      "i": 4002,
+      "name": "Sahtalys",
+      "state": 14,
+      "population": {
+        "population": 17600,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Keth Aitys"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 193,
+        "sourceCityName": "Keth Aitys",
+        "sourceStateId": 14,
+        "sourcePosition": [
+          1487.56,
+          572.88
+        ],
+        "method": "Proximidade, cultura e porte compatível com academia",
+        "originalCulture": 11,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-193.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Keth Aitys"
+      }
+    },
+    {
+      "i": 4003,
+      "name": "Aleravum",
+      "state": 28,
+      "population": {
+        "population": 22600,
+        "estimated": true,
+        "source": "Silvangad 5.0.map",
+        "referenceCity": "Fovium"
+      },
+      "reference": {
+        "kind": "estimated",
+        "sourceCityId": 184,
+        "sourceCityName": "Fovium",
+        "sourceStateId": 28,
+        "sourcePosition": [
+          773.37,
+          484.21
+        ],
+        "method": "Proximidade, cultura e porte compatível com academia",
+        "originalCulture": 10,
+        "populationScale": 1000,
+        "urbanization": 2
+      },
+      "emblem": "heraldry/city-184.svg",
+      "emblemOrigin": {
+        "kind": "reference",
+        "label": "Brasão de referência · Fovium"
+      }
+    }
+  ],
+  "states": [
+    {
+      "i": 12,
+      "name": "Dragonfall",
+      "government": {
+        "form": "Monarchy",
+        "designation": "Reino",
+        "monarchy": true,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Definição atual do autor"
+      },
+      "diplomacy": [
+        {
+          "state": 13,
+          "relation": "Neutral",
+          "source": "Definição atual do autor",
+          "label": "Neutra"
+        },
+        {
+          "state": 14,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 23,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 24,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 26,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 28,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 29,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 48,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 13,
+      "name": "Elucitor ",
+      "government": {
+        "form": "Monarchy",
+        "designation": "Império",
+        "monarchy": true,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Neutral",
+          "source": "Definição atual do autor",
+          "label": "Neutra"
+        },
+        {
+          "state": 14,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 29,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 48,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 14,
+      "name": "Navï Velaffëll",
+      "government": {
+        "form": "Monarchy",
+        "designation": "Império",
+        "monarchy": true,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 13,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 29,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 48,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 17,
+      "name": "Valar",
+      "government": {
+        "form": "Anarchy",
+        "designation": "Território livre",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 13,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 14,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 23,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 24,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 26,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 28,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 29,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 31,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 32,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 33,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 34,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 35,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 46,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 47,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 48,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 20,
+      "name": "Drácon ",
+      "government": {
+        "form": "Monarchy",
+        "designation": "Despotado",
+        "monarchy": true,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 13,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 31,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 32,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 46,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 47,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 48,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 49,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        }
+      ]
+    },
+    {
+      "i": 23,
+      "name": "Sete Cidades",
+      "government": {
+        "form": "Anarchy",
+        "designation": "Conselho",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 13,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 26,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 48,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 24,
+      "name": "Husaj",
+      "government": {
+        "form": "Theocracy",
+        "designation": "Califado",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 13,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 23,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 26,
+          "relation": "Rival",
+          "source": "Silvangad 5.0.map",
+          "label": "Rivalidade"
+        },
+        {
+          "state": 28,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 29,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 48,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 26,
+      "name": "Khajataad",
+      "government": {
+        "form": "Republic",
+        "designation": "Federação",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 13,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 23,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 24,
+          "relation": "Rival",
+          "source": "Silvangad 5.0.map",
+          "label": "Rivalidade"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 48,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 28,
+      "name": "Veniun",
+      "government": {
+        "form": "Monarchy",
+        "designation": "Reino",
+        "monarchy": true,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 13,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 14,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 48,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 29,
+      "name": "Território Orc ",
+      "government": {
+        "form": "Anarchy",
+        "designation": "Tribos",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 13,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 23,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 24,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 26,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 48,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 31,
+      "name": "Mountport",
+      "government": {
+        "form": "Republic",
+        "designation": "Oligarquia",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 13,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 46,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 47,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 48,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 49,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        }
+      ]
+    },
+    {
+      "i": 32,
+      "name": "Goblinburgo ",
+      "government": {
+        "form": "Anarchy",
+        "designation": "Comuna",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 13,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 14,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 29,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 48,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 33,
+      "name": "Piglia",
+      "government": {
+        "form": "Theocracy",
+        "designation": "Estado teocrático",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 13,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 48,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 34,
+      "name": "Marshell ",
+      "government": {
+        "form": "Union",
+        "designation": "União de hordas",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 13,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 47,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 48,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 35,
+      "name": "Duräk",
+      "government": {
+        "form": "Monarchy",
+        "designation": "Principado",
+        "monarchy": true,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 13,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 23,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 24,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 31,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 32,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 47,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 48,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 46,
+      "name": "Reinos Médios",
+      "government": {
+        "form": "Union",
+        "designation": "União de reinos",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 13,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Unknown",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconhecida"
+        },
+        {
+          "state": 20,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 31,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 32,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 35,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 47,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 48,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 49,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        }
+      ]
+    },
+    {
+      "i": 47,
+      "name": "Vitravion",
+      "government": {
+        "form": "Union",
+        "designation": "União de províncias",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 13,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 14,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 17,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 20,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 31,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 32,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 46,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 48,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 49,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        }
+      ]
+    },
+    {
+      "i": 48,
+      "name": "Osmorn",
+      "government": {
+        "form": "Monarchy",
+        "designation": "Reino",
+        "monarchy": true,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 13,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 14,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 17,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 20,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 31,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 32,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Suspicion",
+          "source": "Silvangad 5.0.map",
+          "label": "Desconfiança"
+        },
+        {
+          "state": 35,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 46,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 47,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 49,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        }
+      ]
+    },
+    {
+      "i": 49,
+      "name": "Batovia",
+      "government": {
+        "form": "Republic",
+        "designation": "Federação",
+        "monarchy": false,
+        "ruler": null,
+        "dynasty": null,
+        "independent": true,
+        "overlords": [],
+        "source": "Silvangad 5.0.map"
+      },
+      "diplomacy": [
+        {
+          "state": 12,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 13,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 14,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 17,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 20,
+          "relation": "Enemy",
+          "source": "Silvangad 5.0.map",
+          "label": "Inimizade"
+        },
+        {
+          "state": 23,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 24,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 26,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 28,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 29,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 31,
+          "relation": "Ally",
+          "source": "Silvangad 5.0.map",
+          "label": "Aliança"
+        },
+        {
+          "state": 32,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 33,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 34,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 35,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 46,
+          "relation": "Neutral",
+          "source": "Silvangad 5.0.map",
+          "label": "Neutra"
+        },
+        {
+          "state": 47,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        },
+        {
+          "state": 48,
+          "relation": "Friendly",
+          "source": "Silvangad 5.0.map",
+          "label": "Amistosa"
+        }
+      ]
+    }
+  ]
+}

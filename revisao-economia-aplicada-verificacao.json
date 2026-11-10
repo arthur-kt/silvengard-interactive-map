@@ -1,0 +1,66 @@
+{
+  "populations": [
+    {
+      "name": "Velaffeld",
+      "population": 250000
+    },
+    {
+      "name": "Asgorath",
+      "population": 100000
+    },
+    {
+      "name": "Elucitor",
+      "population": 1050000
+    }
+  ],
+  "population": {
+    "residents": 4125526,
+    "itinerants": 99332,
+    "rural": 0,
+    "visitors": 4745
+  },
+  "forecast": {
+    "cycle": 1,
+    "tradeValue": 162560.46,
+    "trades": 2984,
+    "productionValue": 283851.14213030826,
+    "unmetFood": 239.47114056878462,
+    "capitalAdded": 3264824.19,
+    "tariffs": 4241.82,
+    "lostValue": 11609.524915030732,
+    "inTransit": 0,
+    "services": 73389.96
+  },
+  "first": {
+    "cycle": 1,
+    "tradeValue": 140372.92,
+    "trades": 2609,
+    "productionValue": 244351.18279984684,
+    "unmetFood": 368.72796849137336,
+    "capitalAdded": 3264824.19,
+    "tariffs": 3668.18,
+    "lostValue": 10540.536733382782,
+    "inTransit": 1266,
+    "services": 64670.01
+  },
+  "second": {
+    "cycle": 2,
+    "tradeValue": 103955.97,
+    "trades": 2244,
+    "productionValue": 278742.462126744,
+    "unmetFood": 229.054258692144,
+    "capitalAdded": 0,
+    "tariffs": 2800.32,
+    "lostValue": 4758.865790586701,
+    "inTransit": 1096,
+    "services": 63585.73
+  },
+  "routes": 163,
+  "internalPaths": 13,
+  "brokenCommercialRoutes": [],
+  "unconnected": [],
+  "badShips": [],
+  "marketsReconcile": true,
+  "moneyConserved": true,
+  "worldUnchanged": true
+}

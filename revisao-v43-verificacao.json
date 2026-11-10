@@ -1,0 +1,54 @@
+{
+  "Elucitor": {
+    "consumption": 8177.331734394483,
+    "beforeCapacity": {
+      "total": 376130.8,
+      "grain": 346500,
+      "grainShare": 92.12220855085519
+    },
+    "afterCapacity": {
+      "total": 33095.8,
+      "grain": 3465.0000000000005,
+      "grainShare": 10.469606415315539
+    },
+    "afterActual": {
+      "total": 11332.451043138324,
+      "grain": 3465.0000000000005,
+      "grainShare": 30.57590971988377
+    }
+  },
+  "classes": {
+    "peasant": {
+      "budget": 0,
+      "spent": 0
+    },
+    "modest": {
+      "budget": 9467.5784,
+      "spent": 146.79999999999998
+    },
+    "comfortable": {
+      "budget": 165705.52752000006,
+      "spent": 8513.613285855385
+    },
+    "wealthy": {
+      "budget": 388050.4971000001,
+      "spent": 13714.19049987246
+    },
+    "aristocratic": {
+      "budget": 354814.8824999999,
+      "spent": 5473.173125
+    }
+  },
+  "world": {
+    "cycle": 1,
+    "tradeValue": 142917.73,
+    "trades": 3194,
+    "productionValue": 223189.7368343638,
+    "unmetFood": 27.57237399085055,
+    "capitalAdded": 3264824.19,
+    "tariffs": 3663.82,
+    "lostValue": 10503.706447998471,
+    "inTransit": 0,
+    "services": 62165.98
+  }
+}

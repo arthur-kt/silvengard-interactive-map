@@ -1,0 +1,603 @@
+{
+  "dragonfallAnchors": {
+    "Winterhelm": [
+      1090.33,
+      283.77
+    ],
+    "Gugacon": [
+      1286,
+      244
+    ]
+  },
+  "cities": [
+    {
+      "name": "Ereth",
+      "state": 12,
+      "paper": [
+        1100,
+        775
+      ],
+      "world": [
+        1270.9299999999998,
+        426.27
+      ]
+    },
+    {
+      "name": "Asgorath",
+      "state": 12,
+      "paper": [
+        605,
+        760
+      ],
+      "world": [
+        1063.03,
+        421.77
+      ]
+    },
+    {
+      "name": "Rivertown",
+      "state": 12,
+      "paper": [
+        755,
+        770
+      ],
+      "world": [
+        1126.03,
+        424.77
+      ]
+    },
+    {
+      "name": "Torre Solitária",
+      "state": 12,
+      "paper": [
+        900,
+        380
+      ],
+      "world": [
+        1186.9299999999998,
+        307.77
+      ]
+    },
+    {
+      "name": "Elucitor",
+      "state": 13,
+      "paper": [
+        740,
+        310
+      ],
+      "world": [
+        1071.32,
+        530.9
+      ]
+    },
+    {
+      "name": "Dagorah",
+      "state": 12,
+      "paper": [
+        275,
+        240
+      ],
+      "world": [
+        924.43,
+        265.77
+      ]
+    },
+    {
+      "name": "Malacatt",
+      "state": 12,
+      "paper": [
+        350,
+        545
+      ],
+      "world": [
+        955.93,
+        357.27
+      ]
+    },
+    {
+      "name": "Savhalla",
+      "state": 12,
+      "paper": [
+        390,
+        835
+      ],
+      "world": [
+        972.7299999999999,
+        444.27
+      ]
+    },
+    {
+      "name": "Ignis",
+      "state": 13,
+      "paper": [
+        915,
+        235
+      ],
+      "world": [
+        1176.32,
+        500.9
+      ]
+    },
+    {
+      "name": "Vir",
+      "state": 47,
+      "paper": [
+        821,
+        653
+      ],
+      "world": [
+        263.14,
+        399.31
+      ]
+    },
+    {
+      "name": "Nostris",
+      "state": 13,
+      "paper": [
+        940,
+        340
+      ],
+      "world": [
+        1191.32,
+        545.9
+      ]
+    },
+    {
+      "name": "Porto das Cinzas",
+      "state": 12,
+      "paper": [
+        810,
+        570
+      ],
+      "world": [
+        1149.1299999999999,
+        364.77
+      ]
+    },
+    {
+      "name": "Triovorn",
+      "state": 47,
+      "paper": [
+        1100,
+        240
+      ],
+      "world": [
+        358.0,
+        287.8
+      ]
+    },
+    {
+      "name": "Lorvus",
+      "state": 13,
+      "paper": [
+        565,
+        415
+      ],
+      "world": [
+        966.3199999999999,
+        583.4
+      ]
+    },
+    {
+      "name": "Guernica",
+      "state": 47,
+      "paper": [
+        780,
+        450
+      ],
+      "world": [
+        249.20000000000002,
+        344.5
+      ]
+    },
+    {
+      "name": "Winterhelm",
+      "state": 12,
+      "paper": [
+        670,
+        300
+      ],
+      "world": [
+        1090.33,
+        283.77
+      ]
+    },
+    {
+      "name": "Forte Drakis",
+      "state": 13,
+      "paper": [
+        555,
+        205
+      ],
+      "world": [
+        960.3199999999999,
+        488.9
+      ]
+    },
+    {
+      "name": "Kyon",
+      "state": 47,
+      "paper": [
+        786,
+        254
+      ],
+      "world": [
+        251.24,
+        291.58
+      ]
+    },
+    {
+      "name": "Porto de Vern",
+      "state": 47,
+      "paper": [
+        1080,
+        600
+      ],
+      "world": [
+        351.20000000000005,
+        385.0
+      ]
+    },
+    {
+      "name": "Tramor",
+      "state": 13,
+      "paper": [
+        545,
+        495
+      ],
+      "world": [
+        954.3199999999999,
+        623.4
+      ]
+    },
+    {
+      "name": "Vostris",
+      "state": 13,
+      "paper": [
+        785,
+        205
+      ],
+      "world": [
+        1098.32,
+        488.9
+      ]
+    },
+    {
+      "name": "Mauron",
+      "state": 47,
+      "paper": [
+        676,
+        185
+      ],
+      "world": [
+        213.84,
+        272.95
+      ]
+    },
+    {
+      "name": "Porto do Álamo",
+      "state": 47,
+      "paper": [
+        468,
+        578
+      ],
+      "world": [
+        143.12,
+        379.06
+      ]
+    },
+    {
+      "name": "Lirion",
+      "state": 47,
+      "paper": [
+        1135,
+        420
+      ],
+      "world": [
+        369.9,
+        336.4
+      ]
+    },
+    {
+      "name": "Oregon",
+      "state": 47,
+      "paper": [
+        650,
+        485
+      ],
+      "world": [
+        205.0,
+        353.95
+      ]
+    },
+    {
+      "name": "Gugacon",
+      "state": 12,
+      "paper": [
+        1170,
+        330
+      ],
+      "world": [
+        1286.0,
+        243.99999999999997
+      ]
+    },
+    {
+      "name": "Vila Rinus",
+      "state": 12,
+      "paper": [
+        610,
+        390
+      ],
+      "world": [
+        1065.1299999999999,
+        310.77
+      ]
+    },
+    {
+      "name": "Argendau",
+      "state": 13,
+      "paper": [
+        780,
+        610
+      ],
+      "world": [
+        1095.32,
+        680.9
+      ]
+    },
+    {
+      "name": "Fermaletim",
+      "state": 13,
+      "paper": [
+        480,
+        570
+      ],
+      "world": [
+        915.3199999999999,
+        660.9
+      ]
+    },
+    {
+      "name": "Pantos",
+      "state": 13,
+      "paper": [
+        300,
+        740
+      ],
+      "world": [
+        807.3199999999999,
+        745.9
+      ]
+    },
+    {
+      "name": "Bomaria",
+      "state": 13,
+      "paper": [
+        960,
+        395
+      ],
+      "world": [
+        1203.32,
+        573.4
+      ]
+    },
+    {
+      "name": "Vennoduro",
+      "state": 13,
+      "paper": [
+        695,
+        380
+      ],
+      "world": [
+        1044.32,
+        565.9
+      ]
+    },
+    {
+      "name": "Althor",
+      "state": 13,
+      "paper": [
+        515,
+        345
+      ],
+      "world": [
+        936.3199999999999,
+        548.4
+      ]
+    },
+    {
+      "name": "Arenor",
+      "state": 13,
+      "paper": [
+        300,
+        455
+      ],
+      "world": [
+        807.3199999999999,
+        603.4
+      ]
+    },
+    {
+      "name": "Castamor",
+      "state": 13,
+      "paper": [
+        720,
+        700
+      ],
+      "world": [
+        1059.32,
+        725.9
+      ]
+    },
+    {
+      "name": "Nediora",
+      "state": 13,
+      "paper": [
+        590,
+        740
+      ],
+      "world": [
+        981.3199999999999,
+        745.9
+      ]
+    },
+    {
+      "name": "Meriadoc",
+      "state": 13,
+      "paper": [
+        870,
+        455
+      ],
+      "world": [
+        1149.32,
+        603.4
+      ]
+    },
+    {
+      "name": "Cetolo",
+      "state": 13,
+      "paper": [
+        295,
+        380
+      ],
+      "world": [
+        804.3199999999999,
+        565.9
+      ]
+    },
+    {
+      "name": "Condado de Alia",
+      "state": 13,
+      "paper": [
+        750,
+        535
+      ],
+      "world": [
+        1077.32,
+        643.4
+      ]
+    },
+    {
+      "name": "Danumbria",
+      "state": 13,
+      "paper": [
+        220,
+        570
+      ],
+      "world": [
+        759.3199999999999,
+        660.9
+      ]
+    },
+    {
+      "name": "Adhuc Vivere",
+      "state": 13,
+      "paper": [
+        900,
+        590
+      ],
+      "world": [
+        1167.32,
+        670.9
+      ]
+    },
+    {
+      "name": "Ros Leones",
+      "state": 13,
+      "paper": [
+        905,
+        720
+      ],
+      "world": [
+        1170.32,
+        735.9
+      ]
+    },
+    {
+      "name": "Nilhelm",
+      "state": 12,
+      "paper": [
+        860,
+        815
+      ],
+      "world": [
+        1170.1299999999999,
+        438.27
+      ]
+    },
+    {
+      "name": "Vila Sardinhas",
+      "state": 12,
+      "paper": [
+        875,
+        700
+      ],
+      "world": [
+        1176.4299999999998,
+        403.77
+      ]
+    },
+    {
+      "name": "Sulpa",
+      "state": 47,
+      "paper": [
+        970,
+        170
+      ],
+      "world": [
+        313.8,
+        268.9
+      ]
+    },
+    {
+      "name": "Guil",
+      "state": 47,
+      "paper": [
+        950,
+        420
+      ],
+      "world": [
+        307.0,
+        336.4
+      ]
+    },
+    {
+      "name": "Bernut",
+      "state": 47,
+      "paper": [
+        271,
+        553
+      ],
+      "world": [
+        76.13999999999999,
+        372.31
+      ]
+    },
+    {
+      "name": "Liotorn",
+      "state": 13,
+      "paper": [
+        270,
+        325
+      ],
+      "world": [
+        789.3199999999999,
+        538.4
+      ]
+    },
+    {
+      "name": "Vyoh",
+      "state": 47,
+      "paper": [
+        505,
+        458
+      ],
+      "world": [
+        155.7,
+        346.66
+      ]
+    }
+  ],
+  "note": "Vitravion: geometria e posições do papel; nomes pouco legíveis auxiliados pelo digital."
+}

@@ -1,0 +1,778 @@
+TAP version 13
+# Subtest: author-approved capital census and itinerant communities are preserved exactly
+ok 1 - author-approved capital census and itinerant communities are preserved exactly
+  ---
+  duration_ms: 4.6932
+  type: 'test'
+  ...
+# Subtest: food units have consistent edible weight, person-days and demand
+ok 2 - food units have consistent edible weight, person-days and demand
+  ---
+  duration_ms: 2.4649
+  type: 'test'
+  ...
+# Subtest: completed ships cannot be shipped over land, while components can
+ok 3 - completed ships cannot be shipped over land, while components can
+  ---
+  duration_ms: 60.4678
+  type: 'test'
+  ...
+# Subtest: a sea fleet remains installed across cycles and only its wear is consumed
+ok 4 - a sea fleet remains installed across cycles and only its wear is consumed
+  ---
+  duration_ms: 10.2039
+  type: 'test'
+  ...
+# Subtest: long-haul purchases are reserved in transit and arrive in a later saved cycle
+ok 5 - long-haul purchases are reserved in transit and arrive in a later saved cycle
+  ---
+  duration_ms: 9.24
+  type: 'test'
+  ...
+# Subtest: hostility charges a surcharge; active war blocks trade and removes inaccessible scarcity supply
+ok 6 - hostility charges a surcharge; active war blocks trade and removes inaccessible scarcity supply
+  ---
+  duration_ms: 20.5655
+  type: 'test'
+  ...
+# Subtest: production follows academy, dwarf, desert, port and dead-land roles
+ok 7 - production follows academy, dwarf, desert, port and dead-land roles
+  ---
+  duration_ms: 14.173
+  type: 'test'
+  ...
+# Subtest: commercial calls are attached to their real city or harbour after relocation
+ok 8 - commercial calls are attached to their real city or harbour after relocation
+  ---
+  duration_ms: 173.4769
+  type: 'test'
+  ...
+# Subtest: a new war retains prepaid cargo instead of delivering it across the embargo
+ok 9 - a new war retains prepaid cargo instead of delivering it across the embargo
+  ---
+  duration_ms: 18.0047
+  type: 'test'
+  ...
+# Subtest: the persistent checkpoint preserves unknown census and seasonal communities on rebuild
+ok 10 - the persistent checkpoint preserves unknown census and seasonal communities on rebuild
+  ---
+  duration_ms: 8.1087
+  type: 'test'
+  ...
+# Subtest: authored seats and every membership match the supplied Markdown
+ok 11 - authored seats and every membership match the supplied Markdown
+  ---
+  duration_ms: 3.5173
+  type: 'test'
+  ...
+# Subtest: approved economy preserves authored market seats, prices, geography and identities
+ok 12 - approved economy preserves authored market seats, prices, geography and identities
+  ---
+  duration_ms: 974.4947
+  type: 'test'
+  ...
+# Subtest: uninhabited Nilhelm remains assigned without production and Valar has no market
+ok 13 - uninhabited Nilhelm remains assigned without production and Valar has no market
+  ---
+  duration_ms: 0.8075
+  type: 'test'
+  ...
+# Subtest: sharing a market does not override war or create a political merger
+ok 14 - sharing a market does not override war or create a political merger
+  ---
+  duration_ms: 0.3741
+  type: 'test'
+  ...
+# Subtest: latest seat changes and all requested transfers are preserved
+ok 15 - latest seat changes and all requested transfers are preserved
+  ---
+  duration_ms: 0.5751
+  type: 'test'
+  ...
+# Subtest: all 49 author city edits and all supplied paint fields are baked exactly
+ok 16 - all 49 author city edits and all supplied paint fields are baked exactly
+  ---
+  duration_ms: 4.9748
+  type: 'test'
+  ...
+# Subtest: academy list, Allanan harbour and approved island name match the author
+ok 17 - academy list, Allanan harbour and approved island name match the author
+  ---
+  duration_ms: 1.2513
+  type: 'test'
+  ...
+# Subtest: the two requested northern moves stay on their political territory
+ok 18 - the two requested northern moves stay on their political territory
+  ---
+  duration_ms: 0.1951
+  type: 'test'
+  ...
+# Subtest: the Solitary Tower terrace supports the whole foundation without changing map data
+ok 19 - the Solitary Tower terrace supports the whole foundation without changing map data
+  ---
+  duration_ms: 876.7301
+  type: 'test'
+  ...
+# Subtest: editing inhabitants, including zero, preserves the city culture, faith, features and position
+ok 20 - editing inhabitants, including zero, preserves the city culture, faith, features and position
+  ---
+  duration_ms: 2.6907
+  type: 'test'
+  ...
+# Subtest: religion selects its associated deity and invalid edits are rejected before mutation
+ok 21 - religion selects its associated deity and invalid edits are rejected before mutation
+  ---
+  duration_ms: 2.7644
+  type: 'test'
+  ...
+# Subtest: a land city move reconnects the attached roads, preserves other routes and survives serialization
+ok 22 - a land city move reconnects the attached roads, preserves other routes and survives serialization
+  ---
+  duration_ms: 1050.8823
+  type: 'test'
+  ...
+# Subtest: water relocation and ports too far inland fail without altering any city or path
+ok 23 - water relocation and ports too far inland fail without altering any city or path
+  ---
+  duration_ms: 858.1306
+  type: 'test'
+  ...
+# Subtest: port relocation reconnects a sea lane over water and retains its state in the route filter
+ok 24 - port relocation reconnects a sea lane over water and retains its state in the route filter
+  ---
+  duration_ms: 73.12
+  type: 'test'
+  ...
+# Subtest: the latest political strokes are included without losing prior approved paint fields
+ok 25 - the latest political strokes are included without losing prior approved paint fields
+  ---
+  duration_ms: 14.7874
+  type: 'test'
+  ...
+# Subtest: Vir and Lirion exchange locations and fortifications while preserving each city identity and facts
+ok 26 - Vir and Lirion exchange locations and fortifications while preserving each city identity and facts
+  ---
+  duration_ms: 1148.9129
+  type: 'test'
+  ...
+# Subtest: a created city survives a JSON round trip, inherits regional culture, and connects over land
+ok 27 - a created city survives a JSON round trip, inherits regional culture, and connects over land
+  ---
+  duration_ms: 80.4942
+  type: 'test'
+  ...
+# Subtest: removing a port cleans every route reference and drops dead ends without altering map cells
+ok 28 - removing a port cleans every route reference and drops dead ends without altering map cells
+  ---
+  duration_ms: 600.226
+  type: 'test'
+  ...
+# Subtest: removing an intermediate stop preserves the continuous principal road
+ok 29 - removing an intermediate stop preserves the continuous principal road
+  ---
+  duration_ms: 18.2076
+  type: 'test'
+  ...
+# Subtest: deleting a capital assigns one remaining capital and handles a state with no cities
+ok 30 - deleting a capital assigns one remaining capital and handles a state with no cities
+  ---
+  duration_ms: 887.3925
+  type: 'test'
+  ...
+# Subtest: population heat changes with city counts, leaves water untouched, and handles an empty city
+ok 31 - population heat changes with city counts, leaves water untouched, and handles an empty city
+  ---
+  duration_ms: 205.9536
+  type: 'test'
+  ...
+# Subtest: reopening a deletion retains the canonical network baseline and restoring the capital restores its office
+ok 32 - reopening a deletion retains the canonical network baseline and restoring the capital restores its office
+  ---
+  duration_ms: 778.7685
+  type: 'test'
+  ...
+# Subtest: Seven Cities replace less fitting goods with actual extraction and retain their identity
+ok 33 - Seven Cities replace less fitting goods with actual extraction and retain their identity
+  ---
+  duration_ms: 315.9292
+  type: 'test'
+  ...
+# Subtest: market territories honor every active city, cover land across states and exclude Valar
+ok 34 - market territories honor every active city, cover land across states and exclude Valar
+  ---
+  duration_ms: 5.7104
+  type: 'test'
+  ...
+# Subtest: goods map selects the actual dominant product by value and preserves the full production list
+ok 35 - goods map selects the actual dominant product by value and preserves the full production list
+  ---
+  duration_ms: 0.7845
+  type: 'test'
+  ...
+# Subtest: directional market links and market production reconcile with individual transfers
+ok 36 - directional market links and market production reconcile with individual transfers
+  ---
+  duration_ms: 2.6194
+  type: 'test'
+  ...
+# Subtest: diplomatic prices apply discounts, distrust and a cost floor; embargoes can target one good
+ok 37 - diplomatic prices apply discounts, distrust and a cost floor; embargoes can target one good
+  ---
+  duration_ms: 6.137
+  type: 'test'
+  ...
+# Subtest: tariffs go to the importing state while coins are conserved
+ok 38 - tariffs go to the importing state while coins are conserved
+  ---
+  duration_ms: 28.7381
+  type: 'test'
+  ...
+# Subtest: naval blockades close sea access and piracy loses cargo without creating money
+ok 39 - naval blockades close sea access and piracy loses cargo without creating money
+  ---
+  duration_ms: 5.1048
+  type: 'test'
+  ...
+# Subtest: scarcity raises local prices, surpluses lower them, and stored stock reduces shortages
+ok 40 - scarcity raises local prices, surpluses lower them, and stored stock reduces shortages
+  ---
+  duration_ms: 6.7826
+  type: 'test'
+  ...
+# Subtest: magic schools manufacture tradable research using actual paper and ink
+ok 41 - magic schools manufacture tradable research using actual paper and ink
+  ---
+  duration_ms: 2.3118
+  type: 'test'
+  ...
+# Subtest: policy validation rejects invalid states, goods, rates and piracy risks
+ok 42 - policy validation rejects invalid states, goods, rates and piracy risks
+  ---
+  duration_ms: 1.2041
+  type: 'test'
+  ...
+# Subtest: price references use the base, all-market simple mean and nearest three other centres
+ok 43 - price references use the base, all-market simple mean and nearest three other centres
+  ---
+  duration_ms: 2.4802
+  type: 'test'
+  ...
+# Subtest: no external supply is distinct from free freight and zero references never become infinity
+ok 44 - no external supply is distinct from free freight and zero references never become infinity
+  ---
+  duration_ms: 0.3083
+  type: 'test'
+  ...
+# Subtest: freight quotes exclude internal suppliers and enemies and follow actual route distance
+ok 45 - freight quotes exclude internal suppliers and enemies and follow actual route distance
+  ---
+  duration_ms: 5.1617
+  type: 'test'
+  ...
+# Subtest: regional market prices are distinct and scale with an edited global reference price
+ok 46 - regional market prices are distinct and scale with an edited global reference price
+  ---
+  duration_ms: 2.6723
+  type: 'test'
+  ...
+# Subtest: war removes the cheapest enemy supplier and reallocates purchases without mutating the current world
+ok 47 - war removes the cheapest enemy supplier and reallocates purchases without mutating the current world
+  ---
+  duration_ms: 91.9987
+  type: 'test'
+  ...
+# Subtest: commercial routing compares sea and land freight and rejects hostile transit
+ok 48 - commercial routing compares sea and land freight and rejects hostile transit
+  ---
+  duration_ms: 2.3374
+  type: 'test'
+  ...
+# Subtest: economic diplomacy is reciprocal, exportable and saved with existing provinces intact
+ok 49 - economic diplomacy is reciprocal, exportable and saved with existing provinces intact
+  ---
+  duration_ms: 1727.3367
+  type: 'test'
+  ...
+# Subtest: currency conversions use copper precision and rare materials keep the authored price hierarchy
+ok 50 - currency conversions use copper precision and rare materials keep the authored price hierarchy
+  ---
+  duration_ms: 29.5745
+  type: 'test'
+  ...
+# Subtest: special production is attached to the correct city and scenario exclusions always apply
+ok 51 - special production is attached to the correct city and scenario exclusions always apply
+  ---
+  duration_ms: 2.5235
+  type: 'test'
+  ...
+# Subtest: province totals include every urban and rural producer exactly once, with Valar and Adhuc blocked
+ok 52 - province totals include every urban and rural producer exactly once, with Valar and Adhuc blocked
+  ---
+  duration_ms: 2029.2128
+  type: 'test'
+  ...
+# Subtest: manufacturing imports real stock over registered routes, consumes inputs and conserves coins
+ok 53 - manufacturing imports real stock over registered routes, consumes inputs and conserves coins
+  ---
+  duration_ms: 19.5273
+  type: 'test'
+  ...
+# Subtest: global routes add only lawful land/water paths, preserve existing routes and can be saved with economic state
+ok 54 - global routes add only lawful land/water paths, preserve existing routes and can be saved with economic state
+  ---
+  duration_ms: 9282.23
+  type: 'test'
+  ...
+# Subtest: circular brush preserves water and a stroke is one undo action
+ok 55 - circular brush preserves water and a stroke is one undo action
+  ---
+  duration_ms: 3.7574
+  type: 'test'
+  ...
+# Subtest: biome and vegetation changes undo independently and restore optional fields
+ok 56 - biome and vegetation changes undo independently and restore optional fields
+  ---
+  duration_ms: 0.4018
+  type: 'test'
+  ...
+# Subtest: export/import reproduces edits and replacing an edition is undoable
+ok 57 - export/import reproduces edits and replacing an edition is undoable
+  ---
+  duration_ms: 1.5632
+  type: 'test'
+  ...
+# Subtest: invalid imports are rejected before changing any cell
+ok 58 - invalid imports are rejected before changing any cell
+  ---
+  duration_ms: 0.6998
+  type: 'test'
+  ...
+# Subtest: painting after undo clears redo and empty strokes do not consume undo
+ok 59 - painting after undo clears redo and empty strokes do not consume undo
+  ---
+  duration_ms: 0.2862
+  type: 'test'
+  ...
+# Subtest: authored prose renders tables, emphasis and lists without executing HTML
+ok 60 - authored prose renders tables, emphasis and lists without executing HTML
+  ---
+  duration_ms: 1.8728
+  type: 'test'
+  ...
+# Subtest: editorial comments and file provenance are not printed as player-facing prose
+ok 61 - editorial comments and file provenance are not printed as player-facing prose
+  ---
+  duration_ms: 0.2335
+  type: 'test'
+  ...
+# Subtest: timeline orders intervals by their beginning without changing date labels
+ok 62 - timeline orders intervals by their beginning without changing date labels
+  ---
+  duration_ms: 1.9176
+  type: 'test'
+  ...
+# Subtest: city sheet shows its own historical prose, distinguishing the two Gugacon
+ok 63 - city sheet shows its own historical prose, distinguishing the two Gugacon
+  ---
+  duration_ms: 3.2831
+  type: 'test'
+  ...
+# Subtest: province preview is independent from the cities directory
+ok 64 - province preview is independent from the cities directory
+  ---
+  duration_ms: 0.7942
+  type: 'test'
+  ...
+# Subtest: culture and religion cards receive narrative content without opening the reader
+ok 65 - culture and religion cards receive narrative content without opening the reader
+  ---
+  duration_ms: 27.8509
+  type: 'test'
+  ...
+# Subtest: regional fallback follows the state of the selected terrain
+ok 66 - regional fallback follows the state of the selected terrain
+  ---
+  duration_ms: 4.4327
+  type: 'test'
+  ...
+# Subtest: unknown entities do not acquire fictional history
+ok 67 - unknown entities do not acquire fictional history
+  ---
+  duration_ms: 4.7426
+  type: 'test'
+  ...
+# Subtest: a hybrid crosses registered ports and calculates each mode at its own speed
+ok 68 - a hybrid crosses registered ports and calculates each mode at its own speed
+  ---
+  duration_ms: 2272.7035
+  type: 'test'
+  ...
+# Subtest: hybrid routing cannot switch between land and sea without a port
+ok 69 - hybrid routing cannot switch between land and sea without a port
+  ---
+  duration_ms: 25.0413
+  type: 'test'
+  ...
+# Subtest: the supplied edition 11 is the exact saved default, including its maritime geometry
+ok 70 - the supplied edition 11 is the exact saved default, including its maritime geometry
+  ---
+  duration_ms: 650.8925
+  type: 'test'
+  ...
+# Subtest: approved province boundaries preserve political cells and remain editable
+ok 71 - approved province boundaries preserve political cells and remain editable
+  ---
+  duration_ms: 48.1757
+  type: 'test'
+  ...
+# Subtest: both authored ports retain exact city data, coordinates, faith and culture from the supplied export
+ok 72 - both authored ports retain exact city data, coordinates, faith and culture from the supplied export
+  ---
+  duration_ms: 5.6766
+  type: 'test'
+  ...
+# Subtest: Selne is no longer a port and the new maritime stops are connected without deleting older cities
+ok 73 - Selne is no longer a port and the new maritime stops are connected without deleting older cities
+  ---
+  duration_ms: 1.5883
+  type: 'test'
+  ...
+# Subtest: geographic corrections preserve all remaining river geometry and remove the Stormouth trace
+ok 74 - geographic corrections preserve all remaining river geometry and remove the Stormouth trace
+  ---
+  duration_ms: 3.7903
+  type: 'test'
+  ...
+# Subtest: Markdown lists every current city, culture, religion, deity and named geographic element
+ok 75 - Markdown lists every current city, culture, religion, deity and named geographic element
+  ---
+  duration_ms: 27.8986
+  type: 'test'
+  ...
+# Subtest: Ros Leones has a continuous land corridor from Danumbria to Vilenages
+ok 76 - Ros Leones has a continuous land corridor from Danumbria to Vilenages
+  ---
+  duration_ms: 0.939
+  type: 'test'
+  ...
+# Subtest: unknown North is excluded and Arenor now belongs to Ros Leones
+ok 77 - unknown North is excluded and Arenor now belongs to Ros Leones
+  ---
+  duration_ms: 13.786
+  type: 'test'
+  ...
+# Subtest: commercial territory is an overlay and does not change terrain or political geography
+ok 78 - commercial territory is an overlay and does not change terrain or political geography
+  ---
+  duration_ms: 567.8477
+  type: 'test'
+  ...
+# Subtest: Aleravum crosses the same river bank and its complete terrace clears the river
+ok 79 - Aleravum crosses the same river bank and its complete terrace clears the river
+  ---
+  duration_ms: 2.1559
+  type: 'test'
+  ...
+# Subtest: Marshell has a single new capital, relocated Grainhem and no retired cities
+ok 80 - Marshell has a single new capital, relocated Grainhem and no retired cities
+  ---
+  duration_ms: 3.0096
+  type: 'test'
+  ...
+# Subtest: maritime presets are 6, 11 and 20 km/h and walking remains 4.5
+ok 81 - maritime presets are 6, 11 and 20 km/h and walking remains 4.5
+  ---
+  duration_ms: 41.3403
+  type: 'test'
+  ...
+# Subtest: old default speeds migrate in party settings without altering plans or history
+ok 82 - old default speeds migrate in party settings without altering plans or history
+  ---
+  duration_ms: 0.3032
+  type: 'test'
+  ...
+# Subtest: major ports and dwarf strongholds match the author and exclusions
+ok 83 - major ports and dwarf strongholds match the author and exclusions
+  ---
+  duration_ms: 1.7995
+  type: 'test'
+  ...
+# Subtest: seeded shipping lanes never cut across land
+ok 84 - seeded shipping lanes never cut across land
+  ---
+  duration_ms: 1.4058
+  type: 'test'
+  ...
+# Subtest: registered ocean paths connect ports and exempt passengers from CON saves
+ok 85 - registered ocean paths connect ports and exempt passengers from CON saves
+  ---
+  duration_ms: 1035.3028
+  type: 'test'
+  ...
+# Subtest: roads are normal terrain even when nearby terrain is difficult
+ok 86 - roads are normal terrain even when nearby terrain is difficult
+  ---
+  duration_ms: 0.2633
+  type: 'test'
+  ...
+# Subtest: network edits, deletion and restoration survive a JSON round trip
+ok 87 - network edits, deletion and restoration survive a JSON round trip
+  ---
+  duration_ms: 1462.8932
+  type: 'test'
+  ...
+# Subtest: only long continuous corridors have principal names; all original local roads remain
+ok 88 - only long continuous corridors have principal names; all original local roads remain
+  ---
+  duration_ms: 5.0616
+  type: 'test'
+  ...
+# Subtest: retained local roads use original edges after pruning omitted-city branches
+ok 89 - retained local roads use original edges after pruning omitted-city branches
+  ---
+  duration_ms: 287.7957
+  type: 'test'
+  ...
+# Subtest: version-12 edited links can be imported without becoming principal corridors
+ok 90 - version-12 edited links can be imported without becoming principal corridors
+  ---
+  duration_ms: 1.2108
+  type: 'test'
+  ...
+# Subtest: native city populations use the exact original values and documented unit conversion
+ok 91 - native city populations use the exact original values and documented unit conversion
+  ---
+  duration_ms: 34.2549
+  type: 'test'
+  ...
+# Subtest: all synthetic cities have traceable references and explicitly estimated populations
+ok 92 - all synthetic cities have traceable references and explicitly estimated populations
+  ---
+  duration_ms: 0.621
+  type: 'test'
+  ...
+# Subtest: all current cities and states resolve to local genuine or reference heraldry assets
+ok 93 - all current cities and states resolve to local genuine or reference heraldry assets
+  ---
+  duration_ms: 75.6824
+  type: 'test'
+  ...
+# Subtest: Dragonfall is an independent kingdom with reciprocal neutral relations to Elucitor
+ok 94 - Dragonfall is an independent kingdom with reciprocal neutral relations to Elucitor
+  ---
+  duration_ms: 1.7224
+  type: 'test'
+  ...
+# Subtest: missing languages, governors and dynasties remain unset and republics have no invented monarch
+ok 95 - missing languages, governors and dynasties remain unset and republics have no invented monarch
+  ---
+  duration_ms: 22.1694
+  type: 'test'
+  ...
+# Subtest: population swaps preserve all other city facts and all current diplomatic relationships
+ok 96 - population swaps preserve all other city facts and all current diplomatic relationships
+  ---
+  duration_ms: 562.5175
+  type: 'test'
+  ...
+# Subtest: city and state sheets keep provenance and languages internal
+ok 97 - city and state sheets keep provenance and languages internal
+  ---
+  duration_ms: 5.6067
+  type: 'test'
+  ...
+# Subtest: author heraldry replaces only the four requested state emblems
+ok 98 - author heraldry replaces only the four requested state emblems
+  ---
+  duration_ms: 4.757
+  type: 'test'
+  ...
+# Subtest: requested city transfers change provincial territories and preserve neighboring seats
+ok 99 - requested city transfers change provincial territories and preserve neighboring seats
+  ---
+  duration_ms: 67.3742
+  type: 'test'
+  ...
+# Subtest: brush preserves water, states and official geography; undo and redo restore complete strokes
+ok 100 - brush preserves water, states and official geography; undo and redo restore complete strokes
+  ---
+  duration_ms: 632.682
+  type: 'test'
+  ...
+# Subtest: province edits round-trip names and boundaries, refresh population, and save with defaults
+ok 101 - province edits round-trip names and boundaries, refresh population, and save with defaults
+  ---
+  duration_ms: 807.8292
+  type: 'test'
+  ...
+# Subtest: reject incompatible, duplicate, cross-state, water and invalid name edits before applying them
+ok 102 - reject incompatible, duplicate, cross-state, water and invalid name edits before applying them
+  ---
+  duration_ms: 5.8702
+  type: 'test'
+  ...
+# Subtest: only provinces without assigned land are pruned, preserving every authored territory and name
+ok 103 - only provinces without assigned land are pruned, preserving every authored territory and name
+  ---
+  duration_ms: 271.7941
+  type: 'test'
+  ...
+# Subtest: created provinces can be painted, undone, exported and saved; occupied provinces cannot be deleted
+ok 104 - created provinces can be painted, undone, exported and saved; occupied provinces cannot be deleted
+  ---
+  duration_ms: 1085.1116
+  type: 'test'
+  ...
+# Subtest: invalid province creation and deleting occupied provinces through imports are rejected before mutation
+ok 105 - invalid province creation and deleting occupied provinces through imports are rejected before mutation
+  ---
+  duration_ms: 30.9266
+  type: 'test'
+  ...
+# Subtest: route inspector measures city intervals along bent geometry and pace changes
+ok 106 - route inspector measures city intervals along bent geometry and pace changes
+  ---
+  duration_ms: 2.7037
+  type: 'test'
+  ...
+# Subtest: sea inspector uses actual harbour positions and adjustable ship speed
+ok 107 - sea inspector uses actual harbour positions and adjustable ship speed
+  ---
+  duration_ms: 0.3634
+  type: 'test'
+  ...
+# Subtest: canonical world omits cities and routes retired by the author
+ok 108 - canonical world omits cities and routes retired by the author
+  ---
+  duration_ms: 545.0711
+  type: 'test'
+  ...
+# Subtest: Aleravum academy is in Veniun at Vathnis and Gannas stays in Piglia
+ok 109 - Aleravum academy is in Veniun at Vathnis and Gannas stays in Piglia
+  ---
+  duration_ms: 0.5304
+  type: 'test'
+  ...
+# Subtest: automatic city influence respects water, political borders and disconnected land
+ok 110 - automatic city influence respects water, political borders and disconnected land
+  ---
+  duration_ms: 2.8752
+  type: 'test'
+  ...
+# Subtest: current cities keep their own cultures and faiths without modifying political cells or provinces
+ok 111 - current cities keep their own cultures and faiths without modifying political cells or provinces
+  ---
+  duration_ms: 1028.8581
+  type: 'test'
+  ...
+# Subtest: alphabetical and population orders are deterministic and never mutate the original list
+ok 112 - alphabetical and population orders are deterministic and never mutate the original list
+  ---
+  duration_ms: 8.5896
+  type: 'test'
+  ...
+# Subtest: culture and faith brushes override only painted land and can return to automatic city influence
+ok 113 - culture and faith brushes override only painted land and can return to automatic city influence
+  ---
+  duration_ms: 1304.2096
+  type: 'test'
+  ...
+# Subtest: points support description, creation, deletion, restoring, round-trip and stable identities after saving
+ok 114 - points support description, creation, deletion, restoring, round-trip and stable identities after saving
+  ---
+  duration_ms: 1142.7856
+  type: 'test'
+  ...
+# Subtest: malformed coordinates, duplicate points and invalid imports fail before changing any point
+ok 115 - malformed coordinates, duplicate points and invalid imports fail before changing any point
+  ---
+  duration_ms: 882.5779
+  type: 'test'
+  ...
+# Subtest: supplied daily paces use eight moving hours
+ok 116 - supplied daily paces use eight moving hours
+  ---
+  duration_ms: 2.0174
+  type: 'test'
+  ...
+# Subtest: difficult terrain halves speed including mounted travel
+ok 117 - difficult terrain halves speed including mounted travel
+  ---
+  duration_ms: 0.4668
+  type: 'test'
+  ...
+# Subtest: mixed terrain and forced march DCs
+ok 118 - mixed terrain and forced march DCs
+  ---
+  duration_ms: 1.0564
+  type: 'test'
+  ...
+# Subtest: gallop capped at one hour then eight-hour rest
+ok 119 - gallop capped at one hour then eight-hour rest
+  ---
+  duration_ms: 0.3232
+  type: 'test'
+  ...
+# Subtest: fresh mounts do not remove rider CON saves
+ok 120 - fresh mounts do not remove rider CON saves
+  ---
+  duration_ms: 0.3059
+  type: 'test'
+  ...
+# Subtest: vehicles use normal pace and fivefold capacity
+ok 121 - vehicles use normal pace and fivefold capacity
+  ---
+  duration_ms: 0.2117
+  type: 'test'
+  ...
+# Subtest: A* avoids water and rejects disconnected islands
+ok 122 - A* avoids water and rejects disconnected islands
+  ---
+  duration_ms: 2.5716
+  type: 'test'
+  ...
+# Subtest: backup retains players, parties and defaults; rejects invalid positions
+ok 123 - backup retains players, parties and defaults; rejects invalid positions
+  ---
+  duration_ms: 0.9753
+  type: 'test'
+  ...
+# Subtest: calibration scales distance and moving hours, and exports the default
+ok 124 - calibration scales distance and moving hours, and exports the default
+  ---
+  duration_ms: 0.5312
+  type: 'test'
+  ...
+# Subtest: painted forests affect difficult terrain even on desert ground
+ok 125 - painted forests affect difficult terrain even on desert ground
+  ---
+  duration_ms: 0.2611
+  type: 'test'
+  ...
+# Subtest: visual relief preserves world data and keeps Ask a modest highest connected summit
+ok 126 - visual relief preserves world data and keeps Ask a modest highest connected summit
+  ---
+  duration_ms: 1358.5086
+  type: 'test'
+  ...
+# Subtest: regional ridge shaping leaves vertices outside Ask and all water untouched
+ok 127 - regional ridge shaping leaves vertices outside Ask and all water untouched
+  ---
+  duration_ms: 89.6736
+  type: 'test'
+  ...
+# Subtest: integrated shell retains current tools, ports and dwarf models
+ok 128 - integrated shell retains current tools, ports and dwarf models
+  ---
+  duration_ms: 0.8972
+  type: 'test'
+  ...
+1..128
+# tests 128
+# suites 0
+# pass 128
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 12100.7264

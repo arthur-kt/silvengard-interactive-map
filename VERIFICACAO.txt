@@ -1,0 +1,98 @@
+Editor revisão 10 — 05/11/2026; base geométrica 9 preservada.
+
+15 testes aprovados: node --test tests/editor.test.mjs tests/travel.test.mjs.
+JavaScript validado por node --check nos módulos alterados.
+verify_geography.py: PASS; 112.320 células; 128 localidades selecionadas.
+Glouyaloss visível; Sablarumrith omitida na base e no gerador.
+
+UI verificada no navegador:
+- Bioma: pincelada contínua de 56 células; mudança do solo e vegetação; desfazer e refazer.
+- Vegetação: pinheiros sobre solo desértico sem alterar o bioma; densidade e espécie independentes; distribuição estável por célula.
+- Político: 28 células transferidas; Castamor passa para Navi; desfazer restaura Elucitor; fronteiras acompanham a pintura.
+- Exportação cartográfica: JSON de 28 células; validado também fora do navegador; importação e desfazer testados.
+- Persistência: recarregar restaura a edição local; restaurar limpa os testes sem alterar jornadas e fichas.
+- Ctrl+Z no mapa desfaz uma pincelada. Mouse esquerdo pinta; entrada em campos não aciona movimentos da câmera.
+- Escala: campo no início de Jornadas, mesmo sem grupo; atalhos 1/5/10. Mesma rota: 62,8 km e 27,9 h em movimento na escala 1; 627,9 km e 279,1 h na escala 10. Histórico registrado não é recalculado.
+- Nenhum erro de console na verificação final.
+- Grupo e pinceladas de teste removidos. Escala de origem mantida em 10, disponível para o usuário escolher outro valor.
+
+Prévia: preview-pinceis-v10.png e preview-escala-v10.png.
+Backup anterior: backups/v9.
+Arquivos .map e referências originais preservados. Servidor somente local. Nenhum envio ou publicação externa.
+
+
+Padrão do autor — revisão 11 — 05/11/2026
+Fonte: silvengard-alteracoes-mapa (4).json; 5.471 células.
+verify_author_defaults.py: PASS, igualdade exata dos campos aprovados; demais células sem alterações; geometria, rios, rotas e posições preservadas.
+3 testes Python do aplicador: PASS. 15 testes JavaScript de pincéis/jornadas: PASS.
+convert.py executado com author-map-defaults.json; padrão incluído na reconstrução efetiva.
+Navegador: carregou sem erros; editor mostra zero células locais pendentes porque as alterações já fazem parte da base. Prévia salva em preview-padrao-autor.png.
+Backup anterior em backups/v10. Arquivo original enviado preservado.
+
+
+Revisão 12 — 05/11/2026
+Edição (5): 576 células mescladas ao padrão (4), resultando em 5.583 células aprovadas. Backup anterior em backups/v11.
+Escala do mundo e padrão de novos grupos: 1,5 km por unidade. Históricos e escalas personalizadas preservados.
+9 portos principais, incluindo Enquertei (confirmação do autor); Vila Sardinhas segue secundário. Portos fortificados têm cais/torrões e símbolo combinado.
+Cidades anãs indicadas e Sete Cidades/Duräk: metadados próprios, símbolos de mineração, cultura Anões nas fichas e modelos de fortaleza de pedra/metal nas cidades principais.
+120 estradas/trilhas com nomes editáveis; 20 rotas marítimas sobre células de oceano.
+20 testes JavaScript: PASS. 3 testes Python: PASS. verify_author_defaults.py: PASS, incluindo rede gerada e todos os valores aprovados.
+Sem erros de sintaxe nos módulos alterados.
+UI: filtro por tipo e estado (Elucitor: 24 traçados), busca, renomear, editar pontos, arrastar ponto real de 414,0/794,8 para 420,0/802,9, salvar, exportar/importar e desfazer; rotas de teste desfeitas. Cópia da exportação de teste arquivada em backups/v11/test-network-export.json.
+Jornada mista Enquertei–Ros Leones validada com distância marítima e velocidade de embarcação; nenhuma marcha forçada dos passageiros a bordo. Estradas e mar cadastrado são terreno normal, mesmo se o entorno for difícil.
+Grupo de teste removido. Escala 1,5 confirmada no painel final; nenhum erro de console.
+Prévia de Mauron: preview-fortaleza-ana-v12.png. Editor: preview-rotas-v12.png.
+Arquivos originais de mapa e referências preservados; servidor somente local.
+
+
+Revisão 13 — 05/11/2026
+Portos principais atualizados: Nediora, Pantos, Crild, Selne/Seline e Urlylithalazak incluídos; Almirarem substitui Enquertei.
+120 ligações locais preservadas com pontos idênticos ao backup v12; não recebem mais rótulos de grandes rotas.
+5 corredores terrestres nomeados: Neve, Imperial, Flores, Rimae e Portos. Cada segmento de cada corredor pertence ao grafo dos caminhos anteriores; continuidade validada por teste.
+Rota da Neve: Winterhelm–Torre Solitária–Porto das Cinzas, sem desvio pelo deserto.
+4 corredores marítimos contínuos substituem a malha de 20 ligações; todos os 14 portos principais são escalas de pelo menos um corredor.
+UI: menu padrão com 9 rotas principais; opção de caminhos locais mostra 129 traçados. Apenas 9 rótulos de rotas no DOM do mapa. Fichas confirmam porto principal de Almirarem, remoção do porto de Enquertei e busca Seline encontrando Selne como porto principal.
+23 testes JavaScript aprovados (5 de pincéis, 10 de viagem, 8 de rede). 3 testes Python aprovados. verify_author_defaults.py: PASS, preservando 5.583 células aprovadas e a nova rede esperada.
+Nenhum erro de console na verificação final. Backup anterior em backups/v12. Escala 1,5 preservada.
+
+2026-11-06 · Integração visual v14
+- Pacote ZIP conferido: visuals.js e terrain-shape.js idênticos à cópia v2 fornecida.
+- Mesclagem seletiva com backup backups/v14-before-visual; world.json byte a byte preservado.
+- 26 testes JS: pincéis, viagem, rede/portos/anões e relevo visual.
+- verify_author_defaults.py: 5.583 células aprovadas exatas; geometria, água, propriedade das cidades, escala e rede intactas.
+- QA no navegador: sem avisos/erros de console; ficha e modelo de Mauron anão, cais do Porto do Álamo, 9 grandes rotas, jornadas/escala 1,5, novas texturas e mar conferidos.
+- Servidores das cópias antigas encerrados; servidor ativo na pasta silvengard-atlas.
+
+2026-11-06 · Edição e cidades v15
+- 49 edições de cidade conferidas campo por campo contra silvengard-edicao (9).json.
+- 1.230 deltas de pintura iguais nos dois arquivos; 6.592 células cumulativas; geometria, rios e alturas cartográficas preservados.
+- Sahtalys aprovada pelo autor; original .map sem cidade na ilha. Cidade validada em componente de terra separado do continente.
+- Allanan porto, escala marítima; sete academias, Hellas excluída das academias; posições de Sel-Shofela e Cananhos conferidas.
+- QA no navegador: Allanan, ilha de Sahtalys, símbolo/modelo da torre e patamar de Torre Solitária visíveis; console sem erros/avisos.
+- Prévia: preview-sahtalys-v15.png e preview-torre-solitaria-v15.png.
+
+2026-11-06 · Fichas e edição de rotas v16
+- QA real no navegador: criada estrada Drakis–Althor, movido ponto 1 por clique no mapa, salva e recarregada; distância mudou de 106,2 para 81,6 km e persistiu.
+- Criada rota marítima Allanan–Velaffeld (283,4 km), renomeada e salva. Ambos os traçados de teste foram removidos pelo próprio editor; lista voltou às nove rotas principais.
+- Recalcular estimativa na Rota do Levante com navio a 9 km/h resultou em 186 h 47 min, metade de 373 h 34 min a 4,5 km/h.
+- Clique no nome da Estrada Imperial no mapa abriu a ficha: 875,7 km, 194 h 35 min em ritmo normal, 25 dias de 8 h e cidades em sequência com distâncias/tempos por trecho.
+- Aleravum conferida em Veniun com torre; Gannas em Piglia sem torre. Névoa marcada por padrão; sem opção de incluir omitidas.
+- Console sem erros/avisos. Prévia: preview-ficha-rotas-v16.png e preview-aleravum-v16.png.
+
+2026-11-06 · Revisão v17
+- 38 testes JS passaram; verificação completa da geração padrão passou: 6.592 células aprovadas intactas.
+- Aleravum com sinal de margem oposto ao original e distância >19 unidades do Ghol-Cha; patamar e prédio livres do rio.
+- Marshell: Tog Iret única capital; Grainhem no ponto médio pedido; 103,175,192 removidas e sem referências de rotas.
+- Velocidades marítimas: 6/11/20 e personalizado; caminhada normal 4,5. Migração preserva histórico, planos e valores personalizados.
+- QA: Rota do Levante, médio 11 = 152 h 50 min; rápido 20 = 84 h 03 min. Nas Jornadas, seleção de 20 e de 6 atualizou a velocidade do grupo. Grupo temporário excluído no diálogo do próprio app.
+- Prévia: preview-marshell-v17.png e preview-aleravum-margem-v17.png; console sem erros/avisos.
+
+2026-11-07 · Fichas e diplomacia v18
+- 132 populações originais exatas; 18 estimativas rastreáveis; 150 cidades e 19 estados com brasões locais; nenhum arquivo de origem alterado.
+- Dragonfall: Kingdom / Reino de Dragonfall; independente; relações 12→13 e 13→12 Neutral. Demais relações preservadas do .map.
+- Idiomas, governantes, dinastias e história narrativa não encontrados; campos padrão vazios. Bases de nomes não foram tratadas como idiomas.
+- 43 testes JS: conversão de população, estimativas, brasões e referências SVG, diplomacia, ausência de dados inventados e todas as verificações anteriores.
+- verify_author_defaults.py: comparação completa da geração, 6.592 células aprovadas exatas, rios, costas, posições e rotas preservados.
+- QA: Aleravum mostra 22.600 estimados e referência Fovium; SVG carregou corretamente. Dragonfall mostra reino independente; links diplomáticos navegam e a neutralidade com Elucitor é recíproca.
+- Governante e família: valores temporários salvos, página recarregada e persistência confirmada; valores de teste restaurados a vazios. Console sem erros/avisos.
+- Prévias: preview-ficha-cidade-v18.png e preview-diplomacia-v18.png.
