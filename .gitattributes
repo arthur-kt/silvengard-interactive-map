@@ -1,0 +1,14 @@
+# Fim de linha: o Git nao converte nada.
+# O Atlas compara bytes de JSON (world.json, historico de padroes) e os testes
+# conferem conteudo exato; conversao automatica criaria diferencas fantasma.
+* -text
+
+# Binarios (explicito, para ferramentas que ignoram a regra acima)
+*.exe binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.zip binary
+*.pack binary
+*.idx binary
