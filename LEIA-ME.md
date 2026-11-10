@@ -109,6 +109,45 @@ próxima livre) e avisa no balão da bandeja. O backup e o salvamento continuam 
 
 ---
 
+## Git (versionamento)
+
+Esta pasta é um repositório Git ligado a
+`https://github.com/arthur-kt/silvengard-interactive-map`. A branch com a
+reorganização é **`fix/organize-repo`** (a `main` continua no estado antigo).
+
+O que **não** entra no Git (de propósito, veja `.gitignore`):
+
+- `acervo/backups/` — 1,4 GB de cópias completas;
+- `app/runtime/node.exe` — 89 MB, binário redistribuível;
+- `app/logs/` e `acervo/logs/` — registros que mudam a cada execução;
+- caches do Python (`__pycache__`).
+
+Publicar (faça no **seu** terminal — aqui não há credenciais do GitHub):
+
+```
+git push -u origin fix/organize-repo
+```
+
+Trazer para o outro clone (`silvengard-interactive-map`), sem internet:
+
+```
+cd "C:\Users\Arthur KT\Documents\RPG\silvengard-interactive-map"
+git fetch "C:\Users\Arthur KT\Documents\RPG\silvengard-atlas v2" fix/organize-repo
+git checkout fix/organize-repo
+git merge --ff-only FETCH_HEAD
+```
+
+Criar uma nova alteração:
+
+```
+git checkout -b minha-mudanca
+git add -A
+git commit -m "descreve o que mudou"
+git push -u origin minha-mudanca
+```
+
+---
+
 ## Para quem for mexer no código
 
 Veja `desenvolvimento/LEIA-ME.md` (testes, reconstrução do mapa e scripts históricos).

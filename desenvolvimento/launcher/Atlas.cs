@@ -372,7 +372,9 @@ static class Programa
     /// <summary>Encerra servidor e (quando pedido) todas as instâncias do inicializador.</summary>
     static bool EncerrarTudo(bool incluirOutrasInstancias)
     {
-        bool havia = ServidorResponde() || servidor != null;
+        int registrada, registradoPid;
+        LerArquivoPorta(out registrada, out registradoPid);
+        bool havia = (registradoPid > 0 && ProcessoVivo(registradoPid)) || ServidorResponde() || servidor != null;
         PararServidor();
         int p, pid;
         LerArquivoPorta(out p, out pid);
@@ -689,8 +691,20 @@ static class Programa
 
     static void Informar(string texto)
     {
+        // Avisos de linha de comando nunca abrem janela: isso travaria scripts.
         Registrar(texto.Replace(Environment.NewLine, " | "));
-        try { MessageBox.Show(texto, Titulo, MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        EscreverNoConsole(texto);
+    }
+
+    static void EscreverNoConsole(string texto)
+    {
+        try
+        {
+            if (!AttachConsole(-1)) return; // sem console (duplo clique): só o log
+            Console.WriteLine(texto);
+            Console.Out.Flush();
+            FreeConsole();
+        }
         catch { }
     }
 
@@ -706,6 +720,12 @@ static class Programa
 
     [DllImport("kernel32.dll")]
     static extern bool AssignProcessToJobObject(IntPtr trabalho, IntPtr processo);
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    static extern bool AttachConsole(int processoId);
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    static extern bool FreeConsole();
 
     [StructLayout(LayoutKind.Sequential)]
     struct JOBOBJECT_BASIC_LIMIT_INFORMATION

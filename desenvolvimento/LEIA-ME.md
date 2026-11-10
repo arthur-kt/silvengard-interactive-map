@@ -50,13 +50,18 @@ grava em `app/dist/`. Depois rode `python desenvolvimento\verify_geography.py`.
 
 ## Recompilar o inicializador (opcional)
 
-Só é necessário se você mudar `launcher/Atlas.cs`:
+Só é necessário se você mudar `launcher/Atlas.cs`. Rode **na pasta principal do repositório**:
 
 ```
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /nologo /target:winexe /optimize+ ^
-  /out:..\Silvengard-Atlas.exe /win32icon:launcher\atlas.ico ^
-  /r:System.Windows.Forms.dll /r:System.Drawing.dll launcher\Atlas.cs
+  /out:Silvengard-Atlas.exe /win32icon:desenvolvimento\launcher\atlas.ico ^
+  /r:System.Windows.Forms.dll /r:System.Drawing.dll desenvolvimento\launcher\Atlas.cs
 ```
+
+Comportamento atual (v1.1): a cada execução o `.exe` encerra as instâncias
+anteriores e o servidor antigo, e abre uma sessão nova. O servidor é filho de um
+*job object* com `KILL_ON_JOB_CLOSE`, então nunca fica órfão. Tudo é registrado em
+`app\logs\atlas-launcher.log`, e `--diagnostico` gera `app\logs\diagnostico.txt`.
 
 ## Scripts históricos
 
