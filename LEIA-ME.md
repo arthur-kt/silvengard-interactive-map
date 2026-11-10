@@ -31,6 +31,76 @@ Silvengard-Atlas.exe --diagnostico  gera app\logs\diagnostico.txt
 
 ---
 
+## Ver no local (caminhar, pular e voar)
+
+O botão **👁 Ver no local** (ou a tecla **V**) leva você ao chão do ponto escolhido. A cena é
+reconstruída em escala real: a cidade tem o tamanho da população, o mar ou o lago mantém o
+tamanho do corpo d'água do mapa, as montanhas ficam no horizonte e o porto tem cais e barcos.
+
+| Tecla | O que faz |
+| --- | --- |
+| **W A S D** / setas | andar |
+| **Shift** | correr (bem mais rápido) |
+| **Espaço** | pular |
+| **2× Espaço** ou **F** | liga/desliga o voo |
+| **Espaço** / **C** (no voo) | subir / descer |
+| **T** | troca manhã, dia, entardecer e noite |
+| **Esc** | volta ao mapa |
+
+Clique na tela uma vez para olhar ao redor com o mouse. A visão local não altera os dados do
+mapa: sair e voltar não muda nada. O botão **🕊 Voo** na barra de baixo faz o mesmo que o
+duplo Espaço. Para abrir direto num lugar, acrescente `?local=18` (id da cidade) ou
+`?local=800,500` (coordenadas) ao endereço do Atlas.
+
+---
+
+## Mapa 2D para imprimir
+
+![Uma carta exportada no tema Carta azul](documentos/imagens/mapa-2d-carta.jpg)
+
+O botão **▦ Mapa 2D**, na barra de cima, abre a janela de cartografia. O mapa que sai dela **não
+é uma captura da vista 3D**: o Atlas redesenha a carta do zero a partir dos dados — contornos,
+relevo, vegetação, rios, fronteiras, nomes, rosa dos ventos, escala, legenda e moldura.
+
+| Opção | Para quê |
+| --- | --- |
+| **Modo do mapa** | **Terreno** (padrão: relevo, vegetação, rios e fronteiras, sem pintar os estados), **Político** (estados pintados), **População**, **Cultura**, **Religião**, **Bens produzidos**, **Mercados** e **Províncias** |
+| **Tema do papel** | Carta azul (como a referência), Pergaminho, Sépia e Noite |
+| **Nomes das cidades** | Só as capitais, capitais e principais (**capitais, portos principais, escolas de magia, fortalezas e cidades anãs, fortes e as 30 mais populosas**), todas, ou nenhum nome. Capitais nunca são omitidas: se faltar espaço, as outras cidades cedem e a capital pode ganhar uma linha-guia |
+| **Tom dos nomes** | Suave, escuro (padrão) ou contraste alto — e uma **cor personalizada** para todos os nomes, escolhida no seletor de cor |
+| **Enquadramento** | Mundo inteiro (100%), um pouco maior (106%, padrão) ou mais perto (112%) — o mapa cresce e corta só o mar das bordas direita e inferior |
+| **Pontos de interesse** | Todos, só naturais (bosques, montanhas, lagos, mares, desertos, pântanos, vulcões) ou nenhum |
+| **Relevo** | **Sombreado** (padrão: a luz vem do noroeste e as serras aparecem como sombra, sem triângulos), **Picos desenhados** (o traço antigo) ou Nenhum |
+| **Rios e lagos** | **Com margens** (padrão: leito azul, contorno escuro dos lados e brilho no centro), Linha simples ou Sem rios |
+| **Camadas** | Vegetação, estradas, **fronteiras dos estados**, nomes dos estados, nomes dos rios e o corte de terras desconhecidas ao norte |
+| **Acabamento** | Grade e coordenadas, rosa dos ventos, escala, legenda e a posição da legenda |
+| **Tamanho** | 2400 × 1200 (rascunho), 3200 × 1600 (tela e A4), 4800 × 2400 (impressão) ou 6000 × 3000 (pôster) |
+
+O **norte** do mundo termina no limite de cima da carta: não é mar, é o fim do que se sabe. O
+desenho esmaece a terra junto à borda e marca **TERRAS DESCONHECIDAS**; a opção *Terras
+desconhecidas ao norte* liga e desliga esse tratamento.
+
+O **relevo sombreado** substituiu os triângulos pequenos: a grade de alturas é interpolada em
+resolução dupla e iluminada do noroeste, de modo que as serras viram sombra no papel. Quem
+preferir o traço antigo ainda pode escolher *Picos desenhados* na opção de relevo.
+
+A **legenda** fica no canto superior direito, sobre o mar, para não tapar as terras do canto
+inferior esquerdo; em *Acabamento* você pode devolvê-la ao canto antigo. As **fronteiras dos
+estados** são um traço contínuo de tinta, com um halo claro, e aparecem em qualquer modo — ou
+desaparecem se você desmarcar a camada. No mapa físico elas ondulam de leve, com pequenos
+desníveis, em vez de correr em linhas retas; nos mapas pintados acompanham de perto as cores. A
+**costa** é contínua: cada aresta é ligada pelos vértices que ela compartilha com a célula
+vizinha e o traçado é alisado depois, sem os trechos soltos que apareciam antes.
+
+A janela mostra a **prévia** inteira e, embaixo, um **recorte central em 1:1** para conferir os
+nomes. **Ver em tamanho real** abre a prévia em 1600 px numa aba nova. **Baixar PNG** gera o
+arquivo no tamanho escolhido; os nomes e traços são redesenhados na resolução cheia.
+
+Para abrir a janela já num modo, use `?mapa=politico`, `?mapa=populacao`, `?mapa=goods`,
+`?mapa=provinces` etc. no endereço do Atlas.
+
+---
+
 ## O que é cada pasta
 
 ```

@@ -328,3 +328,40 @@ Nythan pertence a Allanan; Arenor, a Ros Leones; Fovium, Odusonsium e Lakenford,
 Revisão aprovada: Elucitor 1.050.000, Velaffeld 250.000 e Asgorath 100.000 habitantes. Produção, frotas duráveis, logística, contas rurais, serviços, comboios e censos de comunidades itinerantes foram atualizados. A revisão está salva nos padrões; use Ctrl+F5 numa aba aberta anteriormente.
 
 O registro completo está em `Revisao-Economica-Aplicada.md`. Os checkpoints `economic-review-defaults.json` e `economy-review-source.json` preservam a revisão nos rebuilds e as edições posteriores feitas com Definir como padrão continuam sendo aplicadas. Backups em `backups/v40-before-approved-economy`. Validação: 128 testes passaram; duas simulações consecutivas em cada instalação conservaram moedas e reconciliaram os mercados.
+
+## Visão local em escala real (v44)
+
+O modo **Ver no local** deixou de ser um zoom no mapa. Ao entrar, o Atlas mede o contexto do
+ponto e reconstrói o lugar em metros:
+
+- **Escala.** `local-field.js` fixa 1 unidade de cena = 2,2 m e lê o mapa na escala real
+  (1 unidade do mundo = 1,5 km, `settings.distanceScale`). Uma célula da grade tem 6 km de
+  lado — maior que a cidade inteira — por isso o detalhe fino é sintetizado, não copiado.
+- **Cidade do tamanho certo.** O raio urbano vem dos habitantes (densidade ilustrativa de
+  ~6.000/km², limitado a 2,9 km): uma vila de 400 habitantes tem ~0,2 km de raio; uma cidade
+  de 39 mil tem ~1,5 km; Elucitor, 1,05 milhão, chega ao limite. O núcleo tem casas
+  detalhadas, praça, igreja, mercado, muralhas e porto; a periferia é uma malha de quarteirões
+  instanciada (até 12.000 casas) com frente de rua, telhados, portas, janelas e embasamento.
+- **Água e relevo.** O corpo d'água mais próximo é medido andando pela grade (mar, lago ou
+  rio), seu tamanho vem da área original e a margem é aproximada para a escala do lugar: um
+  porto encosta o cais na cidade; um lago conserva centenas de metros a alguns quilômetros de
+  água. O relevo soma o entorno do mapa — a serra mais próxima vira uma cordilheira a 2–12 km,
+  com 120–1.900 m de altura — a morros e vales sintetizados. O horizonte chega a 15 km, com
+  névoa de distância.
+- **Cena em faixas.** O terreno é desenhado em uma malha fina que acompanha o jogador (passo
+  de 4,5 m) e quatro faixas estáticas (14 m a 145 m); as faixas recortam um círculo ao redor
+  do jogador para não cobrirem a malha fina. A malha das ruas é geometria própria, com pedra
+  ou terra conforme o trecho. A água tem profundidade por vértice (cor, transparência,
+  espuma e ondas), e o chão urbano troca a grama por terra batida e lajedo.
+- **Moradores.** Caminham apenas em ruas de terra firme, com posição no chão, balanço de passo
+  e nunca sobre a água; só são animados perto do jogador.
+- **Movimento.** Andar, correr com Shift (~10,5 m/s), pular (Espaço) e voar (duplo Espaço ou
+  F), com subida/descida rápidas (15 m/s) e limite de altitude. A colisão com casas continua
+  valendo no chão.
+- **Atalhos.** `?local=<id da cidade>` ou `?local=<x>,<y>` abre a visão local direto.
+- **Custo.** A construção do lugar leva cerca de 0,8–1,0 s nesta máquina (medido em
+  `__street.debug.state().timing`), coberta pela transição de entrada; sair libera geometrias
+  e materiais.
+
+Testes: `desenvolvimento/testes/local-field.test.mjs` cobre a escala, o tamanho do corpo
+d'água, a coerência do porto, o determinismo e a continuidade do relevo.

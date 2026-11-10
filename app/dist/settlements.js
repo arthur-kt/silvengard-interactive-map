@@ -2,7 +2,7 @@
 // Tudo é gerado em código (sem imagens): alvenaria, telhas, reboco, madeira e palha são calculados no shader
 // a partir de coordenadas locais de cada edifício, para o padrão acompanhar as paredes em qualquer rotação.
 import * as THREE from 'three';
-import {shared,NOISE} from './visuals.js?v=35';
+import {shared,NOISE} from './visuals.js?v=45';
 
 export const PAL={stone:'#dfcba2',cobble:'#b9aa8c',plaster:'#f1e8d0',roof:'#76584b',roofRed:'#8a5a46',wood:'#79664e',woodDark:'#4f4030',gold:'#d8b977',glass:'#25343b',thatch:'#c9b06a',cloth:'#b6483c',cloth2:'#e6d8b0'};
 export const rng=seed=>{let a=(seed|0)+0x6D2B79F5;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}};
@@ -213,6 +213,27 @@ export function addTent(m,{at,rot=0,color='#b6483c'}){m.cyl('cloth',1.3,0,1.6,4,
 export function addPillar(m,{at,h=2.4,r=.3,broken=false}){m.cyl('stone',r*1.15,r,broken?h*.55:h,8,{at,tint:tc(PAL.stone,.85)});if(!broken)m.box('stone',r*2.8,.22,r*2.8,{at:[at[0],at[1]+h,at[2]],tint:tc(PAL.stone,.9)})}
 export function addLog(m,{from,to,t=.32}){m.beam('wood',[from[0],from[1]+t/2,from[2]],[to[0],to[1]+t/2,to[2]],t,{tint:tc('#5f4a36',.95)})}
 export function addHaystack(m,{at,s=1}){m.cyl('thatch',.95*s,.35*s,1.1*s,9,{at,tint:tc('#d2b96a')});m.cyl('thatch',.35*s,0,.5*s,9,{at:[at[0],at[1]+1.1*s,at[2]],tint:tc('#c8ae5e')})}
+
+/** Barco de carga de rio/porto: casco, proa, mastro, vela e leme. */
+export function addBoat(m,{at,rot=0,s=1,sail=true,color=PAL.cloth2}){
+ const T=tc(PAL.woodDark,.95),W=tc(PAL.wood,.98);
+ m.box('wood',2.1*s,.52*s,5*s,{at:[at[0],at[1]+.1*s,at[2]],rot,tint:T});
+ m.box('wood',1.7*s,.3*s,4.2*s,{at:[at[0],at[1]+.52*s,at[2]],rot,tint:W});
+ m.cyl('wood',1.05*s,.05*s,.5*s,4,{at:[at[0]+Math.sin(rot)*2.7*s,at[1]+.18*s,at[2]+Math.cos(rot)*2.7*s],rot:rot+Math.PI/4,tint:W}); // proa
+ m.box('wood',.9*s,.5*s,1.1*s,{at:[at[0]-Math.sin(rot)*1.7*s,at[1]+.75*s,at[2]-Math.cos(rot)*1.7*s],rot,tint:T});                    // cabine
+ m.cyl('wood',.09*s,.13*s,4.6*s,6,{at:[at[0],at[1]+.6*s,at[2]],tint:T});
+ if(sail)m.quad('cloth',2.4*s,2.9*s,{at:[at[0]+Math.sin(rot)*1.2*s,at[1]+2.2*s,at[2]+Math.cos(rot)*1.2*s],rot:rot+Math.PI/2,tint:tc(color)});
+ m.box('wood',.08*s,1.4*s,.6*s,{at:[at[0]-Math.sin(rot)*2.3*s,at[1]+.4*s,at[2]-Math.cos(rot)*2.3*s],rot,tint:T});
+}
+/** Guindaste de cais: dois postes, lança inclinada e cabo com gancho. */
+export function addCrane(m,{at,rot=0,s=1}){
+ const T=tc(PAL.woodDark,1),W=tc(PAL.wood,.95);
+ for(const dx of[-.5,.5])m.box('wood',.22*s,4.2*s,.22*s,{at:[at[0]+Math.cos(rot)*dx*s,at[1],at[2]-Math.sin(rot)*dx*s],rot,tint:W});
+ m.box('wood',1.5*s,.2*s,.2*s,{at:[at[0],at[1]+1.1*s,at[2]],rot,tint:W});
+ m.beam('wood',[at[0],at[1]+3.9*s,at[2]],[at[0]+Math.cos(rot)*4.6*s,at[1]+5.4*s,at[2]-Math.sin(rot)*4.6*s],.16*s,{tint:T});
+ m.beam('wood',[at[0]+Math.cos(rot)*4.3*s,at[1]+5.2*s,at[2]-Math.sin(rot)*4.3*s],[at[0]+Math.cos(rot)*4.3*s,at[1]+1.4*s,at[2]-Math.sin(rot)*4.3*s],.05*s,{tint:tc('#2b2b2b')});
+ m.box('wood',.55*s,.45*s,.55*s,{at:[at[0]+Math.cos(rot)*4.3*s,at[1]+1.2*s,at[2]-Math.sin(rot)*4.3*s],rot,tint:tc(PAL.wood,.9)});
+}
 
 /** Edifício com andares, empena, vigas, janelas, porta, chaminé e detalhes por tipo.
  *  Frente = +z local. `smoke` recebe as bocas de chaminé (posições no mundo). */
