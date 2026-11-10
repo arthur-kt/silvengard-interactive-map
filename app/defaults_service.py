@@ -6,7 +6,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import threading
-from persistent_defaults import bake_editions
+from persistent_defaults import bake_editions, pasta_backups
 
 LOCK=threading.Lock()
 def atomic_json(path,data):
@@ -25,7 +25,8 @@ def save_defaults(base,edition,expected_id):
         result=bake_editions(world,[edition],base)
         manifest=json.loads(manifest_path.read_text(encoding='utf-8')) if manifest_path.exists() else {'format':'silvengard-saved-defaults-v1','revisions':[]}
         stamp=datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d-%H%M%S-%f')
-        backup=base/'backups'/('defaults-'+stamp);backup.mkdir(parents=True)
+        pasta,raiz=pasta_backups(base)
+        backup=pasta/('defaults-'+stamp);backup.mkdir(parents=True,exist_ok=True)
         shutil.copy2(world_path,backup/'world.json')
         if manifest_path.exists():shutil.copy2(manifest_path,backup/'saved-author-defaults.json')
         atomic_json(backup/'edition.json',edition)
@@ -36,4 +37,4 @@ def save_defaults(base,edition,expected_id):
             if (backup/'saved-author-defaults.json').exists():shutil.copy2(backup/'saved-author-defaults.json',manifest_path)
             elif manifest_path.exists():manifest_path.unlink()
             raise
-        return {'ok':True,'id':result['savedDefaults']['id'],'backup':str(backup.relative_to(base)),'cities':len(result['cities'])}
+        return {'ok':True,'id':result['savedDefaults']['id'],'backup':str(backup.relative_to(raiz)),'cities':len(result['cities'])}

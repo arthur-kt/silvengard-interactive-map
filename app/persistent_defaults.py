@@ -14,8 +14,21 @@ def find_node(base):
     if available:return available
     raise RuntimeError('O runtime de salvamento não foi encontrado. Restaure app/runtime/node.exe e abra Silvengard-Atlas.exe novamente.')
 
+def pasta_backups(base):
+    """Onde ficam as cópias: acervo/backups quando existe, senão backups/ ao lado de dist.
+
+    Devolve (pasta_de_backups, raiz_para_caminho_relativo). A raiz serve para o
+    servidor informar à página um caminho legível ("acervo/backups/...").
+    """
+    base = Path(base).resolve()
+    acervo = base.parent / 'acervo'
+    if acervo.is_dir():
+        return acervo / 'backups', base.parent
+    return base / 'backups', base
+
+
 def bake_editions(world, editions, base):
-    base=Path(base).resolve();cache=base/'backups';cache.mkdir(exist_ok=True)
+    base=Path(base).resolve();cache,_=pasta_backups(base);cache.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='defaults-build-',dir=cache) as folder:
         directory=Path(folder).resolve();assert directory.is_relative_to(cache)
         source=directory/'input.json';target=directory/'world.json'
