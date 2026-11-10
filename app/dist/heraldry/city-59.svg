@@ -1,0 +1,8 @@
+<svg id="city-59" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="fantasy1_city-59"><path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z"/></clipPath><clipPath id="divisionClip_city-59"><polygon points="0,0 100,100 200,0"/></clipPath><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#fantasy1_city-59)"><rect x="0" y="0" width="200" height="200" fill="#d7374a"/><g clip-path="url(#divisionClip_city-59)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/></g><g fill="#fafafa" stroke="none"><path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z" fill="none" stroke="#fafafa" stroke-width="16.7%"/></g></g>
+      <path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z" fill="url(#backlight)" stroke="#333"/></svg>

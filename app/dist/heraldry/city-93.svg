@@ -1,0 +1,8 @@
+<svg id="city-93" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="urukHai_city-93"><path d="M 30,60 C 40,60 60,50 60,20 l -5,-3 45,-17 75,40 -5,5 -35,155 -5,-35 H 70 v 35 z"/></clipPath><pattern id="barry-argent-azure-small" width="20" height="80" viewBox="0 0 25 100" patternUnits="userSpaceOnUse"><rect width="25" height="100" fill="#377cd7"/><rect x="0" y="25" width="25" height="25" fill="#fafafa"/><rect x="0" y="75" width="25" height="25" fill="#fafafa"/></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#urukHai_city-93)"><rect x="0" y="0" width="200" height="200" fill="url(#barry-argent-azure-small)"/><g fill="#d7374a" stroke="none"><path d="M0,200 Q80,180 100,135 Q120,180 200,200"/></g></g>
+      <path d="M 30,60 C 40,60 60,50 60,20 l -5,-3 45,-17 75,40 -5,5 -35,155 -5,-35 H 70 v 35 z" fill="url(#backlight)" stroke="#333"/></svg>

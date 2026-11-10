@@ -1,0 +1,13 @@
+<svg id="city-195" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="baroque_city-195"><path d="m 100,25 c 18,0 50,2 75,14 v 37 l -2.7,3.2 c -4.9,5.4 -6.6,9.6 -6.7,16.2 0,6.5 2,11.6 6.9,17.2 l 2.8,3.1 v 10.2 c 0,17.7 -2.2,27.7 -7.8,35.9 -5,7.3 -11.7,11.3 -32.3,19.4 -12.6,5 -20.2,8.8 -28.6,14.5 C 103.3,198 100,200 100,200 c 0,0 -2.8,-2.3 -6.4,-4.7 C 85.6,189.8 78,186 65,180.9 32.4,168.1 26.9,160.9 25.8,129.3 L 25,116 l 3.3,-3.3 c 4.8,-5.2 7,-10.7 7,-17.3 0,-6.8 -1.8,-11.1 -6.5,-16.1 L 25,76 V 39 C 50,27 82,25 100,25 Z"/></clipPath><g id="roundel_city-195">
+    <circle cx="100" cy="100" r="30"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#baroque_city-195)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/><g fill="#d7374a" stroke="none"><path d="m 0,115 v -25 l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5 l 5,5 v 10 l 5,6 5,-6 v -10 l 5,-5 l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5 l 5,5 v 10 l 5,6 5,-6 v -10 l 5,-5 l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5 v 25" transform="rotate(-90 100 100) translate(0 -25)"/><path d="m 0,115 v -25 l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5 l 5,5 v 10 l 5,6 5,-6 v -10 l 5,-5 l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5 l 5,5 v 10 l 5,6 5,-6 v -10 l 5,-5 l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5l 5,5 v 10 l 5,5 5,-5 v -10 l 5,-5 v 25" transform="rotate(90 100 100) translate(0 -25)"/><rect x="88" y="0" width="24" height="200" stroke="none"/></g><g fill="#377cd7" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #377cd7;}
+      g.tertiary,path.tertiary {fill: #377cd7;}
+    </style><use xlink:href="#roundel_city-195" transform="scale(0.5)"/></g></g>
+      <path d="m 100,25 c 18,0 50,2 75,14 v 37 l -2.7,3.2 c -4.9,5.4 -6.6,9.6 -6.7,16.2 0,6.5 2,11.6 6.9,17.2 l 2.8,3.1 v 10.2 c 0,17.7 -2.2,27.7 -7.8,35.9 -5,7.3 -11.7,11.3 -32.3,19.4 -12.6,5 -20.2,8.8 -28.6,14.5 C 103.3,198 100,200 100,200 c 0,0 -2.8,-2.3 -6.4,-4.7 C 85.6,189.8 78,186 65,180.9 32.4,168.1 26.9,160.9 25.8,129.3 L 25,116 l 3.3,-3.3 c 4.8,-5.2 7,-10.7 7,-17.3 0,-6.8 -1.8,-11.1 -6.5,-16.1 L 25,76 V 39 C 50,27 82,25 100,25 Z" fill="url(#backlight)" stroke="#333"/></svg>

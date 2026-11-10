@@ -1,0 +1,11 @@
+<svg id="city-14" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-14"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><g id="crossCalvary_city-14" stroke-width=".5"><path d="m 95,55 h 10 v 15 h 20 v 10 h -20 v 40 h 3 v 10 h 10 v 10 h 17 v 10 H 65 v -10 h 17 v -10 h 10 v -10 h 3 V 80 H 75 V 70 h 20 z"/></g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-14)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/><g fill="#522d5b" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #522d5b;}
+      g.tertiary,path.tertiary {fill: #522d5b;}
+    </style><use xlink:href="#crossCalvary_city-14" transform="translate(-50 -50) scale(1.5)"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

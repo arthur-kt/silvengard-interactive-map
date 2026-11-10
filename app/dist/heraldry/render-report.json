@@ -1,0 +1,9 @@
+{
+  "rendered": 257,
+  "errors": [
+    {
+      "id": "city-107",
+      "error": "templates[templateId] is not a function"
+    }
+  ]
+}

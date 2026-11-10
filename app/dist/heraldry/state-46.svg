@@ -1,0 +1,19 @@
+<svg id="state-46" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_state-46"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><clipPath id="divisionClip_state-46"><rect x="100" y="0" width="100" height="200"/></clipPath><g id="mullet7_state-46">
+    <polygon points="100 60 106.63 86.23 131.27 75.06 114.9 96.6 139 108.9 111.95 109.53 117.36 136.04 100 115.28 82.64 136.04 88.05 109.53 61 108.9 85.1 96.6 68.73 75.06 93.37 86.23"/>
+  </g><g id="crescent_state-46" stroke-width=".5">
+    <path d="M84 65c-32 15-24 68 16 68s48-53 16-68c18 20 2 41-16 41S67 85 84 65z"/>
+    <path fill="none" d="M84 65c-26 15-14 56 16 56s42-41 16-56"/>
+  </g><pattern id="palyBendy-argent-sable" width="125.16" height="71.52" viewBox="0 0 175 100" patternUnits="userSpaceOnUse"><rect y="0" x="0" width="175" height="100" fill="#333333"/><g fill="#fafafa"><path d="m0 20 35 30v50l-35-30z"/><path d="m35 0 35 30v50l-35-30z"/><path d="m70 0h23l12 10v50l-35-30z"/><path d="m70 80 23 20h-23z"/><path d="m105 60 35 30v10h-35z"/><path d="m105 0h35v40l-35-30z"/><path d="m 140,40 35,30 v 30 h -23 l -12,-10z"/><path d="M 175,0 V 20 L 152,0 Z"/></g></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_state-46)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/><g clip-path="url(#divisionClip_state-46)"><rect x="0" y="0" width="200" height="200" fill="url(#palyBendy-argent-sable)"/></g><g fill="#377cd7" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #377cd7;}
+      g.tertiary,path.tertiary {fill: #377cd7;}
+    </style><use xlink:href="#mullet7_state-46" transform="translate(-7.5 30) scale(0.7)"/></g><g fill="#d7374a" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #d7374a;}
+      g.tertiary,path.tertiary {fill: #d7374a;}
+    </style><use xlink:href="#crescent_state-46" transform="translate(67.5 30) scale(0.7)"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

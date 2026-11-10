@@ -1,0 +1,3 @@
+Upstream: https://github.com/Azgaar/armoria-api (MIT, LICENSE included).
+Downloaded 2026-11-07. Renderer, dataModel, templates and 133 original charge SVGs.
+Local patch: no API, server or network. Removed debug logging; SVG group extraction replaces node-html-parser. Only existing COA descriptions are rendered; no random generation.

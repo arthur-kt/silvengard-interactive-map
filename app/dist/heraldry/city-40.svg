@@ -1,0 +1,13 @@
+<svg id="city-40" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="fantasy1_city-40"><path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z"/></clipPath><g id="crossHummetty_city-40" stroke-width=".5">
+    <path d="M90 60h20v30h30v20h-30v30H90v-30H60V90h30z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#fantasy1_city-40)"><rect x="0" y="0" width="200" height="200" fill="#d7374a"/><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#crossHummetty_city-40" transform="translate(15 15) scale(0.4)"/><use xlink:href="#crossHummetty_city-40" transform="translate(60 10) scale(0.4)"/><use xlink:href="#crossHummetty_city-40" transform="translate(105 15) scale(0.4)"/></g></g>
+      <path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z" fill="url(#backlight)" stroke="#333"/></svg>

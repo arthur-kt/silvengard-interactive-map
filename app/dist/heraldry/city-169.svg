@@ -1,0 +1,13 @@
+<svg id="city-169" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="urukHai_city-169"><path d="M 30,60 C 40,60 60,50 60,20 l -5,-3 45,-17 75,40 -5,5 -35,155 -5,-35 H 70 v 35 z"/></clipPath><g id="mullet6_city-169">
+    <polygon points="100 60 107.64 86.77 134.64 80 115.28 100 134.64 120 107.64 113.23 100 140 92.36 113.23 65.36 120 84.72 100 65.36 80 92.36 86.77"/>
+  </g><pattern id="chequy-or-gules" width="50" height="50" viewBox="0 0 50 50" patternUnits="userSpaceOnUse" fill="#d7374a"><rect width="50" height="50"/><rect width="25" height="25" fill="#ffe066"/><rect x="25" y="25" width="25" height="25" fill="#ffe066"/></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#urukHai_city-169)"><rect x="0" y="0" width="200" height="200" fill="url(#chequy-or-gules)"/><g fill="#377cd7" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #377cd7;}
+      g.tertiary,path.tertiary {fill: #377cd7;}
+    </style><use xlink:href="#mullet6_city-169" transform="translate(-20 -20) scale(1.2)"/></g></g>
+      <path d="M 30,60 C 40,60 60,50 60,20 l -5,-3 45,-17 75,40 -5,5 -35,155 -5,-35 H 70 v 35 z" fill="url(#backlight)" stroke="#333"/></svg>

@@ -1,0 +1,4 @@
+export function getListOrder(){try{return localStorage.getItem('silvengard-list-order')==='population'?'population':'name';}catch{return 'name';}}
+export function setListOrder(value){try{localStorage.setItem('silvengard-list-order',value==='population'?'population':'name');}catch{}}
+export function orderItems(items,order,name=x=>x.name,pop=x=>x.demographics?.population||0){return [...items].sort((a,b)=>(order==='population'?pop(b)-pop(a):0)||String(name(a)).localeCompare(String(name(b)),'pt-BR',{sensitivity:'base',numeric:true}));}
+export function orderHTML(id,label='Ordenar localidades',order=getListOrder()){return `<label class="listOrder">${label}<select id="${id}" aria-label="${label}"><option value="name" ${order==='name'?'selected':''}>Nome · A–Z</option><option value="population" ${order==='population'?'selected':''}>População · maior primeiro</option></select></label>`;}

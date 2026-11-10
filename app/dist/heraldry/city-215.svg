@@ -1,0 +1,8 @@
+<svg id="city-215" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="fantasy1_city-215"><path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z"/></clipPath><clipPath id="divisionClip_city-215"><rect x="100" y="0" width="100" height="100"/><rect x="0" y="100" width="100" height="100"/></clipPath><pattern id="bendy-vert-or-small" width="80" height="80" viewBox="0 0 100 100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="#26c061"/><polygon points="0,25 75,100 25,100 0,75" fill="#ffe066"/><polygon points="25,0 75,0 100,25 100,75" fill="#ffe066"/></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#fantasy1_city-215)"><rect x="0" y="0" width="200" height="200" fill="url(#bendy-vert-or-small)"/><g clip-path="url(#divisionClip_city-215)"><rect x="0" y="0" width="200" height="200" fill="#fafafa"/></g><g fill="#377cd7" stroke="none"><path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z" fill="none" stroke="#377cd7" stroke-width="16.7%"/></g></g>
+      <path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z" fill="url(#backlight)" stroke="#333"/></svg>

@@ -1,0 +1,13 @@
+<svg id="city-74" width="256" height="256" viewBox="0 5 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="gondor_city-74"><path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z"/></clipPath><g id="crossFormee_city-74" stroke-width=".5">
+    <path d="m 90,60 h 20 c -3,8 -6,30 -5,35 5,1 27,-2 35,-5 v 20 c -8,-3 -30,-6 -35,-5 -1,5 2,27 5,35 H 90 c 3,-8 6,-30 5,-35 -4,-1 -27,2 -35,5 V 90 c 8,3 30,6 35,5 1,-5 -2,-27 -5,-35 z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#gondor_city-74)"><rect x="0" y="0" width="200" height="200" fill="#fafafa"/><g fill="#d7374a" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #d7374a;}
+      g.tertiary,path.tertiary {fill: #d7374a;}
+    </style><use xlink:href="#crossFormee_city-74" transform="translate(-13 -13) scale(1.13)"/></g></g>
+      <path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z" fill="url(#backlight)" stroke="#333"/></svg>

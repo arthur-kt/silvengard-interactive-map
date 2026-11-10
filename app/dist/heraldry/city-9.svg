@@ -1,0 +1,24 @@
+<svg id="city-9" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="easterling_city-9"><path d="M 160,185 C 120,170 80,170 40,185 V 15 c 40,15 80,15 120,0 z"/></clipPath><clipPath id="divisionClip_city-9"><path d="M0,80 100,-15 200,80 200,120 100,25 0,120z M0,160 100,65 200,160 200,200 100,105 0,200z M0,240 100,145 200,240 0,240z"/></clipPath><g id="column_city-9" stroke-width=".306">
+    <g stroke-linejoin="round">
+      <polygon points="92.556 128.678 107.519 128.678 111.956 133.472 88.119 133.472"/>
+      <rect x="88.119" y="133.472" width="23.837" height="1.54"/>
+      <rect x="89.761" y="138.215" width="20.553" height="1.867"/>
+      <polygon points="111.956 135.013 88.119 135.013 89.761 136.379 110.314 136.379"/>
+      <path d="M110.416 138.215H89.649a.914.914 0 0 1-.918-.918c0-.51.408-.918.918-.918h20.767c.51 0 .918.408.918.918s-.408.918-.918.918z"/>
+    </g>
+    <path d="M94.096 62.878c0 .439.112 1.449.663 1.449h10.465c.602 0 .755-.929.755-1.449l.204-1.734H93.81l.286 1.734z"/>
+    <path stroke-linejoin="round" d="M94.759 64.327h10.465s.796 36.138 1.132 48.388c.306 11.343-.102 16.29-.102 16.29s-.275 1.642-6.222 1.642-6.314-1.642-6.314-1.642-.275-6.753-.102-16.371c.194-10.302 1.143-48.307 1.143-48.307z"/>
+    <path stroke-linejoin="round" d="M93.208 128.78c.082-.49.47-.846.602-.673.061.112 1.183 1.224 6.232 1.224s6.161-1.122 6.212-1.224c.133-.183.52.174.602.673.051.276.03.908-.581 1.224-1.194.623-3.448.98-6.233.98-2.794 0-5.059-.357-6.252-.98-.612-.326-.633-.948-.582-1.224z"/>
+    <path d="M105.979 62.888c.653 0 1.214-1.111 1.214-1.764 0-.673-14.311-.673-14.311 0 0 .653.561 1.764 1.214 1.764h11.883z"/>
+    <rect x="91.403" y="59.951" width="17.34" height="1.561"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#easterling_city-9)"><rect x="0" y="0" width="200" height="200" fill="#333333"/><g clip-path="url(#divisionClip_city-9)"><rect x="0" y="0" width="200" height="200" fill="#fafafa"/></g><g fill="#ffe066" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #ffe066;}
+      g.tertiary,path.tertiary {fill: #ffe066;}
+    </style><use xlink:href="#column_city-9" transform="translate(-20 -20) scale(1.2)"/></g></g>
+      <path d="M 160,185 C 120,170 80,170 40,185 V 15 c 40,15 80,15 120,0 z" fill="url(#backlight)" stroke="#333"/></svg>

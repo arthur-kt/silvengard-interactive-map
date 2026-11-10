@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createEconomy} from '../../app/dist/economy-core.js';
+import {simulateEconomy} from '../../app/dist/economy-simulation.js';
+import {createProvinceModel} from '../../app/dist/province-core.js';
+const base=new URL('../',import.meta.url),read=p=>JSON.parse(fs.readFileSync(new URL(p,base))),W=read('dist/world.json'),data=read('dist/economy-source.json'),oldW=read('backups/v43-before-consumption/dist/world.json'),oldData=read('backups/v43-before-consumption/dist/economy-source.json'),model=createEconomy(W,data,W.economyEdits),oldModel=createEconomy(oldW,oldData,oldW.economyEdits),pm=createProvinceModel(W,read('dist/province-proposal.json'));pm.importData(W.defaultProvinceEdits);pm.pruneEmpty();
+const state=simulateEconomy(W,data,model.edits,null,pm.data.provinces,pm.provinceAt,{instant:true}),report=(id,m,w)=>{const r=m.city(w.cities.find(b=>b.i===id)),grain=(r.production.get(9)||0)*m.price(9);return {total:r.gross,grain,grainShare:grain/r.gross*100};},actual=id=>{const rows=state.last.production['city:'+id],total=Object.entries(rows).reduce((n,[g,q])=>n+q*model.price(+g),0),grain=(rows[9]||0)*model.price(9);return {total,grain,grainShare:grain/total*100};};
+const consumption=Object.values(state.last.householdConsumption),classes={};for(const r of consumption)for(const s of r.classes){classes[s.id]??={budget:0,spent:0};classes[s.id].budget+=s.luxuryBudget;classes[s.id].spent+=s.luxurySpent;assert.ok(s.luxurySpent<=s.luxuryBudget+1e-6);}
+assert.equal(classes.peasant.spent,0);assert.ok(report(7,model,W).grainShare<50);
+const elucitorConsumption=consumption.filter(r=>r).length;const out={Elucitor:{consumption:W.cities.filter(b=>b.state===13).reduce((n,b)=>n+(state.last.householdConsumption['city:'+b.i]?.luxurySpent||0),0),beforeCapacity:report(7,oldModel,oldW),afterCapacity:report(7,model,W),afterActual:actual(7)},classes,world:state.history.at(-1)};fs.writeFileSync(new URL('revisao-v43-verificacao.json',base),JSON.stringify(out,null,2));console.log(JSON.stringify(out));

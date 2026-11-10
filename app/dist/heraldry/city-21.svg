@@ -1,0 +1,13 @@
+<svg id="city-21" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-21"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><g id="crossBottony_city-21" stroke-width=".5">
+    <path d="M78.7 95.8a5.5 5.5 0 10-9.7-.4 5.5 5.5 0 100 9.3 5.5 5.5 0 109.7-.4h17.1v17.2a5.5 5.5 0 10-.4 9.7 5.5 5.5 0 109.3 0 5.5 5.5 0 10-.4-9.7v-17.2h17.1a5.5 5.5 0 109.7.4 5.5 5.5 0 100-9.3 5.5 5.5 0 10-9.7.4h-17.1V78.7a5.5 5.5 0 10.4-9.7 5.5 5.5 0 10-9.3 0 5.5 5.5 0 10.4 9.7v17.2z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-21)"><rect x="0" y="0" width="200" height="200" fill="#fafafa"/><g fill="#377cd7" stroke="none"><rect width="75" height="75"/></g><g fill="#377cd7" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #377cd7;}
+      g.tertiary,path.tertiary {fill: #377cd7;}
+    </style><use xlink:href="#crossBottony_city-21" transform="translate(-50 -50) scale(1.5)"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

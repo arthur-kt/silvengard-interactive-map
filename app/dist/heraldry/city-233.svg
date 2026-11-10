@@ -1,0 +1,14 @@
+<svg id="city-233" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="erebor_city-233"><path d="M25 135 V60 l22-13 16-37 h75 l15 37 22 13 v75l-22 18-16 37 H63l-16-37z"/></clipPath><g id="crescent_city-233" stroke-width=".5">
+    <path d="M84 65c-32 15-24 68 16 68s48-53 16-68c18 20 2 41-16 41S67 85 84 65z"/>
+    <path fill="none" d="M84 65c-26 15-14 56 16 56s42-41 16-56"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#erebor_city-233)"><rect x="0" y="0" width="200" height="200" fill="#333333"/><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#crescent_city-233" transform="translate(2 2) scale(0.63)"/><use xlink:href="#crescent_city-233" transform="translate(72 2) scale(0.63)"/><use xlink:href="#crescent_city-233" transform="translate(37 82) scale(0.63)"/></g></g>
+      <path d="M25 135 V60 l22-13 16-37 h75 l15 37 22 13 v75l-22 18-16 37 H63l-16-37z" fill="url(#backlight)" stroke="#333"/></svg>

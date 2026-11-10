@@ -1,0 +1,14 @@
+<svg id="city-62" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-62"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><g id="mulletFaceted_city-62">
+    <path d="M100 60l8.98 27.64h29.06l-23.51 17.08 8.98 27.64L100 115.28l-23.51 17.08 8.98-27.64-23.51-17.08h29.06z"/>
+    <path  fill="#000" fill-opacity=".2" stroke-width=".2" d="M100 100V60l8.98 27.64L100 100l38.04-12.36-23.51 17.08L100 100l23.51 32.36L100 115.28V100l-23.51 32.36 8.98-27.64L100 100 61.96 87.64h29.06z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-62)"><rect x="0" y="0" width="200" height="200" fill="#522d5b"/><g fill="#fafafa" stroke="none"><rect x="0" y="75" width="200" height="50"/></g><g fill="#d7374a" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #d7374a;}
+      g.tertiary,path.tertiary {fill: #d7374a;}
+    </style><use xlink:href="#mulletFaceted_city-62" transform="translate(30 30) scale(0.7)"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

@@ -1,0 +1,22 @@
+// Read-only evidence for the lore/economy review; never saves defaults or cycles.
+import fs from 'node:fs';
+import {createProvinceModel} from '../../app/dist/province-core.js';
+import {createEconomy} from '../../app/dist/economy-core.js';
+import {createMarkets,routeFlows} from '../../app/dist/economy-trade.js';
+import {simulateEconomy} from '../../app/dist/economy-simulation.js';
+import {routeReport} from '../../app/dist/route-info.js';
+const base=new URL('../',import.meta.url),read=p=>JSON.parse(fs.readFileSync(new URL(p,base),'utf8'));
+const W=read('dist/world.json'),source=read('dist/economy-source.json'),before=JSON.stringify(W),pm=createProvinceModel(W,read('dist/province-proposal.json'));pm.importData(W.defaultProvinceEdits);pm.pruneEmpty();
+const model=createEconomy(W,source,{...W.economyEdits,cycleDays:30}),markets=createMarkets(W,source,model,{provinces:pm.data.provinces,provinceAt:pm.provinceAt}),sim=simulateEconomy(W,source,model.edits,null,pm.data.provinces,pm.provinceAt),flows=routeFlows(sim.last.trades);
+const names=rows=>[...rows].map(([id,n])=>({id,name:model.goods.get(+id)?.name,units:n,value:n*model.price(+id)})).sort((a,b)=>b.value-a.value);
+const actual=id=>new Map(Object.entries(sim.last.production[id]||{}).map(([g,n])=>[+g,n]));
+const cities=W.cities.map(b=>{const r=model.city(b);return {id:b.i,name:b.name,state:b.state,province:pm.provinceAt(b.cell)?.name,provinceId:pm.provinceAt(b.cell)?.i,population:b.demographics.population,market:markets.cityMarket(b)?.center.name,capital:!!b.capital,port:!!b.port,majorPort:!!b.majorPort,magic:!!b.magicSchool,dwarf:!!b.dwarvenFortress,fort:b.settlementClass||'',biome:W.cells[b.cell]?.biome,height:W.cells[b.cell]?.h,foodDeficit:sim.last.demand['city:'+b.i]?.food||0,capacity:names(r.production),actual:names(actual('city:'+b.i)),inputs:names(r.inputs),x:b.x,y:b.y};});
+const provinces=pm.data.provinces.map(p=>{const r=model.province(p.i,pm.provinceAt);return {id:p.i,name:p.name,state:p.state,cities:cities.filter(b=>b.provinceId===p.i).map(b=>b.id),population:r.cities.reduce((n,b)=>n+b.demographics.population,0),rural:names(r.rural),actualRural:names(actual('province:'+p.i)),capacity:names(r.production)};});
+const states=W.states.filter(s=>s.i).map(s=>({id:s.i,name:s.name.trim(),population:cities.filter(b=>b.state===s.i).reduce((n,b)=>n+b.population,0),originalPopulation:s.originalPopulation,cities:cities.filter(b=>b.state===s.i).map(b=>b.id)}));
+function cellAt(p){return W.cells[Math.min(W.grid.rows-1,Math.max(0,Math.floor(p[1]/W.grid.stepY)))*W.grid.columns+Math.min(W.grid.columns-1,Math.max(0,Math.floor(p[0]/W.grid.stepX)))];}
+const routes=W.routes.map(route=>{const r=routeReport(W,route),f=flows.get(route.id);let water=0,total=0,unknown=0;for(let i=1;i<route.points.length;i++){const a=route.points[i-1],b=route.points[i],km=Math.hypot(b[0]-a[0],b[1]-a[1])*W.settings.distanceScale,n=Math.max(1,Math.ceil(km/4));for(let j=0;j<n;j++){const t=(j+.5)/n,c=cellAt([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]);total+=km/n;if(c.h<20)water+=km/n;if(c.h>=20&&c.state===0)unknown+=km/n;}}return {id:route.id,name:route.name,kind:route.kind,major:route.majorRoute!==false,km:r.km,days:r.days,stops:r.stops.map(s=>s.id),declaredStops:route.stops||[],flow:(f?.coins||0)/100,trades:f?.trades||0,goods:names(new Map(Object.entries(f?.goods||{}).map(([g,n])=>[+g,n]))),waterRatio:total?water/total:0,unknownKm:unknown};});
+const totals=new Map();for(const rows of Object.values(sim.last.production))for(const [g,n]of Object.entries(rows))totals.set(+g,(totals.get(+g)||0)+n);
+const output={date:'2026-11-09',basis:'30-day estimate, not a saved cycle',population:cities.reduce((n,b)=>n+b.population,0),states,cities,provinces,routes,totalProduction:names(totals),goods:source.goods,simulationKeys:Object.keys(sim.last),summary:sim.history.at(-1),shipLandTrades:sim.last.trades.filter(t=>t.good===53&&t.roadKm>0).map(t=>({from:t.from,to:t.to,units:t.units,roadKm:t.roadKm,seaKm:t.seaKm})),tradeValue:sim.last.trades.reduce((n,t)=>n+t.coins,0)/100,policies:model.edits};
+if(JSON.stringify(W)!==before)throw Error('Review unexpectedly mutated the map.');
+fs.writeFileSync(new URL('revisao-historia-economia-dados.json',base),JSON.stringify(output,null,2));
+console.log(JSON.stringify({population:output.population,cities:cities.length,provinces:provinces.length,routes:routes.length,goods:source.goods.length,tradeValue:output.tradeValue,worldUnchanged:true}));

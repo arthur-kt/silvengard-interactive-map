@@ -1,0 +1,13 @@
+<svg id="city-108" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-108"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><g id="crossBiparted_city-108" stroke-width=".5">
+    <path d="m 90,60 10,10 10,-10 v 30 h 30 l -10,10 10,10 h -30 v 30 L 100,130 90,140 V 110 H 60 L 70,100 60,90 h 30 z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-108)"><rect x="0" y="0" width="200" height="200" fill="#333333"/><g fill="#ffe066" stroke="none"><path d="m 0,115 v -15 h 85 l 15,15 15,-15 h 85 v 15" transform="translate(0 -14.5)"/><path d="m 0,115 v -15 h 85 l 15,15 15,-15 h 85 v 15" transform="rotate(180 100 100) translate(0 -14.5)"/><path d="m 0,115 v -15 h 85 l 15,15 15,-15 h 85 v 15" transform="rotate(-90 100 100) translate(0 -14.5)"/><path d="m 0,115 v -15 h 85 l 15,15 15,-15 h 85 v 15" transform="rotate(-270 100 100) translate(0 -14.5)"/></g><g fill="#333333" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #333333;}
+      g.tertiary,path.tertiary {fill: #333333;}
+    </style><use xlink:href="#crossBiparted_city-108" transform="translate(70 20) scale(0.3)"/><use xlink:href="#crossBiparted_city-108" transform="translate(70 70) scale(0.3)"/><use xlink:href="#crossBiparted_city-108" transform="translate(70 120) scale(0.3)"/><use xlink:href="#crossBiparted_city-108" transform="translate(26.25 70) scale(0.3)"/><use xlink:href="#crossBiparted_city-108" transform="translate(113.75 70) scale(0.3)"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

@@ -1,0 +1,11 @@
+<svg id="city-43" width="256" height="256" viewBox="0 5 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="gondor_city-43"><path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z"/></clipPath><g id="crossDouble_city-43" stroke-width=".5"><path d="m 95,60 h 10 v 20 h 20 v 10 h -20 v 20 h 20 v 10 h -20 v 20 H 95 V 120 H 75 V 110 H 95 V 90 H 75 V 80 h 20 z"/></g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#gondor_city-43)"><rect x="0" y="0" width="200" height="200" fill="#d7374a"/><g fill="#ffe066" stroke="none"><path d="M0,0 q120,100 0,200 M200,0 q-120,100 0,200"/></g><g fill="#ffe066" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #ffe066;}
+      g.tertiary,path.tertiary {fill: #ffe066;}
+    </style><use xlink:href="#crossDouble_city-43" transform="translate(62 12) scale(0.38)"/><use xlink:href="#crossDouble_city-43" transform="translate(62 62) scale(0.38)"/><use xlink:href="#crossDouble_city-43" transform="translate(62 112) scale(0.38)"/></g></g>
+      <path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z" fill="url(#backlight)" stroke="#333"/></svg>

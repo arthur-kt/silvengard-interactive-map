@@ -1,0 +1,13 @@
+<svg id="city-31" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-31"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><g id="crossHummetty_city-31" stroke-width=".5">
+    <path d="M90 60h20v30h30v20h-30v30H90v-30H60V90h30z"/>
+  </g><pattern id="pappellony2-argent-purpure" width="25" height="25" viewBox="0 0 100 100" patternUnits="userSpaceOnUse" stroke="#000" stroke-width="2"><rect width="100" height="100" fill="#fafafa" stroke="none"/><circle cy="50" r="49" fill="#522d5b"/><circle cx="100" cy="50" r="49" fill="#522d5b"/><circle cx="50" cy="0" r="49" fill="#fafafa"/></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-31)"><rect x="0" y="0" width="200" height="200" fill="url(#pappellony2-argent-purpure)"/><g fill="#377cd7" stroke="none"><rect x="0" y="75" width="200" height="50"/></g><g fill="#ffe066" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #ffe066;}
+      g.tertiary,path.tertiary {fill: #ffe066;}
+    </style><use xlink:href="#crossHummetty_city-31" transform="translate(6.25 50) scale(0.5)"/><use xlink:href="#crossHummetty_city-31" transform="translate(50 50) scale(0.5)"/><use xlink:href="#crossHummetty_city-31" transform="translate(93.75 50) scale(0.5)"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

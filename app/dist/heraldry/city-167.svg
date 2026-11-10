@@ -1,0 +1,14 @@
+<svg id="city-167" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="urukHai_city-167"><path d="M 30,60 C 40,60 60,50 60,20 l -5,-3 45,-17 75,40 -5,5 -35,155 -5,-35 H 70 v 35 z"/></clipPath><clipPath id="divisionClip_city-167"><rect x="100" y="0" width="100" height="100"/><rect x="0" y="100" width="100" height="100"/></clipPath><g id="inescutcheon_city-167"><path transform="translate(66 66) scale(.34)" d="M 30,60 C 40,60 60,50 60,20 l -5,-3 45,-17 75,40 -5,5 -35,155 -5,-35 H 70 v 35 z"/></g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#urukHai_city-167)"><rect x="0" y="0" width="200" height="200" fill="#377cd7"/><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#inescutcheon_city-167" transform="translate(-20 -20) scale(1.2)"/></g><g clip-path="url(#divisionClip_city-167)"><rect x="0" y="0" width="200" height="200" fill="#fafafa"/><g fill="#377cd7" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #377cd7;}
+      g.tertiary,path.tertiary {fill: #377cd7;}
+    </style><use xlink:href="#inescutcheon_city-167" transform="translate(-20 -20) scale(1.2)"/></g></g></g>
+      <path d="M 30,60 C 40,60 60,50 60,20 l -5,-3 45,-17 75,40 -5,5 -35,155 -5,-35 H 70 v 35 z" fill="url(#backlight)" stroke="#333"/></svg>

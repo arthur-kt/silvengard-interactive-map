@@ -1,0 +1,8 @@
+<svg id="city-133" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="horsehead_city-133"><path d="m 20,40 c 0,60 40,80 40,100 0,10 -4,15 -0.35,30 C 65,185.7 81,200 100,200 c 19.1,0 35.3,-14.6 40.5,-30.4 C 144.2,155 140,150 140,140 140,120 180,100 180,40 142.72,40 150,15 100,15 55,15 55,40 20,40 Z"/></clipPath><clipPath id="divisionClip_city-133"><polygon points="0,0 15,0 100,200 185,0 200,0 200,200 0,200"/></clipPath><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#horsehead_city-133)"><rect x="0" y="0" width="200" height="200" fill="#377cd7"/><g fill="#ffe066" stroke="none"><polygon points="70,0 100,175 130,0"/></g><g clip-path="url(#divisionClip_city-133)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/><g fill="#377cd7" stroke="none"><polygon points="70,0 100,175 130,0"/></g></g></g>
+      <path d="m 20,40 c 0,60 40,80 40,100 0,10 -4,15 -0.35,30 C 65,185.7 81,200 100,200 c 19.1,0 35.3,-14.6 40.5,-30.4 C 144.2,155 140,150 140,140 140,120 180,100 180,40 142.72,40 150,15 100,15 55,15 55,40 20,40 Z" fill="url(#backlight)" stroke="#333"/></svg>

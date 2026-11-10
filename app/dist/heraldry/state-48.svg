@@ -1,0 +1,13 @@
+<svg id="state-48" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="boeotian_state-48"><path d="M150 115c-5 0-10-5-10-15s5-15 10-15c10 0 7 10 15 10 10 0 0-30 0-30-10-25-30-55-65-55S45 40 35 65c0 0-10 30 0 30 8 0 5-10 15-10 5 0 10 5 10 15s-5 15-10 15c-10 0-7-10-15-10-10 0 0 30 0 30 10 25 30 55 65 55s55-30 65-55c0 0 10-30 0-30-8 0-5 10-15 10z"/></clipPath><g id="crossSaltire_state-48" stroke-width=".5">
+    <path d="m 74,66 -8,8 26,26 -26,26 8,8 26,-26 26,26 8,-8 -26,-26 26,-26 -8,-8 -26,26 z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#boeotian_state-48)"><rect x="0" y="0" width="200" height="200" fill="#377cd7"/><g fill="#fafafa" stroke="none"><path d="M150 115c-5 0-10-5-10-15s5-15 10-15c10 0 7 10 15 10 10 0 0-30 0-30-10-25-30-55-65-55S45 40 35 65c0 0-10 30 0 30 8 0 5-10 15-10 5 0 10 5 10 15s-5 15-10 15c-10 0-7-10-15-10-10 0 0 30 0 30 10 25 30 55 65 55s55-30 65-55c0 0 10-30 0-30-8 0-5 10-15 10z" fill="none" stroke="#fafafa" stroke-width="5%" transform="translate(15 15) scale(.85)"/></g><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#crossSaltire_state-48" transform="translate(70 25) scale(0.3)"/><use xlink:href="#crossSaltire_state-48" transform="translate(70 70) scale(0.3)"/><use xlink:href="#crossSaltire_state-48" transform="translate(70 115) scale(0.3)"/></g></g>
+      <path d="M150 115c-5 0-10-5-10-15s5-15 10-15c10 0 7 10 15 10 10 0 0-30 0-30-10-25-30-55-65-55S45 40 35 65c0 0-10 30 0 30 8 0 5-10 15-10 5 0 10 5 10 15s-5 15-10 15c-10 0-7-10-15-10-10 0 0 30 0 30 10 25 30 55 65 55s55-30 65-55c0 0 10-30 0-30-8 0-5 10-15 10z" fill="url(#backlight)" stroke="#333"/></svg>

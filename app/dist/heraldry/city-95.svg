@@ -1,0 +1,8 @@
+<svg id="city-95" width="256" height="256" viewBox="0 5 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="gondor_city-95"><path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z"/></clipPath><clipPath id="divisionClip_city-95"><polygon points="0,0 200,200 0,200"/></clipPath><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#gondor_city-95)"><rect x="0" y="0" width="200" height="200" fill="#d7374a"/><g clip-path="url(#divisionClip_city-95)"><rect x="0" y="0" width="200" height="200" fill="#fafafa"/><g fill="#ffe066" stroke="none"><polygon points="46,0 75,175 103,0"/><polygon points="95,0 125,175 154,0"/></g></g></g>
+      <path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z" fill="url(#backlight)" stroke="#333"/></svg>

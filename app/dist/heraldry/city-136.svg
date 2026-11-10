@@ -1,0 +1,13 @@
+<svg id="city-136" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="erebor_city-136"><path d="M25 135 V60 l22-13 16-37 h75 l15 37 22 13 v75l-22 18-16 37 H63l-16-37z"/></clipPath><g id="triangle_city-136">
+    <polygon points="100 60 135 130 65 130"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#erebor_city-136)"><rect x="0" y="0" width="200" height="200" fill="#377cd7"/><g fill="#ffe066" stroke="none"><path d="M0,0 q120,100 0,200 M200,0 q-120,100 0,200"/></g><g fill="#ffe066" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #ffe066;}
+      g.tertiary,path.tertiary {fill: #ffe066;}
+    </style><use xlink:href="#triangle_city-136" transform="translate(55 0) scale(0.45)"/><use xlink:href="#triangle_city-136" transform="translate(55 55) scale(0.45)"/><use xlink:href="#triangle_city-136" transform="translate(55 110) scale(0.45)"/></g></g>
+      <path d="M25 135 V60 l22-13 16-37 h75 l15 37 22 13 v75l-22 18-16 37 H63l-16-37z" fill="url(#backlight)" stroke="#333"/></svg>

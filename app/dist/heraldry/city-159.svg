@@ -1,0 +1,13 @@
+<svg id="city-159" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-159"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><g id="pique_city-159">
+    <path stroke-width=".5" d="M100 70c-5.7 10.3-25.2 19.8-25.2 32.8 0 6.2 5.6 11.1 12.6 11.1 4.4 0 8.4-2 10.6-5.1-.9 8.9-3.5 18.8-12.6 20.7h29.2c-9.2-1.9-11.7-11.8-12.6-20.7 2.2 3.1 6.2 5.1 10.6 5.1 7 0 12.6-5 12.6-11.1 0-13-19.5-22.5-25.2-32.8z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-159)"><rect x="0" y="0" width="200" height="200" fill="#26c061"/><g fill="#ffe066" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #ffe066;}
+      g.tertiary,path.tertiary {fill: #ffe066;}
+    </style><use xlink:href="#pique_city-159" transform="translate(6.25 50) scale(0.5)"/><use xlink:href="#pique_city-159" transform="translate(50 50) scale(0.5)"/><use xlink:href="#pique_city-159" transform="translate(93.75 50) scale(0.5)"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

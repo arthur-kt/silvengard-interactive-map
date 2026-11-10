@@ -1,0 +1,13 @@
+<svg id="city-11" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="boeotian_city-11"><path d="M150 115c-5 0-10-5-10-15s5-15 10-15c10 0 7 10 15 10 10 0 0-30 0-30-10-25-30-55-65-55S45 40 35 65c0 0-10 30 0 30 8 0 5-10 15-10 5 0 10 5 10 15s-5 15-10 15c-10 0-7-10-15-10-10 0 0 30 0 30 10 25 30 55 65 55s55-30 65-55c0 0 10-30 0-30-8 0-5 10-15 10z"/></clipPath><g id="crossBiparted_city-11" stroke-width=".5">
+    <path d="m 90,60 10,10 10,-10 v 30 h 30 l -10,10 10,10 h -30 v 30 L 100,130 90,140 V 110 H 60 L 70,100 60,90 h 30 z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#boeotian_city-11)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/><g fill="#522d5b" stroke="none"><path d="m 0,115 v -20 a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0 v 20" transform="rotate(-90 100 100) translate(0 -25)"/><path d="m 0,115 v -20 a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0a 6.25,6.25 0 0 0 12.5,0 v 20" transform="rotate(90 100 100) translate(0 -25)"/><rect x="88" y="0" width="24" height="200" stroke="none"/></g><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#crossBiparted_city-11" transform="translate(48 3) scale(0.52)"/><use xlink:href="#crossBiparted_city-11" transform="translate(48 93) scale(0.52)"/></g></g>
+      <path d="M150 115c-5 0-10-5-10-15s5-15 10-15c10 0 7 10 15 10 10 0 0-30 0-30-10-25-30-55-65-55S45 40 35 65c0 0-10 30 0 30 8 0 5-10 15-10 5 0 10 5 10 15s-5 15-10 15c-10 0-7-10-15-10-10 0 0 30 0 30 10 25 30 55 65 55s55-30 65-55c0 0 10-30 0-30-8 0-5 10-15 10z" fill="url(#backlight)" stroke="#333"/></svg>

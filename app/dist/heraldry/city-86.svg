@@ -1,0 +1,8 @@
+<svg id="city-86" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-86"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><clipPath id="divisionClip_city-86"><polygon points="0,0 0,200 200,0 200,200"/></clipPath><pattern id="chequy-azure-argent" width="50" height="50" viewBox="0 0 50 50" patternUnits="userSpaceOnUse" fill="#fafafa"><rect width="50" height="50"/><rect width="25" height="25" fill="#377cd7"/><rect x="25" y="25" width="25" height="25" fill="#377cd7"/></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-86)"><rect x="0" y="0" width="200" height="200" fill="url(#chequy-azure-argent)"/><g clip-path="url(#divisionClip_city-86)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

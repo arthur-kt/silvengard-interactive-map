@@ -1,0 +1,23 @@
+<svg id="city-194" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="horsehead_city-194"><path d="m 20,40 c 0,60 40,80 40,100 0,10 -4,15 -0.35,30 C 65,185.7 81,200 100,200 c 19.1,0 35.3,-14.6 40.5,-30.4 C 144.2,155 140,150 140,140 140,120 180,100 180,40 142.72,40 150,15 100,15 55,15 55,40 20,40 Z"/></clipPath><g id="key_city-194" stroke-width=".425">
+    <path d="M92.418 82.053h2.485v4.124h1.539v-6.015h6.552V69.767h-6.552v-5.915h-1.54v3.953h-2.484V63.85h-7.682v3.413h4.35v2.503h-4.35v3.953h6.482v-2.247h2.485v2.247h2.428v2.503h-2.428v2.232h-2.485v-2.232h-6.481v3.939h4.349v2.502h-4.35v3.513h7.682z"/>
+    <path d="M99.802 121.172V61.164c0-.74 1.06-1.351 2.358-1.351s2.359.612 2.359 1.35v60.01h-4.717z"/>
+    <path d="M99.802 116.181a.706.711 0 0 1 0-1.393h4.702a.706.711 0 0 1 0 1.393h-4.702zm0 5.39a.706.711 0 0 1 0-1.394h4.702a.706.711 0 0 1 0 1.393h-4.702zm0-1.792a1.638 1.65 0 0 1 0-3.3h4.702a1.638 1.65 0 0 1 0 3.3h-4.702z"/>
+    <ellipse cx="102.161" cy="137.909" rx="2.485" ry="1.991"/>
+    <path d="M100.17 136.857a.706.711 0 0 1 0-1.394h3.981a.706.711 0 0 1 0 1.394h-3.981z"/>
+    <ellipse cx="112.581" cy="129.107" rx="1.977" ry="2.503"/>
+    <path d="M111.55 131.112a.706.711 0 0 1-1.383 0v-4.01a.706.711 0 0 1 1.383 0v4.01z"/>
+    <ellipse cx="91.599" cy="129.107" rx="1.977" ry="2.503"/>
+    <path d="M92.644 127.102a.706.711 0 0 1 1.383 0v4.01a.706.711 0 0 1-1.383 0v-4.01zm15.433 2.034-5.959 4.251-5.845-4.308 5.958-5.887 5.846 5.944zm-3.53-7.565h-4.843l-5.592 5.63v3.712l5.93 4.536h4.166l5.987-4.593v-3.612l-5.648-5.674z"/>
+    <path d="m105.846 132.591-.226-1.863-2.57-.981.96 2.588 1.836.256zm-7.47-7.537.226 1.863 2.57.981-.96-2.588-1.836-.256zm.142 7.523 1.85-.228.974-2.588-2.57.967-.254 1.849zm7.497-7.508-1.85.227-.974 2.588 2.57-.967.254-1.848z"/>
+    <path d="M108.077 129.136h2.075m-8.034 4.251v2.076m.127-12.271v-1.622m-5.958 7.509h-2.26"/>
+  </g><pattern id="bendy-argent-azure" width="100" height="100" viewBox="0 0 100 100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="#fafafa"/><polygon points="0,25 75,100 25,100 0,75" fill="#377cd7"/><polygon points="25,0 75,0 100,25 100,75" fill="#377cd7"/></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#horsehead_city-194)"><rect x="0" y="0" width="200" height="200" fill="url(#bendy-argent-azure)"/><g fill="#522d5b" stroke="none"><polygon points="0,178 178,0 200,0 200,22 22,200 0,200"/></g><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#key_city-194" transform="translate(108 38) scale(0.27)"/><use xlink:href="#key_city-194" transform="translate(73 73) scale(0.27)"/><use xlink:href="#key_city-194" transform="translate(43 103) scale(0.27)"/></g></g>
+      <path d="m 20,40 c 0,60 40,80 40,100 0,10 -4,15 -0.35,30 C 65,185.7 81,200 100,200 c 19.1,0 35.3,-14.6 40.5,-30.4 C 144.2,155 140,150 140,140 140,120 180,100 180,40 142.72,40 150,15 100,15 55,15 55,40 20,40 Z" fill="url(#backlight)" stroke="#333"/></svg>

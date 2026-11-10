@@ -1,0 +1,8 @@
+<svg id="city-124" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="fantasy1_city-124"><path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z"/></clipPath><pattern id="honeycombed-or-purpure-small" width="22.880000000000003" height="39.2224" viewBox="0 0 70 120" patternUnits="userSpaceOnUse"><rect width="70" height="120" fill="#ffe066"/><path d="M 70,0 V 20 L 35,40 m 35,80 V 100 L 35,80 M 0,120 V 100 L 35,80 V 40 L 0,20 V 0" stroke="#522d5b" fill="none" stroke-width="3"/></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#fantasy1_city-124)"><rect x="0" y="0" width="200" height="200" fill="url(#honeycombed-or-purpure-small)"/><g fill="#333333" stroke="none"><rect width="200" height="75"/></g></g>
+      <path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z" fill="url(#backlight)" stroke="#333"/></svg>

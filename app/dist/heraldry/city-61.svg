@@ -1,0 +1,13 @@
+<svg id="city-61" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="fantasy1_city-61"><path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z"/></clipPath><g id="mascle_city-61">
+    <path d="M100 55l30 45-30 45-30-45zm0 15.75L80.5 100l19.5 29.25L119.5 100z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#fantasy1_city-61)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/><g fill="#26c061" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #26c061;}
+      g.tertiary,path.tertiary {fill: #26c061;}
+    </style><use xlink:href="#mascle_city-61" transform="translate(-20 -20) scale(1.2)"/></g></g>
+      <path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z" fill="url(#backlight)" stroke="#333"/></svg>

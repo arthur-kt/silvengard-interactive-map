@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import {createProvinceModel} from '../../app/dist/province-core.js';
+import {createEconomy} from '../../app/dist/economy-core.js';
+import {simulateEconomy} from '../../app/dist/economy-simulation.js';
+import {createMarkets,tradeGraph} from '../../app/dist/economy-trade.js';
+import {economicNodes} from '../../app/dist/economy-rural.js';
+import {buildEconomicMap} from '../../app/dist/economy-map-core.js';
+import {routeReport} from '../../app/dist/route-info.js';
+const base=new URL('../',import.meta.url),read=p=>JSON.parse(fs.readFileSync(new URL(p,base))),D=read('dist/world.json'),data=read('dist/economy-source.json'),before=JSON.stringify(D),pm=createProvinceModel(D,read('dist/province-proposal.json'));pm.importData(D.defaultProvinceEdits);pm.pruneEmpty();
+console.time('forecast');const model=createEconomy(D,data,D.economyEdits),forecast=simulateEconomy(D,data,model.edits,null,pm.data.provinces,pm.provinceAt,{instant:true});console.timeEnd('forecast');
+const ctx={model,edits:model.edits,provinceAt:pm.provinceAt,state:forecast,provReports:new Map(pm.data.provinces.map(p=>[p.i,model.province(p.i,pm.provinceAt)]))};ctx.markets=createMarkets(D,data,model,{provinces:pm.data.provinces,provinceAt:pm.provinceAt});const thematic=buildEconomicMap(D,ctx,pm.data.provinces,pm.provinceAt);
+console.time('cycles');const first=simulateEconomy(D,data,model.edits,null,pm.data.provinces,pm.provinceAt),second=simulateEconomy(D,data,model.edits,first,pm.data.provinces,pm.provinceAt);console.timeEnd('cycles');
+const nodes=economicNodes(D,data,model,pm.data.provinces,pm.provinceAt),graph=tradeGraph(D,nodes,model.edits),cityNodes=[...nodes.values()].filter(n=>n.city),unconnected=cityNodes.filter(n=>cityNodes.filter(b=>graph.paths.get(n.id)?.has(b.id)).length<2);
+const badShips=[...forecast.last.trades,...first.last.trades,...second.last.trades].filter(t=>data.goods.find(g=>g.i===t.good)?.transport&&t.roadKm>1e-8);
+if(badShips.length)throw Error('Ship transported over land');if(JSON.stringify(D)!==before)throw Error('Diagnostic mutated world');
+const marketProduction=[...thematic.marketInfo.values()].reduce((n,m)=>n+[...m.production].reduce((s,[g,q])=>s+q*model.price(g),0),0),simProduction=Object.values(forecast.last.production).reduce((n,rows)=>n+Object.entries(rows).reduce((s,[g,q])=>s+q*model.price(+g),0),0);if(Math.abs(marketProduction-simProduction)>.01)throw Error('Markets omit or double-count production: '+marketProduction+' / '+simProduction);
+const rows={populations:D.cities.filter(b=>[1,3,7].includes(b.i)).map(b=>({name:b.name,population:b.demographics.population})),population:forecast.last.population,forecast:forecast.history.at(-1),first:first.history.at(-1),second:second.history.at(-1),routes:D.routes.length,internalPaths:D.routes.filter(r=>r.tradeUse===false).length,brokenCommercialRoutes:D.routes.filter(r=>r.tradeUse!==false&&routeReport(D,r).stops.length<2).map(r=>r.id),unconnected:unconnected.map(n=>n.city.name),badShips,marketsReconcile:true,moneyConserved:Object.values(first.accounts).reduce((s,a)=>s+a.coins,0)===Object.values(second.accounts).reduce((s,a)=>s+a.coins,0),worldUnchanged:true};
+fs.writeFileSync(new URL('revisao-economia-aplicada-verificacao.json',base),JSON.stringify(rows,null,2));console.log(JSON.stringify(rows));

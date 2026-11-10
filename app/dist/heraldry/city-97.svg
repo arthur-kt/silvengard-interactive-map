@@ -1,0 +1,13 @@
+<svg id="city-97" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="swiss_city-97"><path d="m 25,20 c -0.1,0 25.2,8.5 37.6,8.5 C 75.1,28.5 99.1,20 100,20 c 0.6,0 24.9,8.5 37.3,8.5 C 149.8,28.5 174.4,20 175,20 l -0.3,22.6 C 173.2,160.3 100,200 100,200 100,200 26.5,160.9 25.2,42.6 Z"/></clipPath><g id="roundel_city-97">
+    <circle cx="100" cy="100" r="30"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#swiss_city-97)"><rect x="0" y="0" width="200" height="200" fill="#522d5b"/><g fill="#ffe066" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #ffe066;}
+      g.tertiary,path.tertiary {fill: #ffe066;}
+    </style><use xlink:href="#roundel_city-97" transform="translate(-3.5 -3.5) scale(0.66)"/><use xlink:href="#roundel_city-97" transform="translate(71.5 -3.5) scale(0.66)"/><use xlink:href="#roundel_city-97" transform="translate(34 76.5) scale(0.66)"/></g></g>
+      <path d="m 25,20 c -0.1,0 25.2,8.5 37.6,8.5 C 75.1,28.5 99.1,20 100,20 c 0.6,0 24.9,8.5 37.3,8.5 C 149.8,28.5 174.4,20 175,20 l -0.3,22.6 C 173.2,160.3 100,200 100,200 100,200 26.5,160.9 25.2,42.6 Z" fill="url(#backlight)" stroke="#333"/></svg>

@@ -1,0 +1,11 @@
+<svg id="author-state-23" width="512" height="512" viewBox="0 5 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="ironHills_author-state-23"><path d="m 30,25 60,-10 10,10 10,-10 60,10 -5,125 -65,50 -65,-50 z"/></clipPath><g id="dwarvenPeaks_author-state-23" transform="translate(55 55) scale(.45)" fill="#ddd" stroke="#111" stroke-width="2" stroke-linejoin="round"><path d="M14 123 51 58 75 83 103 23 138 80 157 52 188 123Z"/><path d="m75 83 28-60 16 72-16-17-10 16Z" fill="#fff"/><path d="m45 181 98-83 8 10-98 83Z" fill="#c49443"/><path d="M116 96q28-25 61-5l-4 7q-25-10-48 8Z"/><path d="m155 181-98-83-8 10 98 83Z" fill="#c49443"/><path d="M84 96Q56 71 23 91l4 7q25-10 48 8Z"/><path d="M35 134h130v8H35z" fill="#c49443"/></g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#ironHills_author-state-23)"><rect x="0" y="0" width="200" height="200" fill="#377cd7"/><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#dwarvenPeaks_author-state-23" transform="translate(-50 -50) scale(1.5)"/></g></g>
+      <path d="m 30,25 60,-10 10,10 10,-10 60,10 -5,125 -65,50 -65,-50 z" fill="url(#backlight)" stroke="#333"/></svg>

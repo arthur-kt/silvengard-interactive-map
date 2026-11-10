@@ -1,0 +1,16 @@
+<svg id="city-19" width="256" height="256" viewBox="0 5 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="fantasy2_city-19"><path d="m 152,21 c 0,0 -27,14 -52,-4 C 75,35 48,21 48,21 50,45 30,55 30,75 60,75 60,115 32,120 c 3,40 53,50 68,80 15,-30 65,-40 68,-80 -28,-5 -28,-45 2,-45 C 170,55 150,45 152,21 Z"/></clipPath><clipPath id="divisionClip_city-19"><path d="m 0,115 c 0,0 60,-19.8 100,-20 c 40,-0.2 100,20 100,20 V200 H0 Z" transform="rotate(-90 100 100)"/></clipPath><g id="crossCalvary_city-19" stroke-width=".5"><path d="m 95,55 h 10 v 15 h 20 v 10 h -20 v 40 h 3 v 10 h 10 v 10 h 17 v 10 H 65 v -10 h 17 v -10 h 10 v -10 h 3 V 80 H 75 V 70 h 20 z"/></g><g id="crossAnkh_city-19" stroke-width=".5">
+    <path d="M100 56c-9.32 0-15 9-15 19 0 8 4.01 14.1 10 23l-20-4v14l20-2-3 40h16l-3-40 20 2V94l-20 4c5.99-8.9 10-15 10-23 0-10-5.68-19-15-19zm8.84 20C109 85 104 90 100 96c-4-6-9-11-9-20 0-18 18-18 17.84 0z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#fantasy2_city-19)"><rect x="0" y="0" width="200" height="200" fill="#377cd7"/><g clip-path="url(#divisionClip_city-19)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/></g><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#crossCalvary_city-19" transform="translate(23.5 51) scale(0.49)"/></g><g fill="#26c061" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #26c061;}
+      g.tertiary,path.tertiary {fill: #26c061;}
+    </style><use xlink:href="#crossAnkh_city-19" transform="translate(78.5 51) scale(0.49)"/></g></g>
+      <path d="m 152,21 c 0,0 -27,14 -52,-4 C 75,35 48,21 48,21 50,45 30,55 30,75 60,75 60,115 32,120 c 3,40 53,50 68,80 15,-30 65,-40 68,-80 -28,-5 -28,-45 2,-45 C 170,55 150,45 152,21 Z" fill="url(#backlight)" stroke="#333"/></svg>

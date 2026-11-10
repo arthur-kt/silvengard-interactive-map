@@ -1,0 +1,8 @@
+<svg id="city-200" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-200"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><pattern id="fretty-argent-gules" width="40" height="40" viewBox="0 0 140 140" patternUnits="userSpaceOnUse" stroke="#000" stroke-width="2"><rect width="140" height="140" fill="#fafafa" stroke="none"/><path d="m-15 5 150 150 20-20-150-150z" fill="#d7374a"/><path d="m10 150 140-140-20-20-140 140z" fill="#d7374a" stroke="none"/><path d="m0 120 20 20 120-120-20-20z" fill="none"/></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-200)"><rect x="0" y="0" width="200" height="200" fill="url(#fretty-argent-gules)"/><g fill="#d7374a" stroke="none"><rect x="0" y="75" width="200" height="50"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

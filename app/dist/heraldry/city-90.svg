@@ -1,0 +1,13 @@
+<svg id="city-90" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-90"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><g id="mullet4_city-90">
+    <polygon points="100 60 109.9 90.1 140 100 109.9 109.9 100 140 90.1 109.9 60 100 90.1 90.1"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-90)"><rect x="0" y="0" width="200" height="200" fill="#d7374a"/><g fill="#ffe066" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #ffe066;}
+      g.tertiary,path.tertiary {fill: #ffe066;}
+    </style><use xlink:href="#mullet4_city-90" transform="translate(6.25 0) scale(0.5)"/><use xlink:href="#mullet4_city-90" transform="translate(50 0) scale(0.5)"/><use xlink:href="#mullet4_city-90" transform="translate(93.75 0) scale(0.5)"/><use xlink:href="#mullet4_city-90" transform="translate(12.5 50) scale(0.5)"/><use xlink:href="#mullet4_city-90" transform="translate(87.5 50) scale(0.5)"/><use xlink:href="#mullet4_city-90" transform="translate(50 100) scale(0.5)"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

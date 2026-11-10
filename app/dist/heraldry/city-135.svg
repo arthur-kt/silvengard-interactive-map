@@ -1,0 +1,13 @@
+<svg id="city-135" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-135"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><g id="crossCeltic_city-135" stroke-width=".5">
+    <path d="m 95,60 v 7 C 80,70 70,80 67,95 h -7 v 10 h 7 c 3,15 13,25 28,28 v 7 h 10 v -7 c 15,-3 25,-13 28,-28 h 7 V 95 h -7 C 130,80 120,70 105,67 v -7 z m 0,15 V 95 H 75 C 77,85 85,77 95,75 Z m 10,0 c 10,2 18,10 20,20 h -20 z m -30,30 h 20 v 20 C 85,123 77,115 75,105 Z m 30,0 h 20 c -2,10 -10,18 -20,20 z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-135)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/><g fill="#d7374a" stroke="none"><polygon points="0,75 100,140 200,75 200,35 100,100 0,35"/></g><g fill="#d7374a" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #d7374a;}
+      g.tertiary,path.tertiary {fill: #d7374a;}
+    </style><use xlink:href="#crossCeltic_city-135" transform="translate(50 0) scale(0.5)"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

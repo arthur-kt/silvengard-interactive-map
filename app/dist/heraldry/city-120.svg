@@ -1,0 +1,13 @@
+<svg id="city-120" width="256" height="256" viewBox="0 5 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="gondor_city-120"><path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z"/></clipPath><g id="crossPommy_city-120" stroke-width=".5">
+    <path d="M95.8 104.2H76a8.5 8.5 0 110-8.5h19.8V75.9a8.5 8.5 0 118.5 0v19.8H124a8.5 8.5 0 110 8.5h-19.8V124a8.5 8.5 0 11-8.5 0z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#gondor_city-120)"><rect x="0" y="0" width="200" height="200" fill="#522d5b"/><g fill="#fafafa" stroke="none"><polygon points="0,125 100,60 200,125 200,165 100,100 0,165"/></g><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#crossPommy_city-120" transform="translate(29.5 12) scale(0.38)"/><use xlink:href="#crossPommy_city-120" transform="translate(94.5 12) scale(0.38)"/><use xlink:href="#crossPommy_city-120" transform="translate(62 112) scale(0.38)"/></g></g>
+      <path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z" fill="url(#backlight)" stroke="#333"/></svg>

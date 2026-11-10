@@ -1,31 +1,33 @@
-# Built things
-_Debug/
-Compiled/
+# ---------------------------------------------------------------
+# Silvengard · Atlas vivo — o que NÃO entra no Git
+# ---------------------------------------------------------------
 
-# AudioCache can be rebuilt from sources
-AudioCache/
+# Caches do Python
+__pycache__/
+*.pyc
+*.pyo
 
-# Lockfile
-_OpenInEditor.lock
+# Lixo do Windows / Explorer
+Thumbs.db
+desktop.ini
 
-# User settings
-Game.agf.user
-*.crm.user
+# Registros de execução (mudam a cada abertura, não são código)
+app/logs/
+acervo/logs/
 
-# Backups
-Game.agf.bak
-backup_acsprset.spr
+# Node embutido: 89 MB, baixado à parte (veja LEIA-ME.md)
+app/runtime/node.exe
+app/runtime/LICENSE-node.txt
 
-# Memory dumps
-*.dmp
+# Acervo histórico pesado: backups completos (1,4 GB) e pacotes .zip
+acervo/backups/
+acervo/pacotes/
 
-# Temporary files
-# temporarily created during sprite or room background compression
-~aclzw.tmp
-# temporary, main game data, before getting packed into exe
-game28.dta
-# temporary build of the game before being moved to Compiled/ folder
+# Arquivos temporários
+*.tmp
+*.bak
+
+# O inicializador compilado é versionado de propósito (35 KB) para que
+# um clone já possa ser aberto sem compilador:
 *.exe
-
-# Log files
-warnings.log
+!Silvengard-Atlas.exe

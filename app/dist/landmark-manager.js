@@ -1,0 +1,21 @@
+import {createLandmarkModel,cleanLandmarkEdits} from './landmark-core.js?v=27.1';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function createLandmarkManager({D,refresh,toast,beginPick,endPick}){
+ const model=createLandmarkModel(D),key='silvengard-landmarks-v27-'+(D.savedDefaults?.id||'base');let draft=null,picking=false,dialog=null;
+ try{const saved=localStorage.getItem(key);if(saved)model.importData(JSON.parse(saved));}catch(e){toast('Pontos de interesse: '+e.message);}
+ function persist(){try{localStorage.setItem(key,JSON.stringify(model.exportData()));}catch{toast('Exporte a edição para guardar os pontos.');}refresh();}
+ function close(){if(dialog){dialog.remove();dialog=null;}draft=null;picking=false;endPick();}
+ function show(){
+  if(dialog)dialog.remove();dialog=document.createElement('dialog');dialog.className='journeyConfirm poiDialog';
+  dialog.innerHTML=`<h2>${D.landmarks.some(l=>l.id===draft.id)?'Editar':'Novo'} ponto de interesse</h2><label>Nome<input id="poiName" maxlength="100" value="${esc(draft.name)}"></label><label>Tipo<input id="poiKind" list="poiKinds" maxlength="60" value="${esc(draft.kind)}"><datalist id="poiKinds">${['lago','rio','floresta','montanha','ruínas','mansão','povoado','localidade','ilha','baía','pântano','deserto','santuário','masmorra'].map(k=>'<option value="'+k+'">').join('')}</datalist></label><label>Descrição<textarea id="poiDescription" maxlength="20000" rows="5" placeholder="História, encontros, segredos…">${esc(draft.description)}</textarea></label><p id="poiPosition">${draft.point?'Posição: '+draft.point.map(n=>n.toFixed(1)).join(', '):'Escolha a posição no mapa.'}</p><button id="poiPick">Escolher posição no mapa</button><div class="editorActions"><button id="poiCancel">Cancelar</button><button id="poiSave">Salvar ponto</button></div>${D.landmarks.some(l=>l.id===draft.id)?'<button id="poiDelete" class="dangerButton">Excluir ponto de interesse</button>':''}<p class="source">Excluir retira o ponto e sua indicação. Pontos excluídos podem ser restaurados em Lugares.</p>`;
+  document.body.append(dialog);const $=s=>dialog.querySelector(s);
+  function read(){draft={...draft,name:$('#poiName').value,kind:$('#poiKind').value,description:$('#poiDescription').value};}
+  $('#poiCancel').onclick=close;$('#poiPick').onclick=()=>{read();dialog.close();picking=true;beginPick();toast('Clique na posição do ponto · Esc cancela');};
+  $('#poiSave').onclick=()=>{try{read();model.save(draft);close();persist();toast('Ponto de interesse salvo');}catch(e){toast(e.message);}};
+  if($('#poiDelete'))$('#poiDelete').onclick=()=>{model.remove(draft.id);close();persist();toast('Ponto retirado. Você pode restaurá-lo em Lugares.');};
+  dialog.addEventListener('cancel',()=>{draft=null;dialog.remove();dialog=null;picking=false;endPick();});dialog.showModal();
+ }
+ function open(id){draft=id?structuredClone(D.landmarks.find(l=>l.id===id)):{id:'poi-user-'+crypto.randomUUID(),name:'',kind:'localidade',description:'',point:null};if(draft)show();}
+ function restoreList(){const d=document.createElement('dialog');d.className='journeyConfirm poiDialog';const entries=Object.values(D.landmarkArchive||{}).sort((a,b)=>a.name.localeCompare(b.name,'pt-BR'));d.innerHTML='<h2>Pontos excluídos</h2>'+entries.map(l=>`<button class="townLink" data-restore-poi="${esc(l.id)}">Restaurar ${esc(l.name)}</button>`).join('')+(entries.length?'':'<p>Nenhum ponto excluído.</p>')+'<button id="closePoiRestore">Fechar</button>';document.body.append(d);for(const b of d.querySelectorAll('[data-restore-poi]'))b.onclick=()=>{model.restore(b.dataset.restorePoi);persist();d.close();d.remove();restoreList();};d.querySelector('#closePoiRestore').onclick=()=>{d.close();d.remove();};d.addEventListener('cancel',()=>d.remove());d.showModal();}
+ return {open,restoreList,isPicking:()=>picking,pick(xy){if(!picking)return;draft.point=xy.map(n=>Math.round(n*100)/100);picking=false;endPick();show();},cancelPick(){if(picking){picking=false;endPick();show();}},cancel(){if(picking||dialog)close();},validate:cleanLandmarkEdits,exportData:model.exportData,importData(raw){model.importData(raw);persist();}};
+}

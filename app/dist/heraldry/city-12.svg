@@ -1,0 +1,13 @@
+<svg id="city-12" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="easterling_city-12"><path d="M 160,185 C 120,170 80,170 40,185 V 15 c 40,15 80,15 120,0 z"/></clipPath><clipPath id="divisionClip_city-12"><rect x="0" y="100" width="200" height="100"/></clipPath><g id="roundel_city-12">
+    <circle cx="100" cy="100" r="30"/>
+  </g><pattern id="barry-or-vert" width="25" height="100" viewBox="0 0 25 100" patternUnits="userSpaceOnUse"><rect width="25" height="100" fill="#26c061"/><rect x="0" y="25" width="25" height="25" fill="#ffe066"/><rect x="0" y="75" width="25" height="25" fill="#ffe066"/></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#easterling_city-12)"><rect x="0" y="0" width="200" height="200" fill="#522d5b"/><g clip-path="url(#divisionClip_city-12)"><rect x="0" y="0" width="200" height="200" fill="url(#barry-or-vert)"/></g><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#roundel_city-12" transform="translate(-20 -20) scale(1.2)"/></g></g>
+      <path d="M 160,185 C 120,170 80,170 40,185 V 15 c 40,15 80,15 120,0 z" fill="url(#backlight)" stroke="#333"/></svg>

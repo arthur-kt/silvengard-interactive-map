@@ -1,0 +1,16 @@
+<svg id="state-17" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="round_state-17"><path d="m 185,100 a 85,85 0 0 1 -85,85 85,85 0 0 1 -85,-85 85,85 0 0 1 85,-85 85,85 0 0 1 85,85"/></clipPath><g id="inescutcheon_state-17"><path transform="translate(66 66) scale(.34)" d="m 185,100 a 85,85 0 0 1 -85,85 85,85 0 0 1 -85,-85 85,85 0 0 1 85,-85 85,85 0 0 1 85,85"/></g><g id="crossJerusalem_state-17" stroke-width=".5">
+    <path d="m 118,72 v 5 h -5 v 5 h 5 v 5 h 5 v -5 h 5 v -5 h -5 v -5 z m 0,41 v 5 h -5 v 5 h 5 v 5 h 5 v -5 h 5 v -5 h -5 v -5 z m -41,0 v 5 h -5 v 5 h 5 v 5 h 5 v -5 h 5 v -5 h -5 v -5 z m 0,-41 v 5 h -5 v 5 h 5 v 5 h 5 v -5 h 5 V 77 H 82 V 72 Z M 89,60 h 22 v 8 h -6 v 27 h 28 v -6 h 7 v 22 h -7 v -6 h -28 v 28 h 6 v 7 H 89 v -7 h 6 V 105 H 67 v 6 H 60 V 89 h 7 v 6 H 95 V 68 h -6 z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#round_state-17)"><rect x="0" y="0" width="200" height="200" fill="#377cd7"/><g fill="#fafafa" stroke="none"><rect x="0" y="75" width="200" height="50"/></g><g fill="#377cd7" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #377cd7;}
+      g.tertiary,path.tertiary {fill: #377cd7;}
+    </style><use xlink:href="#inescutcheon_state-17" transform="translate(10 50) scale(0.5)"/><use xlink:href="#inescutcheon_state-17" transform="translate(50 50) scale(0.5)"/><use xlink:href="#inescutcheon_state-17" transform="translate(90 50) scale(0.5)"/></g><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#crossJerusalem_state-17" transform="translate(35 75) scale(0.25)"/><use xlink:href="#crossJerusalem_state-17" transform="translate(75 75) scale(0.25)"/><use xlink:href="#crossJerusalem_state-17" transform="translate(115 75) scale(0.25)"/></g></g>
+      <path d="m 185,100 a 85,85 0 0 1 -85,85 85,85 0 0 1 -85,-85 85,85 0 0 1 85,-85 85,85 0 0 1 85,85" fill="url(#backlight)" stroke="#333"/></svg>

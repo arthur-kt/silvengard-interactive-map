@@ -1,0 +1,13 @@
+<svg id="state-29" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="urukHai_state-29"><path d="M 30,60 C 40,60 60,50 60,20 l -5,-3 45,-17 75,40 -5,5 -35,155 -5,-35 H 70 v 35 z"/></clipPath><g id="goutte_state-29">
+    <path d="M100 134c17-1 16-19 10-25-1.9-1.8-4.6-5.3-3.9-8.1C108 94 102 90 102 87c-1-7 3-7 3-13-.1-6.2-3.3-8.7-6-12 1.2 3 2 6 1 9-1.5 5.9-6.2 6.9-8 11-2 5 3 11 3 15-.6 9.1-9 13-9 23 .3 11.3 9 14 14 14z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#urukHai_state-29)"><rect x="0" y="0" width="200" height="200" fill="#fafafa"/><g fill="#522d5b" stroke="none"><path d="M0,0 q120,100 0,200 M200,0 q-120,100 0,200"/></g><g fill="#d7374a" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #d7374a;}
+      g.tertiary,path.tertiary {fill: #d7374a;}
+    </style><use xlink:href="#goutte_state-29" transform="translate(-20 -20) scale(1.2)"/></g></g>
+      <path d="M 30,60 C 40,60 60,50 60,20 l -5,-3 45,-17 75,40 -5,5 -35,155 -5,-35 H 70 v 35 z" fill="url(#backlight)" stroke="#333"/></svg>

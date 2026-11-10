@@ -1,0 +1,13 @@
+<svg id="city-181" width="256" height="256" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="fantasy1_city-181"><path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z"/></clipPath><g id="crossCeltic_city-181" stroke-width=".5">
+    <path d="m 95,60 v 7 C 80,70 70,80 67,95 h -7 v 10 h 7 c 3,15 13,25 28,28 v 7 h 10 v -7 c 15,-3 25,-13 28,-28 h 7 V 95 h -7 C 130,80 120,70 105,67 v -7 z m 0,15 V 95 H 75 C 77,85 85,77 95,75 Z m 10,0 c 10,2 18,10 20,20 h -20 z m -30,30 h 20 v 20 C 85,123 77,115 75,105 Z m 30,0 h 20 c -2,10 -10,18 -20,20 z"/>
+  </g><pattern id="fusily-argent-vert" width="25" height="50" viewBox="0 0 50 100" patternUnits="userSpaceOnUse"><rect width="50" height="100" fill="#26c061"/><polygon points="25,0 50,50 25,100 0,50" fill="#fafafa"/></pattern><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#fantasy1_city-181)"><rect x="0" y="0" width="200" height="200" fill="url(#fusily-argent-vert)"/><g fill="#377cd7" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #377cd7;}
+      g.tertiary,path.tertiary {fill: #377cd7;}
+    </style><use xlink:href="#crossCeltic_city-181" transform="translate(-20 -20) scale(1.2)"/></g></g>
+      <path d="M 100,5 C 85,30 40,35 15,40 c 40,35 20,90 40,115 15,25 40,30 45,45 5,-15 30,-20 45,-45 20,-25 0,-80 40,-115 C 160,35 115,30 100,5 Z" fill="url(#backlight)" stroke="#333"/></svg>

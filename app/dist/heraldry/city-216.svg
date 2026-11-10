@@ -1,0 +1,13 @@
+<svg id="city-216" width="256" height="256" viewBox="0 5 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="ironHills_city-216"><path d="m 30,25 60,-10 10,10 10,-10 60,10 -5,125 -65,50 -65,-50 z"/></clipPath><g id="crossHummetty_city-216" stroke-width=".5">
+    <path d="M90 60h20v30h30v20h-30v30H90v-30H60V90h30z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#ironHills_city-216)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/><g fill="#d7374a" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #d7374a;}
+      g.tertiary,path.tertiary {fill: #d7374a;}
+    </style><use xlink:href="#crossHummetty_city-216" transform="translate(-50 -50) scale(1.5)"/></g></g>
+      <path d="m 30,25 60,-10 10,10 10,-10 60,10 -5,125 -65,50 -65,-50 z" fill="url(#backlight)" stroke="#333"/></svg>

@@ -1,0 +1,13 @@
+<svg id="state-35" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_state-35"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><g id="mullet6_state-35">
+    <polygon points="100 60 107.64 86.77 134.64 80 115.28 100 134.64 120 107.64 113.23 100 140 92.36 113.23 65.36 120 84.72 100 65.36 80 92.36 86.77"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_state-35)"><rect x="0" y="0" width="200" height="200" fill="#333333"/><g fill="#ffe066" stroke="none"><path d="m 0,115 c 0,0 60,-19.8 100,-20 c 40,-0.2 100,20 100,20" transform="translate(0,-22.5)"/><path d="m 0,115 c 0,0 60,-19.8 100,-20 c 40,-0.2 100,20 100,20" transform="translate(0,22.5) rotate(180.00001 100 100)"/></g><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#mullet6_state-35" transform="translate(6.25 0) scale(0.5)"/><use xlink:href="#mullet6_state-35" transform="translate(50 0) scale(0.5)"/><use xlink:href="#mullet6_state-35" transform="translate(93.75 0) scale(0.5)"/></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

@@ -1,0 +1,17 @@
+<svg id="city-151" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-151"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><clipPath id="divisionClip_city-151"><path d="m 0,115 v -22.5 h 110 l -20,15 h 110 v 7.5 V200 H0 Z" transform="rotate(-90 100 100)"/></clipPath><g id="mulletFaceted_city-151">
+    <path d="M100 60l8.98 27.64h29.06l-23.51 17.08 8.98 27.64L100 115.28l-23.51 17.08 8.98-27.64-23.51-17.08h29.06z"/>
+    <path  fill="#000" fill-opacity=".2" stroke-width=".2" d="M100 100V60l8.98 27.64L100 100l38.04-12.36-23.51 17.08L100 100l23.51 32.36L100 115.28V100l-23.51 32.36 8.98-27.64L100 100 61.96 87.64h29.06z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-151)"><rect x="0" y="0" width="200" height="200" fill="#fafafa"/><g fill="#ffe066" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #ffe066;}
+      g.tertiary,path.tertiary {fill: #ffe066;}
+    </style><use xlink:href="#mulletFaceted_city-151" transform="translate(15.8 15.4) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(60 15.4) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(104 15.4) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(148.2 15.4) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(148.4 62) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(148.4 108) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(131 152) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(82 174) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(33 152) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(15.6 108) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(15.6 62) scale(0.18)"/></g><g clip-path="url(#divisionClip_city-151)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#mulletFaceted_city-151" transform="translate(15.8 15.4) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(60 15.4) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(104 15.4) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(148.2 15.4) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(148.4 62) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(148.4 108) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(131 152) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(82 174) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(33 152) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(15.6 108) scale(0.18)"/><use xlink:href="#mulletFaceted_city-151" transform="translate(15.6 62) scale(0.18)"/></g></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>

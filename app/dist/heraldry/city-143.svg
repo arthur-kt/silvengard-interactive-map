@@ -1,0 +1,13 @@
+<svg id="city-143" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="horsehead_city-143"><path d="m 20,40 c 0,60 40,80 40,100 0,10 -4,15 -0.35,30 C 65,185.7 81,200 100,200 c 19.1,0 35.3,-14.6 40.5,-30.4 C 144.2,155 140,150 140,140 140,120 180,100 180,40 142.72,40 150,15 100,15 55,15 55,40 20,40 Z"/></clipPath><g id="crossMoline_city-143" stroke-width=".5">
+    <path d="M104.3 74.9c0-6.4 2.7-11.4 5.1-14.8-4.1 0-7.2 2-9.4 4.9-2.2-2.9-5.3-4.9-9.4-4.9 2.5 3.4 5.1 8.4 5.1 14.8v20.8H74.9c-6.4 0-11.3-2.7-14.8-5.1 0 4.1 2 7.2 4.9 9.4-2.9 2.2-4.9 5.4-4.9 9.4 3.4-2.5 8.3-5.1 14.8-5.1h20.8v20.9c0 6.4-2.7 11.4-5.1 14.8 4.1 0 7.2-2 9.4-4.9 2.2 2.9 5.3 4.9 9.4 4.9-2.5-3.4-5.1-8.4-5.1-14.8v-20.9h20.8c6.4 0 11.3 2.7 14.8 5.1 0-4.1-2-7.2-4.9-9.4 2.9-2.2 4.9-5.4 4.9-9.4-3.4 2.5-8.3 5.1-14.8 5.1h-20.8z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#horsehead_city-143)"><rect x="0" y="0" width="200" height="200" fill="#fafafa"/><g fill="#522d5b" stroke="none"><path d="m 0,115 v -10 h 80 c 0,0 0.1,-20.1 20,-20 19.9,0.1 20,20 20,20 h 80 v 10" transform="translate(0 -14.5)"/><path d="m 0,115 v -10 h 80 c 0,0 0.1,-20.1 20,-20 19.9,0.1 20,20 20,20 h 80 v 10" transform="rotate(180 100 100) translate(0 -14.5)"/><path d="m 0,115 v -10 h 80 c 0,0 0.1,-20.1 20,-20 19.9,0.1 20,20 20,20 h 80 v 10" transform="rotate(-90 100 100) translate(0 -14.5)"/><path d="m 0,115 v -10 h 80 c 0,0 0.1,-20.1 20,-20 19.9,0.1 20,20 20,20 h 80 v 10" transform="rotate(-270 100 100) translate(0 -14.5)"/></g><g fill="#fafafa" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #fafafa;}
+      g.tertiary,path.tertiary {fill: #fafafa;}
+    </style><use xlink:href="#crossMoline_city-143" transform="translate(73 23) scale(0.27)"/><use xlink:href="#crossMoline_city-143" transform="translate(73 73) scale(0.27)"/><use xlink:href="#crossMoline_city-143" transform="translate(73 123) scale(0.27)"/><use xlink:href="#crossMoline_city-143" transform="translate(38 73) scale(0.27)"/><use xlink:href="#crossMoline_city-143" transform="translate(108 73) scale(0.27)"/></g></g>
+      <path d="m 20,40 c 0,60 40,80 40,100 0,10 -4,15 -0.35,30 C 65,185.7 81,200 100,200 c 19.1,0 35.3,-14.6 40.5,-30.4 C 144.2,155 140,150 140,140 140,120 180,100 180,40 142.72,40 150,15 100,15 55,15 55,40 20,40 Z" fill="url(#backlight)" stroke="#333"/></svg>

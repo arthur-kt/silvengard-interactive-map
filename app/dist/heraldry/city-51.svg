@@ -1,0 +1,13 @@
+<svg id="city-51" width="256" height="256" viewBox="0 5 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="gondor_city-51"><path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z"/></clipPath><g id="crossHummetty_city-51" stroke-width=".5">
+    <path d="M90 60h20v30h30v20h-30v30H90v-30H60V90h30z"/>
+  </g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#gondor_city-51)"><rect x="0" y="0" width="200" height="200" fill="#d7374a"/><g fill="#fafafa" stroke="none"><path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z" fill="none" stroke="#fafafa" stroke-width="16.7%"/></g><g fill="#522d5b" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #522d5b;}
+      g.tertiary,path.tertiary {fill: #522d5b;}
+    </style><use xlink:href="#crossHummetty_city-51" transform="translate(44 34) scale(0.14)"/><use xlink:href="#crossHummetty_city-51" transform="translate(69 11) scale(0.14)"/><use xlink:href="#crossHummetty_city-51" transform="translate(103 11) scale(0.14)"/><use xlink:href="#crossHummetty_city-51" transform="translate(128 34) scale(0.14)"/><use xlink:href="#crossHummetty_city-51" transform="translate(128 71) scale(0.14)"/><use xlink:href="#crossHummetty_city-51" transform="translate(128 108) scale(0.14)"/><use xlink:href="#crossHummetty_city-51" transform="translate(112 146) scale(0.14)"/><use xlink:href="#crossHummetty_city-51" transform="translate(86 173) scale(0.14)"/><use xlink:href="#crossHummetty_city-51" transform="translate(60 146) scale(0.14)"/><use xlink:href="#crossHummetty_city-51" transform="translate(44 108) scale(0.14)"/><use xlink:href="#crossHummetty_city-51" transform="translate(44 71) scale(0.14)"/></g></g>
+      <path d="m 100,200 c 15,-15 38,-35 45,-60 h 5 V 30 h -5 C 133,10 67,10 55,30 h -5 v 110 h 5 c 7,25 30,45 45,60 z" fill="url(#backlight)" stroke="#333"/></svg>

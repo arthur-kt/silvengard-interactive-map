@@ -1,0 +1,14 @@
+<svg id="city-212" width="256" height="256" viewBox="0 10 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs><clipPath id="spanish_city-212"><path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z"/></clipPath><clipPath id="divisionClip_city-212"><path d="m 0,115 v -20 l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10l 10,10 v -10 l 10,10 v 10 V200 H0 Z" transform="rotate(-90 100 100)"/></clipPath><g id="roundel2_city-212"><circle cx="100" cy="100" r="30"/><path fill="none" stroke-width=".5" d="M124 95a23 23 0 01-25 30"/></g><radialGradient id="backlight" cx="100%" cy="100%" r="150%">
+  <stop stop-color="#fff" stop-opacity=".3" offset="0"/>
+  <stop stop-color="#fff" stop-opacity=".15" offset=".25"/>
+  <stop stop-color="#000" stop-opacity="0" offset="1"/>
+</radialGradient></defs>
+      <g clip-path="url(#spanish_city-212)"><rect x="0" y="0" width="200" height="200" fill="#ffe066"/><g fill="#522d5b" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #522d5b;}
+      g.tertiary,path.tertiary {fill: #522d5b;}
+    </style><use xlink:href="#roundel2_city-212" transform="translate(-50 -50) scale(1.5)"/></g><g clip-path="url(#divisionClip_city-212)"><rect x="0" y="0" width="200" height="200" fill="#522d5b"/><g fill="#ffe066" stroke="#000"><style>
+      g.secondary,path.secondary {fill: #ffe066;}
+      g.tertiary,path.tertiary {fill: #ffe066;}
+    </style><use xlink:href="#roundel2_city-212" transform="translate(-50 -50) scale(1.5)"/></g></g></g>
+      <path d="m25,25 h150 v100 a75,75,0,0,1,-150,0 z" fill="url(#backlight)" stroke="#333"/></svg>
