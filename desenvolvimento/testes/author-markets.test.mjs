@@ -26,7 +26,9 @@ test('authored seats and every membership match the supplied Markdown',()=>{
 test('approved economy preserves authored market seats, prices, geography and identities',()=>{
  const before=read('backups/v40-before-approved-economy/dist/economy-source.json'),world=read('backups/v42-before-social-goods/dist/world.json');
  assert.deepEqual(data.markets.map(m=>[m.i,m.centerCity]),before.markets.map(m=>[m.i,m.centerCity]));for(const m of data.markets)for(const id of [4,9])assert.ok(m.prices[id]>0);
- for(const k of ['cells','vertices','geography','defaultProvinceEdits','landmarks','cultures','religions'])assert.deepEqual(D[k],world[k],k);
+ // Pontos criados pelo mestre (id poi-user-*) são acréscimos dele, não canon do autor.
+ const canon=p=>!(p&&String(p.id).startsWith('poi-user-'));
+ for(const k of ['cells','vertices','geography','defaultProvinceEdits','landmarks','cultures','religions'])assert.deepEqual(k==='landmarks'?D[k].filter(canon):D[k],k==='landmarks'?world[k].filter(canon):world[k],k);
  for(const b of D.cities)for(const k of ['name','culture','faith','emblem','x','y','state','magicSchool','dwarvenFortress','majorPort'])assert.deepEqual(b[k],world.cities.find(n=>n.i===b.i)[k],b.name+' '+k);
 });
 test('uninhabited Nilhelm remains assigned without production and Valar has no market',()=>{

@@ -23,7 +23,10 @@ test('geographic corrections preserve all remaining river geometry and remove th
 });
 test('Markdown lists every current city, culture, religion, deity and named geographic element',()=>{
  const md=fs.readFileSync(caminho('Catalogo-de-Silvengard.md'),'utf8'),esc=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('|','\\|');
- for(const x of [...W.cities,...W.cultures,...W.religions,...W.rivers,...W.landmarks,...W.fortifications,...W.routes])assert.ok(md.includes(esc(x.name)),x.name);
+ // O catálogo é a fonte do autor; pontos de interesse criados pelo mestre (poi-user-*)
+ // são acréscimos locais e não precisam constar nele.
+ const canon=p=>!(p&&String(p.id).startsWith('poi-user-'));
+ for(const x of [...W.cities,...W.cultures,...W.religions,...W.rivers,...W.landmarks.filter(canon),...W.fortifications,...W.routes])assert.ok(md.includes(esc(x.name)),x.name);
  for(const r of W.religions)if(r.deity)assert.ok(md.includes(esc(r.deity)),r.deity);
  for(const s of W.states.filter(s=>s.i))assert.ok(md.includes('### '+s.name.trim()),s.name);
  for(const name of ['Stormouth','Rio Colozard','Rio das Cinzas','Rio Celsano','Rio de Ereth'])assert.ok(!md.includes(name));
