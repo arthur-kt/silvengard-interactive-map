@@ -6,6 +6,8 @@ import unicodedata
 from pathlib import Path
 from history_presentation import add_presentation
 
+CONFLICTS = 'dist/conflicts-source.json'
+
 FILES = {
     'society': 'Silvengard_Culturas_Religioes_e_Instituicoes_Consolidadas.md',
     'places': 'Silvengard_Estados_Historias_Provincias_e_Cidades.md',
@@ -19,6 +21,156 @@ def normalized(value):
 
 def plain(value):
     return re.sub(r'[*`_]', '', value).strip()
+
+
+LINEAGE_FENCE = re.compile(r'```linhagem[ \t]*\r?\n(.*?)```', re.S)
+YEAR = re.compile(r'\d{1,4}')
+PRESENT_YEAR = 1277
+
+
+def parse_lineage(block):
+    """Árvore genealógica em lista indentada, com campos separados por ``|``."""
+    meta, roots, stack = {}, [], []
+    for raw in block.splitlines():
+        line = raw.rstrip()
+        if not line.strip():
+            continue
+        if not line.startswith((' ', '-', '+', '#')) and ':' in line:
+            label, value = line.split(':', 1)
+            if label.strip() in ('casa', 'sede', 'tipo', 'nota'):
+                meta[label.strip()] = value.strip()
+                continue
+        match = re.match(r'^(\s*)[-+]\s+(.*)$', line)
+        if not match:
+            continue
+        indent = len(match.group(1).replace('\t', '  '))
+        fields = [field.strip() for field in match.group(2).split('|')]
+        spouse = next((field[4:].strip() for field in fields if field.startswith('par=')), '')
+        node = dict(name=fields[0], role=fields[1] if len(fields) > 1 else '',
+                    years=fields[2] if len(fields) > 2 else '', note=fields[3] if len(fields) > 3 else '',
+                    spouse=spouse, children=[])
+        while stack and stack[-1][0] >= indent:
+            stack.pop()
+        if stack:
+            stack[-1][1]['children'].append(node)
+        else:
+            roots.append(node)
+        stack.append((indent, node))
+    return dict(house=meta.get('casa', ''), seat=meta.get('sede', ''), type=meta.get('tipo', ''),
+                note=meta.get('nota', ''), roots=roots)
+
+
+def parse_range(cell):
+    text = plain(cell)
+    ongoing = re.search(r'presente|atual|hoje|desde', text, re.I) is not None
+    years = [int(value) for value in YEAR.findall(text)]
+    if not years:
+        return None
+    start = years[0]
+    end = PRESENT_YEAR if ongoing else (years[1] if len(years) > 1 else start)
+    if end < start:
+        start, end = end, start
+    return dict(start=start, end=end, ongoing=ongoing, label=text)
+
+
+def markdown_tables(markdown):
+    lines = markdown.splitlines()
+    index = 0
+    while index < len(lines):
+        line = lines[index].strip()
+        if line.startswith('|') and index + 1 < len(lines) and re.match(r'^\|?[\s:|-]+\|', lines[index + 1].strip()):
+            block = [line, lines[index + 1].strip()]
+            index += 2
+            while index < len(lines) and lines[index].strip().startswith('|'):
+                block.append(lines[index].strip())
+                index += 1
+            yield block
+        else:
+            index += 1
+
+
+def table_cells(line):
+    return [cell.strip() for cell in line.strip().strip('|').split('|')]
+
+
+def parse_successions(markdown):
+    """Tabelas de reinado, governo ou ofício viram réguas de sucessão."""
+    known = ('reinado', 'governo', 'periodo', 'período')
+    results = []
+    for table in markdown_tables(markdown):
+        header = [plain(cell).lower() for cell in table_cells(table[0])]
+        date_column = next((i for i, cell in enumerate(header) if any(word in cell for word in known)), None)
+        if date_column is None or len(header) < 2:
+            continue
+        house_column = next((i for i, cell in enumerate(header) if cell.startswith('casa')), None)
+        name_column = None
+        for i, cell in enumerate(header):
+            if i == date_column or i == house_column or cell in ('n.º', 'no', 'n'):
+                continue
+            if i == 0 and re.search(r'n[.º°]|número|numero', cell):
+                continue
+            name_column = i
+            break
+        if name_column is None:
+            continue
+        name_header = plain(table_cells(table[0])[name_column])
+        house_match = re.search(r'Casa\s+([A-ZÀ-Ý][\wÀ-ÿ]+)', name_header)
+        default_house = ('Casa ' + house_match.group(1)) if house_match else ('Pontificado' if 'Pontífice' in name_header else '')
+        skip = {date_column, name_column, house_column}
+        note_column = next((i for i, cell in enumerate(header)
+                            if i not in skip and not re.search(r'n[.º°]|número|numero|^n$', cell, re.I)), None)
+        entries = []
+        for line in table[2:]:
+            cells = table_cells(line)
+            if len(cells) <= max(date_column, name_column):
+                continue
+            period = parse_range(cells[date_column])
+            if not period:
+                continue
+            house = plain(cells[house_column]) if house_column is not None and house_column < len(cells) else ''
+            entries.append(dict(name=plain(cells[name_column]), house=house or default_house,
+                                note=plain(cells[note_column]) if note_column is not None and note_column < len(cells) else '', **period))
+        if len(entries) >= 3:
+            results.append(dict(title=name_header or 'Sucessão', house=default_house, entries=entries))
+    results.sort(key=lambda item: len(item['entries']), reverse=True)
+    return results
+
+
+def attach_lineages(records, by_id):
+    """Vincula árvores e réguas ao registro do Estado e cria um verbete por casa."""
+    counter = 0
+    for record in list(records):
+        if record['kind'] != 'state':
+            continue
+        state_chapter = by_id[record['sections'][0]]
+        stack = [state_chapter]
+        seen = set()
+        lineages, successions, text_parts = [], [], []
+        while stack:
+            section = stack.pop(0)
+            if section['id'] in seen:
+                continue
+            seen.add(section['id'])
+            text_parts.append(section['markdown'])
+            for match in LINEAGE_FENCE.finditer(section['markdown']):
+                data = parse_lineage(match.group(1))
+                if not data['roots']:
+                    continue
+                counter += 1
+                data.update(id=f'lineage:{record["stateId"]}:{counter}', stateId=record['stateId'], section=section['id'])
+                section.setdefault('lineageIds', []).append(data['id'])
+                lineages.append(data)
+                item = dict(id=data['id'], kind='lineage', name=data['house'] or 'Linhagem', sections=[section['id']],
+                            stateId=record['stateId'], lineage=data)
+                records.append(item)
+            stack.extend(by_id[child] for child in section['children'])
+        for succession in parse_successions('\n'.join(text_parts)):
+            succession['id'] = f'succession:{record["stateId"]}:{len(successions)}'
+            successions.append(succession)
+        if lineages:
+            record['lineages'] = lineages
+        if successions:
+            record['successions'] = successions
 
 
 def parse_document(key, text):
@@ -48,6 +200,8 @@ def build_archive(base):
     if not folder.is_dir():
         folder = base.parent / 'silvengard-atlas' / 'historic_archives'
     texts = {key: (folder / name).read_text(encoding='utf-8-sig') for key, name in FILES.items()}
+    conflict_file = base / CONFLICTS
+    conflicts = json.loads(conflict_file.read_text(encoding='utf-8')) if conflict_file.exists() else []
     world = json.loads((base / 'dist/world.json').read_text(encoding='utf-8'))
     proposal = json.loads((base / 'dist/province-proposal.json').read_text(encoding='utf-8'))
     edits = world.get('defaultProvinceEdits', {})
@@ -121,6 +275,23 @@ def build_archive(base):
     roots.sort(key=lambda key: 0 if by_id[key]['title'].startswith('História geral') else 1)
     record('world', 'world', 'História de Silvengard', roots)
     record('appendices', 'appendix', 'Apêndices cartográficos', [s['id'] for s in world_sections if s['line'] >= cutoff and s['level'] <= 2])
+
+    # Conflitos e guerras: dados estruturados de campanha (efetivos e baixas estimados).
+    def amount(value):
+        match = re.search(r'(\d[\d.]*)', str(value))
+        return int(match.group(1).replace('.', '')) if match else 0
+
+    def br(number):
+        return f'{number:,}'.replace(',', '.')
+
+    for item in conflicts:
+        sides = item.get('sides', [])
+        strength = sum(amount(side.get('strength')) for side in sides)
+        casualties = sum(amount(side.get('casualties')) for side in sides)
+        item['totalStrength'] = ('~' if any('~' in str(side.get('strength', '')) for side in sides) else '') + br(strength)
+        item['totalCasualties'] = ('~' if any('~' in str(side.get('casualties', '')) for side in sides) else '') + br(casualties)
+        record('conflict:' + item['id'], 'conflict', item['name'], [], conflict=item)
+
     institutions = next((s for s in narrative if s['title'].startswith('Instituições e vida cotidiana')), None)
     if institutions:
         for s in descendants(institutions):
@@ -133,6 +304,17 @@ def build_archive(base):
         for child in descendants(chapter):
             if child['title'].startswith('Instituições, práticas'):
                 record(f'institution:state:{sid}', 'institution', 'Instituições de ' + chapter['title'].split(':', 1)[1].strip(), [child['id']], stateId=sid)
+    # Ordens e ofícios acrescentados ao Estado em 1277 AQD.
+    for (document, sid), chapter in state_chapters.items():
+        if document != 'places':
+            continue
+        for child in chapter['children']:
+            section = by_id[child]
+            if not section['title'].startswith('Instituições, tradições'):
+                continue
+            for sub in section['children']:
+                item = by_id[sub]
+                record(f'institution:place:{sub}', 'institution', item['title'], [sub], stateId=sid)
 
     # Regional dossiers are context, not claims that every paragraph applies to a group.
     for kind, field, marker in [('culture', 'cultures', 'Culturas presentes'), ('religion', 'religions', 'Religiões presentes')]:
@@ -216,7 +398,8 @@ def build_archive(base):
             if len(same) == 1 or (len(linked_states) == 1 and r.get('stateId') == linked_states[0]['stateId']):
                 links.append(r)
         event['links'] = [r['id'] for r in links]
-    digest = hashlib.sha256(''.join(texts.values()).encode()).hexdigest()
+    attach_lineages(records, by_id)
+    digest = hashlib.sha256((''.join(texts.values()) + json.dumps(conflicts, ensure_ascii=False)).encode()).hexdigest()
     return add_presentation(dict(version=1, revision=digest, present='1277 AQD', sections=sections, records=records, events=events, warnings=warnings,
                 documents=[dict(key=key, file=name, characters=len(texts[key])) for key, name in FILES.items()]))
 

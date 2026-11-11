@@ -5,9 +5,9 @@
 // com cais e trapiches quando há água, campos e moinho no entorno. O relevo e a água
 // vêm do campo local (local-field.js), então tudo assenta no chão de verdade.
 import * as THREE from 'three';
-import {Mesher,STYLES,addBuilding,addChurch2,addTownHall,addKeepHall,addFountain,addFence,addWell,addStall,addBarrel,addCrate,addLamp,addTower,addFort,addHaystack,addTent,addPillar,addLog,addWallSegment,addBanner,addHouse,addBoat,addCrane,tc,PAL,portModel} from './settlements.js?v=45';
-import {populationRadiusM,M_PER_UNIT} from './local-field.js?v=45';
-import {NOISE} from './visuals.js?v=45';
+import {Mesher,STYLES,addBuilding,addChurch2,addTownHall,addKeepHall,addFountain,addFence,addWell,addStall,addBarrel,addCrate,addLamp,addTower,addFort,addHaystack,addTent,addPillar,addLog,addWallSegment,addBanner,addHouse,addBoat,addCrane,tc,PAL,portModel} from './settlements.js?v=56';
+import {populationRadiusM,M_PER_UNIT} from './local-field.js?v=56';
+import {NOISE} from './visuals.js?v=56';
 
 const smooth=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
 const clamp=(v,a,b)=>v<a?a:v>b?b:v;
@@ -18,42 +18,46 @@ export const CLIMATE_NAME={arid:'clima árido',tropical:'clima tropical',tempera
 export function climateOf(cell){if(!cell)return'temperate';if(cell.h>52)return'alpine';return CLIMATE[cell.biome]||'temperate'}
 
 /* ---------- traçado urbano ---------- */
-export function makeLayout({pop=400,capital=false,village=false,fort=false,rand=Math.random,radiusUnits=null,port=false}){
+export function makeLayout({pop=400,capital=false,village=false,fort=false,rand=Math.random,radiusUnits=null,port=false,kind=null}){
  const R=Math.max(24,radiusUnits||populationRadiusM(pop)/M_PER_UNIT);
- const plaza=fort?0:capital?9.6:village?4.1:6.8;
- const coreR=fort?R*1.6:clamp(R*.6,30,300);
+ kind=kind||(fort?'fort':village?'village':capital?'capital':port?'port':'town');
+ const plaza=fort?0:kind==='capital'?10.5:kind==='village'?3.4:kind==='port'?5.2:6.2;
+ const coreR=fort?R*1.6:clamp(R*.62,16,240);
  const a0=rand()*Math.PI,roads=[];
  const poly=(a,r0,r1,steps,amp,ph,ox=0,oy=0)=>{const pts=[];for(let k=0;k<=steps;k++){const r=r0+(r1-r0)*k/steps,w=(vn(k*.55,ph)-.5)*amp*smooth(0,3,k);pts.push([ox+Math.cos(a)*r-Math.sin(a)*w,oy+Math.sin(a)*r+Math.cos(a)*w])}return pts};
  const wide=clamp(R/210,.8,1.2);
- // avenidas radiais
- const nRad=fort?3:clamp(Math.round(R/28)+2,3,12);
+ // avenidas radiais (vilas têm poucas; capitais têm muitas)
+ const nRad=fort?3:kind==='village'?2:kind==='port'?9:kind==='capital'?12:clamp(Math.round(R/34)+2,3,10);
  for(let i=0;i<nRad;i++){
   const a=a0+i*Math.PI*2/nRad+(rand()-.5)*.22;
-  roads.push({pts:poly(a,Math.max(1,plaza*.8),Math.min(R*1.28+40,R+200),fort?8:14,7,rand()*9),w:2.7*wide,a,main:true});
+  roads.push({pts:poly(a,Math.max(1,plaza*.8),Math.min(R*1.28+40,R+200),fort?8:kind==='village'?7:12,kind==='village'?2:6,rand()*9),w:(kind==='village'?2.4:2.7)*wide,a,main:true});
  }
- // anéis viários
- const nRings=R>420?3:R>200?2:R>80?1:0;
+ // anéis viários (só cidades maiores)
+ const nRings=kind==='village'||kind==='fort'?0:R>400?3:R>220?2:R>110?1:0;
  for(let k=1;k<=nRings;k++){
   const rr=R*(k/(nRings+1))*(.92+rand()*.12)+plaza,pts=[];
-  const steps=Math.max(28,Math.round(rr*.22));
+  const steps=Math.max(24,Math.round(rr*.22));
   for(let j=0;j<=steps;j++){const a=j/steps*Math.PI*2;pts.push([Math.cos(a)*(rr+(vn(j*.31,k*3.7)-.5)*rr*.11),Math.sin(a)*(rr+(vn(j*.31+5,k*3.7)-.5)*rr*.11)])}
   roads.push({pts,w:1.7*wide,a:0,main:true,ring:true});
  }
  // travessas curtas entre avenidas no núcleo
- const nCross=clamp(Math.round(R/55),1,6);
+ const nCross=kind==='village'?0:clamp(Math.round(R/55),1,6);
  for(let i=0;i<nCross;i++){
   const a=a0+(i+.5)*Math.PI*2/Math.max(2,nRad)+(rand()-.5)*.3;
   const r0=plaza+3,r1=coreR*(.55+rand()*.35);
   roads.push({pts:poly(a,r0,r1,5,4,rand()*9),w:1.1*wide,a,main:false});
  }
  // vielas
- const nAlley=clamp(Math.round(R/18),2,18);
+ const nAlley=kind==='village'?1:clamp(Math.round(R/24),2,14);
  for(let i=0;i<nAlley;i++){
   const a=rand()*Math.PI*2,r0=plaza+2.5,r1=coreR*(.5+rand()*.45);
   roads.push({pts:poly(a+(rand()-.5)*.5,r0,r1,4,3,rand()*9),w:.78,a,main:false});
  }
- const N=clamp(Math.round(coreR*.7),26,190);
- return {pop,N,Rt:R,plaza,capital,village,fort,roads,a0,coreR,port,wide};
+ const N=clamp(Math.round(coreR*(kind==='village'?.55:.7)),12,150);
+ const center=fort?'none':kind==='village'?'well'
+  :kind==='port'?['fountain','market'][Math.floor(rand()*2)]
+  :kind==='capital'?'fountain':'fountain';
+ return {pop,N,Rt:R,plaza,capital,village,fort,roads,a0,coreR,port,wide,kind,center};
 }
 const pointsAlong=(pts)=>{const cum=[0];for(let i=1;i<pts.length;i++)cum.push(cum[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));return{cum,total:cum[cum.length-1],at(s){s=Math.max(0,Math.min(cum[cum.length-1]-1e-6,s));let i=1;while(i<cum.length-1&&cum[i]<s)i++;const L=cum[i]-cum[i-1]||1,f=(s-cum[i-1])/L,a=pts[i-1],b=pts[i];return{x:a[0]+(b[0]-a[0])*f,y:a[1]+(b[1]-a[1])*f,tx:(b[0]-a[0])/L,ty:(b[1]-a[1])/L}}}};
 const axes=r=>[[Math.cos(r),-Math.sin(r)],[Math.sin(r),Math.cos(r)]];
@@ -94,19 +98,84 @@ function frontGeometry(){
  g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
  return g;
 }
+function roofHipGeometry(){
+ const x=.5,z=.5,h=.55,P=[],N=[];
+ const tri=(a,b,c)=>{const u=[b[0]-a[0],b[1]-a[1],b[2]-a[2]],v=[c[0]-a[0],c[1]-a[1],c[2]-a[2]];
+  const n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];const L=Math.hypot(...n)||1;
+  for(const w of[a,b,c]){P.push(...w);N.push(n[0]/L,n[1]/L,n[2]/L)}};
+ tri([-x,0,z],[x,0,z],[0,h,0]);tri([x,0,-z],[-x,0,-z],[0,h,0]);
+ tri([x,0,z],[x,0,-z],[0,h,0]);tri([-x,0,-z],[-x,0,z],[0,h,0]);
+ tri([-x,0,z],[x,0,z],[x,0,-z]);tri([-x,0,z],[x,0,-z],[-x,0,-z]);
+ const g=new THREE.BufferGeometry();
+ g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));
+ g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3));
+ return g;
+}
+function roofFlatGeometry(){
+ const g=new THREE.BoxGeometry(1.04,.18,1.04);g.translate(0,.09,0);return g;
+}
 function addFabric(env){
- const{lay,cx,cy,rand,climate,field,G,landAt,pathAt,addSolid,toW,blocked}=env,style=STYLES[climate]||STYLES.temperate;
- const R=lay.Rt,r0=Math.max(lay.plaza*1.45,26),max=12000;
+ const{lay,cx,cy,rand,climate,field,G,landAt,pathAt,addSolid,toW,blocked}=env,style=env.style||STYLES[climate]||STYLES.temperate;
+ const R=lay.Rt,r0=Math.max(lay.plaza*1.35,16),max=6000;
  const wallGeo=new THREE.BoxGeometry(1,1,1);wallGeo.translate(0,.5,0);
  const baseGeo=new THREE.BoxGeometry(1.06,.24,1.06);baseGeo.translate(0,.12,0);
- const roofGeo=roofGeometry();
+ const gableGeo=roofGeometry(),hipGeo=roofHipGeometry(),flatGeo=roofFlatGeometry();
  const frontGeo=frontGeometry();
+ const upperGeo=(()=>{
+  const P=[],N=[],C=[];
+  const box=(w,h,d,x,y,z,r,g,b)=>{
+   const X=w/2,Z=d/2;
+   const f=(nx,ny,nz,vs)=>{for(const v of vs){P.push(...v);N.push(nx,ny,nz);C.push(r,g,b)}};
+   f(0,0,1,[[x-X,y,z+Z],[x+X,y,z+Z],[x+X,y+h,z+Z],[x-X,y,z+Z],[x+X,y+h,z+Z],[x-X,y+h,z+Z]]);
+   f(0,0,-1,[[x+X,y,z-Z],[x-X,y,z-Z],[x-X,y+h,z-Z],[x+X,y,z-Z],[x-X,y+h,z-Z],[x+X,y+h,z-Z]]);
+  };
+  box(.34,.36,.05,-.5,0,.02,.15,.23,.3);box(.34,.36,.05,.5,0,.02,.15,.23,.3);
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.Float32BufferAttribute(P,3));
+  g.setAttribute('normal',new THREE.Float32BufferAttribute(N,3));
+  g.setAttribute('color',new THREE.Float32BufferAttribute(C,3));
+  return g;
+ })();
  const wallMat=new THREE.MeshStandardMaterial({roughness:.92,metalness:0});
  const baseMat=new THREE.MeshStandardMaterial({color:'#9a9184',roughness:1});
  const roofMat=new THREE.MeshStandardMaterial({roughness:.9,metalness:0,side:THREE.DoubleSide});
  const frontMat=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.75});
- // paredes e telhados ganham manchas de reboco, umidade na base e variação de telha
+ const wallUniform={uWallKind:{value:style.wall==='wood'?1:style.wall==='stone'?2:0}};
+ wallMat.userData.uWallKind=wallUniform.uWallKind;
  wallMat.onBeforeCompile=sh=>{
+  Object.assign(sh.uniforms,wallUniform);
+  sh.vertexShader='varying vec3 vWP;varying float vBase;varying vec3 vNW;\n'+sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
+  vNW=normal;
+  #ifdef USE_INSTANCING
+  vWP=(modelMatrix*instanceMatrix*vec4(position,1.)).xyz;vBase=instanceMatrix[3][1];
+  #else
+  vWP=(modelMatrix*vec4(position,1.)).xyz;vBase=0.;
+  #endif`);
+  sh.fragmentShader='varying vec3 vWP;varying float vBase;varying vec3 vNW;uniform float uWallKind;\n'+NOISE+sh.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+  float wn=atlasNoise(vWP.xz*2.3)+.5*atlasNoise(vWP.xz*7.1);
+  diffuseColor.rgb*=.92+.11*wn;
+  float wallFace=1.-smoothstep(.35,.85,abs(vNW.y));
+  float hy=vWP.y-vBase;
+  float u=dot(vWP.xz,vec2(.707,.707))*2.8;
+  if(uWallKind<.5){                                   // reboco: manchas e fissuras
+   float crack=1.-smoothstep(0.,.03,abs(atlasNoise(vWP.xz*4.2+vWP.y*.4)-.5));
+   diffuseColor.rgb*=.96+.05*wn;
+   diffuseColor.rgb*=1.-.14*crack*wallFace;
+  }else if(uWallKind<1.5){                            // madeira: tábuas verticais
+   float plank=1.-smoothstep(.78,1.,abs(fract(u)-.5)*2.);
+   float beam=1.-smoothstep(.86,1.,abs(fract(hy/2.)-.5)*2.);
+   diffuseColor.rgb*=.78+.22*plank;
+   diffuseColor.rgb*=.9+.1*beam;
+  }else{                                              // pedra: juntas
+   vec2 bl=vec2(vWP.x*1.5+mod(floor(hy/.34),2.)*.5,hy/.34);
+   vec2 bf=fract(bl);
+   float joint=1.-smoothstep(.03,.1,min(min(bf.x,1.-bf.x),min(bf.y,1.-bf.y)));
+   float tone=atlasHash(floor(bl))*.16-.08;
+   diffuseColor.rgb*=(1.+tone)*(1.-.28*joint);
+  }
+  diffuseColor.rgb*=mix(.8,1.,smoothstep(0.,1.5,hy));`);
+ };
+ roofMat.onBeforeCompile=sh=>{
   sh.vertexShader='varying vec3 vWP;varying float vBase;\n'+sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
   #ifdef USE_INSTANCING
   vWP=(modelMatrix*instanceMatrix*vec4(position,1.)).xyz;vBase=instanceMatrix[3][1];
@@ -114,29 +183,25 @@ function addFabric(env){
   vWP=(modelMatrix*vec4(position,1.)).xyz;vBase=0.;
   #endif`);
   sh.fragmentShader='varying vec3 vWP;varying float vBase;\n'+NOISE+sh.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
-  float wn=atlasNoise(vWP.xz*2.3)+.5*atlasNoise(vWP.xz*7.1);
-  diffuseColor.rgb*=.9+.13*wn;
-  diffuseColor.rgb*=mix(.8,1.,smoothstep(0.,1.5,vWP.y-vBase));`);
- };
- roofMat.onBeforeCompile=sh=>{
-  sh.vertexShader='varying vec3 vWP;\n'+sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
-  #ifdef USE_INSTANCING
-  vWP=(modelMatrix*instanceMatrix*vec4(position,1.)).xyz;
-  #else
-  vWP=(modelMatrix*vec4(position,1.)).xyz;
-  #endif`);
-  sh.fragmentShader='varying vec3 vWP;\n'+NOISE+sh.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
   float rn=atlasNoise(vWP.xz*3.7)+.5*atlasNoise(vWP.xz*11.);
-  diffuseColor.rgb*=.86+.2*rn;`);
+  float rows=1.-smoothstep(.86,1.,abs(fract((vWP.y-vBase)/.32)-.5)*2.);
+  diffuseColor.rgb*=(.86+.2*rn)*(.92+.08*rows);`);
  };
- const walls=new THREE.InstancedMesh(wallGeo,wallMat,max),roofs=new THREE.InstancedMesh(roofGeo,roofMat,max),
-  bases=new THREE.InstancedMesh(baseGeo,baseMat,max),fronts=new THREE.InstancedMesh(frontGeo,frontMat,max);
- walls.castShadow=walls.receiveShadow=true;roofs.castShadow=true;bases.castShadow=bases.receiveShadow=true;
- walls.frustumCulled=roofs.frustumCulled=bases.frustumCulled=fronts.frustumCulled=false;
+ const walls=new THREE.InstancedMesh(wallGeo,wallMat,max),
+  bases=new THREE.InstancedMesh(baseGeo,baseMat,max),
+  fronts=new THREE.InstancedMesh(frontGeo,frontMat,max),
+  uppers=new THREE.InstancedMesh(upperGeo,frontMat,max),
+  gables=new THREE.InstancedMesh(gableGeo,roofMat,max),
+  hips=new THREE.InstancedMesh(hipGeo,roofMat,max),
+  flats=new THREE.InstancedMesh(flatGeo,roofMat,max);
+ walls.castShadow=walls.receiveShadow=true;bases.castShadow=bases.receiveShadow=true;gables.castShadow=hips.castShadow=flats.castShadow=true;
+ walls.frustumCulled=bases.frustumCulled=fronts.frustumCulled=uppers.frustumCulled=gables.frustumCulled=hips.frustumCulled=flats.frustumCulled=false;
  const m4=new THREE.Matrix4(),q=new THREE.Quaternion(),p=new THREE.Vector3(),s3=new THREE.Vector3(),up=new THREE.Vector3(0,1,0);
- const wallCols=['#efe4c8','#e6d6b4','#dfcaa1','#f0e7d2','#d9c39a','#e8dcc0','#cbb894','#e2cfae','#8b7152','#9a7f5c'];
- const roofCols=['#7c5548','#8a5a46','#6d5044','#8f6047','#5f4a40','#9a5d48','#73564a'];
- let n=0;
+ const wallCols=style.cols&&style.cols.length?style.cols:['#efe4c8','#e6d6b4','#dfcaa1'];
+ let roofCols=style.roofCols&&style.roofCols.length?style.roofCols:['#7c5548','#8a5a46','#6d5044'];
+ if(env.snow)roofCols=['#edf2f4','#e3ebee','#f5f8f7'];
+ const flatStyle=style.roofKind==='flat';
+ let n=0,ng=0,nh=0,nf=0,nu=0;
  const spotOK=(u,v)=>{
   const rr=Math.hypot(u,v);if(rr<r0||rr>R*1.02)return false;
   const mx=cx+u,my=cy+v;
@@ -154,50 +219,73 @@ function addFabric(env){
   p.set(ax,gy+.02,az);q.setFromAxisAngle(up,rot);
   s3.set(w,h,d);m4.compose(p,q,s3);walls.setMatrixAt(n,m4);
   walls.setColorAt(n,new THREE.Color(wallCols[Math.floor(rand()*wallCols.length)]).multiplyScalar(.9+rand()*.2));
-  p.y=gy+.02+h;s3.set(w*1.06,w*.58,d*1.06);m4.compose(p,q,s3);roofs.setMatrixAt(n,m4);
-  roofs.setColorAt(n,new THREE.Color(roofCols[Math.floor(rand()*roofCols.length)]).multiplyScalar(.85+rand()*.28));
+  p.y=gy+.02+h;
+  const townhouse=h>3.1;
+  if(flatStyle){
+   s3.set(w,1,d);m4.compose(p,q,s3);flats.setMatrixAt(nf,m4);
+   flats.setColorAt(nf,new THREE.Color(roofCols[Math.floor(rand()*roofCols.length)]).multiplyScalar(.88+rand()*.24));nf++;
+  }else if(townhouse&&rand()<.55){
+   s3.set(w*1.1,w*.52,d*1.1);m4.compose(p,q,s3);hips.setMatrixAt(nh,m4);
+   hips.setColorAt(nh,new THREE.Color(roofCols[Math.floor(rand()*roofCols.length)]).multiplyScalar(.85+rand()*.28));nh++;
+  }else{
+   s3.set(w*1.08,w*(style.pitch||.58),d*1.08);m4.compose(p,q,s3);gables.setMatrixAt(ng,m4);
+   gables.setColorAt(ng,new THREE.Color(roofCols[Math.floor(rand()*roofCols.length)]).multiplyScalar(.85+rand()*.28));ng++;
+  }
   p.set(ax,gy-.06,az);s3.set(w,1,d);m4.compose(p,q,s3);bases.setMatrixAt(n,m4);
   bases.setColorAt(n,new THREE.Color('#9a9184').multiplyScalar(.82+rand()*.32));
   const fz=d/2+.03;
   p.set(ax+Math.sin(rot)*fz,gy+.02,az+Math.cos(rot)*fz);s3.set(1,1,1);m4.compose(p,q,s3);fronts.setMatrixAt(n,m4);
+  if(townhouse&&nu<max){
+   p.set(ax+Math.sin(rot)*fz,gy+h-.85,az+Math.cos(rot)*fz);m4.compose(p,q,s3);uppers.setMatrixAt(nu,m4);nu++;
+  }
   addSolid(mx,my,Math.max(w,d)*.42);
   n++;return true;
  };
- // 1. frente de rua: casas alinhadas com as ruas (a cidade fica coesa)
+ // proporções variadas: casebre, casa alta, casa comprida, torre
+ const pickHouse=(r,core)=>{
+  const t=rand();
+  if(t<.30)return{w:2.5+rand()*1.1,d:3.1+rand()*1.1,h:2.0+rand()*.8};
+  if(t<.72)return{w:2.4+rand()*1.0,d:3.4+rand()*1.3,h:(core?3.4:2.8)+rand()*1.9};
+  if(t<.90)return{w:4.0+rand()*1.5,d:2.7+rand()*.9,h:2.4+rand()*.8};
+  return{w:2.9+rand()*.9,d:2.9+rand()*.9,h:4.6+rand()*2.0};
+ };
+ // 1. frente de rua
  for(const rd of lay.roads){
-  const pp=pointsAlong(rd.pts),step=rd.main?5.6:6.4;
+  const pp=pointsAlong(rd.pts),step=rd.main?5.8:6.6;
   for(let s=0;s<pp.total&&n<max;s+=step){
    const q2=pp.at(s),r=Math.hypot(q2.x,q2.y);
    if(r<r0||r>R*.99)continue;
    const nx=-q2.ty,ny=q2.tx;
    for(const side of[1,-1]){
     if(rd.ring&&side===1)continue;
-    const off=rd.w*1.02+2.4+rand()*1.2;
+    const off=rd.w*1.02+2.2+rand()*1.2;
     const u=q2.x+nx*side*off,v=q2.y+ny*side*off;
     if(!spotOK(u,v))continue;
-    const w=3.0+rand()*2.2,d=4.0+rand()*2.6,h=2.2+rand()*(r<lay.coreR*1.7?2.6:1.7);
-    emit(u,v,w,d,h,Math.atan2(-nx*side,-ny*side)+(rand()-.5)*.14);
+    const h0=pickHouse(r,r<lay.coreR*1.7);
+    emit(u,v,h0.w,h0.d,h0.h,Math.atan2(-nx*side,-ny*side)+(rand()-.5)*.12);
    }
   }
  }
- // 2. fundo dos quarteirões: preenche os vazios entre as ruas
+ // 2. fundo dos quarteirões
  let attempts=0;
- while(n<max&&attempts<90000){
+ while(n<max&&attempts<50000){
   attempts++;
   const r=Math.sqrt(r0*r0+rand()*(R*R-r0*r0));
   const a=rand()*Math.PI*2;
-  const spacing=8+8*(r/R);
+  const spacing=6.5+7.5*(r/R);
   const u=Math.cos(a)*r+(rand()-.5)*spacing*.85,v=Math.sin(a)*r+(rand()-.5)*spacing*.85;
   if(!spotOK(u,v))continue;
-  const w=2.6+rand()*1.9,d=3.4+rand()*2.2,h=2.1+rand()*(r<lay.coreR*1.7?2.4:1.7);
-  emit(u,v,w,d,h,Math.atan2(-Math.cos(a),-Math.sin(a))+(rand()-.5)*.5);
+  const h0=pickHouse(r,r<lay.coreR*1.7);
+  emit(u,v,h0.w,h0.d,h0.h,Math.atan2(-Math.cos(a),-Math.sin(a))+(rand()-.5)*.5);
  }
- walls.count=roofs.count=bases.count=fronts.count=n;
- walls.instanceMatrix.needsUpdate=roofs.instanceMatrix.needsUpdate=bases.instanceMatrix.needsUpdate=fronts.instanceMatrix.needsUpdate=true;
- if(walls.instanceColor)walls.instanceColor.needsUpdate=true;
- if(roofs.instanceColor)roofs.instanceColor.needsUpdate=true;
- if(bases.instanceColor)bases.instanceColor.needsUpdate=true;
- const group=new THREE.Group();group.name='fabric';group.add(walls,bases,fronts,roofs);
+ walls.count=bases.count=fronts.count=n;uppers.count=nu;
+ gables.count=ng;hips.count=nh;flats.count=nf;
+ for(const m of[walls,bases,fronts,uppers,gables,hips,flats])if(m.instanceMatrix)m.instanceMatrix.needsUpdate=true;
+ for(const m of[walls,bases,gables,hips,flats])if(m.instanceColor)m.instanceColor.needsUpdate=true;
+ const group=new THREE.Group();group.name='fabric';
+ group.add(walls,bases,fronts);
+ if(nu)group.add(uppers);
+ if(ng)group.add(gables);if(nh)group.add(hips);if(nf)group.add(flats);
  return {group,count:n};
 }
 
@@ -207,7 +295,7 @@ function buildHarbour(env){
  if(!site.port&&site.waterKind==='none')return null;
  const dir=site.portDir;
  const edgeAt=angle=>{
-  const start=Math.max(60,site.cityR*.18);
+  const start=Math.max(12,site.cityR*.18);
   for(let r=start;r<site.cityR*1.45+160;r+=5){
    const x=Math.cos(angle)*r,z=Math.sin(angle)*r;
    if(field.heightM(x,z)<.5)return{x:x/M_PER_UNIT,z:z/M_PER_UNIT,angle};
@@ -216,33 +304,34 @@ function buildHarbour(env){
  };
  const edge=[];for(let k=-5;k<=5;k++){const p=edgeAt(dir+k*.05);if(p)edge.push(p)}
  if(edge.length<4)return null;
+ const hs=clamp(site.cityR/350,.45,1.15);   // vila portuária tem cais pequeno
  const m=new Mesher(),extras=[];
  // cais de pedra (posições em unidades de cena)
  for(let i=1;i<edge.length;i++){
   const a=edge[i-1],b=edge[i],dx=b.x-a.x,dz=b.z-a.z,L=Math.hypot(dx,dz);if(L<.5)continue;
   const mx=(a.x+b.x)/2,mz=(a.z+b.z)/2,[x,z]=toW(cx+mx,cy+mz);
-  m.box('stone',L+1.2,.95,4.6,{at:[x,.55,z],rot:Math.atan2(-dz,dx),tint:tc(PAL.stone,.93)});
-  m.box('stone',L+1.2,.18,5.2,{at:[x,.94,z],rot:Math.atan2(-dz,dx),tint:tc(PAL.cobble,.95)});
+  m.box('stone',L+1.2,.95,4.6*hs,{at:[x,.55,z],rot:Math.atan2(-dz,dx),tint:tc(PAL.stone,.93)});
+  m.box('stone',L+1.2,.18,5.2*hs,{at:[x,.94,z],rot:Math.atan2(-dz,dx),tint:tc(PAL.cobble,.95)});
   addSolid(cx+mx,cy+mz,2.2);
  }
  // trapiches para dentro da água
  const pierIdx=[1,Math.floor(edge.length/2)+1,edge.length-2];
  pierIdx.forEach((idx,pi)=>{
   const p=edge[idx];if(!p)return;
-  const ox=Math.cos(p.angle),oz=Math.sin(p.angle),len=(26+rand()*18)/M_PER_UNIT;
+  const ox=Math.cos(p.angle),oz=Math.sin(p.angle),len=(26+rand()*18)*hs/M_PER_UNIT;
   const bx=cx+p.x,by=cy+p.z;
   const ex=bx+ox*len,ey=by+oz*len;
   const[ax,az]=toW(bx,by),[bx2,bz2]=toW(ex,ey);
-  m.box('wood',3.2,.34,len,{at:[(ax+bx2)/2,.98,(az+bz2)/2],rot:Math.atan2(-(bz2-az),bx2-ax),tint:tc(PAL.wood,.96)});
+  m.box('wood',3.2*hs,.34,len,{at:[(ax+bx2)/2,.98,(az+bz2)/2],rot:Math.atan2(-(bz2-az),bx2-ax),tint:tc(PAL.wood,.96)});
   for(let t=0;t<=1.001;t+=.22){
    const px=bx+ox*len*t,pz=by+oz*len*t;
-   for(const sd of[-1.35,1.35]){const qx=px-oz*sd,qz=pz+ox*sd,[vx,vz]=toW(qx,qz);
+   for(const sd of[-1.35*hs,1.35*hs]){const qx=px-oz*sd,qz=pz+ox*sd,[vx,vz]=toW(qx,qz);
     m.cyl('wood',.17,.2,1.9,6,{at:[vx,-.5,vz],tint:tc(PAL.woodDark,.95)})}
   }
   addSolid(bx,by,2.4);addSolid(ex,ey,2);
   const s=.9+rand()*.4,side=pi%2?1:-1;
-  const boatx=ex+(-oz)*2.8*side,boatz=ey+(ox)*2.8*side,[b3x,b3z]=toW(boatx,boatz);
-  addBoat(m,{at:[b3x,.06,b3z],rot:p.angle+Math.PI/2,s,sail:rand()<.6});
+  const boatx=ex+(-oz)*2.8*hs*side,boatz=ey+(ox)*2.8*hs*side,[b3x,b3z]=toW(boatx,boatz);
+  addBoat(m,{at:[b3x,.06,b3z],rot:p.angle+Math.PI/2,s:s*hs,sail:false});
   addSolid(boatx,boatz,2.2);
  });
  // galpões, guindaste e farol
@@ -265,7 +354,7 @@ function buildHarbour(env){
   const pp=edge[Math.floor(edge.length/2)+1]||mid;
   const pEx=cx+pp.x+Math.cos(pp.angle)*16,pEy=cy+pp.z+Math.sin(pp.angle)*16;
   const[pmx,pmz]=toW(pEx,pEy);
-  const pm=portModel({fortified:false,flag:color});pm.scale.setScalar(1.6);
+  const pm=portModel({fortified:false,flag:color});pm.scale.setScalar(1.6*hs);
   pm.position.set(pmx,.4,pmz);pm.rotation.y=-pp.angle;
   extras.push(pm);
  }
@@ -276,7 +365,7 @@ function landAtSafe(env,mx,my){return env.landAt?env.landAt(mx,my):true}
 
 /* ---------- construção da localidade ---------- */
 export function buildTownV2(env){
- const{b,cx,cy,lay,rand,climate,color,G,landAt,toW,addSolid,pathAt,footprintY,special,field,site}=env,style=STYLES[climate]||STYLES.temperate;
+ const{b,cx,cy,lay,rand,climate,color,G,landAt,toW,addSolid,pathAt,footprintY,special,field,site}=env,style=env.style||STYLES[climate]||STYLES.temperate;
  const m=new Mesher(),placed=[],smoke=[],fields=[],lamps=[],people=[],counts={shop:0,tavern:0,smithy:0};let windmill=null;
  const world=(u,v)=>toW(cx+u,cy+v),flat=(u,v,r)=>{let lo=1e9,hi=-1e9;for(const[dx,dy]of[[0,0],[r,0],[-r,0],[0,r],[0,-r]]){const g=G(cx+u+dx,cy+v+dy);lo=Math.min(lo,g);hi=Math.max(hi,g)}return hi-lo};
  const free=(rc,pad)=>{for(const p of placed)if(rectsOverlap(rc,p,pad))return false;return true};
@@ -285,22 +374,110 @@ export function buildTownV2(env){
  const put=(type,u,v,rot,w,d,floors,opts={})=>{const rc={x:u,z:v,r:rot,hw:w/2,hd:d/2};if(!free(rc,opts.pad??.25)||!okPath(rc)||flat(u,v,Math.min(w,d)/2)>1.6)return false;
   const[x,z]=world(u,v),y=footprintY(cx+u,cy+v,Math.min(w,d)/2)+.05;
   addBuilding(m,{at:[x,y,z],rot,w,d,floors,type,style,R:rand,smoke,gableFront:opts.gableFront});placed.push(rc);solid(rc);return true};
+ // ----- frente de água: avenida do cais, antes das casas
+ if(lay.kind==='port'&&field&&site&&site.waterKind!=='none'){
+  const dir=site.portDir,pts=[];
+  for(let k=-7;k<=7;k++){
+   const a=dir+k*.05;let edge=null;
+   for(let r=lay.Rt*.55;r<lay.Rt*1.5;r+=2){
+    if(field.heightM(Math.cos(a)*r*M_PER_UNIT,Math.sin(a)*r*M_PER_UNIT)<.6){edge=r;break}
+   }
+   if(edge!=null){const back=Math.max(7,edge-9);pts.push([Math.cos(a)*back,Math.sin(a)*back])}
+  }
+  if(pts.length>=4){
+   lay.roads.push({pts,w:2.15*(lay.wide||1),a:dir,main:true,promenade:true});
+   const mid=pts[Math.floor(pts.length/2)];
+   lay.roads.push({pts:[mid,[mid[0]*.55,mid[1]*.55],[0,0]],w:1.7*(lay.wide||1),a:dir,main:true});
+  }
+ }
  // ----- marcos centrais
  if(special){placed.push({x:0,z:0,r:0,hw:9,hd:9})}
  else if(lay.fort){const[x,z]=world(0,0);addFort(m,{at:[x,footprintY(cx,cy,9)+.15,z],size:22,flag:color,R:rand});placed.push({x:0,z:0,r:0,hw:13,hd:13});for(let t=-11;t<=11;t+=1.6)for(const[ux,uv]of[[t,-11],[t,11],[-11,t],[11,t]]){if(uv===11&&Math.abs(ux)<2)continue;addSolid(cx+ux,cy+uv,.9)}}
  else{
   const P=lay.plaza,[x0,z0]=world(0,0),gy=G(cx,cy);
-  addFountain(m,{at:[x0,gy+.05,z0]});addSolid(cx,cy,1.8);
+  if(lay.center==='well'){addWell(m,{at:[x0,gy+.05,z0],R:rand});addSolid(cx,cy,1.7)}
+  else if(lay.center==='market'){addPillar(m,{at:[x0,gy+.05,z0],h:3.6,r:.5});addBanner(m,{at:[x0,gy+3.7,z0],h:1.4,color,scale:.8});addSolid(cx,cy,1.5)}
+  else{addFountain(m,{at:[x0,gy+.05,z0]});addSolid(cx,cy,1.8)}
+  const dwarven=style===STYLES.dwarven;
   const slots=lay.capital?[['hall',0],['church',2.1],['tavern',-2.1],['market',Math.PI]]:[['church',0],['hall',lay.village?-9:2.4],['tavern',-2.2],['market',Math.PI]];
   for(const[kind,ang]of slots){if(lay.village&&kind==='hall')continue;const a=lay.a0+ang+(lay.a0>1.5?.3:-.3),big=kind==='hall'?7:kind==='church'?6:3.8,dist=P+2.6+big*.75,u=Math.cos(a)*dist,v=Math.sin(a)*dist,rot=Math.atan2(-Math.cos(a),-Math.sin(a)),[x,z]=world(u,v),y=footprintY(cx+u,cy+v,3)+.05;
    if(kind==='market'){for(let i=0;i<(lay.capital?7:lay.village?2:4);i++){const aa=a+(i-2)*.5,uu=Math.cos(aa)*(P*.66),vv=Math.sin(aa)*(P*.66),[xx,zz]=world(uu,vv);addStall(m,{at:[xx,G(cx+uu,cy+vv)+.05,zz],rot:-aa+Math.PI/2,R:rand});addSolid(cx+uu,cy+vv,.9)}continue}
    const rc={x:u,z:v,r:rot,hw:kind==='hall'?4:kind==='church'?3.4:2.5,hd:kind==='hall'?2.7:kind==='church'?6:2.8};if(!free(rc,.3)||!landAt(cx+u,cy+v))continue;
    if(kind==='church')addChurch2(m,{at:[x,y,z],rot,R:rand,style});
-   else if(kind==='hall'){lay.capital?addKeepHall(m,{at:[x,y,z],flag:color,R:rand}):addTownHall(m,{at:[x,y,z],rot,flag:color,R:rand})}
+   else if(kind==='hall'){lay.capital||dwarven?addKeepHall(m,{at:[x,y,z],flag:color,R:rand}):addTownHall(m,{at:[x,y,z],rot,flag:color,R:rand})}
    else addBuilding(m,{at:[x,y,z],rot,w:5.4,d:5.6,floors:2,type:'tavern',style,R:rand,smoke,gableFront:false});
    placed.push(rc);solid(rc);if(kind==='church'||kind==='hall')lay.landmarks=(lay.landmarks||[]).concat([[u,v]])}
   for(let i=0;i<8;i++){const a=i/8*Math.PI*2+.3,u=Math.cos(a)*(P*.95),v=Math.sin(a)*(P*.95),[x,z]=world(u,v);addLamp(m,{at:[x,G(cx+u,cy+v)+.05,z]});lamps.push([x,G(cx+u,cy+v)+1.7,z])}
  }
+ // ----- distritos: mercado, templo, quartel e oficinas
+ {
+  const base=lay.a0,dr=Math.max(lay.plaza+5,lay.Rt*.30),dw=Math.max(8,lay.Rt*.24),districts=[];
+  const add=(kind,ang,rr,ww)=>districts.push({kind,ang,u:Math.cos(ang)*rr,v:Math.sin(ang)*rr,r:Math.max(7,ww)});
+  if(lay.kind!=='fort'){
+   add('market',base,dr,dw*1.15);
+   add('temple',base+2.05,dr*.92,dw*.9);
+  }
+  const military=lay.fort||special||!!env.b?.citadel||(lay.walled&&lay.pop>2000);
+  if(military)add('military',base+Math.PI*.72,dr*.95,dw);
+  add('craft',base-Math.PI*.62,dr*.95,dw);
+  add('residential',base+Math.PI,dr*1.05,dw*1.3);
+  lay.districts=districts;
+  lay.squares=districts.filter(d=>d.kind!=='residential').map(d=>({u:d.u,v:d.v,r:Math.min(d.r*.5,12)}));
+  const D=k=>districts.find(d=>d.kind===k);
+  const dPut=(d,type,w,dd,fl,pad=.55)=>{
+   for(let k=0;k<12;k++){
+    const a=d.ang+(k?(k%2?1:-1)*Math.ceil(k/2)*.42:0),rr=d.r*(k<4?.25:.65)*Math.min(1,.9+k*.03);
+    const u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;
+    if(put(type,u,v,a+Math.PI/2,w,dd,fl,{pad}))return {u,v};
+   }
+   return null;
+  };
+  const prop=(kind,u,v)=>{
+   const[x,z]=world(u,v),y=G(cx+u,cy+v)+.05;
+   if(kind==='wood'){addLog(m,{from:[x-.8,y,z-.2],to:[x+.9,y+.1,z+.4]});addLog(m,{from:[x-.7,y+.3,z+.4],to:[x+.8,y+.2,z-.2]})}
+   else if(kind==='metal'){m.box('stone',.8,.45,.55,{at:[x,y,z],tint:tc('#5e5a52')});addBarrel(m,{at:[x+.9,y,z+.4]})}
+   else if(kind==='food'){addBarrel(m,{at:[x,y,z]});addBarrel(m,{at:[x+.6,y,z+.3],s:.85});addCrate(m,{at:[x-.6,y,z+.2]})}
+   else{addCrate(m,{at:[x,y,z],rot:rand()*.6});addCrate(m,{at:[x+.5,y,z-.3],rot:rand()*.6,s:.8})}
+   addSolid(cx+u,cy+v,.8);
+  };
+  // mercado geral
+  {const d=D('market');if(d){
+   for(let i=0;i<3;i++){const a=d.ang+(i-1)*.5,rr=d.r*.55,u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;if(!landAt(cx+u,cy+v))continue;const[x,z]=world(u,v);addStall(m,{at:[x,G(cx+u,cy+v)+.05,z],rot:-a+Math.PI/2,R:rand});addSolid(cx+u,cy+v,.8);prop('food',u+.5,v+.5)}
+   dPut(d,'warehouse',4.6,5.8,1);
+   const[x,z]=world(d.u,d.v);addBanner(m,{at:[x,G(cx+d.u,cy+d.v)+.05,z],h:2.4,color:color,scale:.9});
+  }}
+  // templo
+  {const d=D('temple');if(d){
+   const[x,z]=world(d.u,d.v),gy=G(cx+d.u,cy+d.v)+.05;
+   m.box('stone',.55,3.1,.55,{at:[x,gy,z],tint:tc(PAL.stone,.96)});
+   m.box('stone',1.9,.45,.45,{at:[x,gy+2.15,z],tint:tc(PAL.stone,.96)});
+   m.box('gold',.16,.5,.16,{at:[x,gy+2.6,z]});
+   addSolid(cx+d.u,cy+d.v,1.3);
+   for(const s of[-1,1]){const u=d.u+s*2.2,v=d.v+1.2;if(!landAt(cx+u,cy+v))continue;const[lx,lz]=world(u,v);addLamp(m,{at:[lx,G(cx+u,cy+v)+.05,lz]})}
+   dPut(d,'house',3.4,4.2,2,.8);
+  }}
+  // quartel (quando há estrutura militar)
+  {const d=D('military');if(d){
+   const at=dPut(d,'barracks',4.8,7.2,2,.7);
+   if(at){const[x,z]=world(at.u,at.v);addBanner(m,{at:[x+1.4,G(cx+at.u,cy+at.v)+5.2,z],h:2.6,color,scale:.9})}
+   for(let i=0;i<3;i++){const a=d.ang-.4+i*.4,u=d.u+Math.cos(a)*d.r*.75,v=d.v+Math.sin(a)*d.r*.75;if(!landAt(cx+u,cy+v))continue;
+    const[x,z]=world(u,v),y=G(cx+u,cy+v)+.03;addLog(m,{from:[x-.4,y,z],to:[x+.4,y+1.6,z-.2],t:.18});addPillar(m,{at:[x,y,z],h:.7,r:.2});addSolid(cx+u,cy+v,.5)}
+   const a0=d.ang+d.r*.9/Math.max(1,d.u||1),fence=[];
+   for(let i=0;i<4;i++){const a=d.ang-.6+i*.4;fence.push([d.u+Math.cos(a)*d.r*.8,d.v+Math.sin(a)*d.r*.8])}
+   for(let i=1;i<fence.length;i++){if(!landAt(cx+fence[i-1][0],cy+fence[i-1][1]))continue;const[p1x,p1z]=world(fence[i-1][0],fence[i-1][1]),[p2x,p2z]=world(fence[i][0],fence[i][1]);addFence(m,{a:[p1x,p1z],b:[p2x,p2z],y0:G(cx+fence[i][0],cy+fence[i][1]),R:rand})}
+  }}
+  // oficinas: o tipo segue a produção da cidade
+  {const d=D('craft');if(d){
+   const goods=env.production||[];const top=(goods[0]||'').toLowerCase();
+   const kind=/ferro|aço|arma|ferramenta|metal|ourives/.test(top)?'metal':/madeira|lenha|carvão|tábua/.test(top)?'wood':/trigo|grão|pão|cerveja|peixe|carne|sal|vinho|azeite/.test(top)?'food':'goods';
+   dPut(d,'smithy',4.2,5.2,1,.6);
+   const at=dPut(d,'warehouse',4.4,5.8,1,.6);
+   if(at)prop(kind,at.u+1.2,at.v+1.2);
+   if(at&&kind==='metal')prop('metal',at.u-1.4,at.v+1.2);
+   if(at&&kind==='wood')prop('wood',at.u+1.4,at.v-1.2);
+  }}
+ }
+
  // ----- casas ao longo das ruas (núcleo detalhado)
  let count=placed.length;const target=lay.N,limit=lay.coreR*1.02;
  const order=lay.roads.slice().sort((a,c)=>(c.ring?3:c.main?2:c.cross?1:0)-(a.ring?3:a.main?2:a.cross?1:0));
@@ -360,7 +537,7 @@ export function buildTownV2(env){
  let harbour=null;try{harbour=buildHarbour({...env,cx,cy,style})}catch(err){console.warn('porto:',err)}
  // ----- moradores (só em ruas de terra firme)
  const walkable=lay.roads.filter(rd=>rd.pts.every(([u,v])=>landAt(cx+u,cy+v)&&(!field||field.heightM(u*M_PER_UNIT,v*M_PER_UNIT)>.9)));
- const npc=clamp(Math.round(30+Math.sqrt(lay.pop||1000)*4.6),30,280);
+ const npc=0;   // sem pedestres: a cena fica mais limpa e o lugar mais crível
  const mainPool=walkable.filter(rd=>rd.main&&!rd.ring);
  for(let i=0;i<npc;i++){
   const pool=(i%5<3&&mainPool.length)?mainPool:(walkable.length?walkable:lay.roads),rd=pool[Math.floor(rand()*pool.length)],p=rd.pts;

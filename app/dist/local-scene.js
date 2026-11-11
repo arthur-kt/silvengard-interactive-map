@@ -3,9 +3,9 @@
 // Tudo é gerado em código a partir do campo local (local-field.js). Nada disso altera
 // world.json: o lugar é uma leitura em escala real do ponto escolhido.
 import * as THREE from 'three';
-import {shared,NOISE} from './visuals.js?v=45';
-import {rng} from './settlements.js?v=45';
-import {M_PER_UNIT as U,WORLD_M_PER_UNIT,smooth,vnoise,fbm2} from './local-field.js?v=45';
+import {shared,NOISE} from './visuals.js?v=56';
+import {rng} from './settlements.js?v=56';
+import {M_PER_UNIT as U,WORLD_M_PER_UNIT,smooth,vnoise,fbm2} from './local-field.js?v=56';
 
 const M=U;                                  // metros por unidade de cena
 const col=hex=>new THREE.Color(hex);
@@ -16,14 +16,14 @@ const col=hex=>new THREE.Color(hex);
 export function localGroundMaterial({clip=false}={}){
  const uni={uM:{value:M},uSnow:{value:820},uSand:{value:col('#cdb78c')},uRock:{value:col('#8d867a')},
   uWet:{value:col('#6f6550')},uSnowCol:{value:col('#eef2ef')},uGrassHi:{value:col('#a8bd72')},
-  uClip:{value:clip?1:0},uClipR:{value:400},uPlayer:{value:new THREE.Vector2()}};
+  uClip:{value:clip?1:0},uClipR:{value:400},uPlayer:{value:new THREE.Vector2()},uSnowCover:{value:0}};
  const m=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.98,metalness:0,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1});
  m.userData=uni;
  m.onBeforeCompile=shader=>{
   Object.assign(shader.uniforms,uni);
   shader.vertexShader='attribute float aShore;attribute float aHeight;attribute vec2 aPath;attribute float aUrban;varying float vShore;varying float vHeight;varying vec2 vPath;varying float vUrban;varying vec3 vGPos;varying vec3 vGN;\n'+
    shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvShore=aShore;vHeight=aHeight;vPath=aPath;vUrban=aUrban;vGPos=position;vGN=normal;');
-  shader.fragmentShader='varying float vShore;varying float vHeight;varying vec2 vPath;varying float vUrban;varying vec3 vGPos;varying vec3 vGN;uniform float uM,uSnow,uClip,uClipR;uniform vec2 uPlayer;uniform vec3 uSand,uRock,uWet,uSnowCol,uGrassHi;\n'+NOISE+
+  shader.fragmentShader='varying float vShore;varying float vHeight;varying vec2 vPath;varying float vUrban;varying vec3 vGPos;varying vec3 vGN;uniform float uM,uSnow,uClip,uClipR,uSnowCover;uniform vec2 uPlayer;uniform vec3 uSand,uRock,uWet,uSnowCol,uGrassHi;\n'+NOISE+
    shader.fragmentShader
    .replace('#include <color_fragment>',`#include <color_fragment>
    vec2 gp=vGPos.xz*uM;
@@ -55,6 +55,9 @@ export function localGroundMaterial({clip=false}={}){
    float dirt=smoothstep(.16,.5,vPath.x);
    vec3 dirtC=mix(vec3(.31,.24,.16),vec3(.46,.36,.24),n2)*(.85+.3*n3);
    c=mix(c,dirtC,dirt*.22);
+   // neve de baixa altitude: cobre o chão do lugar (e o chão urbano) com manchas
+   float cover=uSnowCover*(.55+.45*atlasNoise(gp*.62+n1*1.7));
+   c=mix(c,uSnowCol,clamp(cover,0.,.94));
    diffuseColor.rgb=c;`)
    .replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
    {float amp=.16*(1.-smoothstep(90.,420.,length(vViewPosition)));float hh=(atlasFbm(gp*.5)*.6+atlasNoise(gp*2.1)*.4)*amp;
@@ -248,12 +251,15 @@ export function buildWater({field,site,material}){
 /* =====================================================================
    ruas, praça e caminhos (geometria própria, cobblestone de verdade)
    ===================================================================== */
-export function localRoadMaterial(){
+export function localRoadMaterial({snow=0}={}){
  const m=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.94,metalness:0,
   polygonOffset:true,polygonOffsetFactor:-3,polygonOffsetUnits:-3});
+ const uni={uSnow:{value:snow}};
+ m.userData={...m.userData,...uni};
  m.onBeforeCompile=shader=>{
+  shader.uniforms.uSnow=uni.uSnow;
   shader.vertexShader='varying vec3 vRP;\n'+shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvRP=position;');
-  shader.fragmentShader='varying vec3 vRP;\n'+NOISE+shader.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+  shader.fragmentShader='varying vec3 vRP;uniform float uSnow;\n'+NOISE+shader.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
   vec2 gp=vRP.xz*${M.toFixed(2)};
   float n2=atlasFbm(gp*.08+3.1),n3=atlasNoise(gp*.5);
   float urban=diffuseColor.r;
@@ -267,6 +273,7 @@ export function localRoadMaterial(){
   vec3 dirtC=mix(vec3(.36,.28,.19),vec3(.5,.4,.27),n2)*(.86+.2*n3)+step(.94,atlasNoise(gp*2.6))*.06;
   vec3 c=mix(dirtC,stone,urban);
   c*= .94+.1*n3;
+  c=mix(c,vec3(.9,.93,.95),uSnow*(.35+.4*atlasNoise(gp*.7)));
   diffuseColor.rgb=c;`)
   .replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
   {float amp=.045;float hh=(1.-cm)*amp;vec3 dpdx=dFdx(-vViewPosition),dpdy=dFdy(-vViewPosition);vec3 r1=cross(dpdy,normal),r2=cross(normal,dpdx);float det=dot(dpdx,r1);
@@ -276,7 +283,7 @@ export function localRoadMaterial(){
 }
 
 /** Malha das ruas: fitas que acompanham o terreno + praça central. */
-export function buildRoads({roads,cx,cy,plaza=0,heightAt,toW,urbanR=0,material}){
+export function buildRoads({roads,cx,cy,plaza=0,squares=[],heightAt,toW,urbanR=0,material}){
  const P=[],C=[],I=[];let base=0;
  const push=(u,v,urban)=>{
   const[x,z]=toW(cx+u,cy+v),y=heightAt(u,v)+.05;
@@ -313,6 +320,14 @@ export function buildRoads({roads,cx,cy,plaza=0,heightAt,toW,urbanR=0,material})
    }
    base+=seq2.length*2;
   }
+ }
+ // praças de distrito
+ for(const s of squares){
+  const seg=Math.max(16,Math.round(s.r*4)),c0=base,[sx,sz]=toW(cx+s.u,cy+s.v);
+  P.push(sx,heightAt(s.u,s.v)+.055,sz);C.push(.9,.9,.9);
+  for(let i=0;i<seg;i++){const a=i/seg*Math.PI*2,u=s.u+Math.cos(a)*s.r,v=s.v+Math.sin(a)*s.r,[x,z]=toW(cx+u,cy+v);P.push(x,heightAt(u,v)+.055,z);C.push(1,1,1)}
+  for(let i=0;i<seg;i++)I.push(c0,base+1+i,base+1+(i+1)%seg);
+  base+=seg+1;
  }
  // praça
  if(plaza>0){
@@ -375,14 +390,14 @@ export function buildForest({field,site,blocked=()=>false,radius=null,seed=1}){
   const clump=.35+1.5*fbm2(x*.0019,z*.0019,seed+7);
   if(rand()>f*clump)continue;
   const h=field.heightM(x,z);if(h<1.2)continue;
-  if(r<R*.62)continue;                       // dentro do núcleo urbano quase não há mata
+  if(r<R*1.02)continue;                      // a cidade não tem mata dentro
   if(blocked(x,z,2.6))continue;
   const type=kinds[Math.floor(rand()*kinds.length)];
   const sc=(climate==='boreal'||climate==='alpine'?.8:.65)+rand()*.6;
   lists[type].push([x,z,sc,rand()*6.28,.86+rand()*.3,rand()]);
   total++;
  }
- const group=new THREE.Group();group.name='localForest';
+ const group=new THREE.Group();group.name='localForest';group.userData={R,rad};
  const trunkMat=new THREE.MeshStandardMaterial({color:'#7b6750',roughness:1});
  const m4=new THREE.Matrix4(),q=new THREE.Quaternion(),p=new THREE.Vector3(),sc=new THREE.Vector3(),up=new THREE.Vector3(0,1,0);
  for(const[type,items]of Object.entries(lists)){

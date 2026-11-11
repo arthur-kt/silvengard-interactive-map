@@ -7,20 +7,32 @@ export function inlineMarkdown(text){
  return s.replace(/\u0000(\d+)\u0000/g,(_,i)=>codes[+i]||'');
 }
 export function renderMarkdown(markdown){
- const lines=String(markdown).replace(/<!--[\s\S]*?-->/g,'').split(/\r?\n/),html=[];let paragraph=[],list=null;
- const flush=()=>{if(paragraph.length){html.push('<p>'+inlineMarkdown(paragraph.join('\n')).replace(/\n/g,'<br>')+'</p>');paragraph=[];}if(list){html.push(`</${list}>`);list=null;}};
+ const lines=String(markdown).replace(/<!--[\s\S]*?-->/g,'').split(/\r?\n/),html=[];let paragraph=[];
+ const flush=()=>{if(paragraph.length){html.push('<p>'+inlineMarkdown(paragraph.join('\n')).replace(/\n/g,'<br>')+'</p>');paragraph=[];}};
+ const listHTML=items=>{
+  const root={children:[]},stack=[{indent:-1,node:root}];
+  for(const item of items){while(stack.length>1&&item.indent<=stack[stack.length-1].indent)stack.pop();const node={...item,children:[]};stack[stack.length-1].node.children.push(node);stack.push({indent:item.indent,node});}
+  const render=nodes=>{const ordered=Boolean(nodes[0]?.ordered),tag=ordered?'ol':'ul';return `<${tag}>`+nodes.map(node=>`<li>${inlineMarkdown(node.text)}${node.children.length?render(node.children):''}</li>`).join('')+`</${tag}>`;};
+  return render(root.children);
+ };
  for(let i=0;i<lines.length;i++){
   const line=lines[i].trim();if(!line){flush();continue;}
+  if(line.startsWith('```')){flush();const block=[];i++;while(i<lines.length&&!lines[i].trim().startsWith('```')){block.push(lines[i]);i++;}html.push('<pre class="loreCode"><code>'+escapeHTML(block.join('\n'))+'</code></pre>');continue;}
   if(/^\*\*(Fonte(?: original)?|Arquivos relacionados):\*\*/.test(line))continue;
-  if(line.startsWith('|')&&/^\|?[\s:|-]+\|/.test(lines[i+1]?.trim()||'')){
-   flush();const cells=s=>s.trim().replace(/^\||\|$/g,'').split('|').map(t=>t.trim());
-   const headers=cells(line);i++;const rows=[];while(lines[i+1]?.trim().startsWith('|'))rows.push(cells(lines[++i]));
-   html.push('<div class="loreTable"><table><thead><tr>'+headers.map(c=>'<th>'+inlineMarkdown(c)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(c=>'<td>'+inlineMarkdown(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>');continue;
+  if(line.startsWith('|')&&/^\|?[\s:|-]+\|/.test((lines[i+1]||'').trim())){
+   flush();const cells=value=>value.trim().replace(/^\||\|$/g,'').split('|').map(cell=>cell.trim());
+   const headers=cells(line);i++;const rows=[];while((lines[i+1]||'').trim().startsWith('|'))rows.push(cells(lines[++i]));
+   html.push('<div class="loreTable"><table><thead><tr>'+headers.map(cell=>'<th>'+inlineMarkdown(cell)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map(cell=>'<td>'+inlineMarkdown(cell)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>');continue;
   }
-  const item=line.match(/^(?:([-*])|\d+\.)\s+(.+)/);if(item){if(paragraph.length){html.push('<p>'+inlineMarkdown(paragraph.join(' '))+'</p>');paragraph=[];}const tag=item[1]?'ul':'ol';if(list!==tag){if(list)html.push(`</${list}>`);html.push(`<${tag}>`);list=tag;}html.push('<li>'+inlineMarkdown(item[2])+'</li>');continue;}
+  const item=line.match(/^(\s*)(?:([-*])|(\d+)\.)\s+(.+)/);
+  if(item){
+   flush();const items=[];let current=item;
+   do{items.push({indent:Math.floor(current[1].replace(/\t/g,'  ').length/2),ordered:!current[2],text:current[4]});current=(lines[i+1]||'').match(/^(\s*)(?:([-*])|(\d+)\.)\s+(.+)/);if(current)i++;}while(current);
+   html.push(listHTML(items));continue;
+  }
   if(line.startsWith('>')){flush();html.push('<blockquote>'+inlineMarkdown(line.replace(/^>\s?/,''))+'</blockquote>');continue;}
   const heading=line.match(/^#{1,6}\s+(.+)/);if(heading){flush();html.push('<h3>'+inlineMarkdown(heading[1])+'</h3>');continue;}
-  if(/^---+$/.test(line)){flush();html.push('<hr>');continue;}if(list){html.push(`</${list}>`);list=null;}paragraph.push(line);
+  if(/^---+$/.test(line)){flush();html.push('<hr>');continue;}paragraph.push(line);
  }flush();return html.join('');
 }
 export function descendants(root,sections){const s=sections.get(root);return s?[s,...s.children.flatMap(id=>descendants(id,sections))]:[];}

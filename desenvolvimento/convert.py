@@ -49,6 +49,8 @@ from latest_author_defaults import apply_latest_author_defaults
 data=apply_latest_author_defaults(data,base)
 from persistent_defaults import apply_persistent_defaults
 data=apply_persistent_defaults(data,base)
+from ferramentas.descrever_localidades import apply_descriptions
+data['landmarks']=apply_descriptions(data['landmarks'])
 (out/'world.json').write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 for a,b in [('Mapa-elucitor.jpeg','elucitor.jpeg'),('Mapa-dragonfall.jpeg','dragonfall.jpeg')]:shutil.copyfile((base/'references/elucitor-papel-autor.jpeg') if b=='elucitor.jpeg' and (base/'references/elucitor-papel-autor.jpeg').exists() else src/a,out/b)
 report={'original_active':len(active),'selected':sum(b['visible'] for b in data['cities']),'added_reference_approximate':len([b for b in burgs if b['i']>=1000]),'states':[{'name':s['name'],'original':sum(b['state']==s['i'] for b in active),'selected':sum(b['state']==s['i'] and b['visible'] for b in data['cities'])} for s in states if s['i']]}

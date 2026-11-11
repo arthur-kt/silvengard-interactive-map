@@ -54,4 +54,8 @@ body.street canvas{cursor:none}
 #streetPick{pointer-events:none}#streetPick .svRadius{display:flex;align-items:center;gap:6px;margin-top:8px;pointer-events:auto}
 #streetPick .svRadius em{font-style:normal;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);margin-right:4px}
 #streetPick .svRadius button{height:28px;padding:0 12px;border-radius:9px;font:600 11px 'DM Sans';cursor:pointer}
-#streetPick .svRadius button.on{background:linear-gradient(180deg,rgba(220,192,138,.30),rgba(220,192,138,.14));border-color:var(--edge-2);color:var(--gold-2)}
+#streetPick .svRadius button.on{background:linear-gradient(180deg,rgba(220,192,138,.30),rgba(220,192,138,.14));border-color:var(--edge-2);color:var(--gold-2)}\n
+.svPlace em{display:block;max-width:min(640px,46vw);margin-top:5px;padding-left:10px;border-left:2px solid rgba(220,192,138,.45);font:italic 12.5px/1.45 'Cormorant Garamond',Georgia,serif;color:var(--ink-2);text-shadow:0 2px 8px #000a}
+.svPlace em[hidden]{display:none}\n
+.svState em{font-style:normal;font:600 10px 'DM Sans';letter-spacing:.4px;color:#a8dcff;margin-top:2px}
+.svState em[hidden]{display:none}

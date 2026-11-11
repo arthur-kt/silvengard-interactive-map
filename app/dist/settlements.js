@@ -2,7 +2,7 @@
 // Tudo é gerado em código (sem imagens): alvenaria, telhas, reboco, madeira e palha são calculados no shader
 // a partir de coordenadas locais de cada edifício, para o padrão acompanhar as paredes em qualquer rotação.
 import * as THREE from 'three';
-import {shared,NOISE} from './visuals.js?v=45';
+import {shared,NOISE} from './visuals.js?v=56';
 
 export const PAL={stone:'#dfcba2',cobble:'#b9aa8c',plaster:'#f1e8d0',roof:'#76584b',roofRed:'#8a5a46',wood:'#79664e',woodDark:'#4f4030',gold:'#d8b977',glass:'#25343b',thatch:'#c9b06a',cloth:'#b6483c',cloth2:'#e6d8b0'};
 export const rng=seed=>{let a=(seed|0)+0x6D2B79F5;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}};
@@ -202,7 +202,9 @@ export const STYLES={
  arid:{wall:'plaster',cols:['#d9b98a','#cfa877','#e2c79c','#c99f6c','#e8d2a8'],roofKind:'flat',roofCols:['#d9b98a'],timber:false,quoins:false,pitch:0,shutters:false,awnings:true},
  tropical:{wall:'plaster',cols:['#f2d9a0','#e9b8a0','#c8dcb0','#efe6cc','#e8c48a'],roofKind:'thatch',roofCols:[PAL.thatch,'#b89c58'],timber:false,quoins:false,pitch:1,shutters:true,raise:.5},
  alpine:{wall:'stone',upper:'wood',cols:[PAL.stone,'#d2c09a'],roofKind:'roof',roofCols:['#5e4a42','#6b564a','#54443c'],timber:true,quoins:false,pitch:.8,shutters:true},
- wet:{wall:'wood',cols:['#8a7152','#7d6648','#6f5a3f'],roofKind:'thatch',roofCols:['#a99455','#9a864c'],timber:false,quoins:false,pitch:.95,shutters:false,raise:1.1}
+ wet:{wall:'wood',cols:['#8a7152','#7d6648','#6f5a3f'],roofKind:'thatch',roofCols:['#a99455','#9a864c'],timber:false,quoins:false,pitch:.95,shutters:false,raise:1.1},
+ dwarven:{wall:'stone',cols:['#c9b48c','#b7a27a','#d3c19c','#a8926b'],roofKind:'roof',roofCols:['#5b544a','#6a6155','#4e4840'],timber:false,quoins:true,pitch:.42,shutters:false},
+ arcane:{wall:'plaster',cols:['#e6e1d2','#d8d2c0','#eee8d8','#cfc9b8'],roofKind:'roof',roofCols:['#3f5c78','#4a6884','#35506a'],timber:false,quoins:true,pitch:.7,shutters:true}
 };
 const pick=(a,R)=>a[Math.floor(R()*a.length)%a.length];
 export function addFence(m,{a,b,y0=0,R=Math.random}){const dx=b[0]-a[0],dz=b[1]-a[1],L=Math.hypot(dx,dz),n=Math.max(1,Math.round(L/1.3)),rot=Math.atan2(-dz,dx);

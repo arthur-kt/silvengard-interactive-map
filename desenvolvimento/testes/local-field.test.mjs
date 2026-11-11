@@ -14,10 +14,10 @@ const city=id=>D.cities.find(c=>c.i===id);
 const build=id=>{const c=city(id);return {c,site:siteFor({D,point:[c.x,c.y],cellAt,surface,population:popOf(c),city:c})}};
 
 test('o raio urbano cresce com a população e tem limites',()=>{
- assert.ok(populationRadiusM(120)>=95);
+ assert.ok(populationRadiusM(120)>=32);
  assert.ok(populationRadiusM(400)<populationRadiusM(5000));
  assert.ok(populationRadiusM(5000)<populationRadiusM(40000));
- assert.ok(populationRadiusM(1e9)<=2900);
+ assert.ok(populationRadiusM(1e9)<=650);
  assert.equal(Math.round(populationRadiusM(40000)),Math.round(populationRadiusM(40000)));
 });
 
@@ -26,7 +26,7 @@ test('cidade portuária: água grande, porto coerente e serra no horizonte',()=>
  assert.equal(site.waterKind,'sea');
  assert.ok(site.shoreDistM>site.cityR*.5,'a frente de água não pode ficar dentro do centro');
  assert.ok(site.shoreDistM<=3000,'a frente de água precisa continuar próxima da cidade');
- assert.ok(site.cityR>900,'uma cidade de 39 mil habitantes não pode ser uma aldeia');
+ assert.ok(site.cityR>180,'uma cidade de 39 mil habitantes não pode ser uma aldeia');
  assert.ok(site.ranges.length>=1,'o relevo do entorno deve virar serra visível');
  for(const r of site.ranges){assert.ok(r.distM>=2000&&r.distM<=13000);assert.ok(r.heightM>=120&&r.heightM<=1900)}
 });

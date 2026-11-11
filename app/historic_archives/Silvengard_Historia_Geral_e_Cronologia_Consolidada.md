@@ -24,6 +24,15 @@ Os nomes a seguir são padrões culturais de **casas associadas a estados espec�
 As listas completas e as associações históricas e culturais de cada nome são descritas nos respectivos capítulos dos Estados e das Culturas. **Brutus Varkhazar permanece um personagem da história interna de Drácon**, sem ligação explicativa com a Paz Armada do Oeste.
 <!-- FIM_SINTESE_NOMES_DINASTICOS_1277_AQD -->
 
+## Silvengard em 1277 AQD — o mundo da Quarta Era
+<!-- ABERTURA_MUNDO_1277 -->
+
+O Atlas mostra **Silvengard em 1277 AQD**, vigésimo sétimo ano da **Quarta Era**. A contagem AQD não recomeça a cada era: a Terceira terminou com o **Acordo de Bomaria (1250)**, e a Quarta começou em **1251**. As datas antigas continuam aproximadas; os mistérios de Valar, de Amestris e do Reino Perdido de Baranor permanecem em aberto.
+
+O continente está partilhado por **dezenove Estados e regiões**, cada um com suas casas, conselhos e histórias próprias. **Lucius IX** governa Elucitor, **Elyndra II** conserva o trono élfico de Navï Velaffëll, **Arthur Dragonbane** reina em Dragonfall desde a independência de 1262 e **Kaerath III** conduz as conquistas de Drácon. Em Osmorn, **Maelis II** protege as comunidades rurais; em Veniun, **Aldric III** equilibra a coroa e as guildas; em Duräk, **Dorrik IV** divide a autoridade com o Conselho das Forjas. Husaj, Piglia, Marshell, as Sete Cidades e as cidades de Vitravion seguem caminhos próprios, sem um soberano comum.
+
+O oeste vive uma **Paz Armada**: os portos cooperam em escoltas e avisos, mas nenhum aceita entregar a frota a outro. As conquistas de Drácon, a memória da Guerra das Relíquias e a desconfiança entre Elucitor e Navï Velaffëll mantêm as fronteiras tensas. Nenhuma dessas sucessões está encerrada; o presente é o ponto de partida das histórias deste acervo.
+
 ## Memórias e tradições de Silvengard
 
 ### Ruínas de Amestris — os vestígios da civilização desconhecida
@@ -507,6 +516,67 @@ As listas completas e as associações históricas e culturais de cada nome são
 <!-- FIM_SINTESE_NOMES_DINASTICOS_1277_AQD -->
 <!-- FIM_FONTE_INTEGRAL: Silvengard_Historia_Geral.md -->
 
+#### A sucessão das casas e das guerras
+
+A história dos reinos não decorre em isolamento. Uma dívida assumida por uma família mercantil pode financiar uma campanha; uma guerra aparentemente local pode produzir gerações de desconfiança; uma escola de magia pode aproximar dois países que continuam rivais politicamente. Os acontecimentos a seguir articulam as genealogias com as quatro eras e explicam a situação de 1277.
+
+#### As fronteiras mudam, os Estados de 1277 permanecem
+
+
+As conquistas dos séculos passados não obrigam o mapa do presente a mudar. **Tonkhet e Grainhem** guardam muros de governos anteriores, mas agora estão em Marshell; **Sobral** foi incorporada a Osmorn; **Bilnulbun e Brelas** se integraram a Duräk; **Bernut** passou décadas sob Guernica antes de recuperar autonomia; **Forteirosin** foi ocupada por um consórcio externo e reconquistada por Batovia; **Viacaledebo, Amrithruk e Glouyaloss** perderam a independência e passaram a Drácon durante a Quarta Era.
+
+Nenhuma dessas mudanças cria um rei de todos os Reinos Médios ou um governante único de Vitravion. As disputas ali continuam locais, com pequenas coroas, assembleias e senhorios coexistindo. A guerra de Drácon é diferente porque incorpora permanentemente territórios sob uma dinastia expansionista, com exércitos, escravidão e guarnições.
+
+#### As guerras de incorporação, por época
+
+
+| Anos AQD | Conflito ou campanha | Mudança territorial ou política duradoura |
+|---|---|---|
+| **257** | **Revolta de Alnien**, antigo reino de Althor | Lucius I destrói o antigo centro rebelde; a administração transfere-se para Althor |
+| **558–585** | **Reinado do Corvo Colérico**, Dragonfall | Direitos de petição e proteção de sementes; desaparecimento da Marcha em 585 |
+| **722–731** | **Guerra dos Portões de Tonkhet**, Marshell | Queda do pequeno reino Torven; Tonkhet passa à esfera das hordas |
+| **748–756** | **Guerra dos Quatro Fornos**, Duräk | Bilnulbun e Brelas passam a reconhecer o príncipe de Grenolk |
+| **862–870** | **Contenda dos Três Estandartes**, Marshell | Grainhem integra as alianças das hordas, conservando suas muralhas |
+| **903–911** | **Guerra das Lanternas**, Batovia e Mountport | Guerra de rotas e reparações sem anexação definitiva |
+| **921–927** | **Campanha das Duas Enseadas**, Drácon | Queda do antigo senhorio marítimo de Guiras e Pinhem |
+| **972–977** | **Ocupação de Forteirosin** por consórcio ligado a Mountport | Controle estrangeiro temporário; Batovia reconquista a fortificação em 977 |
+| **990–1008** | **Ocupação de Porto do Álamo**, Vitravion | Domínio temporário de Drácon; recuperação pela coalizão de cidades |
+| **1039–1047** | **Guerra do Estuário de Bernut**, Vitravion | Guernica toma e governa Bernut até a Carta de 1086 |
+| **1086** | **Carta de Bernut** | Bernut recupera seu governo livre; Guernica mantém apenas relações pactuadas |
+| **1109–1116** | **Guerra das Duas Passagens**, Reinos Médios | Disputas de taxas e dívidas; pequenos senhorios mudam de alianças |
+| **1132–1138** | **Contenda das Três Folhas**, Vitravion | Guernica e a Tríplice Élfica fixam limites de passagem sem anexações |
+| **1183–1191** | **Guerra das Duas Torres de Sobral**, Osmorn | O antigo senhorio Barreir perde soberania e é incorporado ao reino Candelar |
+| **1257–1259** | **Cerco de Viacaledebo**, Drácon | Fim do condado livre, integração à administração Varkhazar |
+| **1264–1268** | **Campanha das Pedreiras de Amrithruk**, Drácon | Queda do conselho autônomo e ocupação permanente |
+| **1273** | **Queda de Glouyaloss**, Drácon | Última guarnição livre da área torna-se porto militar imperial |
+
+#### Confrontos entre as grandes potências antes de 1215 AQD
+
+
+| Período (AQD) | Estados ou comunidades envolvidas | Resultado e legado |
+|---|---|---|
+| **304–311** | **Elucitor e a cidade de elfos da floresta de Bomaria** | Aurelian I conquista Bomaria; a cidade conserva presença élfica sob soberania imperial |
+| **549–554** | **Elucitor × Navï Velaffëll** | Guerra das Folhas e dos Marcos; Bomaria continua imperial e se negociam acessos a santuários |
+| **625–631** | **Dragonfall × Elucitor** | Crise dos Vaus do Sul; paz sem anexação, precursora da associação autônoma do reino |
+| **881–886** | **Dragonfall × Navï Velaffëll** | Guerra das Pontes de Ereth; travessias disputadas, fronteira e soberania preservadas |
+| **915–919** | **Elucitor × Veniun** | Guerra dos Degraus de Vathnis; retirada imperial, autonomia dos vales mantida |
+| **1102–1105** | **Elucitor × Navï Velaffëll** | Noites de Rimae; ataques e espionagem na fronteira, sem guerra geral nem anexações |
+
+Esses episódios não alteram o mapa dos dezenove territórios de 1277. As campanhas mais antigas de **Bomaria** e **Alnien** explicam a expansão inicial de Elucitor; a associação de **Dragonfall** com o império segue sendo um acordo diplomático; e a **Guerra das Relíquias**, iniciada em **1215 AQD**, continua muito mais extensa, custosa e politicamente decisiva que os confrontos limitados de séculos anteriores.
+
+#### Como esses conflitos se relacionam
+
+
+**A ascensão das cidades livres.** A eleição excepcional de um rei ligado à população rural em Dragonfall, o breve domínio de um consórcio mercantil sobre Forteirosin e a guerra de Bernut mostram modelos diferentes de resistência a famílias ricas. Em Dragonfall, a coroa eletiva alterna dinastias; em Batovia, as ilhas votam separadamente; em Vitravion, portos disputam tributação. Nenhum desses regimes se transformou num só sistema político.
+
+**A defesa contra as conquistas.** A queda do senhorio de Guiras e Pinhem no século X e a ocupação de Porto do Álamo no seguinte ensinaram que as guarnições Varkhazar eram capazes de permanecer em territórios afastados. O fracasso da ocupação do Álamo levou cidades a construir depósitos, fortalecer muralhas e negociar suprimentos. Séculos depois, a queda de Viacaledebo e Amrithruk tornou essa memória novamente urgente.
+
+**O preço da solidariedade.** Cavaleiros de Osmorn ajudaram a evacuar refugiados sem governar as cidades resgatadas; mercadores de Mountport forneceram crédito mesmo a rivais antigos; famílias de Batovia pagaram escoltas embora se ressentissem do passado; artesãos de Duräk venderam armas a lados diferentes e discutiram a moralidade disso. Assim nasceu uma **Paz Armada**, e não um reino ocidental unificado. O pacto de portos de 1256 trata de auxílio voluntário, manutenção e avisos, sem subordinar as frotas à Casa Candelar, aos Varkhazar ou a qualquer outra casa.
+
+**A memória que pode virar guerra.** O descendente dos Torven de Tonkhet não herdou uma coroa viva. Os Barreir de Sobral conservam terras, mas não soberania. As famílias de Bernut podem voltar a protestar contra Guernica; os oficiais de Glouyaloss podem continuar hostis ao governo Varkhazar. Cada conflito deixa **herdeiros políticos sem um Estado para herdar**, credores sem reparação e juramentos que alimentam as tensões de 1277.
+
+<!-- INTEGRACAO_1277_HISTORIA_GERAL -->
+
 ### Cronologia das Quatro Eras — original integral
 **Fonte:** `Silvengard_Cronologia_Continental.md`.
 
@@ -540,6 +610,7 @@ As listas completas e as associações históricas e culturais de cada nome são
 
 | Data | Acontecimento | Situação e consequências |
 |---|---|---|
+| **Era dos Dragões** | Clãs anões nativos ocupam o **Monte Thrum**, na região de Dagorah | Galerias e refúgios anteriores ao reino humano de Dragonfall |
 | II-1 em diante | Predomínio dos dragões cromáticos e metálicos | Domínios, resistência de outros povos e antigas tradições dracônicas |
 | c. II-400–1300 | Ascensão da antiga civilização élfica de **Valar** | Florescimento arcano e político; cronologia interna ainda incompleta |
 | c. II-1250 | **Cataclismo de Valar**, ligado à profecia da **Marca das Sombras** | Desaparecimento de sua população e transformação do território; causas e destino permanecem um mistério |
@@ -551,20 +622,64 @@ As listas completas e as associações históricas e culturais de cada nome são
 | Data | Acontecimento | Consequência continental |
 |---|---|---|
 | c. 60–230 AQD | Reorganização dos reinos e cidades após a queda dos dragões | Novos governos humanos, élficos, anões e de outros povos |
+| **c. 125 AQD** | **Thurdan Martelo-Fundo** e outros anões consolidam os salões fortificados de Dagorah | Fundação da cidade anã, antes da monarquia eletiva humana |
 | c. 240 AQD | **Lucius Lucien**, portando a espada **Elucidator**, derrota **Tarok** e consolida **Elucitor** a partir de Althor, Arenor, Castamor e Elucitor | Início da unificação imperial humana |
+| **257** | Revolta de **Alnien**, antiga capital de Althor; Lucius I destrói sua cidadela | Lendas atribuem a queda às ações diretas da Elucidator e da Voz; a administração passa a Althor |
 | c. 270–310 AQD | Povos humanos estabelecem comunidades independentes nas montanhas que darão origem a **Veniun** | Resistência à incorporação por Elucitor; marco de formação, não data exata de cada cidade |
 | c. 300–370 AQD | Resistência humana em **Dragonfall**, expulsão do poder élfico e consolidação de uma monarquia eletiva | Prestígio das casas Dragonbane e Windbear; Winterhelm torna-se símbolo histórico |
+| **304–311** | **Aurelian I conquista Bomaria**, até então cidade dos elfos da floresta | Soberania imperial e presença élfica continuada; origem de reivindicações futuras |
 | c. 360–430 AQD | Elfos expulsos de Dragonfall fundam **Velaffeld** e consolidam **Navï Velaffëll** | Nova potência élfica e marítima |
+| **364** | **Alaric Windbear** reconhece a autonomia de Dagorah pelo Pacto das Duas Montanhas | As forjas anãs do Monte Thrum permanecem independentes da coroa humana |
+| **417–610** | Reinado de **Aelion I Aelvaris**, com incorporação de **Garnalos** | Unificação política e desenvolvimento do ensino arcano imperial |
 | c. 440–520 AQD | Formação do **Principado de Duräk** pelos migrantes anões das Sete Cidades | Fundação de Grenolk e da dinastia principesca hereditária; período aproximado |
+| **c. 465** | Religiosos de **Hellas** formalizam um pacto de santuários | Origem institucional da teocracia de Piglia |
+| **486** | **Dorrik Grunvar I** inicia a linha de príncipes em **Grenolk** | Fundação de Duräk por migrantes das Sete Cidades |
 | c. 500–560 AQD | Cidades halflings do futuro **Mountport** pactuam defesa e interesses comerciais | Formação progressiva de sua oligarquia descentralizada |
+| **c. 520** | Primeiros reis **Valdren** são reconhecidos como defensores de Veniun | Monarquia de pactos municipais, não centralização imperial |
+| **549–554** | **Guerra das Folhas e dos Marcos**, Elucitor e Navï Velaffëll | Campanhas por santuários e postos de Rimae; Bomaria permanece imperial |
+| **558–585** | Reinado de Tiberius Rodstrock, o **Corvo Colérico**, em Dragonfall | Reformas rurais, tragédia da rainha Maira e desaparecimento da Marcha dos Corvos em 585 |
 | c. 570–640 AQD | Ilhas de **Batovia** aprofundam suas votações e instituições comuns | Consolidação da federação insular, mantendo autonomias |
+| **c. 610** | **Roland Candelar I** torna-se rei de **Osmorn** | Coroa cavaleiresca associada à Ordem de Bahamut |
+| **621** | **Nahir Miraz** e famílias khajitt fundam **Malacatt**, sob Garran Dragonbane | Entreposto khajitt independente de Khajataad, sob soberania de Dragonfall |
+| **625–631** | **Crise dos Vaus do Sul** entre Dragonfall e Elucitor | Escaramuças e trégua antes da associação diplomática como vice-reinado |
 | c. 630–680 AQD | **Dragonfall** se associa a **Elucitor** como vice-reinado amplamente autônomo | Defesa e comércio imperiais, tributo limitado e crescente tensão sobre soberania |
+| **c. 685** | Consolidação da corte **Varkhazar** de Drácon | Base dinástica das futuras conquistas insulares e continentais |
+| **c. 690–694** | **Zahra bint Sahl** funda e obtém reconhecimento para **Savhalla** no reinado de Edran Longrock | Núcleo urbano husajita anterior à dinastia Al Sahr |
+| **722–731** | Hordas de Marshell conquistam **Tonkhet** | Extinção de um pequeno reino humano, sem criação de coroa geral |
+| **c. 742** | Migrantes de **Mauron (Vitravion)** integram-se à cidade anã de Dagorah | Formação do clã Mauron sem alterar a origem local de Dagorah |
+| **748–756** | Duräk incorpora **Bilnulbun e Brelas** após a Guerra dos Quatro Fornos | Expansão de seu principado e fortalecimento do Conselho das Forjas |
 | c. 780 AQD | **Queda Infernal de Gugacon**, em Dragonfall: ritual fracassado de **Arvanthir** para invocar Dravanir | Devastação, manifestação de avatar, isolamento mágico da ilha e fortalecimento das tensões draconatas |
+| **832–868** | Aldric II renova os pactos de Veniun após disputas locais | O poder real depende da adesão das cidades |
+| **862–870** | As hordas integram a zona fortificada de **Grainhem** | Marshell passa a incluir novas populações urbanas sob pactos regionais |
 | c. 880–950 AQD | Primeiras campanhas continentais de maior alcance do **Império de Drácon** | Conquistas periféricas, expansão marítima e marcas culturais draconatas em territórios ocupados |
+| **881–886** | **Guerra das Pontes de Ereth** entre Dragonfall e Navï Velaffëll | Travessias disputadas, mas Ereth continua sob a coroa de Dragonfall |
+| **900–939** | **Crise das Alfândegas de Vathnis** sob Leopold II de Veniun | Reafirmação da autonomia das passagens montanhesas |
+| **903–911** | **Guerra das Lanternas**, entre armadores de Batovia e Mountport | Perdas de frotas e memória de uma rivalidade não monárquica |
+| **911** | **Acordo das Três Marés**, negociado entre portos | Reparações limitadas e rotas com passagem negociada |
+| **915–919** | **Guerra dos Degraus de Vathnis** entre Elucitor e Veniun | Fracasso da guarnição imperial e recuo de postos fiscais |
+| **921–927** | Drácon conquista o antigo senhorio de **Guiras e Pinhem** | Cidades mantêm comunidades humanas e devotos de Bahamut sob domínio Varkhazar |
 | c. 970 AQD | O príncipe **Brutus** foge de Drácon após perseguição e tentativa de assassinato | Destino posterior desconhecido; **episódio interno da história imperial, sem relação constitutiva com o Pacto dos Portos Livres ou a Paz Armada do Oeste** |
+| **972–977** | Consórcio ligado a Mountport ocupa **Forteirosin**; Batovia retoma a fortaleza em 977 | Ressentimentos comerciais e reforço da defesa comum da federação |
 | **III-990–1008** | Drácon ocupa temporariamente **Porto do Álamo**, em Vitravion | A cidade é recuperada por forças locais; mantém memórias e populações de origens diversas |
+| **1008** | Atuação de Irena Valmora e Tarian de Vyoh na retomada | Linhagens de defensores ganham prestígio no porto |
+| **1039–1047** | Guernica conquista o porto livre de **Bernut** | Administração ocupante permanece até a Carta de Bernut (1086) |
+| **1077–1084** | **Campanha das Quatro Selas**, envolvendo algumas hordas de Marshell e clãs orcs | Retorno a pactos locais sem surgimento de um chefe supremo |
+| **1086** | Bernut se liberta do governo de Guernica | Recupera autonomia local em Vitravion |
+| **1088** | Casa Al Sahr se consolida na corte de Alqa | Herança familiar conciliada com reconhecimento político e religioso |
 | c. 1100–1200 AQD | Crescente disputa pelo equilíbrio entre Elucitor e Navï Velaffëll | Desconfiança política e arcana; disputas de fronteira |
+| **1102–1105** | **Noites de Rimae** entre Elucitor e Navï Velaffëll | Escaramuças e espionagem sem nova delimitação territorial |
+| **1109–1116** | **Guerra das Duas Passagens**, envolvendo senhorios dos Reinos Médios e mercenários anões | Dívidas, restrições a contratos de armas e influência de Mountport |
+| **1132–1138** | **Contenda das Três Folhas**, entre a Tríplice Élfica e interesses madeireiros de Guernica | Acordos de passagem sem anexação de cidades |
+| **1172** | Acidente em Panhadaril, Batovia | Criação da Regra dos Dois Selos para experiências arcanas mecânicas |
+| **1179** | **Trégua dos Ferreiros**, entre membros de Lulgard e Allos | Comércio possível apesar das antigas hostilidades orc-anãs |
+| **1183–1191** | Osmorn derrota o senhorio de **Sobral** | Sobral passa ao reino Candelar sem ser despovoada |
+| **1188** | **Pacto das Pedras de Acaovis**, entre Sete Cidades e Khajataad | Proteção de uma margem ritual e manutenção de uma travessia comercial |
 | **III-1215–1250** | **Guerra das Relíquias**: Pedra Áurea, espada Elucidator e guerra imperial-élfica | Crise entre impérios e repercussões em Dragonfall |
+| **1228** | **Julgamento das Escamas**, em Osmorn | Reforço do dever de proteção dos cativos dentro da Ordem de Bahamut |
+| **1236** | **Abdul Al Sahr** recebe reconhecimento como califa | Continuidade política do governo de Alqa |
+| **1243** | **Levante dos Moinhos de Sanha**, nos Reinos Médios | Dívidas dos senhores locais e dependência de empréstimos mercantis |
+| **1244–1248** | Morte de herdeiros mais velhos da Casa Dragonbane na Guerra das Relíquias | Arthur torna-se herdeiro emergencial de Dragonfall |
+| **1249** | Arthur assume a coroa de Dragonfall em meio à crise sucessória | A monarquia eletiva continua, com exceção de guerra |
 | **III-1250** | **Acordo de Bomaria** e restituição das relíquias | Paz negociada; direitos élficos de retorno a Dragonfall; encerramento da Terceira Era |
 
 **Intervalos propositadamente não fixados:** formação de várias comunidades dos Reinos Médios; origem histórica precisa da Patrulha de Kyon; localização da cidade perdida de Gugacon em Vitravion; origem real do reino perdido de Baranor; época exata da primeira instalação política de Piglia. Não estabelecer uma data apenas para preencher tabelas.
@@ -574,16 +689,31 @@ As listas completas e as associações históricas e culturais de cada nome são
 | Data contínua | Acontecimento | Consequências |
 |---|---|---|
 | **1251–1255 AQD** | Reacomodação política depois do **Acordo de Bomaria (1250 AQD)** | Intensificação das disputas por direitos de retorno e presença élfica em Dragonfall; consequências políticas e religiosas ainda recentes |
+| **1251–1256 AQD** | Agravamento das tensões entre casas de Dragonfall, direitos élficos e pressões externas | Arthur Dragonbane e Rodrick Windbear são **veteranos sobreviventes das campanhas finais da Guerra das Relíquias**, e agora protagonizam a crise de sua própria geração |
+| **1251** | **Maelis Candelar II** assume o trono de Osmorn | Coroa pequena reforça proteção de suas comunidades |
 | **c. 1252–1260 AQD** | Descoberta e exploração intensificada de **novas jazidas no vulcão de Drácon** | Expansão metalúrgica; composição exata dos minérios não fixada |
+| **1252** | **Aldric Valdren III** assume o trono de Veniun | Reforço de guildas e pactos municipais |
 | **c. 1253–1275 AQD** | Aperfeiçoamento de **pólvora, artilharia e frotas**; avanço da facção imperial expansionista | Maior capacidade de conquista, sustentando a legitimidade dinástica e uma economia ligada à escravidão |
+| **1253** | **Dorrik Grunvar IV** governa Duräk | Conselho das Forjas busca equilibrar produção e segurança |
 | **c. 1254–1277 AQD** | **Nova onda de conquistas continentais de Drácon** | Maior parte dos domínios continentais recentes provém desse ciclo; guerras continuam no presente |
 | **c. 1254–1266 AQD** | Comerciantes e cidades de Batovia, Mountport e Vitravion aproximam-se diante das ameaças marítimas | Desenvolvimento da **Paz Armada do Oeste**, sem aliança militar continental obrigatória |
+| **1254** | **Kaerath Varkhazar III** assume o trono imperial | Intensificação das campanhas continentais, sem origem na crise de Dragonfall |
 | **1256 AQD** | Acordos de portos dão origem ao **Pacto dos Portos Livres** | Alertas, reparos, abastecimento, abrigo e comboios voluntários; cada Estado conserva sua autonomia |
-| **1251–1256 AQD** | Agravamento das tensões entre casas de Dragonfall, direitos élficos e pressões externas | Arthur Dragonbane e Rodrick Windbear são **veteranos sobreviventes das campanhas finais da Guerra das Relíquias**, e agora protagonizam a crise de sua própria geração |
 | **1256–1262 AQD** | **Guerra Civil de Dragonfall** | Conflitos internos, intervenção élfica e conspiração do ritual de Arvanthir; a memória da Guerra das Relíquias ainda pesa sobre os envolvidos |
+| **1257–1259** | Drácon conquista o Condado Livre de **Viacaledebo** | Guarnição imperial e deposição do conde local |
+| **1258** | **Crise dos Peregrinos**, em Piglia | Mais refugiados e tensões sobre proteção e extradição |
+| **1260** | **Lucius Lucien IX** assume o Império de Elucitor | Cautela diante de nova guerra com o império élfico |
 | **1261 AQD** | **Sacrifício e dissolução da Liga de Batum** para impedir o ritual final de **Arvanthir**, que pretendia libertar **Dravanir** | Vazio de proteção nas estradas e maior necessidade de guildas, patrulhas e aventureiros locais |
 | **1262 AQD** | Independência reconhecida de **Dragonfall** e reabertura de **Gugacon** | Arthur permanece rei, migração draconata, liderança do filho de Baranor |
 | **1263–1277 AQD** | Mudanças na segurança continental após a Liga | Guildas, patrulhas e companhias independentes ganham relevância, sem constituírem nova Liga única |
+| **1264–1268** | Drácon ocupa **Amrithruk** | Fim da liga de oficinas autônomas e controle de oficinas e muralhas |
+| **1264** | **Maeron de Hellas** é eleito Alto Pontífice de Piglia | Novo pontificado dedicado ao acolhimento e aos santuários |
+| **1267** | **Tumulto das Três Portas de Alqa** | Abdul revê cobranças abusivas sem eliminar a fiscalização |
+| **1268** | Morgha assume liderança em Irkudh após disputa; Tiberia Lucien nasce em Elucitor | Mudanças distintas nas linhagens de dois povos |
+| **1269** | Grande Encontro de Tog Iret rejeita comando único das hordas | Marshell mantém autonomia mesmo sob ameaça de Drácon |
+| **1270** | **Inverno das Sete Tochas**, em Veniun | Prestígio e controvérsias das guildas registradas |
+| **1273** | Drácon toma **Glouyaloss** | Porto fortificado passa à administração imperial |
+| **1273** | Benedo Talverde é escolhido Alto Síndico de Mountport | Financiamento de escoltas volta ao centro das disputas oligárquicas |
 | **1277 AQD** | **Presente do cenário — Quarta Era, ano 27** | A paz ocidental continua instável, as campanhas de Drácon prosseguem e a Guerra das Relíquias está na memória viva de veteranos e governantes |
 
 ###### Coerência de gerações — convenção oficial

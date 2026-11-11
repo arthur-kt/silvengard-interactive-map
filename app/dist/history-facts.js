@@ -1,4 +1,4 @@
-import {escapeHTML as esc,normalize,renderMarkdown,descendants} from './history-core.js?v=35';
+import {escapeHTML as esc,normalize,renderMarkdown,descendants} from './history-core.js?v=37';
 
 function paragraphs(text){return String(text||'').split(/\n\s*\n/).map(s=>s.trim()).filter(s=>s&&!/^(?:#|\||[-*] |\d+\. |<!--)/.test(s));}
 function excerpt(text,limit=1100){

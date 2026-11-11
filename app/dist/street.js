@@ -6,13 +6,14 @@
 // as montanhas ficam a quilômetros e o horizonte chega a 15 km. A pé, correndo, pulando
 // ou voando (dois toques no espaço), com moradores que só andam em terra firme.
 import * as THREE from 'three';
-import {shared,treeMaterial} from './visuals.js?v=45';
-import {Mesher,retexture,rng,tc,PAL} from './settlements.js?v=45';
-import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=45';
-import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=45';
-import {buildTerrain,localGroundMaterial,buildWater,localWaterMaterial,buildForest,buildScatter,skyTexture,localRoadMaterial,buildRoads} from './local-scene.js?v=45';
+import {shared,treeMaterial} from './visuals.js?v=56';
+import {Mesher,retexture,rng,tc,PAL,STYLES} from './settlements.js?v=56';
+import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=56';
+import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=56';
+import {buildTerrain,localGroundMaterial,buildWater,localWaterMaterial,buildForest,buildScatter,skyTexture,localRoadMaterial,buildRoads} from './local-scene.js?v=56';
+import {indexLore,loreForCity} from './local-lore.js?v=56';
 
-const EYE_M=1.72, WALK_M=2.8, RUN_M=10.5, FLY_M=36, FLY_V=15, JUMP_V=5.9, GRAV=17.5;
+const EYE_M=1.72, WALK_M=2.8, RUN_M=10.5, FLY_M=110, FLY_V=45, JUMP_V=5.9, GRAV=17.5;
 const EYE=EYE_M/M, WALK=WALK_M/M, RUN=RUN_M/M, FLY=FLY_M/M, FLYV=FLY_V/M, JUMP=JUMP_V/M, G=GRAV/M;
 const RADIUS=.4;
 const smooth=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
@@ -56,6 +57,8 @@ export function createStreetMode(ctx){
  const Grel=(x,z)=>S.field?S.field.heightM(x,z)/M:0;                 // metros locais -> unidades
  const Gmap=(mx,my)=>S.field?S.field.heightM((mx-S.cx)*M,(my-S.cy)*M)/M:0;
  const landAt=(mx,my)=>{if(!S.field)return false;const x=(mx-S.cx)*M,z=(my-S.cy)*M;return S.field.heightM(x,z)>.55&&S.field.depthM(x,z)<.05};
+ // terra firme segundo o mapa (serve para escolher o ponto antes de existir campo local)
+ const worldLand=(mx,my)=>{const c=cellAt(mx,my);return !!c&&c.h>=20&&surface(mx,my)>.02};
  const toW=(x,y)=>[x-W/2,y-H/2];
  function footprintY(mx,my,r){let m=1e9;for(const[dx,dy]of[[0,0],[r,0],[-r,0],[0,r],[0,-r]])m=Math.min(m,Gmap(mx+dx,my+dy));return m}
 
@@ -141,7 +144,9 @@ export function createStreetMode(ctx){
   return m;
  }
  let grassCenter=[1e9,1e9];
+ const GRASS=false;   // os tufos de grama ficavam flutuando perto das paredes; o chão já tem cor
  function scatterGrass(px,py){
+  if(!GRASS)return;
   if(!grass){grass=new THREE.InstancedMesh(grassGeometry(),grassMat,5200);grass.frustumCulled=false;grass.receiveShadow=true;root.add(grass)}
   const r=rng(Math.floor(px*31+py*17)),m4=new THREE.Matrix4(),q=new THREE.Quaternion(),pos=new THREE.Vector3(),sc=new THREE.Vector3(),up=new THREE.Vector3(0,1,0),c=new THREE.Color();
   let n=0;
@@ -198,9 +203,9 @@ export function createStreetMode(ctx){
  /* ---------- HUD ---------- */
  const el=h=>{const d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild};
  const hud=el(`<div id="streetHud" hidden>
-  <div class="svTop"><div class="svPlace"><small>VISÃO LOCAL</small><b id="svName">—</b><span id="svSub"></span></div>
+  <div class="svTop"><div class="svPlace"><small>VISÃO LOCAL</small><b id="svName">—</b><span id="svSub"></span><em id="svLore" hidden></em></div>
    <div class="svCompass"><b id="svDir">N</b><span id="svDeg">0°</span></div></div>
-  <div class="svState"><b id="svMode">A pé</b><span id="svAlt">—</span></div>
+  <div class="svState"><b id="svMode">A pé</b><span id="svAlt">—</span><em id="svDistrict" hidden></em></div>
   <div class="svPause" id="svPause"><div><b>Clique para olhar ao redor</b><span>WASD mover · Shift correr · Espaço pular · 2× Espaço voar · C descer · T hora · Esc mapa</span></div></div>
   <div class="svToast" id="svToast"></div>
   <div class="svBar"><div class="svTimes">${Object.entries(PRESETS).map(([k,v])=>`<button data-time="${k}">${v.label}</button>`).join('')}</div>
@@ -232,6 +237,20 @@ export function createStreetMode(ctx){
   m.textContent=S.flying?'Voo':S.moving?(S.keys.has('ShiftLeft')||S.keys.has('ShiftRight')?'Correndo':'Andando'):'A pé';
   m.classList.toggle('fly',S.flying);
  }
+ const DISTRICT_NAME={market:'Mercado',temple:'Templo',military:'Quartel',craft:'Oficinas',residential:'Bairro'};
+ function updateDistrict(){
+  const elD=$h('#svDistrict');if(!elD)return;
+  let txt='';
+  if(S.lay?.districts){
+   let best=null;
+   for(const d of S.lay.districts){
+    const dd=Math.hypot((S.x-S.cx)-d.u,(S.y-S.cy)-d.v);
+    if(dd<d.r*1.35&&(!best||dd<best.dd))best={d,dd};
+   }
+   if(best)txt='Distrito · '+(DISTRICT_NAME[best.d.kind]||best.d.kind);
+  }
+  if(txt!==elD.textContent){elD.textContent=txt;elD.hidden=!txt}
+ }
 
  /* ---------- voo / pulo ---------- */
  function toggleFlight(force){
@@ -254,44 +273,106 @@ export function createStreetMode(ctx){
  }
 
  /* ---------- entrada ---------- */
- function nearestCity(mx,my,maxD=18){
+ function nearestCity(mx,my,maxD=2){
   let best=null,bd=maxD;
   for(const b of D.cities){if(b.excluded)continue;const d=Math.hypot(b.x-mx,b.y-my);if(d<bd){bd=d;best=b}}
   return best;
+ }
+ // ponto de terra firme mais próximo (permite descer perto de água/lagos)
+ function findLand(mx,my){
+  if(worldLand(mx,my))return[mx,my];
+  for(let r=1;r<=10;r+=1)for(let a=0;a<Math.PI*2;a+=.4){
+   const x=mx+Math.cos(a)*r,y=my+Math.sin(a)*r;
+   if(worldLand(x,y))return[x,y];
+  }
+  return null;
+ }
+ let loreIndex=null,loreLoading=null;
+ function loadLore(){
+  if(loreIndex)return Promise.resolve(loreIndex);
+  if(!loreLoading)loreLoading=fetch('./history-archive.json',{cache:'force-cache'})
+   .then(r=>r.ok?r.json():null).then(a=>{if(a)loreIndex=indexLore(a);return loreIndex}).catch(()=>null);
+  return loreLoading;
+ }
+ loadLore();
+ let econIndex=null,econLoading=null;
+ function loadEconomy(){
+  if(econIndex)return Promise.resolve(econIndex);
+  if(!econLoading)econLoading=fetch('./economy-source.json',{cache:'force-cache'})
+   .then(r=>r.ok?r.json():null).then(E=>{
+    if(E)econIndex={goods:new Map((E.goods||[]).map(g=>[String(g.i),g.name])),defaults:E.cityDefaults||{}};
+    return econIndex;
+   }).catch(()=>null);
+  return econLoading;
+ }
+ loadEconomy();
+ function topProduction(cityId,n=3){
+  if(!econIndex||cityId==null)return [];
+  const d=econIndex.defaults[String(cityId)]||{};
+  return Object.entries(d).sort((a,b)=>b[1]-a[1]).slice(0,n)
+   .map(([gid])=>econIndex.goods.get(String(gid))).filter(Boolean);
  }
  async function enterAt(mx,my,opts={}){
   if(S.active||S.entering)return;
   S.entering=true;
   const city=opts.cityId!=null?D.cities.find(c=>c.i===opts.cityId):nearestCity(mx,my);
-  const cx=city?city.x:mx,cy=city?city.y:my;
+  let cx=city?city.x:mx,cy=city?city.y:my;
+  if(!city){const land=findLand(cx,cy);if(!land){S.entering=false;toast?.('Escolha um ponto em terra firme.');return}[cx,cy]=land}
   if(!S.field&&!cellAt(cx,cy)){S.entering=false;toast?.('Escolha um ponto em terra firme.');return}
   cancelPick();
   fade.classList.add('on');
   await new Promise(r=>setTimeout(r,380));
   try{
+   let lore=null,production=[];
+   if(city){
+    try{
+     const [idxL,idxE]=await Promise.race([
+      Promise.all([loadLore(),loadEconomy()]),
+      new Promise(r=>setTimeout(()=>r([null,null]),1400))
+     ]);
+     lore=idxL?loreForCity(idxL,city.i):null;
+     if(idxE)econIndex=idxE;
+     production=topProduction(city.i);
+    }catch{}
+   }
    const cell=cellAt(cx,cy);
    const climate=climateOf(cell);
    const pop=city?Math.max(120,inhabitants(D,city)||400):140;
    const t0=performance.now();
    const site=siteFor({D,point:[cx,cy],cellAt,surface,population:pop,city});
    if(!city){site.cityR=110;site.port=false;site.urbanR=0}
+   const specific=!!lore&&!/^Ainda não foi registrada/i.test(lore.quote||'');
+   const tr=specific?lore.traits:null;
+   if(tr){
+    if(tr.snow){site.snowCover=Math.max(site.snowCover,.6);site.snowLineM=Math.min(site.snowLineM,150);site.snowy=true}
+    if(tr.port&&site.waterKind!=='none')site.port=true;
+    if(tr.forest)site.forest=Math.min(1,site.forest+.12);
+    if(tr.desert&&(site.biome===1||site.biome===2))site.palette=site.palette;
+   }
    const field=createField(site);
    const tSite=performance.now();
    S.site=site;S.field=field;S.cx=cx;S.cy=cy;S.cityR=site.cityR;S.R=site.cityR*2+1200;
    const cls=city?.settlementClass||'',special=!!(city?.magicSchool||city?.dwarvenFortress),
     fort=!!(cls.startsWith('Forte')||city?.citadel||city?.dwarvenFortress);
    const rand=rng(Math.floor(cx*13+cy*7)+1);
-   const lay=city?makeLayout({pop,capital:!!city.capital,village:pop<1500||cls==='Vila'||cls==='Povoado',fort,rand,port:site.port}):null;
+   const kind=!city?'wild':fort?'fort':city.capital?'capital':(pop<1500||cls==='Vila'||cls==='Povoado')?'village':site.port?'port':'town';
+   const lay=city?makeLayout({pop,capital:!!city.capital,village:kind==='village',fort,rand,port:site.port,kind}):null;
    S.lay=lay;
-   if(lay){lay.cx=cx;lay.cy=cy;lay.walled=!!(city.walls||lay.capital||city.citadel)&&!lay.fort&&!special}
+   if(lay){lay.cx=cx;lay.cy=cy;lay.walled=(!!(city.walls||lay.capital||city.citadel)||!!tr?.walls)&&!lay.fort&&!special&&(pop>1200||!!city.citadel)}
+   // estilo pela cultura/clima (a história entra no traçado, não na paleta)
+   let style=city?.dwarven||city?.dwarvenFortress?STYLES.dwarven:city?.magicSchool?STYLES.arcane:STYLES[climate]||STYLES.temperate;
+   if(site.snowy&&style!==STYLES.cold&&style!==STYLES.dwarven)style={...style,roofCols:['#edf2f4','#e3ebee','#f5f8f7']};
+   S.style=style;
    solids.clear();lamps=[];spin=null;fieldsMesh=null;
    const pathAtLocal=makePathField(lay);
    nearInfo=pathAtLocal;
    const pathAtMetres=(x,z)=>pathAtLocal(x/M,z/M);
    const color=city?stateColor(city):'#c0392b';
    // materiais e cena
-   gmat=localGroundMaterial();gmat.userData.uSnow.value=700+(site.seed%7)*60;
-   gmatBand=localGroundMaterial({clip:true});gmatBand.userData.uSnow.value=gmat.userData.uSnow.value;gmatBand.userData.uClipR.value=402;
+   gmat=localGroundMaterial();gmat.userData.uSnow.value=site.snowLineM;
+   gmat.userData.uSnowCover.value=site.snowCover;
+   gmatBand=localGroundMaterial({clip:true});gmatBand.userData.uSnow.value=site.snowLineM;
+   gmatBand.userData.uClipR.value=402;gmatBand.userData.uSnowCover.value=site.snowCover;
    wmat=localWaterMaterial();
    terrain=buildTerrain({field,site,material:gmat,bandMaterial:gmatBand,pathAt:pathAtMetres});
    terrain.group.position.set(cx-W/2,0,cy-H/2);
@@ -302,11 +383,11 @@ export function createStreetMode(ctx){
    // cidade ou ermo
    if(lay){
     const t=buildTownV2({b:city,cx,cy,lay,rand,climate,color,G:Gmap,landAt,
-     toW,addSolid,pathAt:pathAtLocal,footprintY,special,field,site,blocked:blockedAt});
+     toW,addSolid,pathAt:pathAtLocal,footprintY,special,field,site,blocked:blockedAt,style,snow:site.snowy,production});
     t.groups.forEach(g=>root.add(g));
-    buildPeople(t.people);addFields(t.fields);addWindmill(t.windmill);addSmoke(t.smoke);lamps=t.lamps||[];
-    roadsMat=localRoadMaterial();
-    const roads=buildRoads({roads:lay.roads,cx,cy,plaza:lay.fort?0:lay.plaza,heightAt:(u,v)=>Gmap(cx+u,cy+v),toW,urbanR:lay.Rt*.94,material:roadsMat});
+    buildPeople([]);addFields(t.fields);addWindmill(t.windmill);addSmoke(t.smoke);lamps=t.lamps||[];
+    roadsMat=localRoadMaterial({snow:site.snowy?.55:0});
+    const roads=buildRoads({roads:lay.roads,cx,cy,plaza:lay.fort?0:lay.plaza,squares:lay.squares||[],heightAt:(u,v)=>Gmap(cx+u,cy+v),toW,urbanR:lay.Rt*.94,material:roadsMat});
     root.add(roads);
     const sp=special?ctx.specialModel?.(city):null;
     if(sp){sp.scale.setScalar(2.1);sp.position.set(cx-W/2,footprintY(cx,cy,10)+.2,cy-H/2);retexture(sp);
@@ -320,8 +401,10 @@ export function createStreetMode(ctx){
    const blockedLocal=(x,z,r)=>{const mx=cx+x/M,my=cy+z/M;return blockedAt(mx,my,r/M)};
    const tTown=performance.now();
    forest=buildForest({field,site,blocked:blockedLocal,radius:Math.min(2600,Math.max(1500,site.cityR*2.2)),seed:Math.floor(cx*7+cy*3)});
+   forest.position.set(cx-W/2,0,cy-H/2);
    root.add(forest);
    scatter=buildScatter({field,site,blocked:blockedLocal,seed:Math.floor(cx+cy*3)});
+   scatter.position.set(cx-W/2,0,cy-H/2);
    root.add(scatter);
    const tNature=performance.now();
    S.timing={site:Math.round(tSite-t0),terrain:Math.round(tTerrain-tSite),town:Math.round(tTown-tTerrain),nature:Math.round(tNature-tTown),total:Math.round(performance.now()-t0)};
@@ -376,7 +459,10 @@ export function createStreetMode(ctx){
    const extra=city?(site.port?' · porto':'')+(lay.walled?' · muralhas':''):'';
    $h('#svSub').textContent=(city
       ?(city.settlementClass||'Localidade')+' · '+Math.round(lay.pop).toLocaleString('pt-BR')+' hab.'+extra
-      :'Ermo · pontos de interesse')+' · '+CLIMATE_NAME[climate]+' · horizonte '+(15)+' km';
+      :'Ermo · pontos de interesse')+' · '+CLIMATE_NAME[climate]+(site.snowy?' · neve':'')+(production.length?' · produz '+production.slice(0,2).join(' e '):'')+' · horizonte 15 km';
+   const loreEl=$h('#svLore');
+   if(specific&&lore?.quote){loreEl.textContent='“'+lore.quote+'”';loreEl.hidden=false}
+   else{loreEl.hidden=true;loreEl.textContent=''}
    $h('#svAlt').textContent='alt. '+(S.feet*M).toFixed(1)+' m';
    S.active=true;S.t0=0;document.body.classList.add('street');hud.hidden=false;setMode();
    $h('#svPause').classList.add('show');
@@ -441,7 +527,7 @@ export function createStreetMode(ctx){
  }
  addEventListener('pointermove',e=>{
   if(!S.picking||e.target!==renderer.domElement)return;
-  const h=hitAt(e);if(h&&landAt(h.mx,h.my)){const c=nearestCity(h.mx,h.my,14);const p=c?new THREE.Vector3(c.x-W/2,Gmap(c.x,c.y)+.6,c.y-H/2):h.p;marker.position.set(p.x,p.y+.5,p.z);marker.scale.setScalar(c?2.2:1);marker.visible=true}else if(marker)marker.visible=false;
+  const h=hitAt(e);if(h&&(worldLand(h.mx,h.my)||findLand(h.mx,h.my))){const c=nearestCity(h.mx,h.my,2);const p=c?new THREE.Vector3(c.x-W/2,Gmap(c.x,c.y)+.6,c.y-H/2):h.p;marker.position.set(p.x,p.y+.5,p.z);marker.scale.setScalar(c?2.2:1);marker.visible=true}else if(marker)marker.visible=false;
   ctx.requestRender?.();
  },true);
  addEventListener('pointerdown',e=>{
@@ -451,7 +537,7 @@ export function createStreetMode(ctx){
  addEventListener('pointerup',e=>{
   if(S.picking&&e.target===renderer.domElement){
    e.stopImmediatePropagation();
-   if(e.button===0&&pickDown&&Math.hypot(e.clientX-pickDown.x,e.clientY-pickDown.y)<6){const h=hitAt(e);if(h){if(!landAt(h.mx,h.my))toast?.('Escolha um ponto em terra firme.');else enterAt(h.mx,h.my)}}
+   if(e.button===0&&pickDown&&Math.hypot(e.clientX-pickDown.x,e.clientY-pickDown.y)<6){const h=hitAt(e);if(h){const land=findLand(h.mx,h.my);if(!land)toast?.('Escolha um ponto em terra firme.');else enterAt(land[0],land[1])}}
    pickDown=null;return;
   }
   if(S.active&&e.target===renderer.domElement)e.stopImmediatePropagation();
@@ -484,7 +570,7 @@ export function createStreetMode(ctx){
   if(turn)S.yaw+=turn*1.7*dt;
   const shift=k.has('ShiftLeft')||k.has('ShiftRight');
   S.moving=false;
-  const speedM=S.flying?FLY*(shift?1.8:1):(shift?RUN:WALK);
+  const speedM=S.flying?FLY*(shift?2.2:1):(shift?RUN:WALK);
   if(f||st){
    const l=Math.hypot(f,st),sp=speedM*dt/l/ M;                 // unidades por quadro
    const fx=-Math.sin(S.yaw),fz=-Math.cos(S.yaw),rx=Math.cos(S.yaw),rz=-Math.sin(S.yaw);
@@ -508,7 +594,7 @@ export function createStreetMode(ctx){
    const up=(k.has('Space')||k.has('KeyE')?1:0)-(k.has('ControlLeft')||k.has('KeyC')?1:0);
    S.feet+=up*FLYV*dt;
    const g=Gmap(S.x,S.y);
-   S.feet=Math.max(g+ .1/M,Math.min(S.feet,g+700/M));
+   S.feet=Math.max(g+ .1/M,Math.min(S.feet,g+1800/M));
    S.vy=0;S.grounded=false;
   }else{
    S.vy-=GRAV*dt;S.feet+=S.vy*dt;
@@ -516,7 +602,7 @@ export function createStreetMode(ctx){
    if(S.feet<=g){S.feet=g;S.vy=0;S.grounded=true}else S.grounded=false;
   }
   // limites do lugar
-  const dxm=(S.x-S.cx)*M,dym=(S.y-S.cy)*M,dr=Math.hypot(dxm,dym),lim=S.site?Math.max(1500,S.cityR*2.6):2000;
+  const dxm=(S.x-S.cx)*M,dym=(S.y-S.cy)*M,dr=Math.hypot(dxm,dym),lim=S.site?Math.max(4500,S.cityR*5):3200;
   if(dr>lim){S.x=S.cx+dxm/dr*lim/M;S.y=S.cy+dym/dr*lim/M}
   if(spin)spin.rotation.z=now*.0008;
   if(terrain)terrain.update((S.x-S.cx)*M,(S.y-S.cy)*M);
@@ -537,6 +623,7 @@ export function createStreetMode(ctx){
   $h('#svDir').textContent=DIRS[Math.round(bearing/45)%8];
   $h('#svDeg').textContent=Math.round(bearing)+'°';
   $h('#svAlt').textContent=(S.flying?'voo · ':'alt. ')+Math.round(S.feet*M)+' m';
+  updateDistrict();
   setMode();
   return true;
  }

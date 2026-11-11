@@ -1,0 +1,815 @@
+[
+  {
+    "id": "guerras-das-sete-tormentas",
+    "name": "Guerras das Sete Tormentas",
+    "kind": "Guerra de conquista",
+    "years": "248–253 AQD",
+    "start": 248,
+    "end": 253,
+    "place": "Passagens e cidadelas de Castamor",
+    "sides": [
+      {
+        "name": "Elucitor",
+        "commanders": "Lucius I",
+        "strength": "~18.000",
+        "casualties": "~4.500",
+        "objective": "Submeter Castamor e encerrar a autonomia dos Reis Bruxos."
+      },
+      {
+        "name": "Castamor (Reis Bruxos)",
+        "commanders": "Maelor Dravenholt",
+        "strength": "~12.000",
+        "casualties": "~6.000",
+        "objective": "Preservar a coroa, os ritos e as cidadelas da linhagem."
+      }
+    ],
+    "victor": "Elucitor",
+    "result": "conquest",
+    "objectives": "Lucius I queria incorporar Castamor ao núcleo imperial; os Dravenholt defendiam a autonomia de sua coroa e de suas práticas arcanas.",
+    "outcome": "Castamor é incorporada ao Império de Elucitor; os Dravenholt perdem a coroa, mas conservam terras como nobreza subordinada.",
+    "summary": "As legiões tomaram passagens e cidadelas enquanto os magos de Castamor prolongavam a resistência. A rendição encerrou a dinastia dos Reis Bruxos sem apagar o folclore sobre grimórios e tempestades.",
+    "links": [
+      "state:13"
+    ]
+  },
+  {
+    "id": "revolta-de-alnien",
+    "name": "Revolta de Alnien",
+    "kind": "Revolta e repressão",
+    "years": "257 AQD",
+    "start": 257,
+    "end": 257,
+    "place": "Alnien, antiga capital de Althor",
+    "sides": [
+      {
+        "name": "Império de Elucitor",
+        "commanders": "Lucius I",
+        "strength": "~12.000",
+        "casualties": "~2.000",
+        "objective": "Restabelecer a cobrança imperial e punir a revolta."
+      },
+      {
+        "name": "Senhores de Alnien",
+        "commanders": "Antiga corte de Alnien (nomes não registrados)",
+        "strength": "~5.000",
+        "casualties": "~3.500",
+        "objective": "Recuperar a autonomia perdida e suspender os tributos imperiais."
+      }
+    ],
+    "victor": "Elucitor",
+    "result": "repression",
+    "objectives": "A revolta contestava a cobrança de grãos, as nomeações imperiais e a perda de autonomia da antiga corte.",
+    "outcome": "Alnien é tomada e destruída como capital; a administração passa a Althor e a cidadela não é reerguida.",
+    "summary": "Lucius marchou com as legiões e a Elucidator. A versão imperial fala de um portão aberto pela Voz; as lendas acrescentam uma fenda de luz na torre. A ruína é histórica; o poder exato empregado contra as pedras permanece incerto.",
+    "links": [
+      "state:13"
+    ]
+  },
+  {
+    "id": "campanha-dos-bosques-de-bomaria",
+    "name": "Campanha dos Bosques de Bomaria",
+    "kind": "Conquista de cidade élfica",
+    "years": "304–311 AQD",
+    "start": 304,
+    "end": 311,
+    "place": "Bosque e clareiras de Bomaria",
+    "sides": [
+      {
+        "name": "Elucitor",
+        "commanders": "Aurelian I; legado Quintus Avarion",
+        "strength": "~14.000",
+        "casualties": "~3.500",
+        "objective": "Controlar as passagens orientais e a retirada de madeira para estradas e fortes."
+      },
+      {
+        "name": "Conselho de Bomaria",
+        "commanders": "Lethariel das Raízes Brancas",
+        "strength": "~6.000",
+        "casualties": "~4.000",
+        "objective": "Preservar as clareiras sagradas e a autonomia das comunidades élficas."
+      }
+    ],
+    "victor": "Elucitor",
+    "result": "conquest",
+    "objectives": "O império queria segurança nas rotas e controle das clareiras; os elfos defendiam os santuários e as trilhas do bosque.",
+    "outcome": "Bomaria passa à soberania imperial, com guarnição e magistrados; a população élfica permanece e parte dos santuários é preservada por concessões.",
+    "summary": "Os elfos evitaram campos abertos, cortaram suprimentos e atacaram à noite; o império respondeu com fortes de madeira e ocupação progressiva. A memória élfica chama o episódio de Queda das Clareiras.",
+    "links": [
+      "state:13"
+    ]
+  },
+  {
+    "id": "guerra-das-folhas-e-dos-marcos",
+    "name": "Guerra das Folhas e dos Marcos",
+    "kind": "Guerra de fronteira",
+    "years": "549–554 AQD",
+    "start": 549,
+    "end": 554,
+    "place": "Fronteira de Rimae e arredores de Bomaria",
+    "sides": [
+      {
+        "name": "Elucitor",
+        "commanders": "Hadrian I",
+        "strength": "~22.000",
+        "casualties": "~5.000",
+        "objective": "Manter Bomaria e afirmar a autoridade imperial sobre as trilhas."
+      },
+      {
+        "name": "Navï Velaffëll",
+        "commanders": "Aelion Aelvaris I",
+        "strength": "~15.000",
+        "casualties": "~4.500",
+        "objective": "Ampliar a proteção às comunidades élficas e aos santuários da fronteira."
+      }
+    ],
+    "victor": "Sem vencedor militar — Trégua dos Marcos",
+    "result": "truce",
+    "objectives": "A disputa começou por santuários e postos de vigia; nenhum dos impérios conseguia ocupar o outro sem ampliar a guerra.",
+    "outcome": "A Trégua dos Marcos confirma Bomaria sob Elucitor, prevê passagem negociada a certos santuários e retira postos avançados.",
+    "summary": "Legiões imperiais e batedores élficos disputaram bosques fechados e caminhos de Rimae. O acordo encerrou a campanha, mas não a rivalidade sobre a memória das terras élficas.",
+    "links": [
+      "state:13",
+      "state:14"
+    ]
+  },
+  {
+    "id": "crise-dos-vaus-do-sul",
+    "name": "Crise dos Vaus do Sul",
+    "kind": "Confronto de fronteira",
+    "years": "625–631 AQD",
+    "start": 625,
+    "end": 631,
+    "place": "Acessos meridionais de Dragonfall",
+    "sides": [
+      {
+        "name": "Dragonfall",
+        "commanders": "Garran Dragonbane",
+        "strength": "~9.000",
+        "casualties": "~1.800",
+        "objective": "Recusar pedágios imperiais e manter a soberania do reino."
+      },
+      {
+        "name": "Elucitor",
+        "commanders": "Valerius I",
+        "strength": "~7.000",
+        "casualties": "~1.500",
+        "objective": "Impor a cobrança nas travessias e afirmar a autoridade imperial."
+      }
+    ],
+    "victor": "Sem vencedor militar — Acordo dos Vaus",
+    "result": "compromise",
+    "objectives": "Cobradores imperiais tentaram taxar carregamentos; senhores de Rivertown e enviados de Asgorath contestaram os pedágios.",
+    "outcome": "O Acordo dos Vaus retira guarnições disputadas e restabelece passagem e cobrança negociadas; Dragonfall permanece independente.",
+    "summary": "O aprisionamento de uma patrulha e a ocupação de uma torre transformaram a disputa fiscal em confronto armado. A crise convenceu parte da nobreza de que uma associação defensiva com Elucitor poderia ser útil.",
+    "links": [
+      "state:12",
+      "state:13"
+    ]
+  },
+  {
+    "id": "guerra-dos-portoes-de-tonkhet",
+    "name": "Guerra dos Portões de Tonkhet",
+    "kind": "Guerra de conquista",
+    "years": "722–731 AQD",
+    "start": 722,
+    "end": 731,
+    "place": "Tonkhet e arredores",
+    "sides": [
+      {
+        "name": "Hordas de Marshell",
+        "commanders": "Chefes de três hordas (nomes não registrados)",
+        "strength": "~20.000",
+        "casualties": "~3.000",
+        "objective": "Abrir pastagens, portões e refúgios de inverno no reino de Tonkhet."
+      },
+      {
+        "name": "Reino de Tonkhet",
+        "commanders": "Casa Torven",
+        "strength": "~8.000",
+        "casualties": "~5.000",
+        "objective": "Defender as muralhas, a passagem de caravanas e o trono."
+      }
+    ],
+    "victor": "Hordas de Marshell",
+    "result": "conquest",
+    "objectives": "As hordas procuravam pastagem e controle das travessias; o pequeno reino cobrava passagem de cavaleiros e caravanas.",
+    "outcome": "O reino é extinto e Tonkhet passa à esfera marshelliana; as hordas dividem direitos de pastagem, guarnição e armazenamento sem criar uma coroa única.",
+    "summary": "Os defensores resistiram a dois assédios antes de se render. A cidade permaneceu povoada e suas muralhas continuaram úteis como refúgio de inverno dos cavaleiros.",
+    "links": [
+      "state:34"
+    ]
+  },
+  {
+    "id": "guerra-dos-quatro-fornos",
+    "name": "Guerra dos Quatro Fornos",
+    "kind": "Guerra de incorporação",
+    "years": "748–756 AQD",
+    "start": 748,
+    "end": 756,
+    "place": "Minas e passagens de Bilnulbun e Brelas",
+    "sides": [
+      {
+        "name": "Principado de Duräk",
+        "commanders": "Borin I; Casa Grunvar",
+        "strength": "~9.000",
+        "casualties": "~2.000",
+        "objective": "Controlar jazidas e oficinas de fundição da região."
+      },
+      {
+        "name": "Bilnulbun e Brelas",
+        "commanders": "Conselhos das duas comunidades",
+        "strength": "~7.000",
+        "casualties": "~2.500",
+        "objective": "Preservar o comando próprio sobre minas e passagens."
+      }
+    ],
+    "victor": "Duräk",
+    "result": "conquest",
+    "objectives": "A guerra começou por direitos sobre jazidas e fornos; Grenolk queria ampliar o principado sem destruir as comunidades.",
+    "outcome": "Bilnulbun aceita a autoridade principesca em 754 e Brelas em 756, conservando magistrados próprios e assento consultivo.",
+    "summary": "A Casa Grunvar combinou um cerco a uma passagem com pactos de incorporação. O Conselho das Forjas saiu fortalecido como órgão consultivo do principado.",
+    "links": [
+      "state:35"
+    ]
+  },
+  {
+    "id": "guerra-das-pontes-de-ereth",
+    "name": "Guerra das Pontes de Ereth",
+    "kind": "Guerra de fronteira",
+    "years": "881–886 AQD",
+    "start": 881,
+    "end": 886,
+    "place": "Travessias e bosques de Ereth",
+    "sides": [
+      {
+        "name": "Dragonfall",
+        "commanders": "Berengar II Dragonbane",
+        "strength": "~11.000",
+        "casualties": "~2.500",
+        "objective": "Manter as pontes e a soberania sobre Ereth."
+      },
+      {
+        "name": "Navï Velaffëll",
+        "commanders": "Elyndra Aelvaris I",
+        "strength": "~8.000",
+        "casualties": "~2.200",
+        "objective": "Proteger comunidades élficas e ampliar o acesso a santuários antigos."
+      }
+    ],
+    "victor": "Sem vencedor militar — Paz dos Caminhos de Ereth",
+    "result": "compromise",
+    "objectives": "O choque começou pelo uso de pontes e caminhos e cresceu depois que uma guarnição tentou desarmar um destacamento élfico.",
+    "outcome": "A paz preserva Ereth sob Dragonfall e estabelece passagem vigiada a certos santuários, sem transferir soberania a Navï Velaffëll.",
+    "summary": "As pontes mudaram de mãos mais de uma vez, mas nenhum lado podia manter uma ocupação duradoura. Elucitor forneceu suprimentos e mediadores para evitar uma guerra imperial de grande escala.",
+    "links": [
+      "state:12",
+      "state:14"
+    ]
+  },
+  {
+    "id": "guerra-das-lanternas",
+    "name": "Guerra das Lanternas",
+    "kind": "Guerra naval e comercial",
+    "years": "903–911 AQD",
+    "start": 903,
+    "end": 911,
+    "place": "Rotas entre Loueixo, Viras e ancoradouros menores",
+    "sides": [
+      {
+        "name": "Batovia",
+        "commanders": "Casas de armadores das ilhas",
+        "strength": "~6.000 · 40 embarcações",
+        "casualties": "~1.200 · 11 navios",
+        "objective": "Defender a cobrança de taxas e a liberdade das rotas insulares."
+      },
+      {
+        "name": "Mountport",
+        "commanders": "Casas mercantis de Viras e consórcios de escolta",
+        "strength": "~5.000 · 35 embarcações",
+        "casualties": "~1.500 · 14 navios",
+        "objective": "Garantir passagem e reduzir as taxas sobre cargas e escoltas."
+      }
+    ],
+    "victor": "Sem vencedor militar — Acordo das Três Marés",
+    "result": "truce",
+    "objectives": "Armadores disputavam taxas sobre embarcações e o direito de escoltar comboios; não era uma guerra entre reis.",
+    "outcome": "O Acordo das Três Marés garante passagem negociada e indenizações limitadas, sem anexação.",
+    "summary": "Apreensões de carga terminaram em ataques a navios mercantes escoltados por soldados privados. A paz não eliminou a competição, mas ensinou que uma vitória naval podia custar mais que o tributo contestado.",
+    "links": [
+      "state:49",
+      "state:31"
+    ]
+  },
+  {
+    "id": "guerra-dos-degraus-de-vathnis",
+    "name": "Guerra dos Degraus de Vathnis",
+    "kind": "Guerra de fronteira",
+    "years": "915–919 AQD",
+    "start": 915,
+    "end": 919,
+    "place": "Travessias montanhosas de Vathnis",
+    "sides": [
+      {
+        "name": "Elucitor",
+        "commanders": "Lucius VII",
+        "strength": "~10.000",
+        "casualties": "~2.800",
+        "objective": "Restabelecer postos fiscais e a passagem de mercadorias."
+      },
+      {
+        "name": "Veniun",
+        "commanders": "Leopold II; milícias dos vales",
+        "strength": "~6.000",
+        "casualties": "~1.200",
+        "objective": "Defender as cobranças locais e as passagens dos vales."
+      }
+    ],
+    "victor": "Veniun",
+    "result": "victory",
+    "objectives": "O império queria reabrir caminhos que considerava bloqueados por tarifas de Veniun; os vales defendiam sua autonomia fiscal.",
+    "outcome": "As forças imperiais retiram-se em 919 e as cobranças voltam a ser negociadas entre autoridades locais.",
+    "summary": "Os legionários venciam em campo aberto, mas não conseguiam abastecer posições isoladas durante o inverno. A campanha reforçou a reputação dos vales como difíceis de conquistar.",
+    "links": [
+      "state:13",
+      "state:28"
+    ]
+  },
+  {
+    "id": "campanha-das-duas-enseadas",
+    "name": "Campanha das Duas Enseadas",
+    "kind": "Guerra de conquista",
+    "years": "921–927 AQD",
+    "start": 921,
+    "end": 927,
+    "place": "Guiras, Pinhem e portos vizinhos",
+    "sides": [
+      {
+        "name": "Drácon",
+        "commanders": "Varkhan II",
+        "strength": "~12.000",
+        "casualties": "~1.500",
+        "objective": "Tomar os portos, salinas e torres do senhorio das Duas Enseadas."
+      },
+      {
+        "name": "Senhorio de Guiras e Pinhem",
+        "commanders": "Famílias de marinheiros locais",
+        "strength": "~5.000",
+        "casualties": "~3.000",
+        "objective": "Preservar a autonomia dos portos e as tradições de Bahamut."
+      }
+    ],
+    "victor": "Drácon",
+    "result": "conquest",
+    "objectives": "A expansão Varkhazar buscava portos e salinas; o senhorio defendia suas torres e sua independência.",
+    "outcome": "Guiras e Pinhem passam ao domínio de Drácon; as populações permanecem e conservam línguas e devoções próprias.",
+    "summary": "As expedições tomaram as torres portuárias e dispersaram os antigos senhores. A conquista não transformou todos os habitantes em draconatos devotos de Dravanir.",
+    "links": [
+      "state:20"
+    ]
+  },
+  {
+    "id": "ocupacao-de-forteirosin",
+    "name": "Ocupação de Forteirosin",
+    "kind": "Ocupação e reconquista",
+    "years": "972–977 AQD",
+    "start": 972,
+    "end": 977,
+    "place": "Fortificação insular de Forteirosin, Batovia",
+    "sides": [
+      {
+        "name": "Consórcio de Mountport",
+        "commanders": "Comerciantes e mercenários contratados",
+        "strength": "~3.000",
+        "casualties": "~800",
+        "objective": "Cobrar compensações comerciais antigas e controlar armazéns e atracações."
+      },
+      {
+        "name": "Federação de Batovia",
+        "commanders": "Frotas e milícias das ilhas",
+        "strength": "~4.000",
+        "casualties": "~1.200",
+        "objective": "Recuperar a fortificação e garantir a defesa comum da federação."
+      }
+    ],
+    "victor": "Batovia",
+    "result": "liberation",
+    "objectives": "O consórcio agia sem autorização de uma autoridade única de Mountport; as ilhas batovianas viam a ocupação como ameaça à autonomia.",
+    "outcome": "Batovia retoma Forteirosin em 977; o consórcio derrotado paga reparações, sem guerra total entre Mountport e a federação.",
+    "summary": "Durante cinco anos, a guarnição estrangeira controlou armazéns e parte das atracações. A reconquista consolidou a ideia de que ilhas autônomas precisavam contribuir para uma defesa comum.",
+    "links": [
+      "state:49",
+      "state:31"
+    ]
+  },
+  {
+    "id": "ocupacao-de-porto-do-alamo",
+    "name": "Ocupação de Porto do Álamo",
+    "kind": "Ocupação e libertação",
+    "years": "990–1008 AQD",
+    "start": 990,
+    "end": 1008,
+    "place": "Porto do Álamo, Vitravion",
+    "sides": [
+      {
+        "name": "Drácon",
+        "commanders": "Zarveth II",
+        "strength": "~15.000",
+        "casualties": "~4.000",
+        "objective": "Manter o porto como base de frota e cobrança no litoral vitraviano."
+      },
+      {
+        "name": "Coalizão de Porto do Álamo",
+        "commanders": "Irena Valmora; Tarian de Vyoh",
+        "strength": "~12.000",
+        "casualties": "~3.000",
+        "objective": "Expulsar a guarnição draconata e recuperar o governo local."
+      }
+    ],
+    "victor": "Coalizão de Porto do Álamo",
+    "result": "liberation",
+    "objectives": "Drácon queria um porto fortificado no continente; residentes, pescadores e cidades vizinhas queriam recuperar a administração local.",
+    "outcome": "O porto é retomado em 1008 e permanece sob governo local; a população passa a incluir descendentes de soldados, comerciantes e cativos libertos.",
+    "summary": "A ocupação durou dezoito anos e deixou marcas na política costeira. A retomada foi organizada por redes de docas e pequenos navios, não por um reino unificado.",
+    "links": [
+      "state:47",
+      "state:20"
+    ]
+  },
+  {
+    "id": "guerra-do-estuario-de-bernut",
+    "name": "Guerra do Estuário de Bernut",
+    "kind": "Guerra de ocupação",
+    "years": "1039–1047 AQD",
+    "start": 1039,
+    "end": 1047,
+    "place": "Bernut e seu estuário",
+    "sides": [
+      {
+        "name": "Guernica",
+        "commanders": "Governo de Guernica; capitães dos cais",
+        "strength": "~8.000",
+        "casualties": "~1.200",
+        "objective": "Obrigar Bernut a contribuir para a reconstrução das defesas do litoral."
+      },
+      {
+        "name": "Bernut",
+        "commanders": "Conselho do porto",
+        "strength": "~4.000",
+        "casualties": "~1.800",
+        "objective": "Preservar a administração própria e recusar tributos permanentes."
+      }
+    ],
+    "victor": "Guernica",
+    "result": "occupation",
+    "objectives": "Guernica alegava custos de defesa comuns; Bernut defendia a autonomia de seus cais e receitas.",
+    "outcome": "Guernica ocupa o porto em 1047 e mantém oficiais alfandegários até a Carta de Bernut, em 1086.",
+    "summary": "A guerra terminou com a incorporação temporária das receitas de Bernut. Décadas depois, uma revolta de marinheiros e famílias mercantis forçou a retirada de Guernica.",
+    "links": [
+      "state:47"
+    ]
+  },
+  {
+    "id": "campanha-das-quatro-selas",
+    "name": "Campanha das Quatro Selas",
+    "kind": "Campanha de represália",
+    "years": "1077–1084 AQD",
+    "start": 1077,
+    "end": 1084,
+    "place": "Fronteira entre Marshell e o Território Orc",
+    "sides": [
+      {
+        "name": "Hordas de Marshell",
+        "commanders": "Chefes de várias hordas",
+        "strength": "~10.000",
+        "casualties": "~1.500",
+        "objective": "Responder a roubos de rebanhos e mortes em travessias."
+      },
+      {
+        "name": "Clãs do Território Orc",
+        "commanders": "Chefes locais (nomes não registrados)",
+        "strength": "~7.000",
+        "casualties": "~2.500",
+        "objective": "Defender pastagens, acampamentos e rotas de travessia."
+      }
+    ],
+    "victor": "Sem vencedor — acordos locais",
+    "result": "indecisive",
+    "objectives": "A campanha nasceu de represálias por roubos e mortes; não havia um plano de conquista nem um comando único.",
+    "outcome": "A falta de pastagem tornou a guerra mais cara que os acordos locais, e as hostilidades terminaram sem senhor único das estepes.",
+    "summary": "Alguns chefes marcharam contra aldeias e acampamentos; outros continuaram comerciando. O episódio reforçou a autonomia das hordas e dos clãs orcs.",
+    "links": [
+      "state:34",
+      "state:29"
+    ]
+  },
+  {
+    "id": "noites-de-rimae",
+    "name": "Noites de Rimae",
+    "kind": "Crise de fronteira e espionagem",
+    "years": "1102–1105 AQD",
+    "start": 1102,
+    "end": 1105,
+    "place": "Fortes de Ignis, Nostris e Vostris",
+    "sides": [
+      {
+        "name": "Elucitor",
+        "commanders": "Marcus III",
+        "strength": "~6.000",
+        "casualties": "~900",
+        "objective": "Proteger depósitos, torres de sinalização e a fronteira de Rimae."
+      },
+      {
+        "name": "Navï Velaffëll",
+        "commanders": "Thalendir I",
+        "strength": "~5.000",
+        "casualties": "~800",
+        "objective": "Manter presença e influência sobre comunidades élficas da fronteira."
+      }
+    ],
+    "victor": "Sem vencedor — Acordo das Três Vigílias",
+    "result": "truce",
+    "objectives": "Desaparecimentos de batedores, documentos falsificados e suspeitas de ilusão transformaram a fronteira em zona de desconfiança.",
+    "outcome": "O Acordo das Três Vigílias restabelece postos de observação e regras de aviso, sem alterar fronteiras.",
+    "summary": "Ataques noturnos atingiram depósitos e torres; nenhuma fortaleza principal foi conquistada. O episódio permaneceu na memória das casas de Rimae e dos serviços élficos.",
+    "links": [
+      "state:13",
+      "state:14"
+    ]
+  },
+  {
+    "id": "guerra-das-duas-passagens",
+    "name": "Guerra das Duas Passagens",
+    "kind": "Guerra entre senhorios",
+    "years": "1109–1116 AQD",
+    "start": 1109,
+    "end": 1116,
+    "place": "Passagens e pontes dos Reinos Médios",
+    "sides": [
+      {
+        "name": "Senhorio de Vinquertiro e aliados",
+        "commanders": "Senhores de Vinquertiro e capitães locais",
+        "strength": "~4.000",
+        "casualties": "~1.200",
+        "objective": "Controlar pontes, pedágios e a circulação de caravanas."
+      },
+      {
+        "name": "Senhorios rivais",
+        "commanders": "Senhores locais; mercenários anões",
+        "strength": "~4.000",
+        "casualties": "~1.300",
+        "objective": "Disputar as mesmas travessias e contratos de transporte."
+      }
+    ],
+    "victor": "Sem vencedor — dívidas e novos pactos",
+    "result": "indecisive",
+    "objectives": "Dois senhorios contrataram mercenários para disputar travessias usadas por armas, carvão e caravanas.",
+    "outcome": "A região não é conquistada por Mountport nem por Duräk; as dívidas das famílias locais aumentam e o Conselho das Forjas limita contratos.",
+    "summary": "Parte das armas vinha das forjas de Duräk, mas nenhum príncipe Grunvar declarou guerra em nome do principado. O episódio fortaleceu a influência moral do Conselho sobre o comércio militar.",
+    "links": [
+      "state:46",
+      "state:35",
+      "state:31"
+    ]
+  },
+  {
+    "id": "contenda-das-tres-folhas",
+    "name": "Contenda das Três Folhas",
+    "kind": "Conflito por recursos",
+    "years": "1132–1138 AQD",
+    "start": 1132,
+    "end": 1138,
+    "place": "Bosques de passagem da Tríplice Élfica",
+    "sides": [
+      {
+        "name": "Guernica",
+        "commanders": "Governo de Guernica; madeireiros contratados",
+        "strength": "~3.000",
+        "casualties": "~600",
+        "objective": "Garantir o corte e o transporte de madeira nas terras de passagem."
+      },
+      {
+        "name": "Tríplice Élfica",
+        "commanders": "Guardiões de Porto de Vern, Triovorn e Vir",
+        "strength": "~2.500",
+        "casualties": "~500",
+        "objective": "Proteger os bosques, as trilhas e as decisões locais das três cidades."
+      }
+    ],
+    "victor": "Sem vencedor — limites de passagem",
+    "result": "compromise",
+    "objectives": "Madeireiros ligados a Guernica e defensores de Triovorn disputavam o corte de madeira em terrenos de passagem.",
+    "outcome": "O acordo limita o trânsito de carroças e permite uso sazonal de determinados caminhos, sem anexação.",
+    "summary": "A contenda foi curta e localizada, mas expôs a distância entre os interesses de Guernica e a autonomia da Tríplice Élfica. Nenhum dos lados passou a falar pelos bosques inteiros.",
+    "links": [
+      "state:47"
+    ]
+  },
+  {
+    "id": "guerra-das-duas-torres-de-sobral",
+    "name": "Guerra das Duas Torres de Sobral",
+    "kind": "Guerra de incorporação",
+    "years": "1183–1191 AQD",
+    "start": 1183,
+    "end": 1191,
+    "place": "Sobral e caminhos entre o litoral e os povoados de Osmorn",
+    "sides": [
+      {
+        "name": "Osmorn",
+        "commanders": "Gawain I; cavaleiros da Ordem de Bahamut",
+        "strength": "~7.000",
+        "casualties": "~1.200",
+        "objective": "Libertar viajantes retidos e submeter o senhorio que cobrava tributo duplo."
+      },
+      {
+        "name": "Sobral (Casa Barreir)",
+        "commanders": "Senhor de Sobral",
+        "strength": "~4.000",
+        "casualties": "~2.000",
+        "objective": "Preservar a torre, as cobranças e a autonomia do senhorio."
+      }
+    ],
+    "victor": "Osmorn",
+    "result": "conquest",
+    "objectives": "A coroa exigia a libertação de reféns de dívidas; os Barreir recusaram e a primeira campanha fracassou diante das muralhas.",
+    "outcome": "Sobral rende-se em 1191 e passa ao reino de Osmorn; o governante local conserva propriedades menores mediante juramento.",
+    "summary": "A segunda campanha contou com cavaleiros de Bahamut e habitantes de Alveiras. A integração tornou-se precedente de conquista com proteção aos vencidos.",
+    "links": [
+      "state:48"
+    ]
+  },
+  {
+    "id": "guerra-das-reliquias",
+    "name": "Guerra das Relíquias",
+    "kind": "Guerra entre impérios",
+    "years": "1215–1250 AQD",
+    "start": 1215,
+    "end": 1250,
+    "place": "Fronteira de Rimae, Bomaria e Dragonfall",
+    "sides": [
+      {
+        "name": "Elucitor",
+        "commanders": "Cassius III; Flavius II",
+        "strength": "~60.000",
+        "casualties": "~18.000",
+        "objective": "Recuperar a Pedra Áurea e a Elucidator e conter a influência de Navï Velaffëll."
+      },
+      {
+        "name": "Navï Velaffëll",
+        "commanders": "Elyndra II",
+        "strength": "~45.000",
+        "casualties": "~15.000",
+        "objective": "Conservar as relíquias e ampliar a proteção às comunidades élficas."
+      }
+    ],
+    "victor": "Sem vencedor militar — Acordo de Bomaria",
+    "result": "truce",
+    "objectives": "O desaparecimento da Pedra Áurea e a disputa sobre a Elucidator transformaram a rivalidade em guerra de grande escala.",
+    "outcome": "O Acordo de Bomaria encerra a guerra em 1250, restitui parte das relíquias e abre direitos élficos em Dragonfall; a Terceira Era termina.",
+    "summary": "A guerra mobilizou as reservas dos dois impérios e marcou a memória de Lucius IX, Elyndra II e dos veteranos de Dragonfall. A captura da Elucidator obrigou Flavius II a negociar.",
+    "links": [
+      "state:13",
+      "state:14"
+    ]
+  },
+  {
+    "id": "guerra-civil-de-dragonfall",
+    "name": "Guerra Civil de Dragonfall",
+    "kind": "Guerra civil e intervenção estrangeira",
+    "years": "1256–1262 AQD",
+    "start": 1256,
+    "end": 1262,
+    "place": "Asgorath, Winterhelm, Gugacon e estradas do reino",
+    "sides": [
+      {
+        "name": "Coroa de Dragonfall",
+        "commanders": "Arthur Dragonbane; Rodrick Windbear; Liga de Batum",
+        "strength": "~12.000",
+        "casualties": "~4.000",
+        "objective": "Derrotar a rebelião, impedir o ritual de Arvanthir e preservar o reino."
+      },
+      {
+        "name": "Culto de Arvanthir",
+        "commanders": "Arvanthir; células cultistas",
+        "strength": "~8.000",
+        "casualties": "~5.000",
+        "objective": "Consumir o sangue de um rei verdadeiro e libertar Dravanir."
+      },
+      {
+        "name": "Navï Velaffëll (intervenção)",
+        "commanders": "Elyndra II; comandantes élficos",
+        "strength": "~6.000",
+        "casualties": "~2.000",
+        "objective": "Ampliar a influência élfica e proteger comunidades da fronteira."
+      }
+    ],
+    "victor": "Coroa de Dragonfall",
+    "result": "victory",
+    "objectives": "A rebelião e o ritual ameaçavam a coroa e a própria população; a intervenção élfica pretendia redefinir a relação com Dragonfall.",
+    "outcome": "Arthur permanece rei; Rodrick morre no sacrifício de Asgorath, a Liga de Batum dissolve-se e Dragonfall torna-se independente em 1262.",
+    "summary": "Rodrick tomou o lugar de Arthur no ritual usando um amuleto de ilusão; o sangue não era de um rei verdadeiro e o plano falhou. A intervenção élfica foi repelida e a independência reconhecida.",
+    "links": [
+      "state:12",
+      "state:14"
+    ]
+  },
+  {
+    "id": "cerco-de-viacaledebo",
+    "name": "Cerco de Viacaledebo",
+    "kind": "Guerra de conquista",
+    "years": "1257–1259 AQD",
+    "start": 1257,
+    "end": 1259,
+    "place": "Viacaledebo e arredores",
+    "sides": [
+      {
+        "name": "Drácon",
+        "commanders": "Kaerath Varkhazar III",
+        "strength": "~9.000",
+        "casualties": "~1.000",
+        "objective": "Encerrar a autonomia do condado e integrar seus impostos e guarnições."
+      },
+      {
+        "name": "Condado Livre de Viacaledebo",
+        "commanders": "Conde Edran de Viacaledebo",
+        "strength": "~3.000",
+        "casualties": "~2.000",
+        "objective": "Preservar a cidadela, as devoções de Bahamut e o governo condal."
+      }
+    ],
+    "victor": "Drácon",
+    "result": "conquest",
+    "objectives": "Kaerath III recusou manter o arranjo de tributos e autonomia que durava séculos.",
+    "outcome": "O conde é deposto e a cidade passa à administração imperial; a população permanece e suas devoções não desaparecem.",
+    "summary": "O cerco encerrou o Condado Livre e consolidou o corredor militar de Drácon. A memória do governo condal continuou viva entre as famílias locais.",
+    "links": [
+      "state:20"
+    ]
+  },
+  {
+    "id": "campanha-das-pedreiras-de-amrithruk",
+    "name": "Campanha das Pedreiras de Amrithruk",
+    "kind": "Guerra de conquista",
+    "years": "1264–1268 AQD",
+    "start": 1264,
+    "end": 1268,
+    "place": "Amrithruk e oficinas de pedra",
+    "sides": [
+      {
+        "name": "Drácon",
+        "commanders": "Kaerath Varkhazar III; comandantes de guarnição",
+        "strength": "~8.000",
+        "casualties": "~1.200",
+        "objective": "Tomar as muralhas e substituir o conselho autônomo por magistrados imperiais."
+      },
+      {
+        "name": "Liga das Forjas de Amrithruk",
+        "commanders": "Conselho de mestres draconatos e humanos",
+        "strength": "~4.000",
+        "casualties": "~2.000",
+        "objective": "Manter a autonomia das oficinas e a neutralidade comercial."
+      }
+    ],
+    "victor": "Drácon",
+    "result": "conquest",
+    "objectives": "A liga fornecia metal a vários lados; o império queria controlar oficinas, pedreiras e o corredor militar.",
+    "outcome": "As muralhas são tomadas e os magistrados substituídos; alguns mestres servem ao império e outros fogem para o oeste.",
+    "summary": "A queda de Amrithruk uniu possessões antes separadas e ampliou a capacidade militar Varkhazar. A campanha foi lembrada pela resistência dos mestres e pela fuga de artesãos.",
+    "links": [
+      "state:20"
+    ]
+  },
+  {
+    "id": "queda-de-glouyaloss",
+    "name": "Queda de Glouyaloss",
+    "kind": "Guerra de conquista",
+    "years": "1273 AQD",
+    "start": 1273,
+    "end": 1273,
+    "place": "Porto fortificado de Glouyaloss",
+    "sides": [
+      {
+        "name": "Drácon",
+        "commanders": "Kaerath Varkhazar III",
+        "strength": "~6.000",
+        "casualties": "~800",
+        "objective": "Tomar o último porto fortificado autônomo da área e torná-lo base naval imperial."
+      },
+      {
+        "name": "Guarnição Livre de Glouyaloss",
+        "commanders": "Capitães da guarnição",
+        "strength": "~3.000",
+        "casualties": "~1.800",
+        "objective": "Resistir até a chegada de socorro e preservar o governo próprio do porto."
+      }
+    ],
+    "victor": "Drácon",
+    "result": "conquest",
+    "objectives": "A guarnição confiava nas muralhas e em mercenários vizinhos, alguns vindos de cidades ligadas a Osmorn; Drácon queria encerrar a última resistência costeira.",
+    "outcome": "Glouyaloss passa a porto militar imperial em 1273; a memória do governo livre continua entre os oficiais locais.",
+    "summary": "A queda de Glouyaloss fechou o ciclo de conquistas da Quarta Era no litoral. Osmorn ajudou a evacuar refugiados, mas não governava o porto nem mudou sua fronteira.",
+    "links": [
+      "state:20",
+      "state:48"
+    ]
+  }
+]

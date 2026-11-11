@@ -52,3 +52,282 @@
 .historyFactsLoading{font-family:system-ui,sans-serif;font-size:12px;color:var(--muted,#b2c4b7)}
 #societyLegend .societyKeys>button{display:flex;gap:8px;align-items:center;width:100%;border:0;text-align:left;background:transparent;padding:5px 2px;color:inherit;font:inherit}
 #societyLegend .societyKeys>button:hover{background:#ffffff12}
+
+/* ===== v37 — linhagens, réguas e leitura interativa ===== */
+#historyReader{--lore-font:1;--lore-line:#c9c6b0;--lore-paper:#fbf7ec;--lore-deep:#223f37}
+#historyReader .loreProse{font-size:calc(16px * var(--lore-font,1))}
+#historyReader .loreProse p,#historyReader .loreProse li{font-size:inherit}
+#historyReader .loreProse .loreCode{background:#e7e3d2;border:1px solid #cbc7b0;border-radius:6px;padding:10px;overflow:auto;font-size:12px}
+
+.loreHeadTools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.loreType{display:flex;border:1px solid #6d7b68;border-radius:6px;overflow:hidden}
+.loreType button{border:0!important;border-radius:0!important;padding:7px 9px!important;line-height:1}
+.loreType button+button{border-left:1px solid #6d7b68!important}
+#loreBack{border-color:#a88951!important;color:#f4e6c6}
+.loreProgress{height:3px;background:#00000018;flex:none;overflow:hidden}
+.loreProgress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#a47b3d,#254a40);transition:width .18s ease}
+
+.loreDynastyStrip{margin:26px 0 26px;padding:20px;border:1px solid #c6c3ad;border-radius:12px;background:linear-gradient(135deg,#f4efdf,#fbf8ee);box-shadow:0 8px 26px #32482d0b}
+.loreDynastyHead small{letter-spacing:2px;font-size:10px;color:#77683f;font-weight:700}
+.loreDynastyHead p{font-family:Georgia,serif;color:#5c6b57;line-height:1.7;font-size:14px;margin:8px 0 0;max-width:760px}
+.loreDynastyGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:10px;margin-top:16px}
+.loreDynastyCard{position:relative;text-align:left;border:1px solid #cbc7b0;border-radius:9px;background:#fffaf0;padding:14px 14px 12px 18px;overflow:hidden;transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+.loreDynastyCard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--house-color,#a47b3d)}
+.loreDynastyCard:hover{transform:translateY(-2px);background:#fff;box-shadow:0 10px 22px #2f462d16}
+.loreDynastyCard:focus-visible{outline:3px solid #b78a3d;outline-offset:2px}
+.loreDynastyCard small{display:block;font-size:9px;letter-spacing:1.4px;color:#7b755c;text-transform:uppercase}
+.loreDynastyCard h3{font-family:Georgia,serif;font-size:17px;line-height:1.3;font-weight:400;margin:6px 0 5px;color:#27473c}
+.loreDynastyCard p{font-size:11px;line-height:1.55;color:#67725f;margin:0 0 10px;min-height:34px}
+.loreDynastyStats{font-size:10px;color:#8a7b4f;letter-spacing:.5px}
+.loreDynastySigil{position:absolute;right:10px;top:8px;font-size:22px;color:#ded4b6}
+.loreRulerInline{margin-top:16px}
+.loreRulerDetailBox{margin-top:12px;border:1px solid #cbc7b0;border-radius:8px;background:#fffaf0;padding:10px 14px}
+.loreRulerDetailBox summary{cursor:pointer;font-size:12px;font-weight:600;color:#3b5749}
+
+/* árvore genealógica */
+.loreTree{margin:24px 0;border:1px solid #c3c6ae;border-radius:12px;background:linear-gradient(180deg,#fcf8ed,#f3eddd);overflow:hidden;box-shadow:0 10px 28px #32482d0d}
+.loreTreeBar{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 18px;background:#e9e5d4;border-bottom:1px solid #cdc9b3;flex-wrap:wrap}
+.loreTreeHeading small{display:block;letter-spacing:2px;font-size:9px;color:#857549}
+.loreTreeHeading strong{display:block;font-family:Georgia,serif;font-size:21px;font-weight:400;color:#27473c;margin:3px 0 2px}
+.loreTreeHeading span{font-size:11px;color:#6b775f}
+.loreTreeTools{display:flex;gap:5px;flex-wrap:wrap}
+.loreTreeTools button{border:1px solid #b9bca6;background:#fbf7ec;border-radius:5px;padding:5px 9px;font-size:12px;line-height:1}
+.loreTreeTools button:hover{background:#f0ebda;border-color:#9d9f87}
+.loreTreeNote{padding:12px 18px 0;margin:0;font-family:Georgia,serif;font-size:13px;line-height:1.65;color:#5d6a58}
+.loreTreeViewport{overflow:auto;max-height:min(58vh,560px);padding:20px 22px 14px;cursor:grab;overscroll-behavior:contain}
+.loreTreeViewport.is-dragging{cursor:grabbing;user-select:none}
+.loreTreeCanvas{transform-origin:top left;transition:transform .18s ease;width:max-content;min-width:100%}
+.loreTreeRoots,.loreTreeChildren{list-style:none;margin:0;padding:0}
+.loreTreeChildren{margin:5px 0 0 13px;padding-left:27px;border-left:1px dashed #c3b99c}
+.loreTreeNode{position:relative;padding:4px 0}
+.loreTreeChildren>.loreTreeNode::before{content:"";position:absolute;left:-28px;top:28px;width:26px;border-top:1px dashed #c3b99c}
+.loreTreeRow{display:flex;align-items:center;gap:6px}
+.loreNodeCard{display:flex;align-items:flex-start;gap:10px;text-align:left;background:#fdfaf1;border:1px solid #cfc9b3;border-left:3px solid #b9b096;border-radius:8px;padding:9px 12px;max-width:360px;min-width:186px;transition:border-color .15s ease,box-shadow .15s ease}
+.loreNodeCard:hover{background:#fff;border-color:#a9a488;box-shadow:0 6px 14px #32482d12}
+.loreNodeSigil{flex:none;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:#e9e4d1;color:#7d6533;font-size:13px}
+.loreNodeText{display:flex;flex-direction:column;gap:2px;min-width:0}
+.loreNodeText b{font-family:Georgia,serif;font-weight:400;font-size:14px;line-height:1.35;color:#27473c}
+.loreNodeText small{font-size:10px;line-height:1.35;color:#77745c}
+.loreNodeSpouse{font-size:10px;color:#8a5f56;line-height:1.35}
+.loreNodeToggle{flex:none;width:22px;height:22px;border-radius:50%;border:1px solid #c2bda6;background:#f8f4e7;font-size:10px;line-height:1;display:grid;place-items:center;color:#77704f}
+.loreNodeToggle:hover{background:#ece6d2}
+.loreTreeNode.is-royal>.loreTreeRow .loreNodeCard{border-left-color:#a47b3d}
+.loreTreeNode.is-heir>.loreTreeRow .loreNodeCard{border-left-color:#3f6b62}
+.loreTreeNode.is-consort>.loreTreeRow .loreNodeCard{border-left-color:#8a5f56}
+.loreTreeNode.is-military>.loreTreeRow .loreNodeCard{border-left-color:#5b6a74}
+.loreTreeNode.is-civic>.loreTreeRow .loreNodeCard{border-left-color:#527a5c}
+.loreTreeNode.is-house>.loreTreeRow .loreNodeCard{border-left-color:#8a7b56}
+.loreTreeNode.is-active>.loreTreeRow .loreNodeCard{background:#254a40;border-color:#254a40;color:#fff4df;box-shadow:0 8px 18px #254a4033}
+.loreTreeNode.is-active>.loreTreeRow .loreNodeText b,.loreTreeNode.is-active>.loreTreeRow .loreNodeText small,.loreTreeNode.is-active>.loreTreeRow .loreNodeSpouse{color:#fff4df}
+.loreTreeNode.is-active>.loreTreeRow .loreNodeSigil{background:#f1e5c6;color:#7d5b26}
+.loreTreeNode.is-ancestor>.loreTreeRow .loreNodeCard{background:#edf1e2;border-color:#9fae93}
+.loreTreeNode.is-descendant>.loreTreeRow .loreNodeCard{background:#f3f5e9}
+.loreTreeNode.is-found>.loreTreeRow .loreNodeCard{outline:2px solid #b78a3d;outline-offset:1px}
+.loreTreeNode.is-collapsed>.loreTreeChildren{display:none}
+.loreGapCard{display:inline-block;border:1px dashed #bdb79d;border-radius:20px;padding:4px 11px;font-size:10px;color:#8b8567;background:#f7f3e6;max-width:330px;line-height:1.4}
+.loreTreeFoot{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:10px 18px 14px;flex-wrap:wrap}
+.loreTreeFoot>span{font-size:10px;letter-spacing:1px;color:#7f7b60}
+.loreTreeFind{display:flex;align-items:center;gap:6px;font-size:10px;color:#6b775f}
+.loreTreeFind input{padding:5px 8px;border:1px solid #c3bda6;border-radius:5px;background:#fbf7ec;font-size:11px;width:130px}
+.loreTreeDetail{margin:0 18px 18px;padding:14px 16px;border:1px solid #d0c9b1;border-radius:8px;background:#fffaf0;min-height:56px}
+.loreTreeDetail small{font-size:9px;letter-spacing:1.6px;color:#8a7b4f}
+.loreTreeDetail h4{font-family:Georgia,serif;font-size:18px;font-weight:400;color:#27473c;margin:5px 0 4px}
+.loreTreeDetail p{font-size:12px;line-height:1.6;color:#5f6b58;margin:0}
+.loreTreeDetail .loreTreeSpouse{color:#8a5f56;margin-top:4px}
+.loreTreeHint{color:#84805f!important;font-style:italic}
+
+/* régua de sucessão */
+.loreRuler{margin:20px 0;border:1px solid #c6c3ad;border-radius:12px;background:#faf6ea;overflow:hidden}
+.loreRulerHead{display:flex;justify-content:space-between;gap:14px;padding:14px 18px;background:#ece8d6;border-bottom:1px solid #d3cfba;flex-wrap:wrap}
+.loreRulerHead small{display:block;font-size:9px;letter-spacing:1.6px;color:#857549}
+.loreRulerHead strong{display:block;font-family:Georgia,serif;font-size:19px;font-weight:400;color:#27473c;margin:3px 0 2px}
+.loreRulerHead span{font-size:11px;color:#6b775f}
+.loreRulerHouses{display:flex;flex-wrap:wrap;gap:5px;align-self:center}
+.loreRulerHouses button{border:1px solid #c3c0aa;background:#fbf7ec;border-radius:20px;padding:4px 9px;font-size:10px;color:#5d6a55;opacity:.5;transition:opacity .15s ease,box-shadow .15s ease}
+.loreRulerHouses button.is-on{opacity:1;box-shadow:inset 0 -3px 0 var(--house-color)}
+.loreRulerHouses button b{font-weight:600;color:#8a7b4f}
+.loreRulerScroll{overflow-x:auto;padding:14px 34px 4px 18px}
+.loreRulerTrack{position:relative;padding-top:18px}
+.loreRulerAxis{position:relative;height:18px;border-bottom:1px solid #cfcab4}
+.loreRulerAxis span{position:absolute;transform:translateX(-50%);font-size:9px;color:#85805f;white-space:nowrap}
+.loreRulerAxis span:first-child{transform:translateX(0)}
+.loreRulerAxis span:last-child{transform:translateX(-100%)}
+.loreRulerBars{position:relative;height:52px;margin-top:8px}
+.loreReign{position:absolute;top:0;height:44px;border:1px solid #00000022;border-radius:4px;background:var(--reign-color,#8a7b56);color:#fff;padding:3px 5px;overflow:hidden;font-size:9px;line-height:1.15;text-align:left;box-shadow:inset 0 -8px 14px #00000022;transition:opacity .15s ease,outline-color .15s ease}
+.loreReign span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.loreReign:hover{filter:brightness(1.08)}
+.loreReign.is-ongoing{background-image:repeating-linear-gradient(135deg,#ffffff26 0 6px,transparent 6px 12px)}
+.loreReign.is-active{outline:2px solid #fff;box-shadow:0 0 0 2px #254a40}
+.loreReign.is-muted{opacity:.16}
+.loreRulerDetail{display:flex;gap:12px;align-items:flex-start;padding:14px 18px;border-top:1px solid #d6d1bb;background:#fffaf0;min-height:62px}
+.loreReignDot{flex:none;width:12px;height:12px;border-radius:50%;margin-top:4px;background:var(--house-color,#a47b3d)}
+.loreRulerDetail small{font-size:10px;letter-spacing:.6px;color:#7f7757}
+.loreRulerDetail h4{font-family:Georgia,serif;font-size:18px;font-weight:400;color:#27473c;margin:4px 0 3px}
+.loreRulerDetail p{font-size:12px;line-height:1.6;color:#5f6b58;margin:0}
+.loreReignOngoing{display:inline-block;margin-top:5px;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#8a6a2f;background:#f0e4c4;border-radius:10px;padding:3px 8px}
+
+.loreLineageHero .loreLineageType{font-family:Georgia,serif;font-size:15px;color:#66735f;margin:0 0 8px}
+.loreOtherHouses{margin:34px 0 10px}
+.loreSectionHead small{letter-spacing:2px;font-size:10px;color:#77683f;font-weight:700}
+.loreSectionHead h2{font-family:Georgia,serif;font-size:24px;font-weight:400;color:#254c40;margin:7px 0 0}
+.loreDynastyIndex{padding:24px 36px 60px}
+.loreDynastyGroup{margin:0 0 30px}
+.loreDynastyGroupHead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:8px;border-bottom:1px solid #cec9b2;margin-bottom:12px}
+.loreDynastyGroup h2{font-family:Georgia,serif;font-size:22px;font-weight:400;color:#27473c;margin:0}
+.loreDynastyGroupHead span{font-size:10px;letter-spacing:1px;color:#857b58}
+.loreLineageRuler{margin:34px 0 10px;padding-top:22px;border-top:2px solid #9b956c}
+
+/* cronologia: filtros, séculos e navegação por teclado */
+.loreTimeTools{display:flex;align-items:center;gap:16px;padding:18px 36px 0;flex-wrap:wrap}
+.loreTimeTools label{display:flex;align-items:center;gap:8px;font-size:11px;color:#66735f}
+.loreTimeTools input{padding:8px 10px;border:1px solid #b8bda8;border-radius:6px;background:#fbf7ec;font-size:12px;min-width:220px;color:#263b36}
+.loreTimeTools>span{font-size:11px;color:#7f7b5e;letter-spacing:.5px}
+.loreTimeTools>small{font-size:10px;color:#918a68;margin-left:auto}
+.loreCentury{display:flex;align-items:center;gap:10px;margin:24px 0 12px;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:#7b7555}
+.loreCentury::after{content:"";flex:1;border-top:1px solid #d0ccb6}
+.loreCentury i{font-style:normal;font-size:9px;background:#e5e2d0;border-radius:10px;padding:2px 7px;color:#6f6b4d}
+.loreChapterRail button.active{background:#254a40;border-color:#254a40;color:#fff4df}
+.loreChapterRail button.active span{color:#e5c890}
+.loreChapterRail button.active b{color:#fff4df}
+
+@media(max-width:850px){
+ .loreTreeViewport{max-height:60vh;padding:14px}
+ .loreDynastyIndex{padding:18px 18px 44px}
+ .loreTimeTools{padding:14px 22px 0}
+ .loreTimeTools input{min-width:0;flex:1}
+ .loreTimeTools>small{margin-left:0}
+ .loreNodeCard{max-width:290px;min-width:170px}
+}
+@media(max-width:580px){
+ .loreHeadTools{width:100%;justify-content:flex-end;gap:5px}
+ .loreHeadTools button{font-size:10px;padding:5px 7px}
+ .loreType{display:none}
+ .loreDynastyGrid{grid-template-columns:1fr 1fr}
+ .loreDynastyCard h3{font-size:15px}
+ .loreTreeBar{padding:10px 12px}
+ .loreTreeHeading strong{font-size:17px}
+ .loreTreeTools button{padding:4px 6px;font-size:10px}
+ .loreNodeCard{max-width:230px;min-width:150px;padding:7px 9px}
+ .loreNodeText b{font-size:12px}
+ .loreRulerHouses{display:none}
+ .loreRulerDetail{padding:10px 12px}
+}
+
+/* Proteção contra estilos globais de <header> do mapa. */
+#historyReader header{position:static;top:auto;z-index:auto;height:auto}
+
+/* ===== v48 — abertura do mundo, presente do Estado e blocos de leitura ===== */
+.loreCurrent{margin:24px 0 6px;padding:18px 20px;border:1px solid #cbc7b0;border-radius:12px;background:linear-gradient(135deg,#f6f1e1,#fbf8ee)}
+.loreCurrent .loreSectionHead h2{font-size:24px}
+.loreCurrent .loreProse{max-width:780px;font-size:15px}
+.loreCurrent .loreGovernment{margin-top:16px}
+.loreFacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px}
+.loreFacts>div{padding:10px 12px;border:1px solid #d3cdb6;border-radius:8px;background:#fffaf0}
+.loreFacts span{display:block;font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:#857549}
+.loreFacts b{display:block;font-family:Georgia,serif;font-weight:400;font-size:14px;color:#27473c;margin-top:5px;line-height:1.35}
+.loreStoryGroup{margin:38px 0 0;padding-top:22px;border-top:2px solid #9b956c;scroll-margin-top:14px}
+.loreStoryGroup:first-of-type{border-top:0;padding-top:0}
+.loreGroupHead{margin-bottom:14px}
+.loreGroupHead small{display:block;font-size:9px;letter-spacing:2px;color:#857549;font-weight:700}
+.loreGroupHead h2{font-family:Georgia,serif;font-size:26px;font-weight:400;color:#254c40;line-height:1.2;margin:6px 0 6px}
+.loreGroupHead p{font-family:Georgia,serif;font-size:13px;line-height:1.65;color:#67735f;margin:0;max-width:720px}
+.loreLocalTimeline{margin:26px 0 0}
+.loreLocalTimeline .loreSectionHead h2{font-size:24px}
+.loreWorldTimeline{margin:26px 0 34px;padding:18px 20px;border:1px solid #c6c3ad;border-radius:12px;background:linear-gradient(135deg,#f4efdf,#fbf8ee)}
+.loreEraPills{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 16px}
+.loreEraPills button{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 8px;text-align:left;border:1px solid #c3bfa7;border-radius:8px;background:#fbf7ec;padding:10px 12px;color:#4d5c4c}
+.loreEraPills button>span{font-family:Georgia,serif;font-size:22px;color:#a58d58}
+.loreEraPills button b{font-size:12px;flex:1}
+.loreEraPills button small{font-size:9px;color:#7d7a5e}
+.loreEraPills button.active{background:#254a40;border-color:#254a40;color:#fff2d4}
+.loreEraPills button.active>span{color:#e5c890}
+.loreEraPills button.active b{color:#fff2d4}
+.loreEraPills button.active small{color:#d0d9bf}
+.loreWorldRail{display:flex;gap:9px;overflow-x:auto;padding:2px 2px 12px;scroll-snap-type:x proximity}
+.loreWorldRail button{flex:0 0 190px;text-align:left;border:1px solid #c4cab7;border-top:3px solid #ab9561;border-radius:7px;padding:10px 12px;background:#fdf9ee;scroll-snap-align:start}
+.loreWorldRail button small{display:block;font-size:9px;letter-spacing:.8px;color:#897742;margin-bottom:5px}
+.loreWorldRail button b{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-family:Georgia,serif;font-size:12px;line-height:1.45;font-weight:400}
+.loreWorldRail button.active{background:#dfe8d3;border-color:#66825b}
+.loreWorldDetail{margin-top:10px;padding:16px 18px;border:1px solid #c3bfa7;border-radius:9px;background:#fdf9ee;min-height:74px}
+.loreWorldDetail small{font-size:10px;letter-spacing:1px;color:#847447}
+.loreWorldDetail h3{font-family:Georgia,serif;font-size:21px;line-height:1.45;font-weight:400;color:#2a4d3b;margin:8px 0 8px}
+.loreWorldDetail .loreProse{font-size:14px}
+@media(max-width:850px){
+ .loreEraPills{grid-template-columns:1fr 1fr}
+ .loreWorldTimeline{padding:14px}
+ .loreStoryGroup{margin-top:28px}
+ .loreGroupHead h2{font-size:22px}
+}
+@media(max-width:580px){
+ .loreFacts{grid-template-columns:1fr 1fr}
+ .loreWorldRail button{flex-basis:160px}
+}
+
+.loreRulerInline{margin-top:16px;border:1px solid #cbc7b0;border-radius:9px;background:#fbf7ec;padding:10px 14px}
+.loreRulerInline>summary{cursor:pointer;font-size:12px;font-weight:600;color:#3b5749;padding:2px 0}
+.loreRulerInline[open]>summary{margin-bottom:10px}
+.loreRulerInline .loreRuler{margin:0}
+
+.loreGroupJump{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 12px}
+.loreGroupJump button{border:1px solid #c1c6b2;background:#f8f4e8;border-radius:20px;padding:5px 10px;font-size:10px;letter-spacing:.3px;color:#4d5c4c}
+.loreGroupJump button:hover{background:#e3e9d7;border-color:#9fae93}
+
+/* ===== v49 — conflitos e guerras ===== */
+.loreEstimateNote{font-size:11px;line-height:1.6;color:#7d7758;font-style:italic;margin:10px 0 0;max-width:760px}
+.loreConflictIndex{padding:24px 36px 60px}
+.loreConflictGroup{margin:0 0 30px}
+.loreConflictGroupHead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:8px;border-bottom:1px solid #cec9b2;margin-bottom:12px}
+.loreConflictGroupHead h2{font-family:Georgia,serif;font-size:21px;font-weight:400;color:#27473c;margin:0}
+.loreConflictGroupHead span{font-size:10px;letter-spacing:1px;color:#857b58}
+.loreConflictGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.loreConflictCard{position:relative;text-align:left;border:1px solid #cbc7b0;border-left:4px solid #8a7b56;border-radius:9px;background:#fffaf0;padding:14px 16px;transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+.loreConflictCard:hover{transform:translateY(-2px);background:#fff;box-shadow:0 10px 22px #2f462d16}
+.loreConflictCard small{display:block;font-size:9px;letter-spacing:1.2px;color:#857549;text-transform:uppercase}
+.loreConflictCard h3{font-family:Georgia,serif;font-size:19px;line-height:1.3;font-weight:400;color:#27473c;margin:6px 0 3px}
+.loreConflictCard p{font-size:11px;color:#6b765f;margin:0 0 10px;min-height:30px}
+.loreConflictMeta{display:flex;gap:14px;margin-bottom:8px}
+.loreConflictMeta span{font-size:9px;letter-spacing:.4px;color:#8a7b4f}
+.loreConflictMeta b{display:block;font-family:Georgia,serif;font-size:16px;font-weight:400;color:#3b5749;letter-spacing:0}
+.loreConflictCard em{font-style:normal;font-size:10px;color:#7d6a3d;line-height:1.4;display:block}
+.loreConflictCard.is-conquest,.loreConflictCard.is-defeat{border-left-color:#8a4b4b}
+.loreConflictCard.is-repression{border-left-color:#6b4a7a}
+.loreConflictCard.is-truce,.loreConflictCard.is-indecisive{border-left-color:#a08a4d}
+.loreConflictCard.is-compromise,.loreConflictCard.is-victory{border-left-color:#3f6b62}
+.loreConflictCard.is-liberation{border-left-color:#4f7a58}
+.loreConflictCard.is-occupation{border-left-color:#9a6b3f}
+
+.loreConflictHero .loreResult{margin-top:18px;padding:16px 18px;border:1px solid #c9c3a9;border-left:4px solid #8a7b56;border-radius:9px;background:#fbf7ec;max-width:820px}
+.loreResult>span{display:block;font-size:9px;letter-spacing:1.8px;color:#857549;font-weight:700}
+.loreResult>b{display:block;font-family:Georgia,serif;font-size:20px;font-weight:400;color:#27473c;margin:5px 0 4px}
+.loreResult>p{font-size:13px;line-height:1.65;color:#5f6b58;margin:0}
+.loreResult.is-victory,.loreResult.is-conquest{border-left-color:#3f6b62}
+.loreResult.is-defeat{border-left-color:#8a4b4b}
+.loreResult.is-liberation{border-left-color:#4f7a58}
+.loreResult.is-occupation{border-left-color:#9a6b3f}
+.loreResult.is-truce,.loreResult.is-compromise,.loreResult.is-indecisive{border-left-color:#a08a4d}
+.loreConflictBody{padding-top:8px}
+.loreConflictStats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 26px}
+.loreConflictStats>div{padding:14px 16px;border:1px solid #d0cab2;border-radius:9px;background:#fffaf0}
+.loreConflictStats span{display:block;font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:#857549}
+.loreConflictStats b{display:block;font-family:Georgia,serif;font-size:23px;font-weight:400;color:#27473c;margin-top:4px;line-height:1.2}
+.loreObjectiveBlock{margin:20px 0 26px;padding:14px 18px;border:1px solid #c9c3a9;border-left:3px solid #a08248;border-radius:8px;background:#f8f5e9}
+.loreObjectiveBlock small{font-size:9px;letter-spacing:1.6px;color:#857549}
+.loreObjectiveBlock p{font-family:Georgia,serif;font-size:14px;line-height:1.7;color:#4f5f4c;margin:6px 0 0}
+.loreSidesGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.loreSide{position:relative;padding:16px 16px 14px;border:1px solid #cfc9b1;border-top:4px solid var(--side-color,#8a7b56);border-radius:10px;background:#fffaf0}
+.loreSide>small{font-size:9px;letter-spacing:1.6px;color:#857549}
+.loreSide h3{font-family:Georgia,serif;font-size:20px;font-weight:400;color:#27473c;margin:5px 0 6px}
+.loreSideCommanders{font-size:12px;line-height:1.55;color:#5f6b58;margin:0 0 12px}
+.loreSideCommanders b{color:#3b5749}
+.loreSideNumbers{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.loreSideNumbers span{display:block;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#857549}
+.loreSideNumbers b{display:block;font-family:Georgia,serif;font-size:18px;font-weight:400;color:#3b5749;margin-top:2px}
+.loreSideBar{position:relative;height:14px;border-radius:7px;background:#e8e4d2;margin:6px 0 4px;overflow:hidden}
+.loreSideBar i{display:block;height:100%;background:var(--side-color,#8a7b56);border-radius:7px}
+.loreSideBar.is-casualty i{background:#8a4b4b;opacity:.8}
+.loreSideBar small{position:absolute;right:7px;top:1px;font-size:8px;letter-spacing:.6px;color:#6f6b4d}
+.loreSideObjective{font-size:12px;line-height:1.6;color:#5f6b58;margin:12px 0 0}
+.loreSideObjective b{color:#3b5749}
+@media(max-width:850px){.loreConflictIndex{padding:18px 18px 44px}.loreConflictGrid{grid-template-columns:1fr}.loreConflictStats{grid-template-columns:1fr 1fr}}
+
+.loreIndex em{display:block;font-style:normal;font-size:10px;line-height:1.4;color:#7b6c44;margin-top:4px}

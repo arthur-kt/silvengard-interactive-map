@@ -325,7 +325,7 @@ A Casa Dragonbane ocupa atualmente o trono de Dragonfall, sob o rei Arthur Drago
 
 **Estado de referência:** Dragonfall. **Casa:** Casa Dragonbane. **Soberano atual:** Rei Arthur Dragonbane.
 
-- **Nomes masculinos tradicionais:** Arthur, Alaric, Edmund, Aldemar, Cedric, Garrick, Godric, Berengar, Oswin, Aldhelm e Theomund.
+- **Nomes masculinos tradicionais:** Arthur, Alaric, Edmund, Aldemar, Cedric, Garrick, Godric, Berengar, Oswin, Tiberius e Theomund.
 
 **Tradição e sentido cultural dos nomes.** **Arthur** é o nome mais conhecido da geração atual e evoca a tradição Dragonbane dos antigos combatentes de dragões; **Alaric** e **Garrick** remetem à honra guerreira e à defesa do reino; **Edmund**, **Aldemar** e **Godric** preservam a memória de serviço e lideranças familiares. Os demais nomes fazem parte do costume da casa sem designar automaticamente reis anteriores.
 
@@ -521,7 +521,7 @@ A Casa Dragonbane ocupa atualmente o trono de Dragonfall, sob o rei Arthur Drago
 
 **Estado de referência:** Dragonfall. **Casa:** Casa Dragonbane. **Soberano atual:** Rei Arthur Dragonbane.
 
-- **Nomes masculinos tradicionais:** Arthur, Alaric, Edmund, Aldemar, Cedric, Garrick, Godric, Berengar, Oswin, Aldhelm e Theomund.
+- **Nomes masculinos tradicionais:** Arthur, Alaric, Edmund, Aldemar, Cedric, Garrick, Godric, Berengar, Oswin, Tiberius e Theomund.
 
 **Tradição e sentido cultural dos nomes.** **Arthur** é o nome mais conhecido da geração atual e evoca a tradição Dragonbane dos antigos combatentes de dragões; **Alaric** e **Garrick** remetem à honra guerreira e à defesa do reino; **Edmund**, **Aldemar** e **Godric** preservam a memória de serviço e lideranças familiares. Os demais nomes fazem parte do costume da casa sem designar automaticamente reis anteriores.
 

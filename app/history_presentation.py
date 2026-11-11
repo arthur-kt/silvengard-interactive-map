@@ -41,6 +41,8 @@ def clean_title(title):
     title = re.sub(r'\s*—\s*(?:fonte.*|original integral|registro integral|reprodução integral|cânone.*|canone.*|história (?:narrada|canônica).*|fato histórico.*|definição canônica.*|confirmação canônica.*|confirmacao canonica.*|referência complementar.*|referência comercial.*|cânone e propostas.*)$', '', title, flags=re.I)
     title = title.replace(' — FATOS DEFINIDOS', '').replace(' — VERSÕES OFICIAIS', '')
     title = re.sub(r'\s*\[registro.*', '', title)
+    if title == 'Instituições, tradições e costumes do Estado':
+        title = 'Instituições e ofícios'
     if title.isupper():
         title = title.title()
         title = re.sub(r'\b(Da|Das|Do|Dos|De|E|A|À|O|Os|As|Na|No|Em|Com|Contra|Sob|Para)\b', lambda m: m[0].lower(), title)
@@ -50,8 +52,117 @@ def clean_title(title):
     return title[:1].upper() + title[1:]
 
 
+STATE_PANORAMA = (
+    'monarquiaeletiva', 'umreinodemuitasfamilias', 'asgrandescasaseosolares', 'ascortesregionais',
+    'ramosfamiliares', 'aformacaodeelucitoreveniun', 'escolasdemagia', 'acasalucieneoimperador',
+    'avozdoslucien', 'organizacaoimperial', 'defesasfronteiras', 'vidapublica', 'culturaedireito',
+    'religiaoimperial', 'conselhosenatorial', 'herancasmagicas', 'marcashereditarias',
+    'acapitalelucitor', 'vennoduro', 'mestrina', 'nunar', 'marcade', 'lordelonginus',
+    'ascasassenatoriais', 'comoestado', 'asformacoes',
+)
+STATE_RECENT = (
+    'eracontemporanea', 'quartaera', 'independencia', 'guerracivil', 'reassentamento', 'povoselficos',
+    'relacoescom', 'relacoesrecentes', 'portos', 'desertodeamestris', 'aaberturade', 'oplanodos',
+    'aaliancacontra', 'aintervencao', 'dragonfallindependente', 'herancadrodrick', 'oreinodepoisde',
+    'ultimoinverno', 'pedraurea', '1277', 'reinodepois',
+)
+STATE_ORIGINS = ('primeiraera', 'segundaera', 'valar', 'baranor', 'askhlozhad', 'dragoes', 'criacao', 'deuses')
+
+WORLD_MEMORIES = (
+    'ruinasdeamestris', 'oreinoperdidodebaranor', 'baranor', 'ocalendariodasquatroeras',
+    'aguerracivilerodrickwindbear', 'brutuseooeste', 'avozdacasalucien', 'gavanon', 'onortedevitravion',
+    'divindadeseescolasdemagia', 'relacoesdooeste',
+)
+WORLD_MYTH = (
+    'asquatroeras', 'ocaos', 'osdeuseseseusdominios', 'aformacaodomundo', 'matila', 'adivisaodemelkeloth',
+    'asguerrasentreosdeuses', 'auniaodosdeuses', 'aretiradadosdeuses', 'asescolasdamagia',
+    'referenciarapida', 'osherdeirosdosdeuses', 'aresistenciadasracas', 'askhlozhad',
+)
+WORLD_PRESENT = ('casassoberanas', 'dinastiasedtradicoes', 'apazarmada', 'opactodosportoslivres',
+                 'osatores', 'referenciatemporal')
+
+
+def compact(value):
+    return re.sub(r'[^a-z0-9]', '', key(value))
+
+
+def first_year(text):
+    years = [int(value) for value in re.findall(r'\b(1[0-9]{2}|2[0-9]{2}|[3-9][0-9]{2}|1[0-2][0-9]{2})\b', text)]
+    return min(years) if years else None
+
+
+def state_era(section):
+    title = compact(section['displayTitle'])
+    if any(marker in title for marker in STATE_PANORAMA):
+        return 0
+    if 'primeiraera' in title or 'segundaera' in title:
+        return 2
+    if 'terceiraera' in title:
+        return 3
+    if any(marker in title for marker in STATE_RECENT) and 'eracontemporanea' in title:
+        return 4
+    year = first_year(section['displayTitle'] + ' ' + section['displayMarkdown'][:900])
+    if year is not None:
+        return 2 if year <= 0 else (3 if year <= 1250 else 4)
+    if any(marker in title for marker in STATE_RECENT):
+        return 4
+    if any(marker in title for marker in STATE_ORIGINS):
+        return 2
+    return 3
+
+
+def state_groups(chapter_ids, sections):
+    houses, institutions, story = [], [], {}
+    for section_id in chapter_ids:
+        section = sections[section_id]
+        title = section['displayTitle']
+        parent = sections.get(section.get('parent'))
+        if section.get('lineageIds') or compact(title).startswith('casassucessoeselinhagens'):
+            houses.append(section_id)
+            continue
+        if compact(title).startswith('instituicoes') or (parent and compact(parent['displayTitle']).startswith('instituicoes')):
+            institutions.append(section_id)
+            continue
+        story.setdefault(state_era(section), []).append(section_id)
+    labels = {
+        0: ('O Estado e suas instituições', 'Como o poder se organiza, quem aconselha o governante e quais tradições sustentam a política.'),
+        2: ('Origens e Era dos Dragões', 'As fundações mais antigas, as guerras contra os dragões e as primeiras casas.'),
+        3: ('Era dos Impérios', 'A formação dos reinos, as guerras de fronteira e as dinastias que chegam ao século XIII.'),
+        4: ('Era Contemporânea', 'A Guerra das Relíquias, a guerra civil de Dragonfall e o mundo de 1277.'),
+    }
+    groups = []
+    for era in (0, 2, 3, 4):
+        if story.get(era):
+            title, intro = labels[era]
+            groups.append(dict(key=f'era-{era}', title=title, intro=intro, chapters=story[era]))
+    return groups, houses, institutions
+
+
+def world_groups(chapter_ids, sections):
+    buckets = {'myth': [], 'history': [], 'present': [], 'memories': []}
+    for section_id in chapter_ids:
+        title = compact(sections[section_id]['displayTitle'])
+        if any(title.startswith(marker) for marker in WORLD_MEMORIES):
+            buckets['memories'].append(section_id)
+        elif any(title.startswith(marker) for marker in WORLD_MYTH):
+            buckets['myth'].append(section_id)
+        elif any(title.startswith(marker) for marker in WORLD_PRESENT):
+            buckets['present'].append(section_id)
+        else:
+            buckets['history'].append(section_id)
+    labels = {
+        'myth': ('Mitologia e criação', 'As tradições sobre os deuses, a Primeira Era e a queda do último dragão.'),
+        'history': ('As eras e os reinos', 'A formação dos Estados, as guerras de fronteira e os acontecimentos que chegam a 1277.'),
+        'present': ('Casas soberanas e o presente', 'Quem governa agora, as regras de sucessão e as tensões da Paz Armada.'),
+        'memories': ('Memórias, lugares e mistérios', 'Lugares e tradições que não se encaixam numa cronologia fechada.'),
+    }
+    return [dict(key=bucket, title=labels[bucket][0], intro=labels[bucket][1], chapters=buckets[bucket])
+            for bucket in ('myth', 'history', 'present', 'memories') if buckets[bucket]]
+
+
 def clean_prose(markdown, title=''):
-    text = re.sub(r'<!--[\s\S]*?-->', '', markdown)
+    text = re.sub(r'```linhagem[ \t]*\r?\n.*?```', '', markdown, flags=re.S)
+    text = re.sub(r'<!--[\s\S]*?-->', '', text)
     text = re.sub(r'\[[^\]]*(?:a confirmar|a definir|ouvido como)[^\]]*\]', '', text, flags=re.I)
     text = re.sub(r'\([^)]*(?:a confirmar|a definir|\b2026\b)[^)]*\)', '', text, flags=re.I)
     text = re.sub(r',?\s*(?:conforme definição posterior|segundo confirmação) do criador', '', text, flags=re.I)
@@ -132,9 +243,15 @@ def add_presentation(data):
             government = next((s for s in children if s['title'].startswith('Casa soberana')), None)
             r['intro'] = identity['displayMarkdown'] if identity else ''
             r['government'] = government['displayMarkdown'] if government else ''
-            roots = [s for s in children if s['title'].startswith(('História integral', 'Memórias, lugares e mistérios', 'Cultura e instituições'))]
+            roots = [s for s in children if s['title'].startswith(('História integral', 'Memórias, lugares e mistérios',
+                                                                   'Casas, sucessões e linhagens',
+                                                                   'Instituições, tradições e costumes',
+                                                                   'Cultura e instituições'))]
+            order = {'História integral': 0, 'Memórias, lugares e mistérios': 1, 'Casas, sucessões e linhagens': 2,
+                     'Instituições, tradições e costumes': 3, 'Cultura e instituições': 4}
+            roots.sort(key=lambda s: next((value for start, value in order.items() if s['title'].startswith(start)), 9))
         elif r['kind'] == 'world':
-            roots = [s for s in sections.values() if s['document'] == 'world' and s['title'] in ['Memórias e tradições de Silvengard', 'História geral original', 'Paz Armada do Oeste — registro integral']]
+            roots = [s for s in sections.values() if s['document'] == 'world' and s['title'] in ['Silvengard em 1277 AQD — o mundo da Quarta Era', 'Memórias e tradições de Silvengard', 'História geral original', 'Paz Armada do Oeste — registro integral']]
         elif r['kind'] in ('city', 'province'):
             # These pages never inherit the city directory of their parent section.
             roots = roots[:1]
@@ -149,7 +266,7 @@ def add_presentation(data):
         for root in roots:
             selected = [root] if r['kind'] in ('city', 'province') else descendants(root)
             for s in selected:
-                if not visible(s) or s['displayTransparent'] or not s['displayMarkdown']:
+                if not visible(s) or s['displayTransparent'] or (not s['displayMarkdown'] and not s.get('lineageIds')):
                     continue
                 if r['kind'] == 'state' and re.search(r'(?:casa soberana|tradicao de nomes)', key(s['title'])):
                     continue
@@ -158,7 +275,7 @@ def add_presentation(data):
         seen = set()
         r['chapters'] = []
         for s in candidates:
-            signature = key(s['displayMarkdown'])
+            signature = key(s['displayMarkdown']) or s['id']
             if signature in seen:
                 continue
             seen.add(signature)
@@ -194,5 +311,19 @@ def add_presentation(data):
                                                   markdown=sentence, links=[], local=True))
         related = [e for e in data['events'] if r['id'] in e.get('links', [])]
         r['timeline'] = local + related
+        if r['kind'] == 'state':
+            groups, houses, institutions = state_groups(r['chapters'], sections)
+            r['storyGroups'] = groups
+            r['houseChapters'] = houses
+            r['institutionChapters'] = institutions
+            r['readingOrder'] = [sid for group in groups for sid in group['chapters']] + houses + institutions
+        elif r['kind'] == 'world':
+            opening = next((s for s in sections.values() if s['title'].startswith('Silvengard em 1277 AQD')), None)
+            if opening:
+                r['opening'] = opening['displayMarkdown']
+                r['chapters'] = [sid for sid in r['chapters'] if sid != opening['id']]
+            groups = world_groups(r['chapters'], sections)
+            r['storyGroups'] = groups
+            r['readingOrder'] = [sid for group in groups for sid in group['chapters']]
     data['presentationVersion'] = 2
     return data

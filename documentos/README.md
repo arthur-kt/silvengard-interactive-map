@@ -329,39 +329,130 @@ Revisão aprovada: Elucitor 1.050.000, Velaffeld 250.000 e Asgorath 100.000 habi
 
 O registro completo está em `Revisao-Economica-Aplicada.md`. Os checkpoints `economic-review-defaults.json` e `economy-review-source.json` preservam a revisão nos rebuilds e as edições posteriores feitas com Definir como padrão continuam sendo aplicadas. Backups em `backups/v40-before-approved-economy`. Validação: 128 testes passaram; duas simulações consecutivas em cada instalação conservaram moedas e reconciliaram os mercados.
 
-## Visão local em escala real (v44)
+## Visão local em escala real (v44–v46)
 
-O modo **Ver no local** deixou de ser um zoom no mapa. Ao entrar, o Atlas mede o contexto do
-ponto e reconstrói o lugar em metros:
+O modo **Ver no local** não é um zoom no mapa. Ao entrar — em qualquer ponto de terra firme,
+não só em cidades — o Atlas mede o contexto e reconstrói o lugar em metros:
 
-- **Escala.** `local-field.js` fixa 1 unidade de cena = 2,2 m e lê o mapa na escala real
-  (1 unidade do mundo = 1,5 km, `settings.distanceScale`). Uma célula da grade tem 6 km de
-  lado — maior que a cidade inteira — por isso o detalhe fino é sintetizado, não copiado.
-- **Cidade do tamanho certo.** O raio urbano vem dos habitantes (densidade ilustrativa de
-  ~6.000/km², limitado a 2,9 km): uma vila de 400 habitantes tem ~0,2 km de raio; uma cidade
-  de 39 mil tem ~1,5 km; Elucitor, 1,05 milhão, chega ao limite. O núcleo tem casas
-  detalhadas, praça, igreja, mercado, muralhas e porto; a periferia é uma malha de quarteirões
-  instanciada (até 12.000 casas) com frente de rua, telhados, portas, janelas e embasamento.
-- **Água e relevo.** O corpo d'água mais próximo é medido andando pela grade (mar, lago ou
-  rio), seu tamanho vem da área original e a margem é aproximada para a escala do lugar: um
-  porto encosta o cais na cidade; um lago conserva centenas de metros a alguns quilômetros de
-  água. O relevo soma o entorno do mapa — a serra mais próxima vira uma cordilheira a 2–12 km,
-  com 120–1.900 m de altura — a morros e vales sintetizados. O horizonte chega a 15 km, com
-  névoa de distância.
-- **Cena em faixas.** O terreno é desenhado em uma malha fina que acompanha o jogador (passo
-  de 4,5 m) e quatro faixas estáticas (14 m a 145 m); as faixas recortam um círculo ao redor
-  do jogador para não cobrirem a malha fina. A malha das ruas é geometria própria, com pedra
-  ou terra conforme o trecho. A água tem profundidade por vértice (cor, transparência,
-  espuma e ondas), e o chão urbano troca a grama por terra batida e lajedo.
-- **Moradores.** Caminham apenas em ruas de terra firme, com posição no chão, balanço de passo
-  e nunca sobre a água; só são animados perto do jogador.
-- **Movimento.** Andar, correr com Shift (~10,5 m/s), pular (Espaço) e voar (duplo Espaço ou
-  F), com subida/descida rápidas (15 m/s) e limite de altitude. A colisão com casas continua
-  valendo no chão.
-- **Atalhos.** `?local=<id da cidade>` ou `?local=<x>,<y>` abre a visão local direto.
-- **Custo.** A construção do lugar leva cerca de 0,8–1,0 s nesta máquina (medido em
-  `__street.debug.state().timing`), coberta pela transição de entrada; sair libera geometrias
-  e materiais.
+- **Escala de representação.** `local-field.js` fixa 1 unidade de cena = 2,2 m e lê o mapa na
+  escala real (1 unidade do mundo = 1,5 km, `settings.distanceScale`). A população do Atlas
+  inclui os arredores rurais: só ~18% viram núcleo urbano, e o raio cresce devagar (32 m a
+  620 m): 400 habitantes ≈ 56 m, 1.500 ≈ 78 m, 39 mil ≈ 267 m, 1 milhão ≈ 620 m. A menor
+  localidade é uma vila com poucas casas, não uma cidade em miniatura.
+- **Água e relevo.** O corpo d'água mais próximo é medido na grade (mar, lago ou rio), seu
+  tamanho vem da área original e a margem é aproximada para a escala do lugar: um porto encosta
+  o cais na cidade; um lago conserva centenas de metros a alguns quilômetros. A serra mais
+  próxima vira cordilheira a 2–12 km, com 120–1.900 m, e o horizonte chega a 15 km.
+- **Arquitetura com caráter.** `town.js` usa o clima e o tipo de cidade: paletas de reboco,
+  madeira ou pedra; telhados de telha, palha ou laje (árido); casas com 1 a 4 andares em quatro
+  proporções (casebre, casa alta, casa comprida, torre); telhados de duas águas, quatro águas
+  ou laje; paredes com juntas de pedra, tábuas ou manchas de reboco; neve no chão, nos telhados
+  e nas ruas quando o bioma é frio. Cidades anãs usam pedra; escolas de magia, telhado azul.
+- **Traçado por tipo.** Vila (uma rua e um poço), porto (avenida do cais e praça de mercado),
+  capital (praça grande, anel viário e paço), fortaleza (forte central) e cidade comum. Porto
+  ganha cais, trapiches, guindaste, galpões, barcos e farol. A entrada da cidade é a rua junto
+  à praça, olhando para fora. Em cidade portuária ou de lago a margem é trazida para o limite
+  urbano, para o cais não ficar a centenas de metros do casario.
+- **Distritos.** Cada cidade ganha um **mercado geral** (bancas, armazém, estandarte), um
+  **templo** (cruz de pedra, lampiões), **oficinas** e, quando há cidadela/fortaleza, um
+  **quartel** (barracão, pátio de treino, bonecos). As oficinas seguem a produção real da
+  cidade lida em `economy-source.json` (metal, madeira, alimentos ou bens gerais), e o distrito
+  onde você está aparece no HUD («Distrito · Mercado»). As praças de distrito recebem
+  calçamento próprio no desenho das ruas.
+- **História antes da cena.** `local-lore.js` indexa `history-archive.json` por cidade, extrai
+  o parágrafo de história local (sem a ficha técnica) e traços como porto, muralhas, mina,
+  neve, lago, templo e mercado. Esses traços entram no traçado (muralhas, porto) e a primeira
+  frase aparece sob o nome do lugar. Cidades sem história individual não recebem frase.
+- **Cena em faixas.** Terreno fino que acompanha o jogador (4,5 m) e quatro faixas estáticas
+  (14 m a 145 m), recortadas em círculo para não cobrirem a malha fina. A água tem profundidade
+  por vértice (cor, transparência, espuma e ondas); as ruas são geometria própria; o chão
+  urbano troca a grama por terra e lajedo.
+- **Movimento.** Andar, correr (~10,5 m/s), pular e voar (duplo Espaço ou F) a ~110 m/s
+  horizontais e 45 m/s verticais, até 1.800 m de altitude. Não há pedestres: a cena fica mais
+  limpa e evita figuras andando fora de lugar.
+- **Atalhos.** `?local=<id>` ou `?local=<x>,<y>`; a escolha no mapa aceita qualquer terra
+  firme e, se o clique cair na água, procura a margem mais próxima.
+- **Custo.** Cerca de 0,5–1,0 s para montar (medido em `__street.debug.state().timing`),
+  coberto pela transição; sair libera geometrias e materiais.
 
-Testes: `desenvolvimento/testes/local-field.test.mjs` cobre a escala, o tamanho do corpo
-d'água, a coerência do porto, o determinismo e a continuidade do relevo.
+Testes: `local-field.test.mjs` cobre escala, água, porto, determinismo e continuidade do
+relevo; `local-lore.test.mjs` cobre a leitura da história e os traços.
+
+**Próximo passo (cidade a cidade):** um arquivo de ajustes por cidade — traçado, monumentos,
+material, portas e marcos citados na crônica — para substituir a cena genérica por uma cena
+autoral. A base já está pronta (`local-lore.js` + `makeLayout` por tipo); falta o conteúdo.
+
+## Histórias dinásticas e leitura interativa — v47 (11/11/2026)
+
+O **Guia de Integração Histórica e Dinástica (1277 AQD)** foi incorporado aos três arquivos de
+`app/historic_archives`. A integração é reproduzível por
+`desenvolvimento/ferramentas/integrar_historia_1277.py` (idempotente, com marcadores) e as
+árvores autorais ficam em `desenvolvimento/ferramentas/linhagens_1277.py`. O backup anterior
+está em `acervo/backups/v47-before-historia-1277`.
+
+- **História geral**: nova seção "A sucessão das casas e das guerras" e os quadros de guerras
+  de incorporação e confrontos entre as grandes potências.
+- **Cronologia**: 98 marcos (eram 38), de 125 AQD a 1277 AQD, sem repetir os marcos antigos.
+  As datas aproximadas continuam aproximadas.
+- **19 Estados**: os capítulos da Parte II entraram na *História integral* de cada um. A Parte
+  IV acrescentou 54 textos a cidades, ruínas e acidentes geográficos já existentes; a Parte V
+  entrou nas seções de instituições (Cavaleiros Santos, Lírio da Aurora, Senado, Conselho
+  eleitor, Conselho das Forjas, Conclave e Pacto dos Portos Livres).
+- **35 linhagens** em 18 Estados, com seção própria `### Casas, sucessões e linhagens`. Valar
+  recebeu três nomes isolados, sem genealogia inventada; Piglia não tem casa dinástica.
+- **Réguas de sucessão** lidas das tabelas existentes: 30 reinados de Dragonfall, 29 Lucien,
+  22 Valdren, 18 Candelar, 17 Varkhazar, 7 Grunvar, 6 Al Sahr, 7 pontífices e os senhores de
+  Adhuc Vivere. Nenhum dado do mapa, mercado ou economia foi alterado.
+
+### Interface
+
+`dist/history-lineage.js` desenha as árvores e as réguas. `dist/history-reader.js` ganhou a aba
+**Linhagens**, páginas de casa com árvore interativa (zoom, arrastar, recolher ramos, localizar
+nome e destacar ancestralidade), a régua de reinados com filtro por casa e detalhe do governo,
+e a cronologia por século com busca e teclas ↑/↓. A leitura também tem **← Voltar**, ajuste de
+texto (A−/A+), barra de progresso e capítulo ativo no sumário. O Markdown agora aceita listas
+aninhadas, mantendo a hierarquia das genealogias antigas.
+
+No Markdown, a árvore é um bloco cercado por ```linhagem com `casa:`, `sede:`, `tipo:`,
+`nota:` e linhas `- Nome | papel | período | observação | par=Consorte`, indentadas por dois
+espaços. As réguas são lidas de tabelas com coluna **Reinado**, **Governo** ou **Período**.
+
+Testes: `test_history_archive.py` (contagem de marcos, linhagens, sucessões e separação entre
+prosa e blocos), `history-lineage.test.mjs` (listas aninhadas, árvore, estatísticas e régua) e a
+suíte existente (151 testes JS). A falha de `test_province_defaults.py` no ambiente atual é um
+EPERM ao gravar em `%TEMP%` pelo Node, não relacionada às histórias.
+
+## Descrições das localidades e leitura guiada — v48 (11/11/2026)
+
+- `app/dist/locality-descriptions.json` descreve as **44 localidades do mapa**. `app.js` carrega o
+  arquivo antes de montar os pontos de interesse; a ficha de cada lugar deixa de mostrar “Sem
+  descrição”. `desenvolvimento/ferramentas/descrever_localidades.py` grava os mesmos textos nos
+  verbetes de *Pontos de interesse* dos Estados (44 substituições e o Deserto de Lirion acrescentado).
+  `convert.py` reaplica as descrições depois dos padrões persistentes, para que uma reconstrução
+  não as perca.
+- **História do mundo** ganhou a seção de abertura `Silvengard em 1277 AQD`, botões para
+  mitologia/cronologia/Estados, uma **linha do tempo embutida** com as quatro eras e capítulos
+  agrupados em mitologia, eras e reinos, presente e memórias. Amestris passou para o fim.
+- **Estados** ganharam o bloco `Como está hoje`, fatos rápidos (capital, casas, marcos), a régua de
+  reinados recolhida e a linha do tempo antes da narrativa. Os capítulos são classificados em
+  panorama/instituições, Origens e Era dos Dragões, Era dos Impérios e Era Contemporânea; as
+  árvores e as instituições ficam em seções próprias no fim.
+- A classificação usa `storyGroups` em `history_presentation.py`; o leitor usa `readingOrder` e
+  mantém `chapters` para as fichas e a busca. Nenhum texto foi apagado — apenas reordenado.
+- Testes: 155 JS (inclui `locality-descriptions.test.mjs`) e 13 de história em Python.
+
+## Conflitos e o nome do Corvo Colérico — v49 (11/11/2026)
+
+- **Corvo Colérico:** o rei de Dragonfall passou a ser **Tiberius Rodstrock** (558–585 AQD),
+  substituindo o nome anterior em todos os arquivos, tabelas, árvores, cronologias e no guia.
+- **Aba Conflitos:** 24 fichas em `app/dist/conflicts-source.json`, indexadas por
+  `history_archive.py` como registros `conflict`. Cada ficha traz período, lugar, tipo, resultado,
+  vencedor, força total, baixas totais, comandantes, força e baixas por lado, objetivos e resumo.
+- **Estimativas:** efetivos e baixas são números de campanha marcados com `~`; a interface avisa
+  que a crônica não registra totais exatos. Os totais são somados a partir dos lados.
+- **Interface:** nova aba ao lado de Instituições, índice agrupado por século e ficha com cartões
+  de resultado, números e lados; barras comparam força e baixas. Inclui atalhos para os Estados.
+- Testes: `conflicts.test.mjs` valida ids, lados, totais, resultados e links; `test_history_archive.py`
+  confere os 24 registros e os totais da Guerra das Relíquias. A suíte tem 159 testes JS e 16 de
+  história em Python.
+

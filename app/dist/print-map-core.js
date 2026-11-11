@@ -379,26 +379,17 @@ function prepareWorld(D) {
   }
 
   return {
-    cols, rows, h, land, lake, coastDist, mountains, stateEdges, neighbours,
+    cols, rows, h, land, lake, coastDist, mountains, stateEdges, neighbours, vx, vy,
     coastLoops: stitch(coastEdges, vx, vy).map(loop => smoothLoop(loop, 1)),
     lakeLoops: stitch(lakeEdges, vx, vy).map(loop => smoothLoop(loop, 1)),
     stateChains: stitch(stateEdges, vx, vy).map(loop => {
-      // no mapa físico a fronteira pode ondular mais; nos mapas pintados ela
-      // precisa acompanhar de perto o limite das cores
+      // uma leve irregularidade por vértice, a mesma nos dois lados da fronteira
       const jittered = loop.ids.map(id => [
         vx[id] + (hash01(id * 17 + 3) - 0.5) * 2.8,
         vy[id] + (hash01(id * 29 + 7) - 0.5) * 2.8
       ]);
       let pts = smoothPoints(jittered, loop.closed, 5);
       pts = wobblePoints(pts, loop.closed, 1.1, hash01(loop.ids[0] * 13) * 6.28);
-      return {points: pts, closed: loop.closed};
-    }),
-    stateChainsFine: stitch(stateEdges, vx, vy).map(loop => {
-      const jittered = loop.ids.map(id => [
-        vx[id] + (hash01(id * 17 + 3) - 0.5) * 1.1,
-        vy[id] + (hash01(id * 29 + 7) - 0.5) * 1.1
-      ]);
-      const pts = smoothPoints(jittered, loop.closed, 1);
       return {points: pts, closed: loop.closed};
     })
   };
@@ -837,7 +828,12 @@ function legendMetrics(ctx, model, s) {
   for (const e of entries) widest = Math.max(widest, ctx.measureText(e.label).width);
   const maxLabel = Math.min(132 * s, Math.max(48 * s, widest));
   const colW = sw + 7 * s + maxLabel;
-  const width = Math.max(model.ramp ? 196 * s : 0, entries.length === 0 ? 150 * s : 0, pad * 2 + cols * colW + (cols - 1) * 12 * s);
+  setFont(ctx, 7.4 * s, 400, true);
+  const noteW = model.note ? ctx.measureText(model.note).width : 0;
+  setFont(ctx, 10 * s, 600, false);
+  const titleW = trackedWidth(ctx, model.title || 'LEGENDA', 1.6 * s);
+  const headerW = Math.min(320 * s, Math.max(noteW, titleW, 48 * s));
+  const width = Math.max(model.ramp ? 196 * s : 0, entries.length === 0 ? 150 * s : 0, pad * 2 + headerW, pad * 2 + cols * colW + (cols - 1) * 12 * s);
   const rows = Math.ceil(entries.length / cols);
   const headerH = 26 * s + (model.note ? 13 * s : 0);
   const rampH = model.ramp ? 30 * s : 0;
@@ -971,23 +967,55 @@ function drawFrame(ctx, W, H, s, pal) {
 
 function drawTitle(ctx, W, s, pal, title, subtitle, opts) {
   const center = W / 2;
-  drawTracked(ctx, title.toUpperCase(), center, 46 * s, {
-    size: 25 * s, tracking: 0.18 * 25 * s, weight: 600, color: css(labelInkOf(opts, pal, false)), align: 'center', alpha: 0.97,
-    halo: {width: 7 * s, color: hexA(pal.paperLight, 0.45)}
+  const scale = clamp(Number(opts.titleScale) || 1, 0.75, 1.6);
+  const titleSize = 25 * s * scale;
+  const titleTracking = 0.18 * titleSize;
+  const subSize = 7.6 * s;
+  const subTracking = 2.4 * s;
+  const titleY = 46 * s;
+  const subY = titleY + titleSize * 0.55 + 3 * s + subSize * 0.5;
+  const ruleY = subY + 9 * s;
+  const shownTitle = title.toUpperCase();
+  if (opts.titleFrame) {
+    setFont(ctx, titleSize, 600, false);
+    const tw = trackedWidth(ctx, shownTitle, titleTracking);
+    setFont(ctx, subSize, 400, false);
+    const sw = trackedWidth(ctx, subtitle, subTracking);
+    const fw = Math.max(tw, sw) + 44 * s;
+    const fy = Math.max(17 * s, titleY - titleSize * 0.55 - 9 * s);
+    const fh = ruleY - fy + 11 * s;
+    const fx = center - fw / 2;
+    ctx.save();
+    ctx.fillStyle = hexA(pal.paperLight, 0.62);
+    ctx.fillRect(fx, fy, fw, fh);
+    ctx.strokeStyle = hexA(pal.ink, 0.55); ctx.lineWidth = 1.2 * s;
+    ctx.strokeRect(fx, fy, fw, fh);
+    ctx.strokeStyle = hexA(pal.gold, 0.7); ctx.lineWidth = 0.6 * s;
+    ctx.strokeRect(fx + 4 * s, fy + 4 * s, fw - 8 * s, fh - 8 * s);
+    ctx.fillStyle = hexA(pal.gold, 0.85);
+    for (const [cx, cy] of [[fx, fy], [fx + fw, fy], [fx, fy + fh], [fx + fw, fy + fh]]) {
+      const r = 3.2 * s;
+      ctx.beginPath(); ctx.moveTo(cx, cy - r); ctx.lineTo(cx + r, cy); ctx.lineTo(cx, cy + r); ctx.lineTo(cx - r, cy); ctx.closePath(); ctx.fill();
+    }
+    ctx.restore();
+  }
+  drawTracked(ctx, shownTitle, center, titleY, {
+    size: titleSize, tracking: titleTracking, weight: 600, color: css(labelInkOf(opts, pal, false)), align: 'center', alpha: 0.97,
+    halo: {width: Math.max(5 * s, titleSize * 0.28), color: hexA(pal.paperLight, 0.45)}
   });
-  drawTracked(ctx, subtitle, center, 66 * s, {
-    size: 7.6 * s, tracking: 2.4 * s, color: css(labelInkOf(opts, pal, true)), align: 'center', alpha: 0.92,
+  drawTracked(ctx, subtitle, center, subY, {
+    size: subSize, tracking: subTracking, color: css(labelInkOf(opts, pal, true)), align: 'center', alpha: 0.92,
     halo: {width: 4 * s, color: hexA(pal.paperLight, 0.4)}
   });
   ctx.save();
   ctx.strokeStyle = hexA(pal.ink, 0.35); ctx.lineWidth = 0.8 * s;
   const half = 120 * s;
-  ctx.beginPath(); ctx.moveTo(center - half, 75 * s); ctx.lineTo(center - 8 * s, 75 * s);
-  ctx.moveTo(center + 8 * s, 75 * s); ctx.lineTo(center + half, 75 * s); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(center - half, ruleY); ctx.lineTo(center - 8 * s, ruleY);
+  ctx.moveTo(center + 8 * s, ruleY); ctx.lineTo(center + half, ruleY); ctx.stroke();
   ctx.fillStyle = hexA(pal.gold, 0.8);
   ctx.beginPath();
-  ctx.moveTo(center, 71.5 * s); ctx.lineTo(center + 3.5 * s, 75 * s);
-  ctx.lineTo(center, 78.5 * s); ctx.lineTo(center - 3.5 * s, 75 * s);
+  ctx.moveTo(center, ruleY - 3.5 * s); ctx.lineTo(center + 3.5 * s, ruleY);
+  ctx.lineTo(center, ruleY + 3.5 * s); ctx.lineTo(center - 3.5 * s, ruleY);
   ctx.closePath(); ctx.fill();
   ctx.restore();
 }
@@ -1150,6 +1178,84 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
   const inhabitantsOf = b => inhabitants(D, b);
 
   const visibleCities = () => D.cities.filter(b => !b.excluded && b.visible !== false);
+
+  function cellAtPoint(x, y) {
+    const g = D.grid;
+    if (!g) return -1;
+    const col = clamp(Math.floor(x / g.stepX), 0, g.columns - 1);
+    const row = clamp(Math.floor(y / g.stepY), 0, g.rows - 1);
+    return row * g.columns + col;
+  }
+
+  // Recorte por estado ou província: células, caixa, vizinhança para os
+  // elementos naturais que atravessam a fronteira.
+  function resolveFocus(opts) {
+    const raw = String(opts.focus || '');
+    if (!raw) return null;
+    const [kind, idText] = raw.split(':');
+    const id = Number(idText);
+    if (!Number.isFinite(id)) return null;
+    let cells, name, stateId = null;
+    if (kind === 'state') {
+      const s = D.states.find(x => x.i === id);
+      if (!s) return null;
+      cells = D.cells.filter(c => art.land[c.i] && c.state === id);
+      name = String(stateName ? stateName(s) : s.name).trim();
+      stateId = id;
+    } else if (kind === 'province') {
+      const p = provinces();
+      if (!p) return null;
+      const pr = p.data.provinces.find(x => x.i === id);
+      if (!pr) return null;
+      cells = D.cells.filter(c => art.land[c.i] && p.provinceAt(c.i)?.i === id);
+      name = String(pr.name).trim();
+      stateId = pr.state;
+    } else {
+      return null;
+    }
+    if (!cells.length) return null;
+    const set = new Set();
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (const c of cells) {
+      set.add(c.i);
+      for (const vid of c.v) {
+        const pt = D.vertices[vid].p;
+        if (pt[0] < x0) x0 = pt[0];
+        if (pt[0] > x1) x1 = pt[0];
+        if (pt[1] < y0) y0 = pt[1];
+        if (pt[1] > y1) y1 = pt[1];
+      }
+    }
+    const near = new Set(set);
+    let frontier = [...set];
+    for (let step = 0; step < 2; step++) {
+      const next = [];
+      for (const cellId of frontier) {
+        const c = D.cells[cellId];
+        for (let k = 0; k < c.v.length; k++) {
+          const nb = art.neighbours[cellId][k];
+          if (nb >= 0 && art.land[nb] && !near.has(nb)) { near.add(nb); next.push(nb); }
+        }
+      }
+      frontier = next;
+    }
+    const borderEdges = new Map();
+    for (const c of cells) {
+      for (let k = 0; k < c.v.length; k++) {
+        const nb = art.neighbours[c.i][k];
+        if (nb < 0 || !art.land[nb] || set.has(nb)) continue;
+        const nbState = D.cells[nb].state;
+        if (!nbState || nbState === stateId) continue;
+        if (!borderEdges.has(nbState)) borderEdges.set(nbState, []);
+        borderEdges.get(nbState).push([c.v[k], c.v[(k + 1) % c.v.length]]);
+      }
+    }
+    const st = stateId != null ? D.states.find(s => s.i === stateId) : null;
+    return {
+      kind, id, name, cells, set, near, x0, y0, x1, y1, stateId, borderEdges,
+      stateName: st ? String(stateName ? stateName(st) : st.name).trim() : ''
+    };
+  }
   const citySize = b => b.capital ? 1 : (b.settlementClass === 'Vila' ? 0 : 2);
 
   function society() {
@@ -1384,11 +1490,27 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
     const mapRect = {x: mapInset, y: mapInset, w: W - mapInset * 2, h: H - mapInset * 2};
     const baseScale = Math.min(mapRect.w / MAP_W, mapRect.h / MAP_H);
     const zoom = clamp(Number(opts.zoom) || 1, 1, 1.2);
-    const scale = baseScale * zoom;
-    const mx = mapRect.x + (mapRect.w - MAP_W * baseScale) / 2;
-    const my = mapRect.y;
+    const focus = resolveFocus(opts);
+    let scale, mx, my;
+    if (focus) {
+      const fw0 = focus.x1 - focus.x0, fh0 = focus.y1 - focus.y0;
+      const pad = Math.max(14, Math.max(fw0, fh0) * 0.08);
+      const fw = fw0 + pad * 2, fh = fh0 + pad * 2;
+      const fit = Math.min(mapRect.w / fw, mapRect.h / fh);
+      // um mínimo de mundo visível evita que uma província minúscula
+      // transforme o terreno em manchas gigantes
+      scale = Math.min(fit, baseScale * 14, mapRect.w / 760) * zoom;
+      const cx = (focus.x0 + focus.x1) / 2, cy = (focus.y0 + focus.y1) / 2;
+      mx = mapRect.x + mapRect.w / 2 - cx * scale;
+      my = mapRect.y + mapRect.h / 2 - cy * scale;
+    } else {
+      scale = baseScale * zoom;
+      mx = mapRect.x + (mapRect.w - MAP_W * baseScale) / 2;
+      my = mapRect.y;
+    }
     const X = x => mx + x * scale, Y = y => my + y * scale;
-    const u = scale;
+    // tipografia e traços acompanham a folha, não o zoom do recorte
+    const u = Math.min(scale, 1.35 * s);
     const inkA = (a) => hexA(pal.ink, a);
 
     // papel
@@ -1414,7 +1536,7 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
     const raster = landRaster(mode, pal, reliefStyle);
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(raster.canvas, mx, my, MAP_W * u, MAP_H * u);
+    ctx.drawImage(raster.canvas, mx, my, MAP_W * scale, MAP_H * scale);
 
     // lagos
     if (art.lakeLoops.length) {
@@ -1482,10 +1604,11 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
 
     // grades e coordenadas
     if (opts.grid !== false) drawGraticule(ctx, mapRect, mx, my, scale, s, pal);
-    if (opts.unknownNorth !== false) drawUnknownNorth(ctx, mapRect, W, s, pal, opts, X, Y);
+    if (!focus && opts.unknownNorth !== false) drawUnknownNorth(ctx, mapRect, W, s, pal, opts, X, Y);
+    if (focus) drawFocusOutline(ctx, pal, u, X, Y, focus);
 
     // marcas e rótulos
-    const legendModel = opts.legend !== false ? buildLegend(mode, pal, opts) : null;
+    const legendModel = opts.legend !== false ? buildLegend(mode, pal, opts, focus) : null;
     let legendRect = null;
     if (legendModel) {
       const m = legendMetrics(ctx, legendModel, s);
@@ -1494,22 +1617,24 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
         : {x: mapRect.x + mapRect.w - 12 * s - m.width, y: mapRect.y + 12 * s, w: m.width, h: m.height};
     }
     const board = createBoard(mapRect, 3);
-    reserveFurniture(ctx, board, W, H, mapRect, s, opts, pal, legendRect);
+    reserveFurniture(ctx, board, W, H, mapRect, s, opts, pal, legendRect, focus);
     const cityLevel = opts.cities || 'capitals';
-    const allCities = visibleCities();
+    const allCities = visibleCities().filter(b => !focus || opts.focusOtherCities || focus.set.has(b.cell));
     const majorIds = new Set(allCities.filter(isMajorCity).map(b => b.i));
     const topIds = new Set([...allCities].sort((a, b) => inhabitantsOf(b) - inhabitantsOf(a)).slice(0, 30).map(b => b.i));
-    drawCityMarkers(ctx, opts, pal, u, X, Y, mode);
-    drawStateLabels(ctx, opts, pal, u, X, Y, board, mode);
-    if (mode === 'provinces') drawProvinceLabels(ctx, opts, pal, u, X, Y, board);
-    if (cityLevel !== 'none') drawCityLabels(ctx, opts, pal, u, X, Y, board, allCities.filter(b => b.capital));
+    drawCityMarkers(ctx, opts, pal, u, X, Y, mode, focus);
+    const placedStates = drawStateLabels(ctx, opts, pal, u, X, Y, board, mode, focus);
+    if (mode === 'provinces' || (focus && opts.focusOtherProvinces)) drawProvinceLabels(ctx, opts, pal, u, X, Y, board, focus);
+    drawFocusProvinceLabel(ctx, opts, pal, u, X, Y, board, focus);
+    drawBorderStateLabels(ctx, opts, pal, u, X, Y, board, focus, placedStates);
+    drawWaterLabels(ctx, opts, pal, u, X, Y, board, mode, focus);
+    if (cityLevel !== 'none') drawCityLabels(ctx, opts, pal, u, X, Y, board, allCities.filter(b => b.capital), focus);
     if (cityLevel === 'major' || cityLevel === 'all') {
       const rest = allCities.filter(b => !b.capital && (cityLevel === 'all' || majorIds.has(b.i) || topIds.has(b.i)));
-      drawCityLabels(ctx, opts, pal, u, X, Y, board, rest);
+      drawCityLabels(ctx, opts, pal, u, X, Y, board, rest, focus);
     }
-    drawWaterLabels(ctx, opts, pal, u, X, Y, board, mode);
-    drawPoiLabels(ctx, opts, pal, u, X, Y, board, mode);
-    drawRiverLabels(ctx, opts, pal, u, X, Y, board, mode);
+    drawRiverLabels(ctx, opts, pal, u, X, Y, board, mode, focus);
+    drawPoiLabels(ctx, opts, pal, u, X, Y, board, mode, focus);
 
     ctx.restore();
 
@@ -1531,13 +1656,51 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
     return canvas;
   }
 
-  function reserveFurniture(ctx, board, W, H, mapRect, s, opts, pal, legendRect) {
+  function reserveFurniture(ctx, board, W, H, mapRect, s, opts, pal, legendRect, focus) {
     // título
-    board.reservePx(W / 2 - 260 * s, 18 * s, 520 * s, 64 * s);
-    if (opts.unknownNorth !== false && opts.unknownLabel !== false) board.reservePx(W * 0.225 - 130 * s, mapRect.y + 8 * s, 260 * s, 26 * s);
+    const titleScale = clamp(Number(opts.titleScale) || 1, 0.75, 1.6);
+    const titleH = (66 + Math.max(0, titleScale - 1) * 18 + (opts.titleFrame ? 22 : 0)) * s;
+    board.reservePx(W / 2 - 330 * s, 18 * s, 660 * s, titleH);
+    if (!focus && opts.unknownNorth !== false && opts.unknownLabel !== false) board.reservePx(W * 0.225 - 130 * s, mapRect.y + 8 * s, 260 * s, 26 * s);
     if (opts.compass !== false) board.reservePx(W - 95 * s - 62 * s, H - 150 * s - 62 * s, 124 * s, 124 * s);
     if (opts.scale !== false) board.reservePx(W - 250 * s, H - 80 * s, 220 * s, 32 * s);
     if (legendRect) board.reservePx(legendRect.x - 2 * s, legendRect.y - 2 * s, legendRect.w + 4 * s, legendRect.h + 4 * s);
+  }
+
+  function drawFocusOutline(ctx, pal, u, X, Y, focus) {
+    const edges = [];
+    for (const cellId of focus.set) {
+      const c = D.cells[cellId];
+      for (let k = 0; k < c.v.length; k++) {
+        const nb = art.neighbours[cellId][k];
+        if (nb < 0 || focus.set.has(nb)) continue;
+        edges.push([c.v[k], c.v[(k + 1) % c.v.length]]);
+      }
+    }
+    if (!edges.length) return;
+    const chains = stitch(edges, art.vx, art.vy).map(loop => {
+      const jittered = loop.ids.map(id => [
+        art.vx[id] + (hash01(id * 17 + 3) - 0.5) * 1.1,
+        art.vy[id] + (hash01(id * 29 + 7) - 0.5) * 1.1
+      ]);
+      return {points: smoothPoints(jittered, loop.closed, 3), closed: loop.closed};
+    });
+    const path = new Path2D();
+    for (const chain of chains) {
+      const pts = chain.points;
+      path.moveTo(X(pts[0][0]), Y(pts[0][1]));
+      for (let i = 1; i < pts.length; i++) path.lineTo(X(pts[i][0]), Y(pts[i][1]));
+      if (chain.closed) path.closePath();
+    }
+    ctx.save();
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.strokeStyle = hexA(pal.paperLight, 0.75);
+    ctx.lineWidth = 5 * u;
+    ctx.stroke(path);
+    ctx.strokeStyle = rgba(mix(hexRgb(pal.gold), hexRgb(pal.ink), 0.25), 0.9);
+    ctx.lineWidth = 1.7 * u;
+    ctx.stroke(path);
+    ctx.restore();
   }
 
   /* ------------------------------------------------------------ terreno detalhado */
@@ -1690,14 +1853,6 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
     ctx.restore();
   }
 
-  function borderSegments(array, X, Y) {
-    const path = new Path2D();
-    for (const [a, b] of array) {
-      path.moveTo(X(a[0]), Y(a[1])); path.lineTo(X(b[0]), Y(b[1]));
-    }
-    return path;
-  }
-
   function drawBorders(ctx, mode, pal, u, X, Y, opts) {
     ctx.save();
     ctx.lineCap = 'round';
@@ -1706,15 +1861,16 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
     // fronteiras dos estados: sempre visíveis, exceto se o autor desligar
     if (opts.stateBorders !== false) {
       const statePath = new Path2D();
-      const chains = mode === 'terrain' ? art.stateChains : art.stateChainsFine;
+      const chains = art.stateChains;
       for (const chain of chains) {
         const pts = chain.points;
         statePath.moveTo(X(pts[0][0]), Y(pts[0][1]));
         for (let i = 1; i < pts.length; i++) statePath.lineTo(X(pts[i][0]), Y(pts[i][1]));
         if (chain.closed) statePath.closePath();
       }
-      ctx.strokeStyle = hexA(pal.paperLight, mode === 'political' ? 0.32 : 0.22);
-      ctx.lineWidth = 2.1 * u;
+      const thematic = mode !== 'terrain';
+      ctx.strokeStyle = hexA(thematic ? pal.landWarm : pal.paperLight, thematic ? 0.62 : 0.22);
+      ctx.lineWidth = (thematic ? 5.2 : 2.1) * u;
       ctx.stroke(statePath);
       ctx.setLineDash([]);
       ctx.strokeStyle = hexA(pal.ink, mode === 'political' ? 0.75 : 0.66);
@@ -1731,30 +1887,48 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
         for (let k = 0; k < c.v.length; k++) {
           const nb = art.neighbours[c.i][k];
           if (nb < 0 || nb <= c.i || !art.land[nb]) continue;
-          if (fieldAt(nb) !== mine) edges.push([D.vertices[c.v[k]].p, D.vertices[c.v[(k + 1) % c.v.length]].p]);
+          if (fieldAt(nb) !== mine) edges.push([c.v[k], c.v[(k + 1) % c.v.length]]);
         }
       }
+      const chains = stitch(edges, art.vx, art.vy).map(loop => {
+        const jittered = loop.ids.map(id => [
+          art.vx[id] + (hash01(id * 17 + 3) - 0.5) * 2.2,
+          art.vy[id] + (hash01(id * 29 + 7) - 0.5) * 2.2
+        ]);
+        return {points: smoothPoints(jittered, loop.closed, 4), closed: loop.closed};
+      });
+      const path = new Path2D();
+      for (const chain of chains) {
+        const pts = chain.points;
+        path.moveTo(X(pts[0][0]), Y(pts[0][1]));
+        for (let i = 1; i < pts.length; i++) path.lineTo(X(pts[i][0]), Y(pts[i][1]));
+        if (chain.closed) path.closePath();
+      }
       ctx.save();
+      ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      ctx.strokeStyle = hexA(pal.landWarm, 0.34);
+      ctx.lineWidth = 2.6 * u;
+      ctx.stroke(path);
       ctx.strokeStyle = hexA(pal.ink, alpha);
-      ctx.lineWidth = 0.85 * u;
+      ctx.lineWidth = 1.15 * u;
       if (dash) ctx.setLineDash(dash.map(v => v * u));
-      ctx.stroke(borderSegments(edges, X, Y));
+      ctx.stroke(path);
       ctx.restore();
     };
 
     if (['culture', 'religion'].includes(mode)) {
       const field = society();
-      fieldEdges(id => field[mode][id], 0.28, [1.8, 2.8]);
+      fieldEdges(id => field[mode][id], 0.5, [2, 2.4]);
     }
 
     if (mode === 'goods' || mode === 'markets') {
       const map = economy();
-      if (map) fieldEdges(id => (mode === 'goods' ? map.goodsField[id] : map.marketField[id]), 0.26, [2, 2.6]);
+      if (map) fieldEdges(id => (mode === 'goods' ? map.goodsField[id] : map.marketField[id]), 0.46, [2, 2.4]);
     }
 
     if (mode === 'provinces') {
       const p = provinces();
-      if (p) fieldEdges(id => p.provinceAt(id)?.i ?? 0, 0.42, null);
+      if (p) fieldEdges(id => p.provinceAt(id)?.i ?? 0, 0.55, null);
     }
   }
 
@@ -1835,13 +2009,23 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
 
   /* ------------------------------------------------------------ rótulos */
 
-  function drawProvinceLabels(ctx, opts, pal, u, X, Y, board) {
+  function drawProvinceLabels(ctx, opts, pal, u, X, Y, board, focus) {
     const p = provinces();
     if (!p) return;
-    const list = [...p.data.provinces]
-      .filter(pr => pr.area > 900 && pr.labelPoint)
-      .sort((a, b) => b.area - a.area)
-      .slice(0, 60);
+    let list = [...p.data.provinces].filter(pr => pr.area > 900 && pr.labelPoint).sort((a, b) => b.area - a.area);
+    if (focus) {
+      if (focus.kind === 'province') {
+        list = opts.focusOtherProvinces ? list.filter(pr => pr.i !== focus.id) : [];
+      } else if (!opts.focusOtherProvinces) {
+        const ids = new Set();
+        for (const cellId of focus.set) {
+          const pr = p.provinceAt(cellId);
+          if (pr) ids.add(pr.i);
+        }
+        list = list.filter(pr => ids.has(pr.i));
+      }
+    }
+    list = list.slice(0, 60);
     for (const pr of list) {
       const text = String(pr.name).toUpperCase();
       const size = clamp(8.6 + Math.sqrt(pr.area) * 0.014, 8.6, 13.5) * u;
@@ -1861,8 +2045,8 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
   const isMajorCity = b => !!(b.capital || b.majorPort || b.magicSchool || b.type === 'Escola de magia'
     || b.dwarvenFortress || b.dwarven || String(b.settlementClass || '').startsWith('Forte'));
 
-  function drawCityMarkers(ctx, opts, pal, u, X, Y, mode) {
-    const all = visibleCities();
+  function drawCityMarkers(ctx, opts, pal, u, X, Y, mode, focus) {
+    const all = visibleCities().filter(b => !focus || focus.set.has(b.cell));
     if (all.length === 0) return;
     const ranked = [...all].sort((a, b) => inhabitantsOf(b) - inhabitantsOf(a));
     const top = new Set(ranked.slice(0, 30).map(b => b.i));
@@ -1885,8 +2069,10 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
     }
   }
 
-  function drawCityLabels(ctx, opts, pal, u, X, Y, board, list) {
-    const ordered = [...list].sort((a, b) => (b.capital ? 1 : 0) - (a.capital ? 1 : 0) || inhabitantsOf(b) - inhabitantsOf(a));
+  function drawCityLabels(ctx, opts, pal, u, X, Y, board, list, focus) {
+    const inside = b => focus && focus.set.has(b.cell) ? 1 : 0;
+    const ordered = [...list].sort((a, b) => (b.capital ? 1 : 0) - (a.capital ? 1 : 0)
+      || inside(b) - inside(a) || inhabitantsOf(b) - inhabitantsOf(a));
     for (const b of ordered) {
       const label = String(cityName ? cityName(b) : b.name).trim();
       if (!label) continue;
@@ -1965,9 +2151,38 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
     return D.cells.filter(c => art.land[c.i] && c.state === id);
   }
 
-  function drawStateLabels(ctx, opts, pal, u, X, Y, board, mode) {
-    if (opts.stateLabels === false) return;
-    const states = D.states.filter(s => s.i !== 0 && stateCells(s.i).length > 0);
+  function drawFocusProvinceLabel(ctx, opts, pal, u, X, Y, board, focus) {
+    if (!focus || focus.kind !== 'province') return;
+    const p = provinces();
+    if (!p) return;
+    const pr = p.data.provinces.find(x => x.i === focus.id);
+    if (!pr || !pr.labelPoint) return;
+    const text = String(pr.name).toUpperCase();
+    const size = clamp(11 + Math.sqrt(pr.area || 0) * 0.012, 11, 16) * u;
+    const tracking = size * 0.22;
+    setFont(ctx, size, 400, false);
+    const w = trackedWidth(ctx, text, tracking);
+    for (const dy of [0, -size * 1.6, size * 1.6]) {
+      const x = X(pr.labelPoint[0]), y = Y(pr.labelPoint[1]) + dy;
+      const box = bbox(x, y, w + 5 * u, size * 1.3 + 4 * u, 0);
+      if (!board.fits(box)) continue;
+      board.add(box);
+      drawTracked(ctx, text, x, y, {
+        size, tracking, color: css(labelInkOf(opts, pal, false)), alpha: 0.95,
+        halo: {width: 2.8 * u, color: hexA(pal.land, 0.55)}
+      });
+      return;
+    }
+  }
+
+  function drawStateLabels(ctx, opts, pal, u, X, Y, board, mode, focus) {
+    if (opts.stateLabels === false) return new Set();
+    const placedStates = new Set();
+    let states = D.states.filter(s => s.i !== 0 && stateCells(s.i).length > 0);
+    if (focus) {
+      if (opts.focusHideStateName) states = states.filter(s => s.i !== focus.stateId);
+      if (!opts.focusOtherStates) states = focus.kind === 'state' ? states.filter(s => s.i === focus.id) : [];
+    }
     for (const s of states) {
       const cells = stateCells(s.i);
       if (!cells.length) continue;
@@ -1993,6 +2208,7 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
         const box = bbox(X(cx) + dx, Y(cy) + dy, w + 5 * u, h + 5 * u, angle);
         if (!board.fits(box)) continue;
         board.add(box);
+        placedStates.add(s.i);
         drawTracked(ctx, name, X(cx) + dx, Y(cy) + dy, {
           size, tracking, weight: 600, color: css(labelInkOf(opts, pal, false)), alpha: 0.98, rotate: angle,
           halo: {width: 3 * u, color: hexA(pal.land, 0.55)}
@@ -2004,6 +2220,7 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
         const box = bbox(X(cx), Y(cy), w + 5 * u, h + 5 * u, 0);
         if (board.fits(box)) {
           board.add(box);
+          placedStates.add(s.i);
           drawTracked(ctx, name, X(cx), Y(cy), {
             size, tracking, weight: 600, color: css(labelInkOf(opts, pal, false)), alpha: 0.98,
             halo: {width: 3 * u, color: hexA(pal.land, 0.55)}
@@ -2012,7 +2229,7 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
       }
     }
     // terras livres
-    if (mode === 'political' || mode === 'terrain') {
+    if ((!focus || opts.focusOtherStates) && (mode === 'political' || mode === 'terrain')) {
       const neutral = D.cells.filter(c => art.land[c.i] && c.state === 0);
       if (neutral.length > 400) {
         const R = rng(4242);
@@ -2041,12 +2258,62 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
         }
       }
     }
+    return placedStates;
   }
 
-  function drawWaterLabels(ctx, opts, pal, u, X, Y, board, mode) {
+  function drawBorderStateLabels(ctx, opts, pal, u, X, Y, board, focus, placedStates) {
+    if (!focus || !opts.focusBorderStateNames || opts.stateLabels === false) return;
+    const entries = [...(focus.borderEdges || new Map())];
+    let shown = 0;
+    for (const [stateId, edges] of entries) {
+      if (shown >= 8) break;
+      if (placedStates && placedStates.has(stateId)) continue;
+      const st = D.states.find(s => s.i === stateId);
+      if (!st) continue;
+      const name = String(stateName ? stateName(st) : st.name).trim().toUpperCase();
+      const chains = stitch(edges, art.vx, art.vy).filter(ch => ch.points.length > 1);
+      if (!chains.length) continue;
+      chains.sort((a, b) => b.points.length - a.points.length);
+      const pts = chains[0].points;
+      const size = 8.4 * u, tracking = 1.5 * u;
+      setFont(ctx, size, 500, false);
+      const w = trackedWidth(ctx, name, tracking);
+      let done = false;
+      for (const fraction of [0.5, 0.35, 0.65, 0.2, 0.8]) {
+        const idx = clamp(Math.round((pts.length - 1) * fraction), 1, pts.length - 2);
+        const p = pts[idx], prev = pts[idx - 1], next = pts[idx + 1];
+        const dx = next[0] - prev[0], dy = next[1] - prev[1];
+        const len = Math.hypot(dx, dy) || 1;
+        const nx = -dy / len, ny = dx / len;
+        for (const side of [1, -1]) {
+          for (const off of [13, 23, 35]) {
+            const mx = p[0] + side * nx * off, my = p[1] + side * ny * off;
+            const cellId = cellAtPoint(mx, my);
+            if (cellId < 0 || D.cells[cellId].state !== stateId) continue;
+            const x = X(mx), y = Y(my);
+            const box = bbox(x, y, w + 6 * u, size * 1.2 + 4 * u, 0);
+            if (!board.fits(box)) continue;
+            board.add(box);
+            drawTracked(ctx, name, x, y, {
+              size, tracking, weight: 500, color: css(labelInkOf(opts, pal, true)), alpha: 0.86,
+              halo: {width: 2.5 * u, color: hexA(pal.paperLight, 0.55)}
+            });
+            done = true;
+            shown++;
+            break;
+          }
+          if (done) break;
+        }
+        if (done) break;
+      }
+    }
+  }
+
+  function drawWaterLabels(ctx, opts, pal, u, X, Y, board, mode, focus) {
     const waterKinds = new Set(['mar', 'baía', 'lago']);
     for (const l of D.landmarks || []) {
       if (!waterKinds.has(l.kind)) continue;
+      if (focus && !opts.focusOtherPois && !(l.point[0] >= focus.x0 - 90 && l.point[0] <= focus.x1 + 90 && l.point[1] >= focus.y0 - 90 && l.point[1] <= focus.y1 + 90)) continue;
       const size = (l.kind === 'lago' ? 9.6 : 13.4) * u;
       const tracking = 0.26 * size;
       const text = String(l.name).toUpperCase();
@@ -2066,13 +2333,19 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
     }
   }
 
-  function drawPoiLabels(ctx, opts, pal, u, X, Y, board, mode) {
+  function drawPoiLabels(ctx, opts, pal, u, X, Y, board, mode, focus) {
     const level = poiModeOf(opts);
     if (level === 'none') return;
     const skip = new Set(['mar', 'baía', 'lago']);
     const natural = new Set(['montanha', 'floresta', 'floresta morta', 'deserto', 'pântano', 'campinas', 'desfiladeiro', 'vulcão', 'ilha', 'bioma']);
     const list = (D.landmarks || []).filter(l => !skip.has(l.kind) && (level !== 'natural' || natural.has(l.kind)));
     for (const l of list) {
+      if (focus && !opts.focusOtherPois) {
+        const cellId = cellAtPoint(l.point[0], l.point[1]);
+        const inside = focus.set.has(cellId);
+        const near = focus.near.has(cellId);
+        if (!inside && !(near && natural.has(l.kind))) continue;
+      }
       const size = 10.2 * u, tracking = 0.17 * size;
       const text = String(l.name).toUpperCase();
       setFont(ctx, size, 400, true);
@@ -2101,34 +2374,51 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
     }
   }
 
-  function drawRiverLabels(ctx, opts, pal, u, X, Y, board, mode) {
+  function drawRiverLabels(ctx, opts, pal, u, X, Y, board, mode, focus) {
     if (opts.riverLabels === false) return;
-    for (const river of D.rivers) {
-      if (!river.major || !river.name) continue;
+    const rivers = [...D.rivers]
+      .filter(r => r.name && r.points && r.points.length >= 4)
+      .sort((a, b) => (b.major ? 1 : 0) - (a.major ? 1 : 0) || (b.width || 0) - (a.width || 0));
+    for (const river of rivers) {
       const pts = river.points;
-      if (!pts || pts.length < 4) continue;
-      const mid = pts[Math.floor(pts.length * 0.55)];
-      const prev = pts[Math.max(0, Math.floor(pts.length * 0.55) - 1)];
-      const angle = Math.atan2(Y(mid[1]) - Y(prev[1]), X(mid[0]) - X(prev[0]));
-      const size = 9.4 * u, tracking = 0.22 * size;
+      if (focus && !opts.focusOtherPois && !pts.some(pt => pt[0] >= focus.x0 - 40 && pt[0] <= focus.x1 + 40 && pt[1] >= focus.y0 - 40 && pt[1] <= focus.y1 + 40)) continue;
+      const major = !!river.major;
+      const size = (major ? 11.2 : 8.8) * u;
+      const tracking = (major ? 0.2 : 0.14) * size;
       const text = river.name.toUpperCase();
-      setFont(ctx, size, 400, true);
+      setFont(ctx, size, major ? 500 : 400, true);
       const w = trackedWidth(ctx, text, tracking);
-      let rot = angle > Math.PI / 2 ? angle - Math.PI : angle < -Math.PI / 2 ? angle + Math.PI : angle;
-      rot = clamp(rot, -0.5, 0.5);
-      const box = bbox(X(mid[0]), Y(mid[1]), w + 8 * u, size * 1.2 + 6 * u, rot);
-      if (!board.fits(box)) continue;
-      board.add(box);
-      drawTracked(ctx, text, X(mid[0]), Y(mid[1]), {
-        size, tracking, italic: true, color: css(mix(hexRgb(pal.river), hexRgb('#1b272b'), 0.3)), alpha: 0.9, rotate: rot,
-        halo: {width: 2.2 * u, color: hexA(pal.land, 0.45)}
-      });
+      const fractions = major ? [0.5, 0.36, 0.64, 0.24, 0.76] : [0.5, 0.36, 0.64];
+      let placed = false;
+      for (const fraction of fractions) {
+        const idx = clamp(Math.round((pts.length - 1) * fraction), 1, pts.length - 2);
+        const p = pts[idx], prev = pts[idx - 1], next = pts[idx + 1];
+        const angle = Math.atan2(Y(next[1]) - Y(prev[1]), X(next[0]) - X(prev[0]));
+        let rot = angle > Math.PI / 2 ? angle - Math.PI : angle < -Math.PI / 2 ? angle + Math.PI : angle;
+        rot = clamp(rot, -1.05, 1.05);
+        const nx = -Math.sin(rot), ny = Math.cos(rot);
+        for (const off of [0, size * 0.9, -size * 0.9]) {
+          const x = X(p[0]) + nx * off, y = Y(p[1]) + ny * off;
+          const box = bbox(x, y, w + 6 * u, size * 1.2 + 4 * u, rot);
+          if (!board.fits(box)) continue;
+          board.add(box);
+          drawTracked(ctx, text, x, y, {
+            size, tracking, italic: true, weight: major ? 600 : 400,
+            color: css(mix(hexRgb(pal.ink), hexRgb(pal.river), major ? 0.22 : 0.45)),
+            alpha: major ? 0.94 : 0.72, rotate: rot,
+            halo: {width: (major ? 3 : 2.1) * u, color: hexA(pal.paperLight, major ? 0.62 : 0.45)}
+          });
+          placed = true;
+          break;
+        }
+        if (placed) break;
+      }
     }
   }
 
   /* ------------------------------------------------------------ legenda por modo */
 
-  function buildLegend(mode, pal, opts) {
+  function buildLegend(mode, pal, opts, focus) {
     const base = {title: 'LEGENDA', entries: []};
     if (mode === 'terrain') {
       base.note = 'Relevo, vegetação e hidrografia';
@@ -2145,12 +2435,13 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
       ].filter(Boolean);
     } else if (mode === 'political') {
       base.note = 'Estados e territórios livres';
-      const states = D.states.filter(s => s.i !== 0).map(s => {
+      let states = D.states.filter(s => s.i !== 0).map(s => {
         const area = D.cells.reduce((n, c) => n + (art.land[c.i] && c.state === s.i ? c.area : 0), 0);
         return {s, area};
       }).filter(x => x.area > 0).sort((a, b) => b.area - a.area);
+      if (focus) states = states.filter(({s}) => s.i === focus.stateId);
       base.entries = states.map(({s}) => ({color: mix(mute(s.color || '#aaa', 0.3, 0.68, 0.78), hexRgb(pal.land), themeMix(pal, false)), label: String(stateName ? stateName(s) : s.name).trim()}));
-      base.entries.push({color: hexRgb(pal.neutral), label: 'Terras livres'});
+      if (!focus) base.entries.push({color: hexRgb(pal.neutral), label: 'Terras livres'});
     } else if (mode === 'population') {
       const pop = population();
       base.title = 'POPULAÇÃO URBANA';
@@ -2160,10 +2451,18 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
     } else if (mode === 'culture' || mode === 'religion') {
       const field = society();
       const ids = new Map();
-      for (let i = 0; i < D.cells.length; i++) {
-        if (!art.land[i]) continue;
-        const id = field[mode][i];
-        ids.set(id, (ids.get(id) || 0) + D.cells[i].area);
+      const scan = focus ? focus.set : null;
+      if (scan) {
+        for (const cellId of scan) {
+          const id = field[mode][cellId];
+          ids.set(id, (ids.get(id) || 0) + D.cells[cellId].area);
+        }
+      } else {
+        for (let i = 0; i < D.cells.length; i++) {
+          if (!art.land[i]) continue;
+          const id = field[mode][i];
+          ids.set(id, (ids.get(id) || 0) + D.cells[i].area);
+        }
       }
       const list = [...ids].sort((a, b) => b[1] - a[1]);
       base.title = mode === 'culture' ? 'CULTURAS' : 'RELIGIÕES';
@@ -2184,7 +2483,13 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
       base.title = 'BENS PRODUZIDOS';
       if (!map) { base.note = 'Economia ainda não carregada'; return base; }
       base.note = 'Bem predominante por província';
-      for (const row of [...map.goods.values()].sort((a, b) => b.provinces - a.provinces)) {
+      let rows = [...map.goods.values()].sort((a, b) => b.provinces - a.provinces);
+      if (focus) {
+        const present = new Set();
+        for (const cellId of focus.set) present.add(map.goodsField[cellId]);
+        rows = rows.filter(row => present.has(row.good));
+      }
+      for (const row of rows) {
         const g = map.model.goods.get(row.good);
         base.entries.push({color: mix(mute(goodColor(row.good), 0.26, 0.68, 0.79), hexRgb(pal.land), themeMix(pal, false)), label: g ? g.name : 'Bem ' + row.good});
       }
@@ -2193,7 +2498,13 @@ export function createCartographer({D, cityName, stateName, getEconomy, getProvi
       base.title = 'MERCADOS';
       if (!map) { base.note = 'Economia ainda não carregada'; return base; }
       base.note = 'Território comercial de cada mercado';
-      for (const m of [...map.marketInfo.values()].sort((a, b) => b.localValue - a.localValue)) {
+      let marketList = [...map.marketInfo.values()].sort((a, b) => b.localValue - a.localValue);
+      if (focus) {
+        const present = new Set();
+        for (const cellId of focus.set) present.add(map.marketField[cellId]);
+        marketList = marketList.filter(m => present.has(m.i));
+      }
+      for (const m of marketList) {
         base.entries.push({color: mix(mute(m.color || '#aaa', 0.24, 0.69, 0.8), hexRgb(pal.land), themeMix(pal, false)), label: m.name});
       }
     } else if (mode === 'provinces') {

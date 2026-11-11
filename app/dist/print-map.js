@@ -1,5 +1,5 @@
 // Janela "Mapa 2D": opções de camadas, modo temático e exportação em PNG.
-import {createCartographer, PRINT_MODES, PRINT_THEMES} from './print-map-core.js?v=5';
+import {createCartographer, PRINT_MODES, PRINT_THEMES} from './print-map-core.js?v=11';
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 const STORE = 'silvengard-print-v1';
@@ -20,6 +20,15 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
     title: `O MUNDO DE ${String(mapName || 'SILVANGAD').toUpperCase()}`,
     subtitle: 'ATLAS VIVO · EDIÇÃO DO MESTRE',
     pois: 'all',
+    focus: '',
+    focusOtherStates: false,
+    focusOtherCities: false,
+    focusOtherPois: false,
+    focusOtherProvinces: false,
+    focusHideStateName: false,
+    focusBorderStateNames: false,
+    titleScale: 1,
+    titleFrame: false,
     stateBorders: true,
     reliefStyle: 'shade',
     riverStyle: 'banks',
@@ -98,11 +107,16 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
         <label class="printField">Tamanho da exportação
           <select id="pmSize">${SIZES.map(([id, name]) => `<option value="${id}">${esc(name)}</option>`).join('')}</select>
         </label>
-        <label class="printField">Enquadramento
+        <label class="printField">Recorte do mapa
+          <select id="pmFocus"></select>
+        </label>
+        <label class="printField" id="pmZoomField">Enquadramento
           <select id="pmZoom">
-            <option value="1">Mundo inteiro · 100%</option>
+            <option value="1">Ajuste · 100%</option>
             <option value="1.06">Um pouco maior · 106%</option>
             <option value="1.12">Mais perto · 112%</option>
+            <option value="1.25">Bem mais perto · 125%</option>
+            <option value="1.5">Detalhe · 150%</option>
           </select>
         </label>
         <label class="printField">Pontos de interesse
@@ -112,6 +126,18 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
             <option value="none">Nenhum</option>
           </select>
         </label>
+
+        <details class="printGroup" id="pmFocusGroup" open hidden>
+          <summary>Nomes e elementos do recorte</summary>
+          <div class="printChecks">
+            <label><input type="checkbox" data-opt="focusHideStateName"> Ocultar o nome do estado em foco</label>
+            <label><input type="checkbox" data-opt="focusBorderStateNames"> Nomes dos estados na borda</label>
+            <label><input type="checkbox" data-opt="focusOtherStates"> Nomes dos outros estados</label>
+            <label><input type="checkbox" data-opt="focusOtherCities"> Cidades fora do recorte</label>
+            <label><input type="checkbox" data-opt="focusOtherPois"> Pontos de interesse fora do recorte</label>
+            <label><input type="checkbox" data-opt="focusOtherProvinces"> Nomes das outras províncias</label>
+          </div>
+        </details>
 
         <details open class="printGroup">
           <summary>Camadas</summary>
@@ -163,6 +189,18 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
           <label class="printField printFieldInGroup">Subtítulo
             <input id="pmSubtitle" type="text" maxlength="90" autocomplete="off">
           </label>
+                  <label class="printField printFieldInGroup">Tamanho do título
+            <select id="pmTitleScale">
+              <option value="0.85">Pequeno · 85%</option>
+              <option value="1">Normal · 100%</option>
+              <option value="1.25">Grande · 125%</option>
+              <option value="1.5">Muito grande · 150%</option>
+            </select>
+          </label>
+          <div class="printChecks">
+            <label><input type="checkbox" data-opt="titleFrame"> Moldura em volta do título</label>
+          </div>
+
         </details>
       </form>
       <div class="printStage">
@@ -191,8 +229,10 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
   const modeSelect = $('#pmMode'), themeSelect = $('#pmTheme'), citySelect = $('#pmCities'), sizeSelect = $('#pmSize');
   const toneSelect = $('#pmTone'), zoomSelect = $('#pmZoom'), poisSelect = $('#pmPois'), legendSelect = $('#pmLegendCorner');
   const reliefSelect = $('#pmReliefStyle'), riverSelect = $('#pmRiverStyle');
+  const focusSelect = $('#pmFocus');
+  const focusGroup = $('#pmFocusGroup');
   const inkColor = $('#pmInkColor'), inkCustom = $('#pmInkCustom');
-  const titleInput = $('#pmTitle'), subtitleInput = $('#pmSubtitle');
+  const titleInput = $('#pmTitle'), subtitleInput = $('#pmSubtitle'), titleScaleSelect = $('#pmTitleScale');
   const hint = $('#pmHint'), stats = $('#pmStats'), busyEl = $('#pmBusy');
   const canvas = $('#pmPreview');
   const detail = $('#pmDetail');
@@ -221,13 +261,91 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
     if (info) info.textContent = `trecho central · ${Math.round((cssWidth / cropW) * 100)}% do tamanho real`;
   }
 
+  function focusModel(value) {
+    if (!value) return null;
+    const [kind, idText] = value.split(':');
+    const id = Number(idText);
+    if (kind === 'state') {
+      const s = D.states.find(x => x.i === id);
+      return s ? {kind, id, name: String(stateName ? stateName(s) : s.name).trim(), stateName: ''} : null;
+    }
+    if (kind === 'province') {
+      let pr = null;
+      try { pr = getProvince?.()?.data?.provinces?.find(x => x.i === id) || null; } catch { pr = null; }
+      if (!pr) return null;
+      const s = D.states.find(x => x.i === pr.state);
+      return {
+        kind, id, name: String(pr.name).trim(),
+        stateName: s ? String(stateName ? stateName(s) : s.name).trim() : ''
+      };
+    }
+    return null;
+  }
+
+  function applyFocusTitles(previous, next) {
+    if (previous === next) return;
+    if (!previous && next) {
+      opts._titleBeforeFocus = opts.title;
+      opts._subtitleBeforeFocus = opts.subtitle;
+    }
+    if (next) {
+      const m = focusModel(next);
+      if (!m) return;
+      const title = m.kind === 'state' ? m.name : (m.stateName || m.name);
+      const subtitle = m.kind === 'province' ? m.name : (opts._subtitleBeforeFocus ?? defaults.subtitle);
+      opts.title = title;
+      opts.subtitle = subtitle;
+      opts._autoTitle = title;
+      opts._autoSubtitle = subtitle;
+      titleInput.value = title;
+      subtitleInput.value = subtitle;
+    } else {
+      if (opts.title === opts._autoTitle) opts.title = opts._titleBeforeFocus ?? defaults.title;
+      if (opts.subtitle === opts._autoSubtitle) opts.subtitle = opts._subtitleBeforeFocus ?? defaults.subtitle;
+      delete opts._autoTitle;
+      delete opts._autoSubtitle;
+      titleInput.value = opts.title;
+      subtitleInput.value = opts.subtitle;
+    }
+  }
+
+  function buildFocusOptions() {
+    const current = opts.focus || '';
+    const states = [...D.states].filter(s => s.i !== 0)
+      .sort((a, b) => String(stateName ? stateName(a) : a.name).localeCompare(String(stateName ? stateName(b) : b.name), 'pt-BR'));
+    let html = '<option value="">Mundo inteiro</option><optgroup label="Estados">';
+    for (const s of states) html += `<option value="state:${s.i}">${esc(String(stateName ? stateName(s) : s.name).trim())}</option>`;
+    html += '</optgroup>';
+    let provinces = [];
+    try { provinces = getProvince?.()?.data?.provinces || []; } catch { provinces = []; }
+    if (provinces.length) {
+      const list = [...provinces].filter(pr => !pr.area || pr.area > 0).sort((a, b) => {
+        const sa = D.states.find(s => s.i === a.state), sb = D.states.find(s => s.i === b.state);
+        return String(sa ? stateName(sa) : '').localeCompare(String(sb ? stateName(sb) : ''), 'pt-BR')
+          || String(a.name).localeCompare(String(b.name), 'pt-BR');
+      });
+      html += '<optgroup label="Províncias">';
+      for (const pr of list) {
+        const st = D.states.find(s => s.i === pr.state);
+        const stName = st ? String(stateName ? stateName(st) : st.name).trim() : '';
+        html += `<option value="province:${pr.i}">${esc(pr.name)}${stName ? ' · ' + esc(stName) : ''}</option>`;
+      }
+      html += '</optgroup>';
+    }
+    focusSelect.innerHTML = html;
+    if (current && ![...focusSelect.options].some(option => option.value === current)) opts.focus = '';
+  }
+
   function syncControls() {
     modeSelect.value = opts.mode;
     themeSelect.value = opts.theme;
     citySelect.value = opts.cities;
     sizeSelect.value = opts.size;
     toneSelect.value = opts.labelTone;
+    if (!focusSelect.options.length) buildFocusOptions();
+    focusSelect.value = opts.focus || '';
     zoomSelect.value = String(opts.zoom);
+    focusGroup.hidden = !opts.focus;
     poisSelect.value = opts.pois;
     legendSelect.value = opts.legendCorner;
     reliefSelect.value = opts.reliefStyle;
@@ -237,6 +355,7 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
     inkColor.disabled = !opts.labelInkCustom;
     titleInput.value = opts.title;
     subtitleInput.value = opts.subtitle;
+    titleScaleSelect.value = String(opts.titleScale || 1);
     for (const input of dialog.querySelectorAll('[data-opt]')) input.checked = !!opts[input.dataset.opt];
     refreshAvailability();
     updateHint();
@@ -259,7 +378,12 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
 
   function updateHint() {
     const row = PRINT_MODES.find(([id]) => id === opts.mode);
-    hint.textContent = row ? row[2] : '';
+    let text = row ? row[2] : '';
+    if (opts.focus) {
+      const option = focusSelect.selectedOptions[0];
+      if (option) text += ` · Recorte: ${option.textContent}`;
+    }
+    hint.textContent = text;
   }
 
   function sizeValue() {
@@ -285,6 +409,15 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
       cities: opts.cities,
       title: opts.title,
       subtitle: opts.subtitle,
+      focus: opts.focus || '',
+      focusOtherStates: !!opts.focusOtherStates,
+      focusOtherCities: !!opts.focusOtherCities,
+      focusOtherPois: !!opts.focusOtherPois,
+      focusOtherProvinces: !!opts.focusOtherProvinces,
+      focusHideStateName: !!opts.focusHideStateName,
+      focusBorderStateNames: !!opts.focusBorderStateNames,
+      titleScale: Number(opts.titleScale) || 1,
+      titleFrame: !!opts.titleFrame,
       labelTone: opts.labelTone,
       labelInk: opts.labelInkCustom ? opts.labelInk : '',
       legendCorner: opts.legendCorner,
@@ -383,8 +516,9 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
     }, 'image/png');
   }
 
-  for (const select of [modeSelect, themeSelect, citySelect, sizeSelect, toneSelect, zoomSelect, poisSelect, legendSelect, reliefSelect, riverSelect]) {
+  for (const select of [modeSelect, themeSelect, citySelect, sizeSelect, toneSelect, zoomSelect, poisSelect, legendSelect, reliefSelect, riverSelect, focusSelect, titleScaleSelect]) {
     select.addEventListener('change', () => {
+      const previousFocus = opts.focus;
       opts.mode = modeSelect.value;
       opts.theme = themeSelect.value;
       opts.cities = citySelect.value;
@@ -395,7 +529,14 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
       opts.legendCorner = legendSelect.value;
       opts.reliefStyle = reliefSelect.value;
       opts.riverStyle = riverSelect.value;
-      if (select === modeSelect) updateHint();
+      opts.focus = focusSelect.value;
+      opts.titleScale = Number(titleScaleSelect.value) || 1;
+      if (select === focusSelect) {
+        applyFocusTitles(previousFocus, opts.focus);
+        focusGroup.hidden = !opts.focus;
+        if (opts.focus && opts.cities === 'capitals') { opts.cities = 'all'; citySelect.value = 'all'; }
+      }
+      if (select === modeSelect || select === focusSelect) updateHint();
       updateStats();
       save();
       schedulePreview();
@@ -443,6 +584,7 @@ export function createPrintMap({D, toast, getEconomy, getProvince, cityName, sta
     open(mode) {
       if (mode && PRINT_MODES.some(([id]) => id === mode)) opts.mode = mode;
       try { cartographer.invalidate(); } catch {}
+      buildFocusOptions();
       syncControls();
       if (!dialog.open) dialog.showModal();
       if (!preview || previewDirty) renderPreview();

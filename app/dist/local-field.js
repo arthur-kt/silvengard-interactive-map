@@ -39,10 +39,13 @@ export function ridged(x,y,seed=0){
 }
 
 /* ---------- população → tamanho urbano ---------- */
-/** Raio urbano em metros a partir dos habitantes (densidade ilustrativa ≈ 6.000/km²). */
+/** A população do Atlas inclui os arredores rurais. Só uma fração mora no núcleo urbano,
+ *  e a cena é uma representação compacta: vila de 1.500 hab. ≈ 80 m de raio, cidade de
+ *  39 mil ≈ 265 m, capital de 1 milhão ≈ 620 m. */
+const URBAN_SHARE=.18;
 export function populationRadiusM(pop){
- const p=Math.max(120,Number(pop)||400);
- return clamp(95+7.0*Math.sqrt(p),95,2900);
+ const urban=Math.max(120,Number(pop)||400)*URBAN_SHARE;
+ return clamp(32+2.8*Math.sqrt(urban),32,620);
 }
 
 /* ---------- bioma → caráter local ---------- */
@@ -180,8 +183,11 @@ export function siteFor({D,point,cellAt,surface,population=400,city=null,seaLeve
   }else{
    shoreDistM=clamp(Math.max(shoreDistM,cityR*.88),120,2800);
   }
-  // porto: a frente de água encosta na cidade, mas nunca dentro do centro
-  if(city?.port||city?.majorPort||city?.harbor)shoreDistM=clamp(Math.max(shoreDistM,cityR*.82),cityR*.55,2900);
+  // cidade portuária ou de lago: a frente de água encosta na cidade. Se o mapa já
+  // coloca a água muito perto (menos de 60% do raio), respeita; senão, traz a margem
+  // para o limite urbano — a representação compacta não pode deixar o cais longe.
+  if(city?.port||city?.majorPort||city?.harbor||water.kind==='lake')
+   shoreDistM=clamp(shoreDistM<cityR*.6?shoreDistM:cityR*.98,60,2800);
  }
  // rio: só interessa se passa perto e não é a mesma água
  let riverDistM=0,riverWidthM=0,riverAng=0;
@@ -214,11 +220,20 @@ export function siteFor({D,point,cellAt,surface,population=400,city=null,seaLeve
   }
  }
  const forest=clamp((FOREST_BY_BIOME[biome]??.5)*(water.kind==='sea'||water.kind==='lake'?.95:1),0,1);
+ // neve: bioma manda; altitude manda no resto
+ let snowCover=0,snowLineM=850;
+ if(biome===11){snowCover=1;snowLineM=0}
+ else if(biome===10){snowCover=.92;snowLineM=0}
+ else if(biome===9){snowCover=.62;snowLineM=120}
+ else if(biome===13||biome===14||biome===15){snowCover=0;snowLineM=900}
+ else if(hCell>=56){snowCover=.18;snowLineM=380}
+ else if(hCell>=44){snowCover=.06;snowLineM=560}
  const palette=PALETTE_BY_BIOME[biome]||PALETTE_BY_BIOME[4];
  return {
   cx,cy,point:[cx,cy],seed:Math.round(cx*13+cy*7)+11,
   cell,biome,climate,hCell,baseM,slope:[gx,gy],
   cityR,urbanR:cityR,waterKind,waterAng,shoreDistM,lakeR,
+  snowCover,snowLineM,snowy:snowCover>.18,
   hasRiver:riverWidthM>0,riverDistM,riverWidthM,riverAng,
   ranges,forest,palette,grass:BIOME_GRASS[biome]||BIOME_GRASS[4],
   port:!!(city?.port||city?.majorPort||city?.harbor),

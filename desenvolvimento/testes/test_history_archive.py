@@ -37,7 +37,7 @@ class HistoryArchiveTests(unittest.TestCase):
 
     def test_chronology_preserves_uncertainty_and_eras(self):
         events = self.data['events']
-        self.assertEqual(len(events), 38)
+        self.assertGreaterEqual(len(events), 90)
         self.assertEqual({e['era'] for e in events}, {1, 2, 3, 4})
         self.assertTrue(all(e['date'] == 'Tempo mítico' for e in events if e['era'] == 1))
         self.assertTrue(any(e['date'].startswith('c.') for e in events))
@@ -47,6 +47,85 @@ class HistoryArchiveTests(unittest.TestCase):
         self.assertNotIn('city:14', independent['links'])
         # The word "draconata" alone must not manufacture a Drácon map link.
         self.assertNotIn('state:20', independent['links'])
+        # A cronologia dinástica entrou sem repetir o mesmo acontecimento.
+        stamps = [(e['era'], e['date'], e['title']) for e in events]
+        self.assertEqual(len(stamps), len(set(stamps)))
+        titles = [e['title'] for e in events]
+        for fragment in ('Revolta de', 'Pacto das Duas Montanhas', 'Tonkhet',
+                         'Julgamento das Escamas', 'Tumulto das Três Portas'):
+            self.assertTrue(any(fragment in title for title in titles), fragment)
+
+    def test_lineages_and_successions_are_indexed(self):
+        lineages = [r for r in self.records.values() if r['kind'] == 'lineage']
+        self.assertEqual(len(lineages), 35)
+        self.assertEqual(sum(1 for r in self.records.values() if r['kind'] == 'state' and r.get('lineages')), 18)
+        dragonfall = self.records['state:12']
+        self.assertEqual(len(dragonfall['lineages']), 6)
+        self.assertEqual(len(dragonfall['successions']), 1)
+        self.assertEqual(len(dragonfall['successions'][0]['entries']), 30)
+        dragonbane = next(line for line in dragonfall['lineages'] if line['house'] == 'Casa Dragonbane')
+        self.assertEqual(dragonbane['roots'][0]['name'], 'Garrick II Dragonbane')
+        self.assertIn('Arthur Dragonbane', str(dragonbane))
+        self.assertTrue(dragonbane['roots'][2]['children'])
+        elucitor = self.records['state:13']
+        self.assertEqual(elucitor['successions'][0]['house'], 'Casa Lucien')
+        self.assertEqual(elucitor['successions'][0]['entries'][-1]['name'], 'Lucius IX')
+        self.assertTrue(elucitor['successions'][0]['entries'][-1]['ongoing'])
+        lineage = next(r for r in lineages if r['id'] == dragonbane['id'])
+        self.assertEqual(lineage['stateId'], 12)
+
+    def test_lineage_trees_do_not_leak_into_player_prose(self):
+        for record in self.records.values():
+            if record['kind'] == 'state':
+                for section_id in record['chapters']:
+                    section = self.sections[section_id]
+                    self.assertNotIn('```linhagem', section['displayMarkdown'])
+                    if section.get('lineageIds'):
+                        self.assertEqual(section['displayMarkdown'], '')
+                        self.assertTrue(section['lineageIds'])
+            if record['kind'] == 'lineage':
+                self.assertTrue(record['lineage']['roots'], record['name'])
+
+    def test_conflicts_are_indexed_with_totals(self):
+        conflicts = [r for r in self.records.values() if r['kind'] == 'conflict']
+        self.assertEqual(len(conflicts), 24)
+        for record in conflicts:
+            war = record['conflict']
+            self.assertGreaterEqual(len(war['sides']), 2, war['name'])
+            self.assertTrue(war['totalStrength'].startswith('~'), war['name'])
+            self.assertTrue(war['totalCasualties'].startswith('~'), war['name'])
+            self.assertTrue(war['summary'])
+            self.assertTrue(war['objectives'])
+        reliquias = self.records['conflict:guerra-das-reliquias']['conflict']
+        self.assertEqual(reliquias['totalStrength'], '~105.000')
+        self.assertEqual(reliquias['totalCasualties'], '~33.000')
+        vathnis = self.records['conflict:guerra-dos-degraus-de-vathnis']['conflict']
+        self.assertEqual(vathnis['victor'], 'Veniun')
+        self.assertEqual(vathnis['result'], 'victory')
+
+    def test_world_opens_at_1277_and_groups_myth_before_memories(self):
+        world = self.records['world']
+        self.assertIn('1277 AQD', world['opening'])
+        self.assertIn('Quarta Era', world['opening'])
+        self.assertEqual(world['storyGroups'][0]['key'], 'myth')
+        self.assertEqual(world['storyGroups'][-1]['key'], 'memories')
+        title = self.sections[world['storyGroups'][-1]['chapters'][0]]['displayTitle']
+        self.assertIn('Amestris', title)
+        covered = [chapter for group in world['storyGroups'] for chapter in group['chapters']]
+        self.assertEqual(sorted(covered), sorted(world['chapters']))
+
+    def test_state_reading_is_grouped_without_losing_chapters(self):
+        state = self.records['state:12']
+        self.assertTrue(state['storyGroups'])
+        self.assertTrue(state['houseChapters'])
+        self.assertTrue(state['institutionChapters'])
+        covered = [chapter for group in state['storyGroups'] for chapter in group['chapters']]
+        covered += state['houseChapters'] + state['institutionChapters']
+        self.assertEqual(sorted(covered), sorted(state['chapters']))
+        self.assertEqual(state['readingOrder'][:1], state['storyGroups'][0]['chapters'][:1])
+        self.assertEqual(state['storyGroups'][0]['title'], 'O Estado e suas instituições')
+        narrative = [self.sections[chapter]['displayTitle'] for chapter in state['readingOrder']]
+        self.assertIn('Casa Dragonbane', narrative)
 
     def test_technical_appendices_are_not_world_narrative(self):
         world = self.records['world']
