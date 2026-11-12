@@ -210,6 +210,7 @@ export function createStreetMode(ctx){
   <div class="svToast" id="svToast"></div>
   <div class="svBar"><div class="svTimes">${Object.entries(PRESETS).map(([k,v])=>`<button data-time="${k}">${v.label}</button>`).join('')}</div>
    <button id="svFly" title="Ligar/desligar o voo (2× Espaço ou F)">🕊 Voo</button>
+   <button id="svCombat" title="Abrir o tabuleiro tático 2D">⚔ Combate</button>
    <button id="svExit">⤴ Voltar ao mapa</button></div></div>`);
  const fade=el('<div id="streetFade"></div>'),pickChip=el('<div id="streetPick" hidden><b>Ver no local</b><span>Clique no mapa para descer no lugar · Esc cancela</span></div>');
  document.body.append(hud,fade,pickChip);
@@ -218,6 +219,7 @@ export function createStreetMode(ctx){
  function hudToast(msg){const t=$h('#svToast');if(!t)return;t.textContent=msg;t.classList.add('on');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('on'),2600)}
  hud.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>applyPreset(b.dataset.time));
  $h('#svExit').onclick=()=>exit();
+ $h('#svCombat').onclick=()=>ctx.onCombat?.();
  $h('#svFly').onclick=()=>toggleFlight();
  $h('#svPause').onclick=()=>lock();
  function lock(){try{const p=renderer.domElement.requestPointerLock?.();p?.catch?.(()=>{})}catch{}}

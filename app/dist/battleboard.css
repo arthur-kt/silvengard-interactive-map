@@ -1,0 +1,86 @@
+#battleboard {
+  position: fixed;
+  inset: 88px 18px 58px;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  background: #101f25f6;
+  border: 1px solid #bca06c88;
+  border-radius: 8px;
+  box-shadow: 0 22px 60px #000a;
+  color: var(--ink);
+  overflow: hidden;
+}
+#battleboard[hidden] { display: none; }
+.bbHead { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.bbHead h2 { font: 28px Georgia, serif; margin: 3px 0 0; line-height: 1; }
+.bbHeadActions { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.bbHeadActions button { font-size: 9px; padding: 7px 9px; }
+.bbHeadActions button.active { color: var(--gold); border-color: var(--gold); background: #c9ad6b16; }
+.bbPanGroup { display: inline-flex; gap: 1px; border-left: 1px solid var(--line); margin-left: 2px; padding-left: 5px; }
+.bbPanGroup button { min-width: 24px; padding: 6px 5px; font-size: 11px; }
+#bbClose { font-size: 19px; padding: 2px 9px; border: 0; background: none; }
+.bbBody { flex: 1; min-height: 0; display: grid; grid-template-columns: 235px minmax(0, 1fr) 255px; }
+.bbLeft, .bbRight { min-height: 0; overflow: auto; padding: 12px; scrollbar-width: thin; }
+.bbLeft { border-right: 1px solid var(--line); }
+.bbRight { border-left: 1px solid var(--line); }
+.bbLeft h3, .bbRight h3 { font: 18px Georgia, serif; color: var(--gold); margin: 6px 0 7px; }
+.bbLeft input { width: 100%; padding: 7px 8px; font-size: 10px; margin-bottom: 7px; }
+.bbList { display: grid; gap: 2px; max-height: 250px; overflow: auto; margin-bottom: 12px; }
+.bbList button { display: flex; justify-content: space-between; gap: 6px; text-align: left; border: 1px solid transparent; border-bottom-color: #ffffff0a; background: none; padding: 7px 5px; border-radius: 4px; }
+.bbList button:hover { border-color: #c9ad6b55; background: #c9ad6b0c; }
+.bbList b { display: block; font-size: 10px; font-weight: 500; }
+.bbList small { display: block; color: var(--muted); font-size: 8px; margin-top: 2px; line-height: 1.5; }
+.bbList em { font-style: normal; color: var(--gold); font-size: 12px; }
+.bbMonsterList { max-height: 300px; }
+.bbCanvasWrap { position: relative; min-width: 0; min-height: 0; background: #0c191e; overflow: hidden; }
+#bbCanvas { width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+.bbLegend { position: absolute; left: 10px; bottom: 9px; font-size: 8px; letter-spacing: .4px; color: #c9d5c980; pointer-events: none; }
+.bbSelected { border: 1px solid var(--line); border-radius: 5px; padding: 9px; margin-bottom: 14px; min-height: 80px; }
+.bbSelectedHead { display: flex; justify-content: space-between; gap: 7px; align-items: baseline; }
+.bbSelectedHead b { font-size: 11px; }
+.bbSelectedHead span { font-size: 8px; color: var(--gold); text-transform: uppercase; letter-spacing: .5px; }
+.bbSelectedStats { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin: 8px 0; }
+.bbSelectedStats span { font-size: 8px; color: var(--muted); }
+.bbSelectedStats small { display: block; font-size: 7px; text-transform: uppercase; letter-spacing: .4px; }
+.bbSelectedStats b { color: var(--ink); font-size: 11px; font-weight: 400; }
+.bbSelectedActions { display: flex; flex-wrap: wrap; gap: 3px; }
+.bbSelectedActions button { font-size: 8px; padding: 4px 6px; }
+.bbMovePad { display: grid; grid-template-columns: repeat(3, 28px); grid-template-rows: repeat(2, 24px); gap: 3px; justify-content: center; margin: 7px 0; }
+.bbMovePad button { font-size: 13px; padding: 2px; }
+.bbMovePad button:nth-child(1) { grid-column: 1; grid-row: 2; }
+.bbMovePad button:nth-child(2) { grid-column: 2; grid-row: 1; }
+.bbMovePad button:nth-child(3) { grid-column: 2; grid-row: 2; }
+.bbMovePad button:nth-child(4) { grid-column: 3; grid-row: 2; }
+.bbCombat { border: 1px solid var(--line); border-radius: 5px; padding: 8px; min-height: 55px; }
+.bbCombatHead { display: flex; justify-content: space-between; gap: 6px; font-size: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; margin-bottom: 6px; }
+.bbCombatHead b { color: var(--gold); font-size: 10px; text-transform: none; }
+.bbCombatOrder { display: grid; gap: 2px; max-height: 160px; overflow: auto; }
+.bbCombatOrder button { display: flex; justify-content: space-between; border: 1px solid transparent; border-bottom-color: #ffffff0a; background: none; padding: 5px 4px; font-size: 9px; text-align: left; }
+.bbCombatOrder button.current { border-color: #c9ad6b88; background: #c9ad6b14; color: var(--gold); }
+.bbCombatOrder b { color: var(--gold); font-size: 10px; }
+.bbCombatActions { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 7px; }
+.bbCombatActions button { font-size: 8px; padding: 4px 6px; }
+.bbSaved { display: grid; gap: 3px; max-height: 150px; overflow: auto; margin-bottom: 8px; }
+.bbSavedRow { display: flex; align-items: center; gap: 3px; border-bottom: 1px solid #ffffff0a; padding: 4px 0; }
+.bbSavedRow > span { flex: 1; min-width: 0; font-size: 9px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bbSavedRow small { display: block; color: var(--muted); font-size: 7px; }
+.bbSavedRow button { font-size: 7px; padding: 3px 5px; }
+.bbTemplateRow { display: flex; justify-content: space-between; align-items: center; gap: 5px; border: 0; border-bottom: 1px solid #ffffff0a; background: none; padding: 5px 3px; text-align: left; font-size: 9px; }
+.bbTemplateRow small { color: var(--muted); font-size: 7px; }
+.bbClearTerrain { width: 100%; margin: 4px 0 7px; font-size: 8px; padding: 5px; }
+.bbSpellLabel { display: grid; gap: 5px; font-size: 9px; color: var(--muted); }
+.bbSpellLabel select { padding: 7px; color: var(--ink); background: #0e2026; border: 1px solid var(--line); border-radius: 3px; font-size: 10px; }
+.bbAreaInfo { font-size: 9px; line-height: 1.6; color: #c9d5cd; margin: 10px 0; }
+.bbAreaInfo b { color: var(--gold); font-size: 11px; }
+.bbAreaInfo p { margin: 4px 0; }
+.bbToolHint { font-size: 8px; line-height: 1.6; color: var(--muted); border-top: 1px solid var(--line); padding-top: 9px; margin-top: 12px; }
+
+@media (max-width: 900px) {
+  #battleboard { inset: 78px 8px 46px; }
+  .bbBody { grid-template-columns: 180px minmax(0, 1fr); }
+  .bbRight { display: none; }
+  .bbHead { flex-wrap: wrap; padding: 9px 11px; }
+  .bbHead h2 { font-size: 23px; }
+  .bbLeft { padding: 8px; }
+}

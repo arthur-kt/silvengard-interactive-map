@@ -62,9 +62,27 @@ solução de problemas, está no [LEIA-ME.md](LEIA-ME.md).
 | **Cidades** | ficha completa (população, tipo, fé, língua, perfil social, demografia, brasão), editor e ciclo de vida — criar cidade, conectar à rede, remover com segurança e reparar capitais |
 | **Províncias** | 67 províncias com nomes e limites editáveis e prévia no mapa |
 | **Rotas e jornadas** | inspetor de rotas com distância e tempo, edição de traçado, e calculadora de viagem por ritmo e velocidade de navio |
+| **Fichas e compêndio 5e** | importa fichas `.cah` do D&D 5e Companion antigo e permite jogá-las (PV, descanso curto/longo, dados de vida, recursos e pools, magias preparadas, upcast, espaços, condições, exaustão, morte, equipamento, sintonia, carga, XP por encontro e nível), consulta os 3.383 recursos 5e (magias, monstros, itens, classes, raças, talentos…), cria uma ficha provisória com passagem de nível e rola dados (`10d20+2`) |
+| **Tabuleiro 2D** | mesa tática com grade de 5 pés, tokens de fichas e monstros, movimento por arrasto ou setas (sem scroll), distância, speed, terreno difícil, áreas de magia (raio, cone, linha, cubo), iniciativa/turnos, PV sincronizado e combates salvos/modelos |
 | **Histórias** | três documentos longos (história geral, estados e cidades, culturas e instituições) lidos dentro do próprio Atlas, ligados às fichas |
 | **Economia** | dez mercados regionais, 85 bens, produção rural e urbana, consumo por classe social, preços locais, fluxos entre mercados, políticas marítimas e ciclos simuláveis |
 | **Ver no local** | botão 👁 ou tecla **V**, em qualquer ponto de terra firme: o Atlas lê o lugar (relevo, água, clima e a **história da cidade**) e monta uma cena compacta — cidade do tamanho do símbolo do mapa, casas e telhados que mudam com o clima, neve onde neva, muralhas, porto com cais e barcos, serras no horizonte. **Espaço** pula, **Shift** corre, **2× Espaço** (ou **F**) liga o voo; **T** troca a hora do dia |
+
+### Fichas e compêndio 5e
+
+O botão **Fichas** abre três abas:
+
+- **Ficha** — importa o `.cah` do D&D 5e Companion antigo (o formato do Tytos), com retrato, atributos, salvaguardas, perícias, ataques, magias, armaduras, equipamento, habilidades, usos e anotações. O arquivo fica no IndexedDB do navegador; nada é enviado para fora.
+- **Compêndio 5e** — consulta os 3.383 recursos do sistema `5e`: 538 magias, 1.416 monstros, 734 itens, 194 armas, 62 armaduras, 148 talentos, 101 raças, 91 antecedentes, 16 classes (208 subclasses), 11 encontros e 72 fontes.
+- **Criador** — monta uma ficha 5e provisória no nível 1: raça, classe, antecedente, atributos, perícias e resumo; a ficha nativa pode subir de nível (PV, PB, atributos e subclasse quando chegar a hora).
+
+O pacote do compêndio é **gerado localmente** e não entra no Git: ele é conteúdo de terceiros (CC BY-NC + material da WotC), separado do código MIT. Para regenerar:
+
+```bat
+python desenvolvimento\ferramentas\gerar-dados-5e.py --repo .tmp\rpg-systems --out app\dist\5e
+```
+
+Veja [documentos/Dados-5e.md](documentos/Dados-5e.md) e a análise de licenciamento em [documentos/Analise-Integracao-RPG-Companion.md](documentos/Analise-Integracao-RPG-Companion.md).
 
 ![Livro de comércio, com os dez mercados regionais](documentos/imagens/economia.jpg)
 

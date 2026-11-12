@@ -26,6 +26,12 @@ acervo/pacotes/
 # Arquivos temporários
 *.tmp
 *.bak
+.tmp/
+
+# Pacote de dados 5e gerado a partir do repositório de sistemas.
+# É conteúdo de terceiros (CC BY-NC + material da WotC); não versionar no
+# repositório MIT. Rode: python desenvolvimento/ferramentas/gerar-dados-5e.py
+app/dist/5e/
 
 # O inicializador compilado é versionado de propósito (35 KB) para que
 # um clone já possa ser aberto sem compilador:
