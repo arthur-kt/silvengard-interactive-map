@@ -23,7 +23,7 @@ import {createCharacters} from './characters.js?v=6';
 import {createBattleboard} from './battleboard.js?v=5';
 import * as THREE from 'three';
 import {settlementModel,portModel,retexture} from './settlements.js?v=35';
-import {createStreetMode} from './street.js?v=57';
+import {createStreetMode} from './street.js?v=64';
 import {buildShoreField,shapeRelief,SEA_LEVEL} from './terrain-shape.js?v=15';
 import {shared,shoreTexture,terrainMaterial,createOcean,skyTexture,setupShadows,markShadows} from './visuals.js?v=35';
 import { OrbitControls } from './vendor/OrbitControls.js';

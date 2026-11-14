@@ -1,0 +1,74 @@
+SILVENGARD - PACOTE DE UPGRADE DAS CIDADES E PLANTAS URBANAS
+Edicao 1277 AQD | Upgrade do Atlas interativo
+
+INSTALACAO NO WINDOWS
+
+1. Mantenha uma copia de seguranca da pasta original "silvengard-interactive-map".
+2. Se voce ainda so tiver o ZIP original, extraia primeiro "silvengard-interactive-map.zip".
+3. Extraia ESTE pacote na MESMA pasta que contem a pasta "silvengard-interactive-map".
+   Ao receber a pergunta, escolha SUBSTITUIR os arquivos existentes. O pacote
+   contem apenas arquivos atualizados e novos; nao substitui todo o Atlas.
+4. Abra "silvengard-interactive-map/Silvengard-Atlas.exe", como de costume.
+5. Escolha uma cidade no mapa; clique em "Ver no local" e depois no novo
+   botao "Planta urbana". Use Esc ou o X para fechar a planta.
+
+Para abrir Elucitor diretamente: na URL do Atlas aberto no navegador,
+acrescente ?local=7 (ou &local=7 caso ja existam parametros na URL).
+
+MUDANCAS
+
+- 152 cidades do Atlas receberam perfis de urbanismo deterministico.
+- 12 parametros de plantas Watabou encontrados no arquivo Azgaar (.map)
+  foram associados a suas cidades. Quando existe um link Watabou, a planta
+  permite abri-lo diretamente para conferir a referencia original.
+- Malhas viarias, muralhas, casario, paleta e elementos especiais sao
+  adaptados a cidade: imperial, elfica, ana, porto, fortaleza, deserto,
+  pantano, ruinas, estepes e cidade vulcanica.
+- Asgorath, por exemplo, preserva o carater de capital e sua cidadela;
+  Winterhelm continua fortificada; Dagorah exibe terracos e defesas anas;
+  Gugacon tem uma cidade vulcanica e uma homonima em ruinas.
+- Elucitor possui UMA ILHA LOCAL COMPLETA com agua nos 360 graus, ate
+  nas margens opostas a seu porto. A cidade e rodeada por uma massa
+  terrestre insular larga, com a costa visivel em todas as direcoes.
+- As cidades reposicionadas no Atlas mantem o proprio nome e posicao:
+  a base visual foi escolhida por proximidade, atributos e historia.
+- O novo botao "Planta urbana" exibe um esquema 2D das mesmas avenidas,
+  muralhas e do mesmo terreno usado na visualizacao local em 3D.
+
+LIMITES IMPORTANTES
+
+O arquivo Azgaar .map nao inclui os poligonos das ruas e edificios das
+plantas Watabou. Contem dados geograficos e, em 12 casos, links com as
+sementes e os parametros usados na geracao original. Portanto este
+upgrade RECONSTRUI malhas e edificios tridimensionais deterministas
+em vez de importar modelos 3D pixel a pixel das plantas Watabou.
+Os predios esquematizados na planta 2D nao correspondem um a um as malhas
+instanciadas no ambiente 3D; as vias, muralhas e litoral usam os mesmos
+dados e formulas. Para um encaixe geometico exato, e preciso exportar os
+SVG/JSON originais do gerador Watabou para cada cidade.
+
+O novo terreno insular de Elucitor e aplicado a "Ver no local"; ele
+nao altera o desenho do relevo/costa do mapa continental nem o world.json.
+
+ARQUIVOS
+
+- app/dist/city-blueprints.json - perfis e referencias das 152 cidades.
+- app/dist/city-plan-core.js - malhas urbanas e formatos de muralhas.
+- app/dist/city-plan-preview.js - renderizador das plantas 2D.
+- app/dist/city-plan.css - visual do painel de planta urbana.
+- app/dist/local-field.js, town.js, street.js - geracao 3D atualizada.
+- app/dist/index.html, app.js - carregamento e cache da nova versao.
+- documentos/Upgrade-Plantas-Urbanas.md - tabela completa de referencias.
+- amostras/ - seis exemplos de plantas.
+- desenvolvimento/ferramentas/gerar_plantas_urbanas.py - regeneracao dos
+  dados a partir de .map e world.json, se voce desejar atualizar a fonte.
+- desenvolvimento/testes/city-blueprints.test.mjs - testes automatizados.
+
+VALIDACAO DO UPGRADE
+
+A verificacao automatizada das plantas e geografia passou nos sete testes
+proprios. Tambem foram geradas com sucesso as geometrias 3D de Elucitor,
+Asgorath, Dagorah, Winterhelm, das duas Gugacon e de Tog Iret, usando a
+biblioteca grafica do Atlas sem necessitar de navegador.
+A execucao da interface completa num navegador nao foi concluida neste
+ambiente; teste o fluxo no seu Windows apos a instalacao.

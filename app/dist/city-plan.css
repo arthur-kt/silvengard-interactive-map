@@ -1,0 +1,25 @@
+/* Upgrade Silvengard: dialogo da planta urbana 2D */
+#svPlanOverlay[hidden],#svBlueprint[hidden],#svPlan[hidden]{display:none!important}
+#svBlueprint{display:block;color:#c1dbc9;font-size:11px;font-style:normal;line-height:1.3;margin-top:3px;opacity:.9}
+#svPlanOverlay{position:fixed;inset:0;z-index:99998;background:#081219dd;display:grid;place-items:center;padding:12px;overflow-y:auto;color:#e8e3d4;font-family:system-ui,Segoe UI,sans-serif}
+#svPlanOverlay *{box-sizing:border-box}
+#svPlanOverlay .svPlanPanel{width:min(1120px,96vw);max-height:96vh;background:#111f26;border:1px solid #667d73;border-radius:12px;box-shadow:0 20px 70px #0009;display:flex;flex-direction:column;overflow:hidden}
+#svPlanOverlay header{display:flex;position:static;align-items:center;justify-content:space-between;gap:12px;background:#21313a;padding:13px 17px;min-height:0;flex-shrink:0;border-bottom:1px solid #43575a}
+#svPlanOverlay header>div{display:flex;flex-direction:column;gap:2px}
+#svPlanOverlay header small{color:#adc8be;font-size:10px;letter-spacing:1.8px;font-weight:700}
+#svPlanOverlay header b{font-size:19px;color:#f7e9d0}
+#svPlanClose{background:#344753;color:#f1eee1;border:1px solid #718185;border-radius:6px;padding:7px 11px;cursor:pointer}
+#svPlanOverlay .svPlanMain{overflow-y:auto;display:grid;grid-template-columns:minmax(0,720px) minmax(200px,1fr);gap:17px;align-items:start;padding:16px}
+#svPlanOverlay canvas{display:block;max-width:100%;height:auto;aspect-ratio:1;background:#d5c5a7;border:5px solid #d6c5a7;box-shadow:0 2px 12px #0006;cursor:default!important}
+#svPlanOverlay aside{color:#d1d9d2;font-size:13px;line-height:1.55;max-width:none;padding:0;background:transparent;position:static;overflow:visible}
+#svPlanOverlay h3{font-size:16px;color:#f6e2b4;line-height:1.4;margin:0 0 11px;font-weight:700}
+#svPlanOverlay p{margin:8px 0 14px}
+#svPlanOverlay dl{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:0;margin:16px 0;border-top:1px solid #455855}
+#svPlanOverlay dt,#svPlanOverlay dd{margin:0;padding:7px 0;border-bottom:1px solid #2a4545;overflow-wrap:anywhere}
+#svPlanOverlay dt{color:#a8bbae}
+#svPlanOverlay dd{color:#f0e5d6;font-weight:600;text-align:right}
+#svPlanWatabou{display:block;color:#b7d8ef;text-decoration:underline;margin-top:12px;font-weight:600}
+#svPlanWatabou[hidden]{display:none!important}
+#svPlanOverlay .svPlanCaveat{font-size:11px;line-height:1.5;color:#bbc2bc;margin-top:19px}
+#svPlanOverlay footer{font-size:11px;line-height:1.4;padding:9px 17px;color:#a9c6bf;border-top:1px solid #42575d;background:#1b2931;flex-shrink:0}
+@media(max-width:850px){#svPlanOverlay .svPlanMain{grid-template-columns:minmax(0,1fr)}#svPlanOverlay .svPlanPanel{max-height:98vh}#svPlanOverlay h3{font-size:14px}}

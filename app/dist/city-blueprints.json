@@ -1,0 +1,4726 @@
+{
+  "schema": "silvengard.city-blueprints/1",
+  "mapFile": "Silvangad 5.0.map",
+  "mapVersion": "1.153.0",
+  "reference": "Azgaar FMG; parametros Watabou presentes para somente algumas cidades, nao plantas SVG.",
+  "generatedYearAQD": 1277,
+  "cityCount": 152,
+  "watabouLinkedCities": 12,
+  "cities": {
+    "1": {
+      "cityId": 1,
+      "name": "Velaffeld",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 15259105,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 1,
+        "cityName": "Velaffeld",
+        "referenceId": 1,
+        "referenceName": "Velaffeld",
+        "mapPosition": [
+          1459.5,
+          550.5
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Velaffeld&population=850985&size=99&seed=15259105&river=1&coast=1&farms=1&citadel=1&urban_castle=0&hub=0&plaza=1&greens=1&temple=1&walls=1&shantytown=1&style=natural&sea=1.69",
+        "watabouParams": {
+          "seed": 15259105,
+          "size": 99,
+          "population": 850985,
+          "coast": 1,
+          "river": 1,
+          "farms": 1,
+          "citadel": 1,
+          "urban_castle": 0,
+          "plaza": 1,
+          "greens": 1,
+          "temple": 1,
+          "walls": 1,
+          "shantytown": 1,
+          "hub": 0,
+          "sea": 1.69,
+          "style": "natural"
+        }
+      }
+    },
+    "2": {
+      "cityId": 2,
+      "name": "Ereth",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 825879962,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 2,
+        "cityName": "Ereth",
+        "referenceId": 2,
+        "referenceName": "Ereth",
+        "mapPosition": [
+          1358.51,
+          320.41
+        ],
+        "positionDifference": 137.4,
+        "referenceDistance": 137.4,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Ereth&population=27310&size=27&seed=825879962&river=1&coast=1&farms=1&citadel=1&urban_castle=1&hub=0&plaza=1&greens=1&temple=0&walls=0&shantytown=0&style=natural&sea=0.04",
+        "watabouParams": {
+          "seed": 825879962,
+          "size": 27,
+          "population": 27310,
+          "coast": 1,
+          "river": 1,
+          "farms": 1,
+          "citadel": 1,
+          "urban_castle": 1,
+          "plaza": 1,
+          "greens": 1,
+          "temple": 0,
+          "walls": 0,
+          "shantytown": 0,
+          "hub": 0,
+          "sea": 0.04,
+          "style": "natural"
+        }
+      }
+    },
+    "3": {
+      "cityId": 3,
+      "name": "Asgorath",
+      "pattern": "capital-fan",
+      "patternLabel": "Capital historica, praca central e avenidas",
+      "seed": 867348112,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 3,
+        "cityName": "Asghorat",
+        "referenceId": 3,
+        "referenceName": "Asghorat",
+        "mapPosition": [
+          1129,
+          381.5
+        ],
+        "positionDifference": 77.3,
+        "referenceDistance": 77.3,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Asghorat&population=450985&size=78&seed=867348112&river=0&coast=1&farms=1&citadel=1&urban_castle=0&hub=0&plaza=1&greens=1&temple=1&walls=1&shantytown=1&style=natural&sea=1.13",
+        "watabouParams": {
+          "seed": 867348112,
+          "size": 78,
+          "population": 450985,
+          "coast": 1,
+          "river": 0,
+          "farms": 1,
+          "citadel": 1,
+          "urban_castle": 0,
+          "plaza": 1,
+          "greens": 1,
+          "temple": 1,
+          "walls": 1,
+          "shantytown": 1,
+          "hub": 0,
+          "sea": 1.13,
+          "style": "natural"
+        }
+      }
+    },
+    "4": {
+      "cityId": 4,
+      "name": "Rivertown",
+      "pattern": "trading-town",
+      "patternLabel": "Mercado, arterias mercantis e vias secundarias",
+      "seed": 997834402,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 4,
+        "cityName": "Rivertown",
+        "referenceId": 221,
+        "referenceName": "Atapurnobun",
+        "mapPosition": [
+          1220.34,
+          365.87
+        ],
+        "positionDifference": 111.2,
+        "referenceDistance": 3.5,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "5": {
+      "cityId": 5,
+      "name": "Torre Solitária",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 382263342,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": true
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 5,
+        "cityName": "Torre Solitária",
+        "referenceId": 5,
+        "referenceName": "Torre Solitária",
+        "mapPosition": [
+          1203.04,
+          278.72
+        ],
+        "positionDifference": 33.2,
+        "referenceDistance": 33.2,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "6": {
+      "cityId": 6,
+      "name": "Anteventium",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 72880518,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 6,
+        "cityName": "Anteventium",
+        "referenceId": 6,
+        "referenceName": "Anteventium",
+        "mapPosition": [
+          829.31,
+          489.67
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "7": {
+      "cityId": 7,
+      "name": "Elucitor",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 474186160,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 7,
+        "cityName": "Elucitor",
+        "referenceId": 7,
+        "referenceName": "Elucitor",
+        "mapPosition": [
+          1071.32,
+          530.9
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Elucitor&population=1005030&size=100&seed=474186160&river=0&coast=1&farms=1&citadel=1&urban_castle=0&hub=0&plaza=1&greens=1&temple=1&walls=1&shantytown=1&style=natural&sea=1.48",
+        "watabouParams": {
+          "seed": 474186160,
+          "size": 100,
+          "population": 1005030,
+          "coast": 1,
+          "river": 0,
+          "farms": 1,
+          "citadel": 1,
+          "urban_castle": 0,
+          "plaza": 1,
+          "greens": 1,
+          "temple": 1,
+          "walls": 1,
+          "shantytown": 1,
+          "hub": 0,
+          "sea": 1.48,
+          "style": "natural"
+        }
+      },
+      "terrain": {
+        "island": {
+          "shape": "irregular-ellipse",
+          "radiusEastWestM": 1750,
+          "radiusNorthSouthM": 1620,
+          "harbourFacingCoastM": 940,
+          "waterOnAllSides": true
+        },
+        "water": "sea"
+      }
+    },
+    "8": {
+      "cityId": 8,
+      "name": "Valari",
+      "pattern": "ruins",
+      "patternLabel": "Vestigios de ruas e nucleos da antiga cidade",
+      "seed": 643329654,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false,
+        "market": false,
+        "empty": true
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 8,
+        "cityName": "Valari",
+        "referenceId": 8,
+        "referenceName": "Valari",
+        "mapPosition": [
+          1366,
+          737.5
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Valari&population=0&size=6&seed=643329654&river=0&coast=1&farms=0&citadel=1&urban_castle=1&hub=0&plaza=0&greens=0&temple=0&walls=1&shantytown=0&style=natural&sea=0.54",
+        "watabouParams": {
+          "seed": 643329654,
+          "size": 6,
+          "population": 0,
+          "coast": 1,
+          "river": 0,
+          "farms": 0,
+          "citadel": 1,
+          "urban_castle": 1,
+          "plaza": 0,
+          "greens": 0,
+          "temple": 0,
+          "walls": 1,
+          "shantytown": 0,
+          "hub": 0,
+          "sea": 0.54,
+          "style": "natural"
+        }
+      }
+    },
+    "9": {
+      "cityId": 9,
+      "name": "Alqa",
+      "pattern": "desert-medina",
+      "patternLabel": "Mercado central e vielas de cidade arida",
+      "seed": 1033486233,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 9,
+        "cityName": "Alqa",
+        "referenceId": 9,
+        "referenceName": "Alqa",
+        "mapPosition": [
+          943.86,
+          418.51
+        ],
+        "positionDifference": 70.3,
+        "referenceDistance": 70.3,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "10": {
+      "cityId": 10,
+      "name": "Dagorah",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 1588418399,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 10,
+        "cityName": "Dagorah",
+        "referenceId": 10,
+        "referenceName": "Dagorah",
+        "mapPosition": [
+          942.87,
+          260.37
+        ],
+        "positionDifference": 19.2,
+        "referenceDistance": 19.2,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "11": {
+      "cityId": 11,
+      "name": "Malacatt",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 961705262,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 11,
+        "cityName": "Mallacatt",
+        "referenceId": 11,
+        "referenceName": "Mallacatt",
+        "mapPosition": [
+          986.1,
+          334.32
+        ],
+        "positionDifference": 37.9,
+        "referenceDistance": 37.9,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "12": {
+      "cityId": 12,
+      "name": "Savhalla",
+      "pattern": "desert-medina",
+      "patternLabel": "Mercado central e vielas de cidade arida",
+      "seed": 1537402500,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 12,
+        "cityName": "Savhala",
+        "referenceId": 58,
+        "referenceName": "Getiaputum",
+        "mapPosition": [
+          977.91,
+          382.44
+        ],
+        "positionDifference": 62.0,
+        "referenceDistance": 36.3,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "13": {
+      "cityId": 13,
+      "name": "Vila Candelápria",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 1523642303,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 13,
+        "cityName": "Vila Candelápria",
+        "referenceId": 13,
+        "referenceName": "Vila Candelápria",
+        "mapPosition": [
+          507.5,
+          714
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "14": {
+      "cityId": 14,
+      "name": "Gugacon",
+      "pattern": "ruins",
+      "patternLabel": "Vestigios de ruas e nucleos da antiga cidade",
+      "seed": 1338773175,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false,
+        "market": false,
+        "empty": true
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 14,
+        "cityName": "Gugacon",
+        "referenceId": 26,
+        "referenceName": "Vern",
+        "mapPosition": [
+          440.4,
+          318.69
+        ],
+        "positionDifference": 39.3,
+        "referenceDistance": 12.3,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "15": {
+      "cityId": 15,
+      "name": "Ignis",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 467462358,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 15,
+        "cityName": "Ignis",
+        "referenceId": 188,
+        "referenceName": "Onimbricum",
+        "mapPosition": [
+          1162.34,
+          432.18
+        ],
+        "positionDifference": 70.1,
+        "referenceDistance": 19.1,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "16": {
+      "cityId": 16,
+      "name": "Vir",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 1578139207,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 16,
+        "cityName": "Wirion",
+        "referenceId": 19,
+        "referenceName": "Triovorn",
+        "mapPosition": [
+          381.79,
+          360.66
+        ],
+        "positionDifference": 27.0,
+        "referenceDistance": 4.9,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "17": {
+      "cityId": 17,
+      "name": "Nostris",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 673552516,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 17,
+        "cityName": "Nostris",
+        "referenceId": 17,
+        "referenceName": "Nostris",
+        "mapPosition": [
+          1164.62,
+          452.09
+        ],
+        "positionDifference": 97.5,
+        "referenceDistance": 97.5,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Nostris&population=12248&size=20&seed=673552516&river=0&coast=0&farms=0&citadel=1&urban_castle=0&hub=0&plaza=0&greens=0&temple=0&walls=0&shantytown=0&style=natural",
+        "watabouParams": {
+          "seed": 673552516,
+          "size": 20,
+          "population": 12248,
+          "coast": 0,
+          "river": 0,
+          "farms": 0,
+          "citadel": 1,
+          "urban_castle": 0,
+          "plaza": 0,
+          "greens": 0,
+          "temple": 0,
+          "walls": 0,
+          "shantytown": 0,
+          "hub": 0,
+          "style": "natural"
+        }
+      }
+    },
+    "18": {
+      "cityId": 18,
+      "name": "Porto das Cinzas",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 1270007220,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 18,
+        "cityName": "Porto das Cinzas",
+        "referenceId": 34,
+        "referenceName": "Timber",
+        "mapPosition": [
+          1251.65,
+          282.43
+        ],
+        "positionDifference": 120.6,
+        "referenceDistance": 33.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "19": {
+      "cityId": 19,
+      "name": "Triovorn",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 610618010,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 19,
+        "cityName": "Triovorn",
+        "referenceId": 19,
+        "referenceName": "Triovorn",
+        "mapPosition": [
+          365.27,
+          338.04
+        ],
+        "positionDifference": 50.8,
+        "referenceDistance": 50.8,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "20": {
+      "cityId": 20,
+      "name": "Lorvus",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 387690223,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 20,
+        "cityName": "Lorvus",
+        "referenceId": 20,
+        "referenceName": "Lorvus",
+        "mapPosition": [
+          994.15,
+          631.52
+        ],
+        "positionDifference": 55.6,
+        "referenceDistance": 55.6,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Lorvus&population=2267&size=11&seed=387690223&river=0&coast=0&farms=0&citadel=0&urban_castle=0&hub=0&plaza=0&greens=0&temple=0&walls=0&shantytown=0&style=natural",
+        "watabouParams": {
+          "seed": 387690223,
+          "size": 11,
+          "population": 2267,
+          "coast": 0,
+          "river": 0,
+          "farms": 0,
+          "citadel": 0,
+          "urban_castle": 0,
+          "plaza": 0,
+          "greens": 0,
+          "temple": 0,
+          "walls": 0,
+          "shantytown": 0,
+          "hub": 0,
+          "style": "natural"
+        }
+      }
+    },
+    "21": {
+      "cityId": 21,
+      "name": "Guernica",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1124644260,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 21,
+        "cityName": "Guernica",
+        "referenceId": 21,
+        "referenceName": "Guernica",
+        "mapPosition": [
+          291.86,
+          369.1
+        ],
+        "positionDifference": 49.2,
+        "referenceDistance": 49.2,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "22": {
+      "cityId": 22,
+      "name": "Drácon",
+      "pattern": "volcanic",
+      "patternLabel": "Forjas, patios fortificados e terrenos vulcanicos",
+      "seed": 901778759,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 22,
+        "cityName": "Drácon",
+        "referenceId": 22,
+        "referenceName": "Drácon",
+        "mapPosition": [
+          184.95,
+          470.17
+        ],
+        "positionDifference": 55.3,
+        "referenceDistance": 55.3,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "23": {
+      "cityId": 23,
+      "name": "Winterhelm",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 897866286,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 23,
+        "cityName": "Winterhelm",
+        "referenceId": 23,
+        "referenceName": "Winterhelm",
+        "mapPosition": [
+          1090.33,
+          283.77
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Winterhelm&population=25078&size=26&seed=897866286&river=1&coast=0&farms=0&citadel=1&urban_castle=0&hub=0&plaza=0&greens=0&temple=0&walls=0&shantytown=0&style=natural",
+        "watabouParams": {
+          "seed": 897866286,
+          "size": 26,
+          "population": 25078,
+          "coast": 0,
+          "river": 1,
+          "farms": 0,
+          "citadel": 1,
+          "urban_castle": 0,
+          "plaza": 0,
+          "greens": 0,
+          "temple": 0,
+          "walls": 0,
+          "shantytown": 0,
+          "hub": 0,
+          "style": "natural"
+        }
+      }
+    },
+    "24": {
+      "cityId": 24,
+      "name": "Forte Drakis",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 2040944552,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 24,
+        "cityName": "Dracofortis",
+        "referenceId": 139,
+        "referenceName": "Lintum",
+        "mapPosition": [
+          1064.76,
+          424.33
+        ],
+        "positionDifference": 122.8,
+        "referenceDistance": 41.4,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "25": {
+      "cityId": 25,
+      "name": "Kyon",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 733075436,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 25,
+        "cityName": "Kyon",
+        "referenceId": 29,
+        "referenceName": "Mauron",
+        "mapPosition": [
+          304.27,
+          299.42
+        ],
+        "positionDifference": 53.6,
+        "referenceDistance": 12.8,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "26": {
+      "cityId": 26,
+      "name": "Porto de Vern",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 2106114392,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 26,
+        "cityName": "Vern",
+        "referenceId": 98,
+        "referenceName": "Telhaca",
+        "mapPosition": [
+          405.14,
+          322.26
+        ],
+        "positionDifference": 82.7,
+        "referenceDistance": 30.9,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "27": {
+      "cityId": 27,
+      "name": "Tramor",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 1992833348,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 27,
+        "cityName": "Tramor",
+        "referenceId": 204,
+        "referenceName": "Andigantia",
+        "mapPosition": [
+          981.21,
+          669.35
+        ],
+        "positionDifference": 53.2,
+        "referenceDistance": 35.4,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "28": {
+      "cityId": 28,
+      "name": "Vostris",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 626618333,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 28,
+        "cityName": "Vostris",
+        "referenceId": 28,
+        "referenceName": "Vostris",
+        "mapPosition": [
+          1185.97,
+          407.2
+        ],
+        "positionDifference": 119.8,
+        "referenceDistance": 119.8,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Vostris&population=4678&size=14&seed=626618333&river=0&coast=0&farms=0&citadel=1&urban_castle=1&hub=0&plaza=1&greens=1&temple=0&walls=0&shantytown=0&style=natural",
+        "watabouParams": {
+          "seed": 626618333,
+          "size": 14,
+          "population": 4678,
+          "coast": 0,
+          "river": 0,
+          "farms": 0,
+          "citadel": 1,
+          "urban_castle": 1,
+          "plaza": 1,
+          "greens": 1,
+          "temple": 0,
+          "walls": 0,
+          "shantytown": 0,
+          "hub": 0,
+          "style": "natural"
+        }
+      }
+    },
+    "29": {
+      "cityId": 29,
+      "name": "Mauron",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 371287777,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 29,
+        "cityName": "Mauron",
+        "referenceId": 29,
+        "referenceName": "Mauron",
+        "mapPosition": [
+          243.56,
+          301.86
+        ],
+        "positionDifference": 41.5,
+        "referenceDistance": 41.5,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "30": {
+      "cityId": 30,
+      "name": "Porto do Álamo",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 1383620578,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 30,
+        "cityName": "Porto do Álamo",
+        "referenceId": 30,
+        "referenceName": "Porto do Álamo",
+        "mapPosition": [
+          180.71,
+          363.05
+        ],
+        "positionDifference": 40.9,
+        "referenceDistance": 40.9,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "31": {
+      "cityId": 31,
+      "name": "Lirion",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1367522844,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 31,
+        "cityName": "Lirion",
+        "referenceId": 31,
+        "referenceName": "Lirion",
+        "mapPosition": [
+          291.93,
+          393.87
+        ],
+        "positionDifference": 29.3,
+        "referenceDistance": 29.3,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "32": {
+      "cityId": 32,
+      "name": "Oregon",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 155625319,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 32,
+        "cityName": "Oregon",
+        "referenceId": 125,
+        "referenceName": "Brerao",
+        "mapPosition": [
+          264.89,
+          356.06
+        ],
+        "positionDifference": 59.9,
+        "referenceDistance": 17.8,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "33": {
+      "cityId": 33,
+      "name": "Gugacon",
+      "pattern": "volcanic",
+      "patternLabel": "Forjas, patios fortificados e terrenos vulcanicos",
+      "seed": 493035208,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 33,
+        "cityName": "Gugacon",
+        "referenceId": 33,
+        "referenceName": "Gugacon",
+        "mapPosition": [
+          1286,
+          244
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Gugacon&population=0&size=6&seed=493035208&river=0&coast=1&farms=0&citadel=0&urban_castle=0&hub=0&plaza=1&greens=1&temple=0&walls=1&shantytown=0&style=natural&sea=1.74",
+        "watabouParams": {
+          "seed": 493035208,
+          "size": 6,
+          "population": 0,
+          "coast": 1,
+          "river": 0,
+          "farms": 0,
+          "citadel": 0,
+          "urban_castle": 0,
+          "plaza": 1,
+          "greens": 1,
+          "temple": 0,
+          "walls": 1,
+          "shantytown": 0,
+          "hub": 0,
+          "sea": 1.74,
+          "style": "natural"
+        }
+      }
+    },
+    "34": {
+      "cityId": 34,
+      "name": "Rinnton",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 1298618088,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 34,
+        "cityName": "Timber",
+        "referenceId": 95,
+        "referenceName": "Rosemide",
+        "mapPosition": [
+          1182.8,
+          338.46
+        ],
+        "positionDifference": 120.9,
+        "referenceDistance": 23.2,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "35": {
+      "cityId": 35,
+      "name": "Argendau",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 686213817,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 35,
+        "cityName": "Argendau",
+        "referenceId": 35,
+        "referenceName": "Argendau",
+        "mapPosition": [
+          1100.74,
+          704.53
+        ],
+        "positionDifference": 24.2,
+        "referenceDistance": 24.2,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "36": {
+      "cityId": 36,
+      "name": "Grenolk",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 1896059241,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 36,
+        "cityName": "Gulukkharb",
+        "referenceId": 36,
+        "referenceName": "Gulukkharb",
+        "mapPosition": [
+          441.57,
+          563.45
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "38": {
+      "cityId": 38,
+      "name": "Viacaledebo",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 913986880,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 38,
+        "cityName": "Viacaledebo",
+        "referenceId": 38,
+        "referenceName": "Viacaledebo",
+        "mapPosition": [
+          386.3,
+          584.9
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "45": {
+      "cityId": 45,
+      "name": "Almirarem",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 1904741062,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 45,
+        "cityName": "Almirarem",
+        "referenceId": 45,
+        "referenceName": "Almirarem",
+        "mapPosition": [
+          463,
+          400
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "51": {
+      "cityId": 51,
+      "name": "Clifshore",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 105746744,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 51,
+        "cityName": "Clifshiel",
+        "referenceId": 51,
+        "referenceName": "Clifshiel",
+        "mapPosition": [
+          1214.41,
+          339.4
+        ],
+        "positionDifference": 18.0,
+        "referenceDistance": 18.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "52": {
+      "cityId": 52,
+      "name": "Hethlothloth",
+      "pattern": "volcanic",
+      "patternLabel": "Forjas, patios fortificados e terrenos vulcanicos",
+      "seed": 898643967,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 52,
+        "cityName": "Hethlothloth",
+        "referenceId": 52,
+        "referenceName": "Hethlothloth",
+        "mapPosition": [
+          371,
+          501
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "53": {
+      "cityId": 53,
+      "name": "Oraland Ise",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 303853741,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 53,
+        "cityName": "Oraland Ise",
+        "referenceId": 53,
+        "referenceName": "Oraland Ise",
+        "mapPosition": [
+          1374.08,
+          431.8
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "56": {
+      "cityId": 56,
+      "name": "Viras",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 410303850,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 56,
+        "cityName": "Viras",
+        "referenceId": 56,
+        "referenceName": "Viras",
+        "mapPosition": [
+          333.5,
+          777.5
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "61": {
+      "cityId": 61,
+      "name": "Allanan",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 935380945,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 61,
+        "cityName": "Nanalyelumy",
+        "referenceId": 61,
+        "referenceName": "Nanalyelumy",
+        "mapPosition": [
+          1405.13,
+          662.65
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "62": {
+      "cityId": 62,
+      "name": "Vilenages",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 321859388,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 62,
+        "cityName": "Fermaletim",
+        "referenceId": 208,
+        "referenceName": "Bonimbridu",
+        "mapPosition": [
+          883.5,
+          710.5
+        ],
+        "positionDifference": 58.9,
+        "referenceDistance": 7.4,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "67": {
+      "cityId": 67,
+      "name": "Himlumn",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 138968603,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 67,
+        "cityName": "Himlumytenor",
+        "referenceId": 67,
+        "referenceName": "Himlumytenor",
+        "mapPosition": [
+          1280.16,
+          571.81
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "68": {
+      "cityId": 68,
+      "name": "Parnum",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 20889660,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 68,
+        "cityName": "Parnum",
+        "referenceId": 68,
+        "referenceName": "Parnum",
+        "mapPosition": [
+          696.6,
+          580.2
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "69": {
+      "cityId": 69,
+      "name": "Odira",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 729581523,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 69,
+        "cityName": "Odira",
+        "referenceId": 69,
+        "referenceName": "Odira",
+        "mapPosition": [
+          721.03,
+          649.46
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "70": {
+      "cityId": 70,
+      "name": "Sel-Shofela",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 1352477708,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 70,
+        "cityName": "Sel-Shofela",
+        "referenceId": 70,
+        "referenceName": "Sel-Shofela",
+        "mapPosition": [
+          1349.36,
+          653.34
+        ],
+        "positionDifference": 40.9,
+        "referenceDistance": 40.9,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "72": {
+      "cityId": 72,
+      "name": "Lulgard",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1140059176,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 72,
+        "cityName": "Lulgard",
+        "referenceId": 72,
+        "referenceName": "Lulgard",
+        "mapPosition": [
+          598.97,
+          302.12
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "75": {
+      "cityId": 75,
+      "name": "Tserost",
+      "pattern": "steppe-camp",
+      "patternLabel": "Acampamento e vias das estepes",
+      "seed": 718801673,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 75,
+        "cityName": "Tsetsogt",
+        "referenceId": 75,
+        "referenceName": "Tsetsogt",
+        "mapPosition": [
+          555.47,
+          393.34
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "77": {
+      "cityId": 77,
+      "name": "Jalha",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 400799937,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 77,
+        "cityName": "Jalha",
+        "referenceId": 77,
+        "referenceName": "Jalha",
+        "mapPosition": [
+          1319.11,
+          445.15
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "78": {
+      "cityId": 78,
+      "name": "Lyadargor",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 1506342122,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 78,
+        "cityName": "Lyadargor",
+        "referenceId": 78,
+        "referenceName": "Lyadargor",
+        "mapPosition": [
+          1447.67,
+          473.37
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "81": {
+      "cityId": 81,
+      "name": "Chaundor",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 1550816503,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 81,
+        "cityName": "Chaundor",
+        "referenceId": 81,
+        "referenceName": "Chaundor",
+        "mapPosition": [
+          1438.7,
+          525.45
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "85": {
+      "cityId": 85,
+      "name": "Glouyaloss",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 1755111471,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 85,
+        "cityName": "Glouyaloss",
+        "referenceId": 85,
+        "referenceName": "Glouyaloss",
+        "mapPosition": [
+          384,
+          645
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "88": {
+      "cityId": 88,
+      "name": "Maleluz",
+      "pattern": "trading-town",
+      "patternLabel": "Mercado, arterias mercantis e vias secundarias",
+      "seed": 1203125695,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 88,
+        "cityName": "Maleluz",
+        "referenceId": 88,
+        "referenceName": "Maleluz",
+        "mapPosition": [
+          389.66,
+          696.5
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "89": {
+      "cityId": 89,
+      "name": "Sobrirosen",
+      "pattern": "trading-town",
+      "patternLabel": "Mercado, arterias mercantis e vias secundarias",
+      "seed": 1039302747,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 89,
+        "cityName": "Sobrirosen",
+        "referenceId": 89,
+        "referenceName": "Sobrirosen",
+        "mapPosition": [
+          450.84,
+          706.03
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "90": {
+      "cityId": 90,
+      "name": "Vilaguezejo",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 492043809,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 90,
+        "cityName": "Vilaguezejo",
+        "referenceId": 90,
+        "referenceName": "Vilaguezejo",
+        "mapPosition": [
+          389,
+          721.5
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "92": {
+      "cityId": 92,
+      "name": "Allos",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 2027755024,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 92,
+        "cityName": "Allos",
+        "referenceId": 92,
+        "referenceName": "Allos",
+        "mapPosition": [
+          826.18,
+          267.02
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "93": {
+      "cityId": 93,
+      "name": "Bral",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 364881472,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 93,
+        "cityName": "Bral",
+        "referenceId": 93,
+        "referenceName": "Bral",
+        "mapPosition": [
+          515.03,
+          312
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "96": {
+      "cityId": 96,
+      "name": "Selne",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 161362683,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 96,
+        "cityName": "Selne",
+        "referenceId": 96,
+        "referenceName": "Selne",
+        "mapPosition": [
+          1371.11,
+          359.34
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "99": {
+      "cityId": 99,
+      "name": "Braveira",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 505510651,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 99,
+        "cityName": "Braveira",
+        "referenceId": 99,
+        "referenceName": "Braveira",
+        "mapPosition": [
+          424.71,
+          413.09
+        ],
+        "positionDifference": 18.2,
+        "referenceDistance": 18.2,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "100": {
+      "cityId": 100,
+      "name": "Varta",
+      "pattern": "trading-town",
+      "patternLabel": "Mercado, arterias mercantis e vias secundarias",
+      "seed": 836056513,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 100,
+        "cityName": "Varta",
+        "referenceId": 100,
+        "referenceName": "Varta",
+        "mapPosition": [
+          526.42,
+          416.43
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "102": {
+      "cityId": 102,
+      "name": "Paiaga",
+      "pattern": "trading-town",
+      "patternLabel": "Mercado, arterias mercantis e vias secundarias",
+      "seed": 2012969558,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 102,
+        "cityName": "Paiaga",
+        "referenceId": 102,
+        "referenceName": "Paiaga",
+        "mapPosition": [
+          476.97,
+          445.08
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "104": {
+      "cityId": 104,
+      "name": "Cananhos",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1126112809,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 104,
+        "cityName": "Caganho",
+        "referenceId": 104,
+        "referenceName": "Caganho",
+        "mapPosition": [
+          397.26,
+          481.4
+        ],
+        "positionDifference": 11.0,
+        "referenceDistance": 11.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "108": {
+      "cityId": 108,
+      "name": "Pinhem",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 2004027654,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 108,
+        "cityName": "Pinhem",
+        "referenceId": 108,
+        "referenceName": "Pinhem",
+        "mapPosition": [
+          387.02,
+          532.98
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "109": {
+      "cityId": 109,
+      "name": "Vedioria",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 1867086872,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 109,
+        "cityName": "Vedioria",
+        "referenceId": 109,
+        "referenceName": "Vedioria",
+        "mapPosition": [
+          749.02,
+          544.96
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "110": {
+      "cityId": 110,
+      "name": "Bilnulbun",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 555876770,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 110,
+        "cityName": "Bilnulbun",
+        "referenceId": 110,
+        "referenceName": "Bilnulbun",
+        "mapPosition": [
+          485.9,
+          559.87
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "113": {
+      "cityId": 113,
+      "name": "Nirgona",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 419397789,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 113,
+        "cityName": "Premapuri",
+        "referenceId": 113,
+        "referenceName": "Premapuri",
+        "mapPosition": [
+          1007.99,
+          711.98
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "115": {
+      "cityId": 115,
+      "name": "Ridualhos",
+      "pattern": "trading-town",
+      "patternLabel": "Mercado, arterias mercantis e vias secundarias",
+      "seed": 705296265,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 115,
+        "cityName": "Ridualhos",
+        "referenceId": 115,
+        "referenceName": "Ridualhos",
+        "mapPosition": [
+          421.69,
+          754.03
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "116": {
+      "cityId": 116,
+      "name": "Feixos",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 1486234593,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 116,
+        "cityName": "Funco",
+        "referenceId": 116,
+        "referenceName": "Funco",
+        "mapPosition": [
+          733,
+          773
+        ],
+        "positionDifference": 26.7,
+        "referenceDistance": 26.7,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "119": {
+      "cityId": 119,
+      "name": "Nudh",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1857787972,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 119,
+        "cityName": "Nudh",
+        "referenceId": 119,
+        "referenceName": "Nudh",
+        "mapPosition": [
+          529.47,
+          273.24
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "120": {
+      "cityId": 120,
+      "name": "Lakenford",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 1392571693,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 120,
+        "cityName": "Steamouth",
+        "referenceId": 120,
+        "referenceName": "Steamouth",
+        "mapPosition": [
+          993.17,
+          303.44
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "127": {
+      "cityId": 127,
+      "name": "Shunzargil",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 1583364832,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 127,
+        "cityName": "Shunzargil",
+        "referenceId": 127,
+        "referenceName": "Shunzargil",
+        "mapPosition": [
+          637.18,
+          370.65
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "128": {
+      "cityId": 128,
+      "name": "Natheas",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 989638456,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 128,
+        "cityName": "Natheas",
+        "referenceId": 128,
+        "referenceName": "Natheas",
+        "mapPosition": [
+          1550,
+          422.5
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "129": {
+      "cityId": 129,
+      "name": "Hellas",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 1053161448,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 129,
+        "cityName": "Hellas",
+        "referenceId": 129,
+        "referenceName": "Hellas",
+        "mapPosition": [
+          718.27,
+          439.95
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "130": {
+      "cityId": 130,
+      "name": "Gannas",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 556993186,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 130,
+        "cityName": "Aleravum",
+        "referenceId": 130,
+        "referenceName": "Aleravum",
+        "mapPosition": [
+          774.98,
+          431.02
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "132": {
+      "cityId": 132,
+      "name": "Auyalalagh",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 362016601,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 132,
+        "cityName": "Auyalalagh",
+        "referenceId": 132,
+        "referenceName": "Auyalalagh",
+        "mapPosition": [
+          335.7,
+          467.5
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "134": {
+      "cityId": 134,
+      "name": "Odusonsium",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 757145199,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 134,
+        "cityName": "Odusonsium",
+        "referenceId": 134,
+        "referenceName": "Odusonsium",
+        "mapPosition": [
+          720.63,
+          479.97
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "135": {
+      "cityId": 135,
+      "name": "Sanha",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 765364775,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 135,
+        "cityName": "Sanha",
+        "referenceId": 135,
+        "referenceName": "Sanha",
+        "mapPosition": [
+          487.36,
+          492.51
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "136": {
+      "cityId": 136,
+      "name": "Sharntosz",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 726513494,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 136,
+        "cityName": "Sharntosz",
+        "referenceId": 136,
+        "referenceName": "Sharntosz",
+        "mapPosition": [
+          249.46,
+          500.55
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "137": {
+      "cityId": 137,
+      "name": "Vinquertiro",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1304601339,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 137,
+        "cityName": "Vinquertiro",
+        "referenceId": 137,
+        "referenceName": "Vinquertiro",
+        "mapPosition": [
+          414.11,
+          504.31
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "138": {
+      "cityId": 138,
+      "name": "Tonkhet",
+      "pattern": "steppe-camp",
+      "patternLabel": "Acampamento e vias das estepes",
+      "seed": 1662682462,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 138,
+        "cityName": "Tonkhet",
+        "referenceId": 138,
+        "referenceName": "Tonkhet",
+        "mapPosition": [
+          668.05,
+          503.83
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "140": {
+      "cityId": 140,
+      "name": "Tog Iret",
+      "pattern": "steppe-camp",
+      "patternLabel": "Acampamento e vias das estepes",
+      "seed": 1722117475,
+      "features": {
+        "capital": true,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 140,
+        "cityName": "Tog Iret",
+        "referenceId": 140,
+        "referenceName": "Tog Iret",
+        "mapPosition": [
+          581.32,
+          520.95
+        ],
+        "positionDifference": 25.6,
+        "referenceDistance": 25.6,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "142": {
+      "cityId": 142,
+      "name": "Urlyzaak",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 2096522604,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 142,
+        "cityName": "Urlylithalazak",
+        "referenceId": 142,
+        "referenceName": "Urlylithalazak",
+        "mapPosition": [
+          230.46,
+          533.29
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "143": {
+      "cityId": 143,
+      "name": "Chulagtoh",
+      "pattern": "steppe-camp",
+      "patternLabel": "Acampamento e vias das estepes",
+      "seed": 516783074,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 143,
+        "cityName": "Chulagtoh",
+        "referenceId": 143,
+        "referenceName": "Chulagtoh",
+        "mapPosition": [
+          521.8,
+          534.97
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "147": {
+      "cityId": 147,
+      "name": "Litorum",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 1358433441,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 147,
+        "cityName": "Litorum",
+        "referenceId": 147,
+        "referenceName": "Litorum",
+        "mapPosition": [
+          1124.34,
+          554.17
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "149": {
+      "cityId": 149,
+      "name": "Grainhem",
+      "pattern": "steppe-camp",
+      "patternLabel": "Acampamento e vias das estepes",
+      "seed": 76679021,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 149,
+        "cityName": "Grainhem",
+        "referenceId": 149,
+        "referenceName": "Grainhem",
+        "mapPosition": [
+          593.54,
+          571.2
+        ],
+        "positionDifference": 23.3,
+        "referenceDistance": 23.3,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "150": {
+      "cityId": 150,
+      "name": "Brelas",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 894198083,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 150,
+        "cityName": "Brelas",
+        "referenceId": 150,
+        "referenceName": "Brelas",
+        "mapPosition": [
+          433.29,
+          585.21
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "153": {
+      "cityId": 153,
+      "name": "Guiras",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 90368731,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 153,
+        "cityName": "Guiras",
+        "referenceId": 153,
+        "referenceName": "Guiras",
+        "mapPosition": [
+          419.94,
+          615.37
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "154": {
+      "cityId": 154,
+      "name": "Alveiras",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1994932012,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 154,
+        "cityName": "Alveiras",
+        "referenceId": 154,
+        "referenceName": "Alveiras",
+        "mapPosition": [
+          470.14,
+          612.37
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "158": {
+      "cityId": 158,
+      "name": "Alsas",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 2013526918,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 158,
+        "cityName": "Alsas",
+        "referenceId": 158,
+        "referenceName": "Alsas",
+        "mapPosition": [
+          513.28,
+          634.18
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "159": {
+      "cityId": 159,
+      "name": "Olcanha",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 739888230,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 159,
+        "cityName": "Olcanha",
+        "referenceId": 159,
+        "referenceName": "Olcanha",
+        "mapPosition": [
+          561.79,
+          633.31
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "160": {
+      "cityId": 160,
+      "name": "Pantos",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 1330826905,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 160,
+        "cityName": "Pantos",
+        "referenceId": 212,
+        "referenceName": "Moufeixas",
+        "mapPosition": [
+          644.57,
+          637.77
+        ],
+        "positionDifference": 195.4,
+        "referenceDistance": 51.4,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "161": {
+      "cityId": 161,
+      "name": "Bomaria",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 962847550,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 161,
+        "cityName": "Bomaria",
+        "referenceId": 198,
+        "referenceName": "Himlaquana",
+        "mapPosition": [
+          1164.66,
+          648.84
+        ],
+        "positionDifference": 84.8,
+        "referenceDistance": 22.7,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "164": {
+      "cityId": 164,
+      "name": "Calha",
+      "pattern": "trading-town",
+      "patternLabel": "Mercado, arterias mercantis e vias secundarias",
+      "seed": 346719739,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 164,
+        "cityName": "Calha",
+        "referenceId": 164,
+        "referenceName": "Calha",
+        "mapPosition": [
+          410.82,
+          681.13
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "168": {
+      "cityId": 168,
+      "name": "Pyrenor",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1329008202,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": true
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 168,
+        "cityName": "Pirerewick",
+        "referenceId": 168,
+        "referenceName": "Pirerewick",
+        "mapPosition": [
+          167.4,
+          308.43
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "169": {
+      "cityId": 169,
+      "name": "Irkudh",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 636398923,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 169,
+        "cityName": "Irkudh",
+        "referenceId": 169,
+        "referenceName": "Irkudh",
+        "mapPosition": [
+          566.35,
+          318.46
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "170": {
+      "cityId": 170,
+      "name": "Ginar",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 436003120,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 170,
+        "cityName": "Ginar",
+        "referenceId": 170,
+        "referenceName": "Ginar",
+        "mapPosition": [
+          624.6,
+          314.77
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "174": {
+      "cityId": 174,
+      "name": "Caspinho",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1200807689,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 174,
+        "cityName": "Caspinho",
+        "referenceId": 174,
+        "referenceName": "Caspinho",
+        "mapPosition": [
+          489.43,
+          359.18
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "176": {
+      "cityId": 176,
+      "name": "Khizdush",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 44647594,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 176,
+        "cityName": "Khizdush",
+        "referenceId": 176,
+        "referenceName": "Khizdush",
+        "mapPosition": [
+          664.61,
+          372.22
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "177": {
+      "cityId": 177,
+      "name": "Kharagz",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 88436891,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 177,
+        "cityName": "Kharagz",
+        "referenceId": 177,
+        "referenceName": "Kharagz",
+        "mapPosition": [
+          700.8,
+          372.55
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "179": {
+      "cityId": 179,
+      "name": "Urentog",
+      "pattern": "steppe-camp",
+      "patternLabel": "Acampamento e vias das estepes",
+      "seed": 1123024245,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 179,
+        "cityName": "Urentog",
+        "referenceId": 179,
+        "referenceName": "Urentog",
+        "mapPosition": [
+          619.03,
+          414.01
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "180": {
+      "cityId": 180,
+      "name": "Orgener",
+      "pattern": "steppe-camp",
+      "patternLabel": "Acampamento e vias das estepes",
+      "seed": 1510881149,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 180,
+        "cityName": "Orgayankher",
+        "referenceId": 180,
+        "referenceName": "Orgayankher",
+        "mapPosition": [
+          672.14,
+          427.5
+        ],
+        "positionDifference": 38.9,
+        "referenceDistance": 38.9,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "181": {
+      "cityId": 181,
+      "name": "Liriathyr",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 156716600,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 181,
+        "cityName": "Liriathyr",
+        "referenceId": 181,
+        "referenceName": "Liriathyr",
+        "mapPosition": [
+          1478.21,
+          420.77
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "182": {
+      "cityId": 182,
+      "name": "Tessert",
+      "pattern": "steppe-camp",
+      "patternLabel": "Acampamento e vias das estepes",
+      "seed": 1849236025,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 182,
+        "cityName": "Tsogtsogt",
+        "referenceId": 182,
+        "referenceName": "Tsogtsogt",
+        "mapPosition": [
+          681.17,
+          450.25
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "183": {
+      "cityId": 183,
+      "name": "Mestrina",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 1252493758,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 183,
+        "cityName": "Momaco",
+        "referenceId": 183,
+        "referenceName": "Momaco",
+        "mapPosition": [
+          901.18,
+          472.96
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "184": {
+      "cityId": 184,
+      "name": "Fovium",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 711453133,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 184,
+        "cityName": "Fovium",
+        "referenceId": 184,
+        "referenceName": "Fovium",
+        "mapPosition": [
+          773.37,
+          484.21
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "189": {
+      "cityId": 189,
+      "name": "Garnalos",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 1504619750,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": true
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 189,
+        "cityName": "Oshanalos",
+        "referenceId": 189,
+        "referenceName": "Oshanalos",
+        "mapPosition": [
+          1305.9,
+          521.09
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "191": {
+      "cityId": 191,
+      "name": "Vennoduro",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 761135506,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": 191,
+        "cityName": "Vennoduro",
+        "referenceId": 146,
+        "referenceName": "Tredetorum",
+        "mapPosition": [
+          1017.01,
+          548.17
+        ],
+        "positionDifference": 32.6,
+        "referenceDistance": 17.5,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "197": {
+      "cityId": 197,
+      "name": "Althor",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 402671820,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 197,
+        "cityName": "Althor",
+        "referenceId": 197,
+        "referenceName": "Althor",
+        "mapPosition": [
+          988.24,
+          579.67
+        ],
+        "positionDifference": 60.6,
+        "referenceDistance": 60.6,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Althor&population=11209&size=19&seed=402671820&river=1&coast=0&farms=1&citadel=1&urban_castle=0&hub=1&plaza=0&greens=0&temple=0&walls=1&shantytown=0&style=natural",
+        "watabouParams": {
+          "seed": 402671820,
+          "size": 19,
+          "population": 11209,
+          "coast": 0,
+          "river": 1,
+          "farms": 1,
+          "citadel": 1,
+          "urban_castle": 0,
+          "plaza": 0,
+          "greens": 0,
+          "temple": 0,
+          "walls": 1,
+          "shantytown": 0,
+          "hub": 1,
+          "style": "natural"
+        }
+      }
+    },
+    "199": {
+      "cityId": 199,
+      "name": "Amrithruk",
+      "pattern": "volcanic",
+      "patternLabel": "Forjas, patios fortificados e terrenos vulcanicos",
+      "seed": 1327079006,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 199,
+        "cityName": "Amrithruk",
+        "referenceId": 199,
+        "referenceName": "Amrithruk",
+        "mapPosition": [
+          316.96,
+          599.18
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "202": {
+      "cityId": 202,
+      "name": "Nythan",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 1768396483,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 202,
+        "cityName": "Nythan",
+        "referenceId": 202,
+        "referenceName": "Nythan",
+        "mapPosition": [
+          1364.69,
+          597.36
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "207": {
+      "cityId": 207,
+      "name": "Sobral",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 2059641305,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 207,
+        "cityName": "Sobral",
+        "referenceId": 207,
+        "referenceName": "Sobral",
+        "mapPosition": [
+          534.49,
+          660.26
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "211": {
+      "cityId": 211,
+      "name": "Coliras",
+      "pattern": "trading-town",
+      "patternLabel": "Mercado, arterias mercantis e vias secundarias",
+      "seed": 1622856152,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 211,
+        "cityName": "Coliras",
+        "referenceId": 211,
+        "referenceName": "Coliras",
+        "mapPosition": [
+          389.74,
+          773.24
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "214": {
+      "cityId": 214,
+      "name": "Khegosla",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 68690850,
+      "features": {
+        "capital": true,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 214,
+        "cityName": "Quegosola",
+        "referenceId": 214,
+        "referenceName": "Quegosola",
+        "mapPosition": [
+          838.26,
+          310.79
+        ],
+        "positionDifference": 66.3,
+        "referenceDistance": 66.3,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "220": {
+      "cityId": 220,
+      "name": "Karno'ande",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 1359334896,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 220,
+        "cityName": "Karno'ande",
+        "referenceId": 220,
+        "referenceName": "Karno'ande",
+        "mapPosition": [
+          1325.15,
+          409.67
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "223": {
+      "cityId": 223,
+      "name": "Crild",
+      "pattern": "marsh-causeways",
+      "patternLabel": "Passagens elevadas e bairros de pantano",
+      "seed": 686635356,
+      "features": {
+        "capital": true,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 223,
+        "cityName": "Crild",
+        "referenceId": 223,
+        "referenceName": "Crild",
+        "mapPosition": [
+          556,
+          725
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "224": {
+      "cityId": 224,
+      "name": "Loueixo",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 593881023,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 224,
+        "cityName": "Loueixo",
+        "referenceId": 224,
+        "referenceName": "Loueixo",
+        "mapPosition": [
+          192,
+          697
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "225": {
+      "cityId": 225,
+      "name": "Forteirosin",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 2086692441,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 225,
+        "cityName": "Forteirosin",
+        "referenceId": 225,
+        "referenceName": "Forteirosin",
+        "mapPosition": [
+          121.63,
+          731.33
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "226": {
+      "cityId": 226,
+      "name": "Panhadaril",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 1052022629,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": true
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 226,
+        "cityName": "Panhadaril",
+        "referenceId": 226,
+        "referenceName": "Panhadaril",
+        "mapPosition": [
+          233.6,
+          741.94
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "227": {
+      "cityId": 227,
+      "name": "Tarinquer",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 986391715,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 227,
+        "cityName": "Tarinquer",
+        "referenceId": 227,
+        "referenceName": "Tarinquer",
+        "mapPosition": [
+          219.98,
+          674.72
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "228": {
+      "cityId": 228,
+      "name": "Adinhoes",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 134657945,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 228,
+        "cityName": "Adinhoes",
+        "referenceId": 228,
+        "referenceName": "Adinhoes",
+        "mapPosition": [
+          152.2,
+          632.21
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "229": {
+      "cityId": 229,
+      "name": "Malegreiro",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 1462365576,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 229,
+        "cityName": "Malegreiro",
+        "referenceId": 229,
+        "referenceName": "Malegreiro",
+        "mapPosition": [
+          207.05,
+          635.37
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "230": {
+      "cityId": 230,
+      "name": "Veltidin",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 1639105003,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 230,
+        "cityName": "Veltidikivgit",
+        "referenceId": 230,
+        "referenceName": "Veltidikivgit",
+        "mapPosition": [
+          301.25,
+          676.44
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "232": {
+      "cityId": 232,
+      "name": "Ma'naar",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 1369336256,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 232,
+        "cityName": "Ma'naar",
+        "referenceId": 232,
+        "referenceName": "Ma'naar",
+        "mapPosition": [
+          265.64,
+          564.15
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "233": {
+      "cityId": 233,
+      "name": "Metiscina",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 879241480,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 233,
+        "cityName": "Metiscinthaxis",
+        "referenceId": 233,
+        "referenceName": "Metiscinthaxis",
+        "mapPosition": [
+          142.44,
+          487.19
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "235": {
+      "cityId": 235,
+      "name": "Sobrizeloba",
+      "pattern": "trading-town",
+      "patternLabel": "Mercado, arterias mercantis e vias secundarias",
+      "seed": 1401770794,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 235,
+        "cityName": "Sobrizeloba",
+        "referenceId": 235,
+        "referenceName": "Sobrizeloba",
+        "mapPosition": [
+          161.38,
+          721.56
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "236": {
+      "cityId": 236,
+      "name": "Osagos",
+      "pattern": "trading-town",
+      "patternLabel": "Mercado, arterias mercantis e vias secundarias",
+      "seed": 2028507551,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 236,
+        "cityName": "Osagos",
+        "referenceId": 236,
+        "referenceName": "Osagos",
+        "mapPosition": [
+          190.25,
+          731.55
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "237": {
+      "cityId": 237,
+      "name": "Shaled",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 748305995,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 237,
+        "cityName": "Shaled",
+        "referenceId": 237,
+        "referenceName": "Shaled",
+        "mapPosition": [
+          758.55,
+          311.37
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "238": {
+      "cityId": 238,
+      "name": "Adush",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 74142082,
+      "features": {
+        "capital": true,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": true,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "watabou-semente",
+        "cityId": 238,
+        "cityName": "Adush",
+        "referenceId": 238,
+        "referenceName": "Adush",
+        "mapPosition": [
+          728.11,
+          325.15
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": "https://watabou.github.io/city-generator/?name=Adush&population=46643&size=33&seed=74142082&river=0&coast=0&farms=0&citadel=1&urban_castle=1&hub=0&plaza=1&greens=1&temple=1&walls=1&shantytown=0&style=natural",
+        "watabouParams": {
+          "seed": 74142082,
+          "size": 33,
+          "population": 46643,
+          "coast": 0,
+          "river": 0,
+          "farms": 0,
+          "citadel": 1,
+          "urban_castle": 1,
+          "plaza": 1,
+          "greens": 1,
+          "temple": 1,
+          "walls": 1,
+          "shantytown": 0,
+          "hub": 0,
+          "style": "natural"
+        }
+      }
+    },
+    "239": {
+      "cityId": 239,
+      "name": "Shararukthu",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 248532675,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 239,
+        "cityName": "Shararukthu",
+        "referenceId": 239,
+        "referenceName": "Shararukthu",
+        "mapPosition": [
+          801.34,
+          284.37
+        ],
+        "positionDifference": 0.0,
+        "referenceDistance": 0.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "242": {
+      "cityId": 242,
+      "name": "Porto Corujos",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 30731643,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "identidade",
+        "cityId": 242,
+        "cityName": "Porto Corujos",
+        "referenceId": 242,
+        "referenceName": "Porto Corujos",
+        "mapPosition": [
+          513.2,
+          752.37
+        ],
+        "positionDifference": 2.6,
+        "referenceDistance": 2.6,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "1239": {
+      "cityId": 1239,
+      "name": "Arenor",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 834828118,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 152,
+        "referenceName": "Nigripina",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 11.4,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "1240": {
+      "cityId": 1240,
+      "name": "Castamor",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 1367962014,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 35,
+        "referenceName": "Argendau",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 46.6,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "1241": {
+      "cityId": 1241,
+      "name": "Nediora",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 175054442,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 114,
+        "referenceName": "Ducuscia",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 19.2,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "1242": {
+      "cityId": 1242,
+      "name": "Meriadoc",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 602000576,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 157,
+        "referenceName": "Nigripiro",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 25.1,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "1243": {
+      "cityId": 1243,
+      "name": "Cetolo",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 341880634,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 152,
+        "referenceName": "Nigripina",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 27.4,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "1244": {
+      "cityId": 1244,
+      "name": "Alia",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 1558489122,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 48,
+        "referenceName": "Lorimine",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 18.8,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "2000": {
+      "cityId": 2000,
+      "name": "Danumbria",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 286462208,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": true
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 163,
+        "referenceName": "Cacho",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 12.3,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "2001": {
+      "cityId": 2001,
+      "name": "Adhuc Vivere",
+      "pattern": "fortress",
+      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "seed": 2087298389,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 161,
+        "referenceName": "Bomaria",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 22.2,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "2002": {
+      "cityId": 2002,
+      "name": "Ros Leones",
+      "pattern": "imperial-grid",
+      "patternLabel": "Malha imperial, avenidas e quarteiroes regulares",
+      "seed": 907313180,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 40,
+        "referenceName": "Aethei",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 36.4,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "2003": {
+      "cityId": 2003,
+      "name": "Nilhelm",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1274071066,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 15,
+        "referenceName": "Ignis",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 9.9,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "2004": {
+      "cityId": 2004,
+      "name": "Vila Sardinhas",
+      "pattern": "forest-settlement",
+      "patternLabel": "Bairros abertos integrados a vegetacao",
+      "seed": 1970474725,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 219,
+        "referenceName": "Sherin",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 13.5,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "2006": {
+      "cityId": 2006,
+      "name": "Sulpa",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 994354042,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 25,
+        "referenceName": "Kyon",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 32.0,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "2007": {
+      "cityId": 2007,
+      "name": "Guil",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 348616481,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 94,
+        "referenceName": "Houndpassti",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 31.1,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "2008": {
+      "cityId": 2008,
+      "name": "Bernut",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 327301423,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "historico-cultural",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": null,
+        "referenceName": null,
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": null,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "4000": {
+      "cityId": 4000,
+      "name": "Liotorn",
+      "pattern": "dwarven-terraces",
+      "patternLabel": "Terracos e caminhos de montanha",
+      "seed": 261990193,
+      "features": {
+        "capital": false,
+        "citadel": true,
+        "walls": true,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 241,
+        "referenceName": "Nunar",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 33.1,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "4001": {
+      "cityId": 4001,
+      "name": "Vyoh",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 1371550887,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 30,
+        "referenceName": "Porto do Álamo",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 29.9,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "4002": {
+      "cityId": 4002,
+      "name": "Sahtalys",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 684418907,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": true
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 61,
+        "referenceName": "Nanalyelumy",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 37.1,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "4003": {
+      "cityId": 4003,
+      "name": "Aleravum",
+      "pattern": "organic-town",
+      "patternLabel": "Ruas medievais organicas e pracas",
+      "seed": 999057423,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": false,
+        "temple": false,
+        "magicSchool": true
+      },
+      "source": {
+        "mode": "identidade-relocada",
+        "cityId": 130,
+        "cityName": "Aleravum",
+        "referenceId": 130,
+        "referenceName": "Aleravum",
+        "mapPosition": [
+          774.98,
+          431.02
+        ],
+        "positionDifference": 51.3,
+        "referenceDistance": 51.3,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "10001": {
+      "cityId": 10001,
+      "name": "Porto Naril",
+      "pattern": "elfic-organic",
+      "patternLabel": "Avenidas curvas, bosques e nucleos elficos",
+      "seed": 1264102530,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 217,
+        "referenceName": "Meethethyr",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 29.7,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    },
+    "10002": {
+      "cityId": 10002,
+      "name": "Porto Sarandir",
+      "pattern": "harbor-front",
+      "patternLabel": "Porto, docas e vias seguindo a costa",
+      "seed": 401384872,
+      "features": {
+        "capital": false,
+        "citadel": false,
+        "walls": false,
+        "port": true,
+        "temple": false,
+        "magicSchool": false
+      },
+      "source": {
+        "mode": "proximidade",
+        "cityId": null,
+        "cityName": null,
+        "referenceId": 33,
+        "referenceName": "Gugacon",
+        "mapPosition": null,
+        "positionDifference": null,
+        "referenceDistance": 28.6,
+        "watabouUrl": null,
+        "watabouParams": null
+      }
+    }
+  }
+}

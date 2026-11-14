@@ -8,10 +8,12 @@
 import * as THREE from 'three';
 import {shared,treeMaterial} from './visuals.js?v=56';
 import {Mesher,retexture,rng,tc,PAL,STYLES} from './settlements.js?v=56';
-import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=56';
-import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=56';
+import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=64';
+import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=64';
 import {buildTerrain,localGroundMaterial,buildWater,localWaterMaterial,buildForest,buildScatter,skyTexture,localRoadMaterial,buildRoads} from './local-scene.js?v=56';
 import {indexLore,loreForCity} from './local-lore.js?v=56';
+import {applyCityBlueprint,applyBlueprintTerrain} from './city-plan-core.js?v=64';
+import {drawCityPlan} from './city-plan-preview.js?v=64';
 
 const EYE_M=1.72, WALK_M=2.8, RUN_M=10.5, FLY_M=110, FLY_V=45, JUMP_V=5.9, GRAV=17.5;
 const EYE=EYE_M/M, WALK=WALK_M/M, RUN=RUN_M/M, FLY=FLY_M/M, FLYV=FLY_V/M, JUMP=JUMP_V/M, G=GRAV/M;
@@ -203,18 +205,56 @@ export function createStreetMode(ctx){
  /* ---------- HUD ---------- */
  const el=h=>{const d=document.createElement('div');d.innerHTML=h.trim();return d.firstChild};
  const hud=el(`<div id="streetHud" hidden>
-  <div class="svTop"><div class="svPlace"><small>VISÃO LOCAL</small><b id="svName">—</b><span id="svSub"></span><em id="svLore" hidden></em></div>
+  <div class="svTop"><div class="svPlace"><small>VISÃO LOCAL</small><b id="svName">—</b><span id="svSub"></span><em id="svBlueprint" hidden></em><em id="svLore" hidden></em></div>
    <div class="svCompass"><b id="svDir">N</b><span id="svDeg">0°</span></div></div>
   <div class="svState"><b id="svMode">A pé</b><span id="svAlt">—</span><em id="svDistrict" hidden></em></div>
   <div class="svPause" id="svPause"><div><b>Clique para olhar ao redor</b><span>WASD mover · Shift correr · Espaço pular · 2× Espaço voar · C descer · T hora · Esc mapa</span></div></div>
   <div class="svToast" id="svToast"></div>
   <div class="svBar"><div class="svTimes">${Object.entries(PRESETS).map(([k,v])=>`<button data-time="${k}">${v.label}</button>`).join('')}</div>
    <button id="svFly" title="Ligar/desligar o voo (2× Espaço ou F)">🕊 Voo</button>
+   <button id="svPlan" title="Mostrar a planta urbana deste local">▦ Planta urbana</button>
    <button id="svCombat" title="Abrir o tabuleiro tático 2D">⚔ Combate</button>
    <button id="svExit">⤴ Voltar ao mapa</button></div></div>`);
  const fade=el('<div id="streetFade"></div>'),pickChip=el('<div id="streetPick" hidden><b>Ver no local</b><span>Clique no mapa para descer no lugar · Esc cancela</span></div>');
- document.body.append(hud,fade,pickChip);
+ const planOverlay=el(`<div id="svPlanOverlay" hidden role="dialog" aria-modal="true" aria-label="Planta urbana de Silvengard">
+  <div class="svPlanPanel"><header><div><small>PLANTA URBANA · ATLAS DE SILVENGARD</small><b id="svPlanTitle">Cidade</b></div><button id="svPlanClose" title="Fechar planta" aria-label="Fechar planta">✕</button></header>
+   <div class="svPlanMain"><canvas id="svPlanCanvas" width="720" height="720" aria-label="Planta de ruas, muralhas, casas e litoral"></canvas>
+    <aside><h3 id="svPlanType"></h3><p id="svPlanText"></p><dl id="svPlanFacts"></dl>
+    <a id="svPlanWatabou" target="_blank" rel="noopener noreferrer" hidden>Ver a referência original de Watabou</a>
+    <p class="svPlanCaveat">A planta e o cenário 3D compartilham ruas, muralhas e geografia. Não é a malha vetorial original do Watabou.</p></aside></div>
+   <footer>Esc para fechar · ruas escuras: vias principais · azul: água · traço escuro: muralhas</footer>
+  </div></div>`);
+ document.body.append(hud,fade,pickChip,planOverlay);
  const $h=s=>hud.querySelector(s);
+ let activePlan=null;
+ function openPlan(){
+  if(!S.active||!activePlan)return;
+  if(document.pointerLockElement)document.exitPointerLock?.();
+  const {lay,site,field,blueprint}=activePlan;
+  drawCityPlan(planOverlay.querySelector('#svPlanCanvas'),activePlan);
+  planOverlay.querySelector('#svPlanTitle').textContent=blueprint?.name||site.name||'Cidade';
+  planOverlay.querySelector('#svPlanType').textContent=blueprint?.patternLabel||'Planta procedural';
+  planOverlay.querySelector('#svPlanText').textContent=blueprint?.source?.watabouUrl
+   ?'Perfil com parametros originais do gerador Watabou; o Atlas constroi o seu proprio modelo em 3D.'
+   :'Perfil reconstruido a partir do local de referencia ou de sua historia, arquitetura e geografia.';
+  const facts=planOverlay.querySelector('#svPlanFacts');
+  facts.replaceChildren();
+  const items=[['Referencia',blueprint?.source?.referenceName||'Contexto da regiao'],
+   ['Correspondencia',blueprint?.source?.mode||'Procedural'],
+   ['Habitantes',Math.round(lay.pop||0).toLocaleString('pt-BR')],
+   ['Muralhas',lay.walled?'Sim':'Nao'],
+   ['Litoral / rio',site.island?'Ilha completamente cercada de agua':site.port?'Porto ou orla':site.waterKind==='none'?'Interior':'Agua proxima']];
+  items.forEach(([k,v])=>{const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=v;facts.append(dt,dd)});
+  const link=planOverlay.querySelector('#svPlanWatabou');
+  const url=blueprint?.source?.watabouUrl;
+  if(url&&url.startsWith('https://watabou.github.io/city-generator/?')){link.href=url;link.hidden=false}
+  else{link.hidden=true;link.removeAttribute('href')}
+  planOverlay.hidden=false;S.keys.clear();
+ }
+ function closePlan(){planOverlay.hidden=true;}
+ $h('#svPlan').onclick=openPlan;
+ planOverlay.querySelector('#svPlanClose').onclick=closePlan;
+ planOverlay.addEventListener('pointerdown',e=>{if(e.target===planOverlay)closePlan()});
  let toastTimer=0;
  function hudToast(msg){const t=$h('#svToast');if(!t)return;t.textContent=msg;t.classList.add('on');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('on'),2600)}
  hud.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>applyPreset(b.dataset.time));
@@ -222,7 +262,7 @@ export function createStreetMode(ctx){
  $h('#svCombat').onclick=()=>ctx.onCombat?.();
  $h('#svFly').onclick=()=>toggleFlight();
  $h('#svPause').onclick=()=>lock();
- function lock(){try{const p=renderer.domElement.requestPointerLock?.();p?.catch?.(()=>{})}catch{}}
+ function lock(){if(!planOverlay.hidden)return;try{const p=renderer.domElement.requestPointerLock?.();p?.catch?.(()=>{})}catch{}}
 
  function applyPreset(name){
   const p=PRESETS[name]||PRESETS.dia;S.time=name;
@@ -308,6 +348,15 @@ export function createStreetMode(ctx){
   return econLoading;
  }
  loadEconomy();
+ let blueprintIndex=null,blueprintLoading=null;
+ function loadBlueprints(){
+  if(blueprintIndex)return Promise.resolve(blueprintIndex);
+  if(!blueprintLoading)blueprintLoading=fetch('./city-blueprints.json?v=64',{cache:'no-cache'})
+   .then(r=>r.ok?r.json():null).then(data=>{blueprintIndex=data;return data})
+   .catch(err=>{console.warn('Plantas urbanas nao disponiveis:',err);return null});
+  return blueprintLoading;
+ }
+ loadBlueprints();
  function topProduction(cityId,n=3){
   if(!econIndex||cityId==null)return [];
   const d=econIndex.defaults[String(cityId)]||{};
@@ -337,11 +386,13 @@ export function createStreetMode(ctx){
      production=topProduction(city.i);
     }catch{}
    }
+   const blueprint=city?(await loadBlueprints())?.cities?.[String(city.i)]||null:null;
    const cell=cellAt(cx,cy);
    const climate=climateOf(cell);
    const pop=city?Math.max(120,inhabitants(D,city)||400):140;
    const t0=performance.now();
    const site=siteFor({D,point:[cx,cy],cellAt,surface,population:pop,city});
+   applyBlueprintTerrain(site,blueprint);
    if(!city){site.cityR=110;site.port=false;site.urbanR=0}
    const specific=!!lore&&!/^Ainda não foi registrada/i.test(lore.quote||'');
    const tr=specific?lore.traits:null;
@@ -355,15 +406,29 @@ export function createStreetMode(ctx){
    const tSite=performance.now();
    S.site=site;S.field=field;S.cx=cx;S.cy=cy;S.cityR=site.cityR;S.R=site.cityR*2+1200;
    const cls=city?.settlementClass||'',special=!!(city?.magicSchool||city?.dwarvenFortress),
-    fort=!!(cls.startsWith('Forte')||city?.citadel||city?.dwarvenFortress);
-   const rand=rng(Math.floor(cx*13+cy*7)+1);
-   const kind=!city?'wild':fort?'fort':city.capital?'capital':(pop<1500||cls==='Vila'||cls==='Povoado')?'village':site.port?'port':'town';
+    // Uma cidadela NAO reduz uma capital a um forte isolado.
+    fort=!!(cls.startsWith('Forte')&&pop<5000&&!city?.capital);
+   const rand=rng(blueprint?.seed??(Math.floor(cx*13+cy*7)+1));
+   const kind=!city?'wild':blueprint?.pattern==='ruins'?'ruins':blueprint?.pattern==='steppe-camp'?'camp':fort?'fort':city.capital?'capital':(pop<1500||cls==='Vila'||cls==='Povoado')?'village':site.port?'port':'town';
    const lay=city?makeLayout({pop,capital:!!city.capital,village:kind==='village',fort,rand,port:site.port,kind}):null;
    S.lay=lay;
-   if(lay){lay.cx=cx;lay.cy=cy;lay.walled=(!!(city.walls||lay.capital||city.citadel)||!!tr?.walls)&&!lay.fort&&!special&&(pop>1200||!!city.citadel)}
-   // estilo pela cultura/clima (a história entra no traçado, não na paleta)
-   let style=city?.dwarven||city?.dwarvenFortress?STYLES.dwarven:city?.magicSchool?STYLES.arcane:STYLES[climate]||STYLES.temperate;
-   if(site.snowy&&style!==STYLES.cold&&style!==STYLES.dwarven)style={...style,roofCols:['#edf2f4','#e3ebee','#f5f8f7']};
+   if(lay){
+    lay.cx=cx;lay.cy=cy;
+    lay.walled=(!!(city.walls||lay.capital||city.citadel)||!!tr?.walls)&&!lay.fort&&!special&&(pop>1200||!!city.citadel);
+    applyCityBlueprint(lay,blueprint,site);
+   }
+   // Estilos arquitetonicos passam a refletir tambem a historia e a cultura.
+   let style=city?.dwarven||city?.dwarvenFortress?STYLES.dwarven:city?.magicSchool?STYLES.arcane:STYLES[site.climate]||STYLES.temperate;
+   if(blueprint){
+    if(blueprint.pattern==='imperial-grid')style={...STYLES.temperate,wall:'stone',cols:['#d6c4a4','#dfcaaa','#ead9bb','#bfa989'],roofCols:['#9c5743','#b47453','#6d473e'],pitch:.32};
+    else if(blueprint.pattern==='elfic-organic'||blueprint.pattern==='forest-settlement')style={...STYLES.arcane,cols:['#e6e4d1','#ddd9be','#e8ecdc','#c5d7c8'],roofCols:['#3d6f68','#557987','#77938a']};
+    else if(blueprint.pattern==='dwarven-terraces'||blueprint.pattern==='fortress')style={...STYLES.dwarven};
+    else if(blueprint.pattern==='volcanic')style={...STYLES.dwarven,cols:['#8e847a','#aa9684','#655c5c'],roofCols:['#443b3d','#72544b','#413d44']};
+    else if(blueprint.pattern==='desert-medina')style={...STYLES.arid};
+    else if(blueprint.pattern==='marsh-causeways')style={...STYLES.wet};
+    else if(blueprint.pattern==='ruins')style={...STYLES.arcane};
+   }
+   if(site.snowy&&site.climate!=='arid'&&blueprint?.pattern!=='volcanic')style={...style,roofCols:['#edf2f4','#e3ebee','#f5f8f7']};
    S.style=style;
    solids.clear();lamps=[];spin=null;fieldsMesh=null;
    const pathAtLocal=makePathField(lay);
@@ -459,6 +524,12 @@ export function createStreetMode(ctx){
    $h('#svName').textContent=city?title(city):'Terras selvagens';
    const feat=['camp','ruins','stones','hut','tower'];
    const extra=city?(site.port?' · porto':'')+(lay.walled?' · muralhas':''):'';
+   const profileEl=$h('#svBlueprint');
+   profileEl.textContent=blueprint?blueprint.patternLabel+' · base '+(blueprint.source?.referenceName||'contexto historico')+' · planta procedural':'';
+   profileEl.hidden=!blueprint;
+   $h('#svPlan').hidden=!lay;
+   $h('#svPlan').disabled=!lay;
+   activePlan={lay,site,field,blueprint};
    $h('#svSub').textContent=(city
       ?(city.settlementClass||'Localidade')+' · '+Math.round(lay.pop).toLocaleString('pt-BR')+' hab.'+extra
       :'Ermo · pontos de interesse')+' · '+CLIMATE_NAME[climate]+(site.snowy?' · neve':'')+(production.length?' · produz '+production.slice(0,2).join(' e '):'')+' · horizonte 15 km';
@@ -505,6 +576,7 @@ export function createStreetMode(ctx){
   disposeScene();
   root.visible=false;S.active=false;S.flying=false;S.saved=null;S.keys.clear();
   document.body.classList.remove('street');hud.hidden=true;hud.querySelector('#svFly')?.classList.remove('on');
+  activePlan=null;planOverlay.hidden=true;
   controls.update();onExit?.();
  }
 
@@ -551,6 +623,7 @@ export function createStreetMode(ctx){
  addEventListener('keydown',e=>{
   if(S.picking&&e.key==='Escape'){cancelPick();return}
   if(!S.active)return;
+  if(!planOverlay.hidden){if(e.key==='Escape'){closePlan();e.stopImmediatePropagation();e.preventDefault()}return;}
   if(e.target.matches?.('input,textarea,select'))return;
   if(e.key==='Escape'&&!S.locked){exit();return}
   if(e.code==='KeyT'&&!e.repeat){const ks=Object.keys(PRESETS);applyPreset(ks[(ks.indexOf(S.time)+1)%ks.length]);return}

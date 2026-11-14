@@ -257,6 +257,20 @@ export function createField(site){
  // desenho da costa/lagoa
  function coastSD(x,z){
   if(site.waterKind==='none')return 1e6;
+  if(site.island){
+   // Ilha completa de Elucitor: o oceano deve existir em TODAS as direcoes.
+   // A enseada principal e mais proxima; a ilha cresce nas outras margens.
+   const shape=site.island,ang=Math.atan2(z,x),dist=Math.hypot(x,z);
+   const rx=shape.radiusEastWestM||1750,rz=shape.radiusNorthSouthM||1620;
+   const co=Math.cos(ang),si=Math.sin(ang);
+   const radius=1/Math.sqrt(co*co/(rx*rx)+si*si/(rz*rz));
+   const delta=Math.atan2(Math.sin(ang-site.portDir),Math.cos(ang-site.portDir));
+   const cove=Math.exp(-delta*delta/(.34*.34));
+   const coast=radius-(radius-(shape.harbourFacingCoastM||940))*cove;
+   const irregular=88*Math.sin(5*ang+seed*.11)+51*Math.sin(9*ang-seed*.17);
+   const inlet=42*(fbm2(co*4.3+seed*.19,si*4.3-seed*.23,seed+73)-.5);
+   return coast+irregular+inlet-dist;
+  }
   if(sea){
    const along=x*nx+z*nz,side=x*tx+z*tz;
    let D=site.shoreDistM;

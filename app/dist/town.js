@@ -6,8 +6,9 @@
 // vêm do campo local (local-field.js), então tudo assenta no chão de verdade.
 import * as THREE from 'three';
 import {Mesher,STYLES,addBuilding,addChurch2,addTownHall,addKeepHall,addFountain,addFence,addWell,addStall,addBarrel,addCrate,addLamp,addTower,addFort,addHaystack,addTent,addPillar,addLog,addWallSegment,addBanner,addHouse,addBoat,addCrane,tc,PAL,portModel} from './settlements.js?v=56';
-import {populationRadiusM,M_PER_UNIT} from './local-field.js?v=56';
+import {populationRadiusM,M_PER_UNIT} from './local-field.js?v=64';
 import {NOISE} from './visuals.js?v=56';
+import {wallRadiusAt} from './city-plan-core.js?v=64';
 
 const smooth=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
 const clamp=(v,a,b)=>v<a?a:v>b?b:v;
@@ -116,7 +117,9 @@ function roofFlatGeometry(){
 }
 function addFabric(env){
  const{lay,cx,cy,rand,climate,field,G,landAt,pathAt,addSolid,toW,blocked}=env,style=env.style||STYLES[climate]||STYLES.temperate;
- const R=lay.Rt,r0=Math.max(lay.plaza*1.35,16),max=6000;
+ const R=lay.Rt,r0=Math.max(lay.plaza*1.35,16),urbanHomesPerResident=
+  ({'dwarven-terraces':.035,'elfic-organic':.04,'forest-settlement':.025,'fortress':.035,'marsh-causeways':.045,'desert-medina':.06})[lay.pattern]??.05,
+  max=Math.min(6000,Math.max(35,Math.round((lay.pop||400)*urbanHomesPerResident)));
  const wallGeo=new THREE.BoxGeometry(1,1,1);wallGeo.translate(0,.5,0);
  const baseGeo=new THREE.BoxGeometry(1.06,.24,1.06);baseGeo.translate(0,.12,0);
  const gableGeo=roofGeometry(),hipGeo=roofHipGeometry(),flatGeo=roofFlatGeometry();
@@ -296,7 +299,7 @@ function buildHarbour(env){
  const dir=site.portDir;
  const edgeAt=angle=>{
   const start=Math.max(12,site.cityR*.18);
-  for(let r=start;r<site.cityR*1.45+160;r+=5){
+  for(let r=start;r<Math.max(site.cityR*1.45+160,(site.island?.harbourFacingCoastM||0)+320);r+=5){
    const x=Math.cos(angle)*r,z=Math.sin(angle)*r;
    if(field.heightM(x,z)<.5)return{x:x/M_PER_UNIT,z:z/M_PER_UNIT,angle};
   }
@@ -374,12 +377,52 @@ export function buildTownV2(env){
  const put=(type,u,v,rot,w,d,floors,opts={})=>{const rc={x:u,z:v,r:rot,hw:w/2,hd:d/2};if(!free(rc,opts.pad??.25)||!okPath(rc)||flat(u,v,Math.min(w,d)/2)>1.6)return false;
   const[x,z]=world(u,v),y=footprintY(cx+u,cy+v,Math.min(w,d)/2)+.05;
   addBuilding(m,{at:[x,y,z],rot,w,d,floors,type,style,R:rand,smoke,gableFront:opts.gableFront});placed.push(rc);solid(rc);return true};
+ // Assentamentos especiais preservam sua historia: ruinas nao se enchem de casas,
+ // e a sede das hordas de Marshell e uma cidade de encontros e acampamentos.
+ if(lay.pattern==='ruins'){
+  for(let i=0;i<34;i++){
+   const a=i*2.399963+lay.a0,r=8+Math.sqrt(i/34)*lay.Rt*.74;
+   const u=Math.cos(a)*r,v=Math.sin(a)*r;
+   if(!landAt(cx+u,cy+v))continue;
+   const[x,z]=world(u,v),h=G(cx+u,cy+v)+.03;
+   if(i%4===0)addPillar(m,{at:[x,h,z],h:2.8+rand()*1.2,r:.35,broken:true});
+   else if(i%5===0){addPillar(m,{at:[x,h,z],h:3.6,r:.33,broken:false});addSolid(cx+u,cy+v,.5)}
+   else{m.box('stone',2+rand()*3,.25+rand()*.4,1.2+rand()*1.2,{at:[x,h,z],rot:a+.7,tint:tc(PAL.stone,.73+rand()*.4)});addSolid(cx+u,cy+v,1.1)}
+  }
+  for(let k=0;k<10;k++){
+   const a=k*Math.PI/5,r=lay.Rt*.76,u=Math.cos(a)*r,v=Math.sin(a)*r;
+   const q=Math.min(11,lay.Rt*.14),ux=u+Math.cos(a+Math.PI/2)*q,vy=v+Math.sin(a+Math.PI/2)*q;
+   if(!landAt(cx+u,cy+v)||!landAt(cx+ux,cy+vy))continue;
+   const[x1,z1]=world(u,v),[x2,z2]=world(ux,vy);
+   addWallSegment(m,{a:[x1,z1],b:[x2,z2],y:Math.min(G(cx+u,cy+v),G(cx+ux,cy+vy)),h:1.1+rand()*1.5,t:.6});
+  }
+  return{groups:[m.group()],people,fields,windmill,smoke,lamps,wallR:0,placed,fabric:0};
+ }
+ if(lay.pattern==='steppe-camp'){
+  const[x0,z0]=world(0,0);addPillar(m,{at:[x0,G(cx,cy)+.1,z0],h:3.8,r:.55});
+  addBanner(m,{at:[x0,G(cx,cy)+3.8,z0],h:2.5,color,scale:1.2});
+  for(let i=0;i<85;i++){
+   const a=i*2.399963+lay.a0,rr=10+Math.sqrt((i+1)/85)*lay.Rt*.84,u=Math.cos(a)*rr,v=Math.sin(a)*rr;
+   if(!landAt(cx+u,cy+v))continue;
+   const[x,z]=world(u,v),h=G(cx+u,cy+v)+.05;
+   if(i%9===0){addStall(m,{at:[x,h,z],rot:a,R:rand});addSolid(cx+u,cy+v,1.4)}
+   else{addTent(m,{at:[x,h,z],rot:a,color:i%4===0?'#8f6b45':'#bca37b'});addSolid(cx+u,cy+v,1.6)}
+  }
+  return{groups:[m.group()],people,fields,windmill,smoke,lamps,wallR:0,placed,fabric:0};
+ }
+ if(lay.pattern==='fortress'&&!lay.fort&&!special){
+  const a=lay.a0+Math.PI*.6,rr=Math.min(lay.Rt*.35,60),u=Math.cos(a)*rr,v=Math.sin(a)*rr;
+  if(landAt(cx+u,cy+v)){
+   const[x,z]=world(u,v);addFort(m,{at:[x,footprintY(cx+u,cy+v,8)+.15,z],size:18,flag:color,R:rand});
+   placed.push({x:u,z:v,r:0,hw:12,hd:12});addSolid(cx+u,cy+v,9);
+  }
+ }
  // ----- frente de água: avenida do cais, antes das casas
- if(lay.kind==='port'&&field&&site&&site.waterKind!=='none'){
+ if(site?.port&&!lay.fort&&lay.kind!=='ruins'&&field&&site.waterKind!=='none'){
   const dir=site.portDir,pts=[];
   for(let k=-7;k<=7;k++){
    const a=dir+k*.05;let edge=null;
-   for(let r=lay.Rt*.55;r<lay.Rt*1.5;r+=2){
+   for(let r=lay.Rt*.55;r<Math.max(lay.Rt*1.5,(site.island?.harbourFacingCoastM||0)/M_PER_UNIT+140);r+=2){
     if(field.heightM(Math.cos(a)*r*M_PER_UNIT,Math.sin(a)*r*M_PER_UNIT)<.6){edge=r;break}
    }
    if(edge!=null){const back=Math.max(7,edge-9);pts.push([Math.cos(a)*back,Math.sin(a)*back])}
@@ -514,12 +557,12 @@ export function buildTownV2(env){
   if(best&&!lay.fort&&!lay.village){placed.push(best.rc);addSolid(cx+best.u,cy+best.v,2.4);const[x,z]=world(best.u,best.v);windmill={x,z,y:footprintY(cx+best.u,cy+best.v,2)+.05,rot:Math.PI/3+(rand()-.5)}}}
  // ----- muralhas no limite da cidade
  let wallR=0;const mm=new Mesher();
- if(lay.walled){wallR=lay.Rt*1.02;const segs=clamp(Math.round(wallR*.9),48,260),gates=lay.roads.filter(r=>r.main&&!r.ring).map(r=>r.a),pts=[];
-  for(let i=0;i<=segs;i++){const a=i/segs*Math.PI*2;pts.push([cx+Math.cos(a)*wallR,cy+Math.sin(a)*wallR,a])}
+ if(lay.walled){wallR=lay.Rt*1.02;const segs=clamp(Math.round(wallR*.9),48,260),gates=lay.gates||lay.roads.filter(r=>r.main&&!r.ring).map(r=>r.a),pts=[];
+  for(let i=0;i<=segs;i++){const a=i/segs*Math.PI*2,r=wallRadiusAt(lay,a,wallR);pts.push([cx+Math.cos(a)*r,cy+Math.sin(a)*r,a])}
   for(let i=0;i<segs;i++){const a=pts[i],c=pts[i+1],mid=(a[2]+c[2])/2;if(gates.some(g=>Math.abs(Math.atan2(Math.sin(mid-g),Math.cos(mid-g)))<.05))continue;if(!landAtSafe(env,a[0],a[1])||!landAtSafe(env,c[0],c[1]))continue;
    const[ax,az]=toW(a[0],a[1]),[bx,bz]=toW(c[0],c[1]);addWallSegment(mm,{a:[ax,az],b:[bx,bz],y:Math.min(G(a[0],a[1]),G(c[0],c[1])),h:3.1,t:1});addSolid((a[0]+c[0])/2,(a[1]+c[1])/2,wallR*Math.PI*2/segs*.5)}
   for(let i=0;i<segs;i+=Math.max(5,Math.round(segs/16))){if(!landAtSafe(env,pts[i][0],pts[i][1]))continue;const[tx,tz]=toW(pts[i][0],pts[i][1]);addTower(mm,{at:[tx,G(pts[i][0],pts[i][1]),tz],r:1.5,h:5,sides:9,cap:'roof',capH:2.6,tint:tc(PAL.stone,.95),slits:true});addSolid(pts[i][0],pts[i][1],1.6)}
-  for(const g of gates){const gx=cx+Math.cos(g)*wallR,gy=cy+Math.sin(g)*wallR;if(!landAtSafe(env,gx,gy))continue;const[tx,tz]=toW(gx,gy);for(const s of[-1,1]){const px=gx+Math.cos(g+Math.PI/2)*s*2.6,py=gy+Math.sin(g+Math.PI/2)*s*2.6,[ux,uz]=toW(px,py);addTower(mm,{at:[ux,G(px,py),uz],r:1.25,h:5.4,sides:8,cap:'roof',capH:2.2,tint:tc(PAL.stone,.97),slits:true});addSolid(px,py,1.3)}}}
+  for(const g of gates){const wr=wallRadiusAt(lay,g,wallR),gx=cx+Math.cos(g)*wr,gy=cy+Math.sin(g)*wr;if(!landAtSafe(env,gx,gy))continue;const[tx,tz]=toW(gx,gy);for(const s of[-1,1]){const px=gx+Math.cos(g+Math.PI/2)*s*2.6,py=gy+Math.sin(g+Math.PI/2)*s*2.6,[ux,uz]=toW(px,py);addTower(mm,{at:[ux,G(px,py),uz],r:1.25,h:5.4,sides:8,cap:'roof',capH:2.2,tint:tc(PAL.stone,.97),slits:true});addSolid(px,py,1.3)}}}
  // ----- lampiões nas avenidas (moderados: uma cidade grande não precisa de 800 postes)
  let lampCount=0;
  for(const rd of lay.roads.filter(r=>r.main&&!r.ring)){
