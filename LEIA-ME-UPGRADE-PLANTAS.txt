@@ -1,17 +1,17 @@
-SILVENGARD - UPGRADE CIDADES, PLANTAS E INTERIORES ANOES - V4
+SILVENGARD - UPGRADE CIDADES, PLANTAS E INTERIORES ANOES - V6
 Edicao 1277 AQD | Pacote incremental do Atlas interativo Windows
 
 INSTALACAO
 
 1. Faca uma copia da pasta original "silvengard-interactive-map".
 2. Se necessario, descompacte primeiro o ZIP COMPLETO original do Atlas.
-3. Coloque este ZIP v4 na pasta PAI da pasta "silvengard-interactive-map".
-4. Extraia o ZIP v4 nessa pasta pai. O conteudo do ZIP ja traz a pasta
+3. Coloque este ZIP v6 na pasta PAI da pasta "silvengard-interactive-map".
+4. Extraia o ZIP v6 nessa pasta pai. O conteudo do ZIP ja traz a pasta
    "silvengard-interactive-map" correta. Aceite SUBSTITUIR arquivos.
 5. Continue usando "silvengard-interactive-map/Silvengard-Atlas.exe".
 
 NAO ABRA ESTE ZIP COMO APLICATIVO: ele e uma atualizacao dos arquivos do
-Atlas original, nao um instalador independente. A v4 SUBSTITUI v2/v3;
+Atlas original, nao um instalador independente. A v6 SUBSTITUI v5/v4/v3/v2;
 nao e necessario aplicar upgrades antigos antes.
 
 CIDADES ANA SUBTERRANEAS (SETE)
@@ -32,7 +32,11 @@ COMO ENTRAR E EXPLORAR
 3. Na barra inferior, clique em "Entrar na montanha" (botao de picareta).
    Como alternativa, chegue ao portao de pedra na superficie e pressione E.
 4. Use WASD para andar, mouse para olhar e Shift para correr.
-   O voo e desativado dentro da montanha; paredes impedem atravessar a rocha.
+   VOAR TAMBEM FUNCIONA NO SUBSOLO:
+   - pressione F, ou dois toques rapidos em Espaco, ou clique em "Voo";
+   - Espaco sobe; C ou Ctrl desce; Shift acelera o voo;
+   - teto rochoso, chao e paredes continuam impondo limites fisicos.
+   - E perto da saida continua retornando a superficie.
 5. Clique "Mapa das galerias" para a planta interna da rede de passagens.
 6. Para retornar ao exterior, clique em "Voltar a superficie". Tambem
    pode apertar E junto ao arco de entrada no salao principal.
@@ -47,8 +51,11 @@ OUTRAS MELHORIAS PRESERVADAS DAS VERSOES ANTERIORES
 - 12 links/sementes Watabou foram identificados no arquivo .map de Azgaar.
 - Elucitor e uma ilha local completa com mar em todas as direcoes, alem de
   cidade alta, palacio, bairros nobres, mercado, templo e porto diferenciados.
-- Asgorath e Velaffeld tem distritos palacianos proprios.
-- Winterhelm tem uma serra encostada num dos lados da fortaleza.
+- Asgorath, Velaffeld, Elucitor e Winterhelm mantem ajustes urbanos dedicados.
+- Winterhelm tem uma serra encostada num dos lados da fortaleza e um distrito militar coerente com a fronteira.
+- Vir, Triovorn e Porto de Vern usam agora um modelo urbano elfico-florestal compartilhado, com bosques internos e casario mais integrado a mata.
+- Crild ganhou identidade goblinoide de favela pantanosa, com palafitas, pontes e mercado improvisado.
+- Cidades de magia podem gerar um campus arcano com torre principal, edificios auxiliares e moradias academicas.
 - Dagorah e as outras seis cidades subterraneas agora reduzem as casas do
   exterior a um acesso fortificado. A maior parte da cidade fica implicita
   dentro da rocha, com NUCLEO EXPLORAVEL em uma cena subterranea separada.
@@ -68,7 +75,7 @@ completos. As galerias nao sao copias de um original nem alteram world.json.
 
 ARQUIVOS PRINCIPAIS
 
-- app/dist/dwarven-interior.js : topologia, malha 3D, interiores e planta 2D.
+- app/dist/dwarven-interior.js : topologia, malha 3D, interiores, teto para voo e planta 2D.
 - app/dist/city-blueprints.json : perfis de 152 cidades e 3 classes anas.
 - app/dist/street.js : botao de transicao, HUD e movimento no interior.
 - app/dist/town.js : portao e reducao do casario exterior nas cidades escavadas.
@@ -76,13 +83,14 @@ ARQUIVOS PRINCIPAIS
 - app/dist/city-plan-core.js : eixos urbanos, distritos e fontes.
 - app/dist/city-plan-preview.js + city-plan.css : interface de plantas.
 - documentos/Upgrade-Plantas-Urbanas.md : referencia completa e limites.
+- desenvolvimento/testes/city-blueprints.test.mjs : testes atualizados das plantas e perfis culturais.
 - amostras-galerias/ : sete plantas do interior para consulta.
 - amostras/ : seis plantas do exterior de cidades selecionadas.
 - desenvolvimento/testes/dwarven-interiors.test.mjs : testes de galerias.
 
 VALIDACAO
 
-- 15 testes especificos das plantas, terreno e cavernas passaram.
+- Testes das plantas, culturas, cavernas e limites verticais de voo executados nesta revisao.
 - O construtor 3D foi exercitado para localidades selecionadas, sem WebGL.
 - Testes percorreram computacionalmente os caminhos das 12 salas por cidade.
 - Interface completa em navegador nao foi validada neste ambiente.

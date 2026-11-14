@@ -8,16 +8,16 @@
 import * as THREE from 'three';
 import {shared,treeMaterial} from './visuals.js?v=56';
 import {Mesher,retexture,rng,tc,PAL,STYLES} from './settlements.js?v=56';
-import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=66';
+import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=67';
 import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=66';
 import {buildTerrain,localGroundMaterial,buildWater,localWaterMaterial,buildForest,buildScatter,skyTexture,localRoadMaterial,buildRoads} from './local-scene.js?v=56';
 import {indexLore,loreForCity} from './local-lore.js?v=56';
-import {applyCityBlueprint,applyBlueprintTerrain} from './city-plan-core.js?v=66';
-import {drawCityPlan} from './city-plan-preview.js?v=66';
-import {buildDwarvenInterior,drawUndergroundPlan} from './dwarven-interior.js?v=66';
+import {applyCityBlueprint,applyBlueprintTerrain} from './city-plan-core.js?v=67';
+import {drawCityPlan} from './city-plan-preview.js?v=67';
+import {buildDwarvenInterior,drawUndergroundPlan,caveFlightBounds} from './dwarven-interior.js?v=67';
 
-const EYE_M=1.72, WALK_M=2.8, RUN_M=10.5, FLY_M=110, FLY_V=45, JUMP_V=5.9, GRAV=17.5;
-const EYE=EYE_M/M, WALK=WALK_M/M, RUN=RUN_M/M, FLY=FLY_M/M, FLYV=FLY_V/M, JUMP=JUMP_V/M, G=GRAV/M;
+const EYE_M=1.72, WALK_M=2.8, RUN_M=10.5, FLY_M=110, FLY_V=45, CAVE_FLY_M=16, CAVE_FLY_V=10, JUMP_V=5.9, GRAV=17.5;
+const EYE=EYE_M/M, WALK=WALK_M/M, RUN=RUN_M/M, FLY=FLY_M/M, FLYV=FLY_V/M, CAVE_FLY=CAVE_FLY_M/M, CAVE_FLYV=CAVE_FLY_V/M, JUMP=JUMP_V/M, G=GRAV/M;
 const RADIUS=.4;
 const smooth=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
 
@@ -211,7 +211,7 @@ export function createStreetMode(ctx){
   <div class="svTop"><div class="svPlace"><small>VISÃO LOCAL</small><b id="svName">—</b><span id="svSub"></span><em id="svBlueprint" hidden></em><em id="svLore" hidden></em></div>
    <div class="svCompass"><b id="svDir">N</b><span id="svDeg">0°</span></div></div>
   <div class="svState"><b id="svMode">A pé</b><span id="svAlt">—</span><em id="svDistrict" hidden></em></div>
-  <div class="svPause" id="svPause"><div><b>Clique para olhar ao redor</b><span>WASD mover · Shift correr · Espaço pular · 2× Espaço voar · C descer · T hora · Esc mapa</span></div></div>
+  <div class="svPause" id="svPause"><div><b>Clique para olhar ao redor</b><span>WASD mover · Shift correr / acelerar voo · F ou 2× Espaço voar · Espaço subir · C descer · T hora · Esc mapa</span></div></div>
   <div class="svToast" id="svToast"></div>
   <div class="svBar"><div class="svTimes">${Object.entries(PRESETS).map(([k,v])=>`<button data-time="${k}">${v.label}</button>`).join('')}</div>
    <button id="svFly" title="Ligar/desligar o voo (2× Espaço ou F)">🕊 Voo</button>
@@ -285,7 +285,7 @@ export function createStreetMode(ctx){
  }
  function setMode(){
   const m=$h('#svMode');if(!m)return;
-  m.textContent=S.interior?'Subterrâneo · '+(S.moving?'explorando':'a pé'):S.flying?'Voo':S.moving?(S.keys.has('ShiftLeft')||S.keys.has('ShiftRight')?'Correndo':'Andando'):'A pé';
+  m.textContent=S.interior?(S.flying?'Subterrâneo · voando':'Subterrâneo · '+(S.moving?'explorando':'a pé')):S.flying?'Voo':S.moving?(S.keys.has('ShiftLeft')||S.keys.has('ShiftRight')?'Correndo':'Andando'):'A pé';
   m.classList.toggle('fly',S.flying);
  }
  const DISTRICT_NAME={market:'Mercado',temple:'Templo',military:'Quartel',craft:'Oficinas',residential:'Bairro'};
@@ -308,11 +308,14 @@ export function createStreetMode(ctx){
  /* ---------- voo / pulo ---------- */
  function toggleFlight(force){
   if(!S.active)return;
-  if(S.interior){hudToast('No subsolo, explore as galerias a pé.');return}
   const on=force!==undefined?!!force:!S.flying;
   S.flying=on;S.vy=0;S.grounded=!on;
+  if(on&&S.interior&&S.interiorData){
+   const {min,max}=caveFlightBounds(S.interiorData.layout,S.x-S.cx,S.y-S.cy,S.interiorData.baseY,EYE);
+   S.feet=Math.max(min,Math.min(S.feet,max));
+  }
   const b=$h('#svFly');if(b)b.classList.toggle('on',on);
-  hudToast(on?'Voo ativado · Espaço sobe, C desce, 2× Espaço desliga':'Voo desligado');
+  hudToast(on?(S.interior?'Voo nas galerias · Espaço sobe, C desce; respeita teto e paredes':'Voo ativado · Espaço sobe, C desce, 2× Espaço desliga'):'Voo desligado');
   setMode();
  }
  function jump(){
@@ -345,7 +348,7 @@ export function createStreetMode(ctx){
   if(enter===S.interior)return true;
   const cave=S.interiorData;
   if(enter){
-   S.exteriorPose={x:S.x,y:S.y,feet:S.feet,yaw:S.yaw,pitch:S.pitch};
+   S.exteriorPose={x:S.x,y:S.y,feet:S.feet,yaw:S.yaw,pitch:S.pitch,flying:S.flying,grounded:S.grounded};
    S.surfaceVisibility=new Map();
    for(const obj of root.children){
     if(obj===cave.group)continue;
@@ -353,20 +356,20 @@ export function createStreetMode(ctx){
    }
    cave.group.visible=true;S.interior=true;S.flying=false;S.vy=0;
    S.x=S.cx+cave.spawn.u;S.y=S.cy+cave.spawn.v;S.yaw=cave.spawn.yaw;S.pitch=-.05;
-   S.feet=undergroundFloor(S.x,S.y);S.camY=S.feet+EYE;S.grounded=true;S.keys.clear();
-   $h('#svFly').classList.remove('on');$h('#svFly').hidden=true;
+   S.feet=undergroundFloor(S.x,S.y);S.camY=S.feet+EYE;S.grounded=true;S.keys.clear();S.lastSpace=0;
+   $h('#svFly').classList.remove('on');$h('#svFly').hidden=false;
    $h('#svCaves').textContent='⇤ Voltar à superfície';
    $h('#svPlan').textContent='▦ Mapa das galerias';
    $h('#svSub').textContent='Cidade dentro da montanha · salões e galerias exploráveis';
    applyCaveLighting();
-   hudToast('Entraste em '+cave.cityName+' · explora com WASD e Shift; E regressa à superfície');
+   hudToast('Entraste em '+cave.cityName+' · WASD explora, F voa, Espaço sobe, C desce');
   }else{
    S.interior=false;cave.group.visible=false;
    for(const [obj,visible]of S.surfaceVisibility||[])obj.visible=visible;
    S.surfaceVisibility=null;
    if(S.exteriorPose){Object.assign(S,S.exteriorPose);S.exteriorPose=null;S.camY=S.feet+EYE}
-   S.vy=0;S.grounded=true;S.keys.clear();
-   $h('#svFly').hidden=false;
+   S.vy=0;S.grounded=!S.flying;S.keys.clear();S.lastSpace=0;
+   $h('#svFly').hidden=false;$h('#svFly').classList.toggle('on',S.flying);
    $h('#svCaves').textContent='⛏ Entrar na montanha';
    $h('#svPlan').textContent='▦ Planta urbana';
    $h('#svSub').textContent=(S.curCity?.settlementClass||'Cidade')+' · exterior · entrada para galerias subterrâneas';
@@ -413,7 +416,7 @@ export function createStreetMode(ctx){
  let blueprintIndex=null,blueprintLoading=null;
  function loadBlueprints(){
   if(blueprintIndex)return Promise.resolve(blueprintIndex);
-  if(!blueprintLoading)blueprintLoading=fetch('./city-blueprints.json?v=66',{cache:'no-cache'})
+  if(!blueprintLoading)blueprintLoading=fetch('./city-blueprints.json?v=67',{cache:'no-cache'})
    .then(r=>r.ok?r.json():null).then(data=>{blueprintIndex=data;return data})
    .catch(err=>{console.warn('Plantas urbanas nao disponiveis:',err);return null});
   return blueprintLoading;
@@ -482,6 +485,7 @@ export function createStreetMode(ctx){
    // Estilos arquitetonicos passam a refletir tambem a historia e a cultura.
    let style=city?.dwarven||city?.dwarvenFortress?STYLES.dwarven:city?.magicSchool?STYLES.arcane:STYLES[site.climate]||STYLES.temperate;
    if(blueprint){
+    const arch=blueprint.classification?.architecture,magicCampus=!!blueprint.classification?.magicCampus;
     if(blueprint.pattern==='imperial-grid')style={...STYLES.temperate,wall:'stone',cols:['#d6c4a4','#dfcaaa','#ead9bb','#bfa989'],roofCols:['#9c5743','#b47453','#6d473e'],pitch:.32};
     else if(blueprint.pattern==='elfic-organic'||blueprint.pattern==='forest-settlement')style={...STYLES.arcane,cols:['#e6e4d1','#ddd9be','#e8ecdc','#c5d7c8'],roofCols:['#3d6f68','#557987','#77938a']};
     else if(blueprint.pattern==='dwarven-terraces'||blueprint.pattern==='fortress')style={...STYLES.dwarven};
@@ -489,6 +493,15 @@ export function createStreetMode(ctx){
     else if(blueprint.pattern==='desert-medina')style={...STYLES.arid};
     else if(blueprint.pattern==='marsh-causeways')style={...STYLES.wet};
     else if(blueprint.pattern==='ruins')style={...STYLES.arcane};
+    if(arch==='high-elf')style={...style,cols:['#edf2e6','#dfe7d6','#d6e1d1','#c6d6bf'],roofCols:['#4a7f63','#5c8e78','#7ba08d']};
+    else if(arch==='woodland-elf')style={...style,cols:['#e8ead8','#d7dec8','#c7d7c1','#b9ccb4'],roofCols:['#486f58','#5f8469','#79916e']};
+    else if(arch==='goblin-marsh')style={...STYLES.wet,cols:['#b5ab91','#9a9278','#8d866f'],roofCols:['#5a5547','#756956','#49463d'],pitch:.38};
+    else if(arch==='northern-human')style={...style,cols:['#d8d1c2','#c2b6a7','#b7b0a1','#9e9587'],roofCols:['#6a5248','#7a6357','#8a776a']};
+    if(magicCampus){
+     const arcCols=arch==='high-elf'||arch==='woodland-elf'?['#eef3ea','#e4eddc','#dbe6d5','#cad8cb']:['#ede7dc','#e1d9cc','#d4cbbb','#c8c0b2'];
+     const arcRoofs=arch==='high-elf'||arch==='woodland-elf'?['#436d72','#567f7c','#72908b']:['#586e82','#6d7f8e','#7e90a3'];
+     style={...style,cols:arcCols,roofCols:arcRoofs,pitch:Math.max(style.pitch||.36,.38)};
+    }
    }
    if(site.snowy&&site.climate!=='arid'&&blueprint?.pattern!=='volcanic')style={...style,roofCols:['#edf2f4','#e3ebee','#f5f8f7']};
    S.style=style;
@@ -728,7 +741,7 @@ export function createStreetMode(ctx){
   if(turn)S.yaw+=turn*1.7*dt;
   const shift=k.has('ShiftLeft')||k.has('ShiftRight');
   S.moving=false;
-  const speedM=S.flying?FLY*(shift?2.2:1):(shift?RUN:WALK);
+  const speedM=S.flying?(S.interior?CAVE_FLY:FLY)*(shift?2.2:1):(shift?RUN:WALK);
   if(f||st){
    const l=Math.hypot(f,st),sp=speedM*dt/l/ M;                 // unidades por quadro
    const fx=-Math.sin(S.yaw),fz=-Math.cos(S.yaw),rx=Math.cos(S.yaw),rz=-Math.sin(S.yaw);
@@ -737,6 +750,7 @@ export function createStreetMode(ctx){
    const canWalk=(x,y)=>{
     if(S.interior){
      if(!S.interiorData?.accessible(x-S.cx,y-S.cy,RADIUS))return false;
+     if(S.flying)return true;
      const rise=(undergroundFloor(x,y)-undergroundFloor(S.x,S.y))*M;
      return rise<1.8||S.vy>0;
     }
@@ -754,10 +768,16 @@ export function createStreetMode(ctx){
   }
   // física vertical
   if(S.flying){
-   const up=(k.has('Space')||k.has('KeyE')?1:0)-(k.has('ControlLeft')||k.has('KeyC')?1:0);
-   S.feet+=up*FLYV*dt;
-   const g=Gmap(S.x,S.y);
-   S.feet=Math.max(g+ .1/M,Math.min(S.feet,g+1800/M));
+   // E e reservado ao arco de saida, nao eleva o jogador no subsolo.
+   const up=(k.has('Space')||(!S.interior&&k.has('KeyE'))?1:0)-(k.has('ControlLeft')||k.has('KeyC')?1:0);
+   S.feet+=up*(S.interior?CAVE_FLYV:FLYV)*dt;
+   if(S.interior&&S.interiorData){
+    const {min,max}=caveFlightBounds(S.interiorData.layout,S.x-S.cx,S.y-S.cy,S.interiorData.baseY,EYE);
+    S.feet=Math.max(min,Math.min(S.feet,max));
+   }else{
+    const g=Gmap(S.x,S.y);
+    S.feet=Math.max(g+.1/M,Math.min(S.feet,g+1800/M));
+   }
    S.vy=0;S.grounded=false;
   }else{
    S.vy-=GRAV*dt;S.feet+=S.vy*dt;
@@ -785,7 +805,7 @@ export function createStreetMode(ctx){
   const bearing=((-S.yaw*180/Math.PI)%360+360)%360;
   $h('#svDir').textContent=DIRS[Math.round(bearing/45)%8];
   $h('#svDeg').textContent=Math.round(bearing)+'°';
-  $h('#svAlt').textContent=S.interior?'piso das galerias · '+Math.round((S.feet-S.interiorData.baseY)*M)+' m':(S.flying?'voo · ':'alt. ')+Math.round(S.feet*M)+' m';
+  $h('#svAlt').textContent=S.interior?(S.flying?'voo · '+Math.round((S.feet-undergroundFloor(S.x,S.y))*M)+' m sobre o piso':'piso das galerias · '+Math.round((S.feet-S.interiorData.baseY)*M)+' m'):(S.flying?'voo · ':'alt. ')+Math.round(S.feet*M)+' m';
   updateDistrict();
   setMode();
   return true;

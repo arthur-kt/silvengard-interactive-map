@@ -58,6 +58,16 @@ export function applyBlueprintTerrain(site,blueprint){
   site.mountainWall={...(site.mountainWall||{}),...(subterranean.mountainWall||{})};
   site.forest=Math.min(site.forest,.22);
  }
+ const woodland=blueprint.terrain?.woodland;
+ if(woodland){
+  if(woodland.climate)site.climate=woodland.climate;
+  if(Number.isFinite(woodland.densityMin))site.forest=Math.max(site.forest,woodland.densityMin);
+  if(Number.isFinite(woodland.densityMax))site.forest=Math.min(site.forest,woodland.densityMax);
+ }
+ const arch=blueprint.classification?.architecture;
+ if(arch==='high-elf')site.forest=Math.max(site.forest,.58);
+ else if(arch==='woodland-elf')site.forest=Math.max(site.forest,.68);
+ else if(arch==='goblin-marsh')site.climate='wet';
  if(blueprint.pattern==='marsh-causeways'){
   site.climate='wet';site.forest=Math.max(site.forest,.36);
  }

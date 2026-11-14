@@ -21,6 +21,17 @@ const distanceSegment=(x,z,x0,z0,x1,z1)=>{
  const t=clamp(d2?((x-x0)*dx+(z-z0)*dz)/d2:0,0,1);
  return Math.hypot(x-x0-t*dx,z-z0-t*dz);
 };
+/** Mesma altura usada pelo teto 3D; assim o voo respeita a rocha. */
+function rockCeiling(layout,x,z){
+ const n=1.5*Math.sin(x*.09+layout.seed*.005)*Math.cos(z*.12)+.8*Math.sin(x*.27-z*.23+layout.seed*.0002);
+ return layout.floorAt(x,z)+16.2+3.5*Math.sin(x*.048)*Math.cos(z*.041)+n+2.9*Math.sin(Math.hypot(x,z)*.13);
+}
+/** Limites para os pes do jogador: evitam atravessar piso/teto ao voar. */
+export function caveFlightBounds(layout,u,v,baseY=0,eyeHeight=.8){
+ const min=baseY+layout.floorAt(u,v)+.06;
+ const max=baseY+rockCeiling(layout,u,v)-eyeHeight-.55;
+ return {min,max:Math.max(min,max)};
+}
 
 export function subterraneanProfile(cityId){return layouts[cityId]||null;}
 
@@ -93,8 +104,10 @@ export function makeUndergroundLayout(cityId,seed=0){
   for(const o of obstacles)if(Math.hypot(u-o.u,v-o.v)<r+o.r)return false;
   return true;
  };
- return {id:cityId,seed,spec,radius,length,wings,branches,obstacles,canOccupy,accessible,floorAt,roomAt,
+ const layout={id:cityId,seed,spec,radius,length,wings,branches,obstacles,canOccupy,accessible,floorAt,roomAt,
   spawn:{u:0,v:-9,yaw:PI},exit:{u:0,v:-19},span:length+29};
+ layout.ceilingAt=(u,v)=>rockCeiling(layout,u,v);
+ return layout;
 }
 
 function cavernMesh(layout){
@@ -106,9 +119,7 @@ function cavernMesh(layout){
   for(let i=0;i<3;i++)colors[key].push(...color);
  };
  const quad=(key,a,b,c,d,col)=>{push(key,a,b,c,col);push(key,a,c,d,col)};
- const noisy=(x,z)=>1.5*Math.sin(x*.09+layout.seed*.005)*Math.cos(z*.12)+.8*Math.sin(x*.27-z*.23+layout.seed*.0002);
- const ceiling=(x,z)=>layout.floorAt(x,z)+16.2+
-    3.5*Math.sin(x*.048)*Math.cos(z*.041)+noisy(x,z)+2.9*Math.sin(Math.hypot(x,z)*.13);
+ const ceiling=(x,z)=>layout.ceilingAt(x,z);
  const occupied=(x,z)=>layout.canOccupy(x,z,-1.1);
  const ground=(x,z)=>layout.floorAt(x,z)-.04;
  for(let i=0;i<cols;i++)for(let j=0;j<cols;j++){
@@ -264,7 +275,7 @@ export function buildDwarvenInterior({cityId,blueprint,cx,cy,W,H,baseY=5}){
  group.visible=false;
  return {group,layout,baseY,cityName:layout.spec.title,
   spawn:layout.spawn,exit:layout.exit,
-  accessible:layout.accessible,floorAt:layout.floorAt,roomAt:layout.roomAt};
+  accessible:layout.accessible,floorAt:layout.floorAt,ceilingAt:layout.ceilingAt,roomAt:layout.roomAt};
 }
 
 /** Planta esquematica das passagens internas; usa o MESMO modelo da colisao 3D. */
@@ -296,7 +307,7 @@ export function drawUndergroundPlan(canvas,layout){
  ctx.fillStyle='#e9dcc7';ctx.textAlign='center';ctx.font='bold 19px system-ui';
  ctx.fillText('CIDADE SUBTERRÂNEA · '+layout.spec.title.toUpperCase(),W/2,31);
  ctx.font='12px system-ui';ctx.fillStyle='#e0d1b0';
- ctx.fillText('Passagens em pedra · os salões são acessíveis a pé',W/2,51);
+ ctx.fillText('Salões e galerias exploráveis a pé ou em voo',W/2,51);
  const bubble=(u,v,label,highlight=false)=>{
   const w=ctx.measureText(label).width+22;
   ctx.fillStyle=highlight?'#b18b53':'#343b3b';ctx.strokeStyle='#baa885';ctx.lineWidth=1;
@@ -315,6 +326,6 @@ export function drawUndergroundPlan(canvas,layout){
  ctx.fillText('⇤ Saída',x(exit.u),z(exit.v)-9);
  ctx.strokeStyle='#edd5a0';ctx.lineWidth=2;ctx.beginPath();ctx.arc(x(exit.u),z(exit.v),5,0,TAU);ctx.stroke();
  ctx.fillStyle='#cbd4cd';ctx.textAlign='left';ctx.font='12px system-ui';ctx.fillText('N',W-33,25);
- ctx.fillStyle='#b1afa6';ctx.font='11px system-ui';ctx.fillText('WASD para explorar • Shift para correr • E para sair',24,H-20);
+ ctx.fillStyle='#b1afa6';ctx.font='11px system-ui';ctx.fillText('WASD explorar • F para voar • Espaço sobe • C desce • E sair',24,H-20);
  return {rooms:layout.wings.length+layout.branches.length+1,connected:true};
 }

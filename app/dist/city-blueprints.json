@@ -54,7 +54,11 @@
         }
       },
       "terrain": {
-        "water": "sea"
+        "water": "sea",
+        "woodland": {
+          "densityMin": 0.64,
+          "climate": "temperate"
+        }
       },
       "urbanDesign": {
         "districts": [
@@ -64,6 +68,13 @@
             "angleOffset": -1.15,
             "radiusFactor": 0.3,
             "widthFactor": 0.22
+          },
+          {
+            "kind": "grove",
+            "label": "Bosques Internos",
+            "angleOffset": 1.55,
+            "radiusFactor": 0.45,
+            "widthFactor": 0.2
           },
           {
             "kind": "market",
@@ -96,20 +107,24 @@
             "widthFactor": 0.25
           },
           {
-            "kind": "residential",
-            "label": "Cidade Baixa",
-            "angleOffset": 3.05,
-            "radiusFactor": 0.78,
-            "widthFactor": 0.34
-          },
-          {
             "kind": "craft",
             "label": "Oficinas e Artesãos",
             "angleOffset": -0.88,
             "radiusFactor": 0.53,
             "widthFactor": 0.2
+          },
+          {
+            "kind": "residential",
+            "label": "Cidade Baixa",
+            "angleOffset": 3.05,
+            "radiusFactor": 0.78,
+            "widthFactor": 0.34
           }
         ]
+      },
+      "classification": {
+        "architecture": "high-elf",
+        "urbanIdentity": "garden-capital"
       }
     },
     "2": {
@@ -269,6 +284,10 @@
             "widthFactor": 0.34
           }
         ]
+      },
+      "classification": {
+        "architecture": "northern-human",
+        "urbanIdentity": "royal-capital"
       }
     },
     "4": {
@@ -329,6 +348,41 @@
         "referenceDistance": 33.2,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "imperial-human",
+        "urbanIdentity": "arcane-campus",
+        "magicCampus": true
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.28
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "academy",
+            "label": "Torre Central",
+            "angleOffset": -1.12,
+            "radiusFactor": 0.3,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "market",
+            "label": "Pátio dos Aprendizes",
+            "angleOffset": 0.84,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Casas dos Magos",
+            "angleOffset": 3.02,
+            "radiusFactor": 0.76,
+            "widthFactor": 0.3
+          }
+        ]
       }
     },
     "6": {
@@ -478,6 +532,10 @@
             "widthFactor": 0.34
           }
         ]
+      },
+      "classification": {
+        "architecture": "imperial-human",
+        "urbanIdentity": "island-capital"
       }
     },
     "8": {
@@ -800,8 +858,8 @@
     "16": {
       "cityId": 16,
       "name": "Vir",
-      "pattern": "fortress",
-      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "pattern": "forest-settlement",
+      "patternLabel": "assentamento florestal élfico",
       "seed": 1578139207,
       "features": {
         "capital": false,
@@ -825,6 +883,62 @@
         "referenceDistance": 4.9,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "woodland-elf",
+        "urbanIdentity": "forest-stronghold"
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.82,
+          "climate": "temperate"
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "palace",
+            "label": "Salão Alto",
+            "angleOffset": -1.06,
+            "radiusFactor": 0.3,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "grove",
+            "label": "Bosques Sagrados",
+            "angleOffset": 1.35,
+            "radiusFactor": 0.44,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "temple",
+            "label": "Clareira Cerimonial",
+            "angleOffset": 2.35,
+            "radiusFactor": 0.46,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "market",
+            "label": "Mercado Arborizado",
+            "angleOffset": -0.12,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "military",
+            "label": "Guarda das Muralhas",
+            "angleOffset": -2.38,
+            "radiusFactor": 0.62,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "residential",
+            "label": "Casario do Bosque",
+            "angleOffset": 3.02,
+            "radiusFactor": 0.78,
+            "widthFactor": 0.34
+          }
+        ]
       }
     },
     "17": {
@@ -906,8 +1020,8 @@
     "19": {
       "cityId": 19,
       "name": "Triovorn",
-      "pattern": "fortress",
-      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "pattern": "forest-settlement",
+      "patternLabel": "assentamento florestal élfico",
       "seed": 610618010,
       "features": {
         "capital": false,
@@ -931,6 +1045,62 @@
         "referenceDistance": 50.8,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "woodland-elf",
+        "urbanIdentity": "forest-stronghold"
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.88,
+          "climate": "temperate"
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "grove",
+            "label": "Floresta Interna",
+            "angleOffset": -1.12,
+            "radiusFactor": 0.34,
+            "widthFactor": 0.24
+          },
+          {
+            "kind": "temple",
+            "label": "Clareira dos Ancestrais",
+            "angleOffset": 1.84,
+            "radiusFactor": 0.44,
+            "widthFactor": 0.21
+          },
+          {
+            "kind": "market",
+            "label": "Mercado das Copas",
+            "angleOffset": -0.24,
+            "radiusFactor": 0.5,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "military",
+            "label": "Guarnição da Mata",
+            "angleOffset": 2.94,
+            "radiusFactor": 0.63,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "craft",
+            "label": "Artesãos da Madeira",
+            "angleOffset": 0.92,
+            "radiusFactor": 0.55,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Casas entre Árvores",
+            "angleOffset": 3.1,
+            "radiusFactor": 0.8,
+            "widthFactor": 0.34
+          }
+        ]
       }
     },
     "20": {
@@ -1092,6 +1262,49 @@
           "halfLenFactor": 8.0,
           "spreadM": 340
         }
+      },
+      "classification": {
+        "architecture": "northern-human",
+        "urbanIdentity": "border-fortress"
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "high",
+            "label": "Bastião Alto",
+            "angleOffset": -1.08,
+            "radiusFactor": 0.34,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "military",
+            "label": "Recinto Militar",
+            "angleOffset": -0.15,
+            "radiusFactor": 0.5,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "market",
+            "label": "Praça do Inverno",
+            "angleOffset": 2.25,
+            "radiusFactor": 0.42,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "craft",
+            "label": "Forjas e Armazéns",
+            "angleOffset": 1.1,
+            "radiusFactor": 0.6,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "residential",
+            "label": "Bairro dos Colonos",
+            "angleOffset": 3.0,
+            "radiusFactor": 0.76,
+            "widthFactor": 0.34
+          }
+        ]
       }
     },
     "24": {
@@ -1157,8 +1370,8 @@
     "26": {
       "cityId": 26,
       "name": "Porto de Vern",
-      "pattern": "fortress",
-      "patternLabel": "Castelo, recinto militar e acessos defensivos",
+      "pattern": "forest-settlement",
+      "patternLabel": "assentamento florestal élfico",
       "seed": 2106114392,
       "features": {
         "capital": false,
@@ -1182,6 +1395,64 @@
         "referenceDistance": 30.9,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "woodland-elf",
+        "urbanIdentity": "forest-port"
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.76,
+          "climate": "temperate"
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "grove",
+            "label": "Bosque Portuário",
+            "angleOffset": 1.48,
+            "radiusFactor": 0.42,
+            "widthFactor": 0.21
+          },
+          {
+            "kind": "market",
+            "label": "Mercado das Docas",
+            "usePortDir": true,
+            "angleOffset": 0.12,
+            "radiusFactor": 0.46,
+            "widthFactor": 0.21
+          },
+          {
+            "kind": "harbour",
+            "label": "Cais Élficos",
+            "usePortDir": true,
+            "angleOffset": 0.0,
+            "radiusFactor": 0.72,
+            "widthFactor": 0.28
+          },
+          {
+            "kind": "military",
+            "label": "Guarda do Estreito",
+            "angleOffset": -2.36,
+            "radiusFactor": 0.6,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "craft",
+            "label": "Armazéns e Carpintarias",
+            "angleOffset": -0.95,
+            "radiusFactor": 0.54,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Casario do Bosque",
+            "angleOffset": 3.03,
+            "radiusFactor": 0.79,
+            "widthFactor": 0.34
+          }
+        ]
       }
     },
     "27": {
@@ -3361,6 +3632,48 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "imperial-human",
+        "urbanIdentity": "arcane-campus",
+        "magicCampus": true
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.28
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "academy",
+            "label": "Torre da Chama",
+            "angleOffset": -1.0,
+            "radiusFactor": 0.34,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "market",
+            "label": "Pátio dos Estudos",
+            "angleOffset": 0.72,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "craft",
+            "label": "Laboratórios e Oficinas",
+            "angleOffset": 2.28,
+            "radiusFactor": 0.54,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Casario Acadêmico",
+            "angleOffset": 3.02,
+            "radiusFactor": 0.78,
+            "widthFactor": 0.32
+          }
+        ]
       }
     },
     "169": {
@@ -3753,6 +4066,49 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "high-elf",
+        "urbanIdentity": "arcane-campus",
+        "magicCampus": true
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.78,
+          "climate": "temperate"
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "academy",
+            "label": "Torre Arcana de Selne",
+            "angleOffset": -1.06,
+            "radiusFactor": 0.34,
+            "widthFactor": 0.24
+          },
+          {
+            "kind": "grove",
+            "label": "Bosques Arcanos",
+            "angleOffset": 1.52,
+            "radiusFactor": 0.46,
+            "widthFactor": 0.21
+          },
+          {
+            "kind": "market",
+            "label": "Praça dos Sábios",
+            "angleOffset": 0.4,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Moradias Élficas",
+            "angleOffset": 3.04,
+            "radiusFactor": 0.8,
+            "widthFactor": 0.32
+          }
+        ]
       }
     },
     "191": {
@@ -4039,6 +4395,56 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "goblin-marsh",
+        "urbanIdentity": "marsh-shanty"
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.38,
+          "climate": "wet"
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "shanty",
+            "label": "Favela dos Canais",
+            "angleOffset": -1.1,
+            "radiusFactor": 0.36,
+            "widthFactor": 0.28
+          },
+          {
+            "kind": "market",
+            "label": "Mercado das Pontes",
+            "angleOffset": 0.18,
+            "radiusFactor": 0.47,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "harbour",
+            "label": "Trapiches e Balsas",
+            "usePortDir": true,
+            "angleOffset": 0.0,
+            "radiusFactor": 0.72,
+            "widthFactor": 0.28
+          },
+          {
+            "kind": "craft",
+            "label": "Sucata e Oficinas",
+            "angleOffset": 2.18,
+            "radiusFactor": 0.55,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Palafitas Externas",
+            "angleOffset": 3.02,
+            "radiusFactor": 0.8,
+            "widthFactor": 0.34
+          }
+        ]
       }
     },
     "224": {
@@ -4129,6 +4535,57 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "high-elf",
+        "urbanIdentity": "arcane-campus",
+        "magicCampus": true
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.58,
+          "climate": "temperate"
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "academy",
+            "label": "Academia do Porto",
+            "angleOffset": -0.96,
+            "radiusFactor": 0.34,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "harbour",
+            "label": "Cais dos Estudos",
+            "usePortDir": true,
+            "angleOffset": 0.0,
+            "radiusFactor": 0.72,
+            "widthFactor": 0.28
+          },
+          {
+            "kind": "market",
+            "label": "Praça dos Escribas",
+            "angleOffset": 0.38,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "grove",
+            "label": "Jardins de Estudo",
+            "angleOffset": 2.1,
+            "radiusFactor": 0.5,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Residências Magistrais",
+            "angleOffset": 3.06,
+            "radiusFactor": 0.79,
+            "widthFactor": 0.32
+          }
+        ]
       }
     },
     "227": {
@@ -4740,6 +5197,48 @@
         "referenceDistance": 12.3,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "imperial-human",
+        "urbanIdentity": "arcane-campus",
+        "magicCampus": true
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.32
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "academy",
+            "label": "Torre Magístral",
+            "angleOffset": -1.04,
+            "radiusFactor": 0.34,
+            "widthFactor": 0.24
+          },
+          {
+            "kind": "market",
+            "label": "Praça Acadêmica",
+            "angleOffset": 0.58,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "craft",
+            "label": "Ateliês Arcanos",
+            "angleOffset": 2.28,
+            "radiusFactor": 0.56,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Colégios e Moradias",
+            "angleOffset": 3.08,
+            "radiusFactor": 0.8,
+            "widthFactor": 0.34
+          }
+        ]
       }
     },
     "2001": {
@@ -5027,6 +5526,49 @@
         "referenceDistance": 37.1,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "high-elf",
+        "urbanIdentity": "arcane-campus",
+        "magicCampus": true
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.72,
+          "climate": "temperate"
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "academy",
+            "label": "Torre da Escola",
+            "angleOffset": -1.08,
+            "radiusFactor": 0.34,
+            "widthFactor": 0.23
+          },
+          {
+            "kind": "grove",
+            "label": "Bosque de Estudos",
+            "angleOffset": 1.66,
+            "radiusFactor": 0.46,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "market",
+            "label": "Clareira dos Aprendizes",
+            "angleOffset": 0.44,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Casas dos Magos",
+            "angleOffset": 3.08,
+            "radiusFactor": 0.8,
+            "widthFactor": 0.32
+          }
+        ]
       }
     },
     "4003": {
@@ -5057,6 +5599,48 @@
         "referenceDistance": 51.3,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "architecture": "imperial-human",
+        "urbanIdentity": "arcane-campus",
+        "magicCampus": true
+      },
+      "terrain": {
+        "woodland": {
+          "densityMin": 0.28
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "academy",
+            "label": "Torre dos Estudos",
+            "angleOffset": -1.02,
+            "radiusFactor": 0.34,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "market",
+            "label": "Praça Universitária",
+            "angleOffset": 0.66,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "craft",
+            "label": "Oficinas de Runas",
+            "angleOffset": 2.36,
+            "radiusFactor": 0.54,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Moradias de Aprendizes",
+            "angleOffset": 3.04,
+            "radiusFactor": 0.78,
+            "widthFactor": 0.32
+          }
+        ]
       }
     },
     "10001": {

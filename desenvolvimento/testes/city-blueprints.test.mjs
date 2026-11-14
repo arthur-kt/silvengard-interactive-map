@@ -126,3 +126,20 @@ test('a planta 2D desenha o mesmo litoral e as ruas do traçado 3D',async()=>{
  assert.equal(corner[2],'#4c8199','em Elucitor os cantos da planta sao mar');
  assert.ok(stamps.some(([x,y,c])=>Math.abs(x-357)<5&&Math.abs(y-357)<5&&c!=='#4c8199'),'centro da ilha deve ser terra');
 });
+
+test('ajustes culturais e campus arcanos foram registrados nos perfis',()=>{
+ const velaffeld=profile(1),winter=profile(23),danumbria=profile(2000),crild=profile(223);
+ assert.equal(velaffeld.classification?.architecture,'high-elf');
+ assert.ok(velaffeld.urbanDesign?.districts?.some(d=>d.kind==='grove'));
+ assert.equal(winter.classification?.architecture,'northern-human');
+ assert.ok(winter.urbanDesign?.districts?.some(d=>d.kind==='military'));
+ assert.equal(danumbria.classification?.magicCampus,true);
+ assert.ok(danumbria.urbanDesign?.districts?.some(d=>d.kind==='academy'));
+ assert.equal(crild.classification?.architecture,'goblin-marsh');
+ assert.ok(crild.urbanDesign?.districts?.some(d=>d.kind==='shanty'));
+ for(const id of [16,19,26]){
+  const b=profile(id);
+  assert.equal(b.pattern,'forest-settlement');
+  assert.ok(b.urbanDesign?.districts?.some(d=>d.kind==='grove'));
+ }
+});

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {caminho} from './base.mjs';
-import {makeUndergroundLayout,buildDwarvenInterior,subterraneanProfile} from '../../app/dist/dwarven-interior.js';
+import {makeUndergroundLayout,buildDwarvenInterior,subterraneanProfile,caveFlightBounds} from '../../app/dist/dwarven-interior.js';
 import {applyBlueprintTerrain} from '../../app/dist/city-plan-core.js';
 
 const profiles=JSON.parse(fs.readFileSync(caminho('dist/city-blueprints.json'))).cities;
@@ -74,5 +74,24 @@ test('duas hibridas nao ativam caverna total e cinco ficam completamente na supe
   const site=applyBlueprintTerrain({ranges:[],forest:.5,port:false},b);
   assert.equal(site.subterranean,undefined);assert.equal(site.mountainWall,undefined);
   assert.equal(buildDwarvenInterior({cityId:id,blueprint:b,cx:0,cy:0,W:10,H:10}),null);
+ }
+});
+
+
+test('voo nas sete cavernas respeita o piso, o teto e as paredes de pedra',()=>{
+ const eye=1.72/2.2,base=17.3;
+ for(const id of inside){
+  const layout=makeUndergroundLayout(id,profiles[id].seed);
+  const points=[layout.spawn,{u:0,v:0},...layout.wings,...layout.branches];
+  for(const p of points){
+   assert.ok(layout.accessible(p.u,p.v),`sala inacessivel ${id}`);
+   const {min,max}=caveFlightBounds(layout,p.u,p.v,base,eye);
+   const floor=base+layout.floorAt(p.u,p.v);
+   const roof=base+layout.ceilingAt(p.u,p.v);
+   assert.ok(min>floor&&min<floor+.2,`nivel minimo incorreto em ${id}`);
+   assert.ok(max>min+2.5,`sem espaco para voo em ${id}`);
+   assert.ok(max+eye<=roof-.54,`camara atravessa teto em ${id}`);
+  }
+  assert.equal(layout.accessible(layout.span+30,0),false,'nao permite voar fora da rocha');
  }
 });

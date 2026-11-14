@@ -1,5 +1,9 @@
 # Atlas de Silvengard — upgrade das plantas urbanas (1277 AQD)
 
+## Revisão v6 — voo nas cidades anãs subterrâneas
+
+A partir da v6, **as sete cidades subterrâneas permitem voo dentro das galerias** por F, dois toques em Espaço ou pelo botão Voo. O voo no interior é mais lento que em céu aberto, e o deslocamento respeita **chão, paredes e teto rochoso**. Espaço sobe, C/Ctrl desce e Shift acelera. A tecla E permanece reservada à saída perto do portal. Ao voltar à superfície, o estado anterior de voo é restaurado. Esta alteração preserva a v5 (culturas élficas, Crild e campus de magia), v4 (interiores) e os ajustes anteriores de Asgorath, Velaffeld, Elucitor e Winterhelm.
+
 ## Revisão v4 — interiores anões navegáveis
 
 A v3 apenas acrescentava um paredão de montanha e um portão; isso não equivalia a uma cidade subterrânea. A v4 inclui efetivamente uma **cena 3D interna separada** em cada uma das sete cidades subterrâneas: piso caminhável, teto rochoso, paredes com colisão, colunas, iluminação, desníveis, salão central, quatro galerias principais e oito câmaras de anexos, num total de **13 espaços conectados** por galerias. O modelo interno é acessado no botão **⛏ Entrar na montanha** ou na entrada monumental por meio da tecla E, e pode ser explorado em primeira pessoa com WASD/Shift. No subsolo, o botão **▦ Mapa das galerias** apresenta a mesma topologia do 3D.

@@ -509,6 +509,13 @@ export function buildTownV2(env){
    else{addCrate(m,{at:[x,y,z],rot:rand()*.6});addCrate(m,{at:[x+.5,y,z-.3],rot:rand()*.6,s:.8})}
    addSolid(cx+u,cy+v,.8);
   };
+  const placeTree=(u,v,scale=1)=>{
+   if(!landAt(cx+u,cy+v))return false;
+   const[x,z]=world(u,v),y=G(cx+u,cy+v)+.03,canopy=['#527a4f','#5f8557','#6e9463'][Math.floor(rand()*3)];
+   m.cyl('wood',.12*scale,.15*scale,1.75*scale,6,{at:[x,y,z],tint:tc(PAL.woodDark,.92)},false);
+   m.cyl('roof',1.05*scale,0,1.85*scale,7,{at:[x,y+1.25*scale,z],tint:tc(canopy,.92+rand()*.12),loc:[x,0,z]});
+   addSolid(cx+u,cy+v,.7*scale);return true;
+  };
   // mercado geral
   {const d=D('market');if(d){
    for(let i=0;i<3;i++){const a=d.ang+(i-1)*.5,rr=d.r*.55,u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;if(!landAt(cx+u,cy+v))continue;const[x,z]=world(u,v);addStall(m,{at:[x,G(cx+u,cy+v)+.05,z],rot:-a+Math.PI/2,R:rand});addSolid(cx+u,cy+v,.8);prop('food',u+.5,v+.5)}
@@ -544,6 +551,29 @@ export function buildTownV2(env){
   {for(const d of DL('high')){
    const[x,z]=world(d.u,d.v),gy=G(cx+d.u,cy+d.v)+.05;addPillar(m,{at:[x,gy,z],h:4.2,r:.44});addBanner(m,{at:[x,gy+4.1,z],h:1.8,color,scale:.85});addSolid(cx+d.u,cy+d.v,1.1);
    for(const s of[-1,1]){const u=d.u+s*1.7,v=d.v+1.5;if(!landAt(cx+u,cy+v))continue;const[lx,lz]=world(u,v);addLamp(m,{at:[lx,G(cx+u,cy+v)+.05,lz]})}
+  }}
+  // campus arcanos / cidades de magia: torre principal, edifícios auxiliares e moradias
+  {for(const d of DL('academy')){
+   const[x,z]=world(d.u,d.v),gy=footprintY(cx+d.u,cy+d.v,4.5)+.05;
+   addTower(m,{at:[x,gy,z],r:1.45,h:8.6,sides:8,cap:'roof',capH:2.4,tint:tc(PAL.stone,.96),capTint:tc('#6c8796')});
+   addBanner(m,{at:[x,gy+11.1,z],h:2.2,color,scale:.9});addSolid(cx+d.u,cy+d.v,2.2);
+   for(const off of[-1.9,1.9]){const u=d.u+Math.cos(d.ang+Math.PI/2)*off*2.2,v=d.v+Math.sin(d.ang+Math.PI/2)*off*2.2;put('hall',u,v,d.ang+Math.PI/2,6.8,5.8,2,{pad:.85})}
+   for(let i=0;i<4;i++){const a=d.ang-.85+i*.57,rr=d.r*.75,u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;put('house',u,v,a+Math.PI/2,4.2+rand()*.6,4.9+rand()*.7,2,{pad:.8})}
+   for(let i=0;i<6;i++){const a=i/6*Math.PI*2,uu=d.u+Math.cos(a)*Math.max(4.6,d.r*.34),vv=d.v+Math.sin(a)*Math.max(4.6,d.r*.34);if(!landAt(cx+uu,cy+vv))continue;const[lx,lz]=world(uu,vv);addLamp(m,{at:[lx,G(cx+uu,cy+vv)+.05,lz]})}
+  }}
+  // bosques internos para cidades élficas e bairros-jardim
+  {for(const d of DL('grove')){
+   const[x,z]=world(d.u,d.v),gy=G(cx+d.u,cy+d.v)+.05;addFountain(m,{at:[x,gy,z]});addSolid(cx+d.u,cy+d.v,1.2);
+   const n=6+Math.floor(rand()*4);for(let i=0;i<n;i++){
+    const a=i/n*Math.PI*2+rand()*.35,rr=d.r*(.28+rand()*.5),u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;placeTree(u,v,.8+rand()*.32)
+   }
+   for(let i=0;i<3;i++){const a=d.ang-.5+i*.5,rr=d.r*.72,u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;put('house',u,v,a+Math.PI/2,4.2+rand()*.7,5+rand()*.7,2,{pad:1})}
+  }}
+  // favelas pantanosas / bairros improvisados goblinoides
+  {for(const d of DL('shanty')){
+   for(let i=0;i<10;i++){const a=d.ang-1.05+i*.24,rr=d.r*(.2+rand()*.75),u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;put('house',u,v,a+Math.PI/2+(rand()-.5)*.45,2.6+rand()*.9,3.2+rand()*1.1,1,{pad:.22})}
+   for(let i=0;i<5;i++){const a=d.ang-.7+i*.33,rr=d.r*(.24+rand()*.55),u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;if(!landAt(cx+u,cy+v))continue;const[x,z]=world(u,v);addStall(m,{at:[x,G(cx+u,cy+v)+.05,z],rot:-a+Math.PI/2,R:rand});prop(i%2?'goods':'food',u+.4,v+.2)}
+   const[x0,z0]=world(d.u,d.v);addBanner(m,{at:[x0,G(cx+d.u,cy+d.v)+.05,z0],h:2,color,scale:.75});
   }}
   // bairro do porto / armazéns
   {for(const d of DL('harbour')){
