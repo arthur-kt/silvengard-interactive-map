@@ -226,6 +226,17 @@ def generate(world_path, map_path, out_path, report_path):
         records[str(city['i'])]=item
         tally[method]+=1
         if origdist is not None and origdist>26: moved.append(item)
+    # Os ajustes historicos/urbanos autorais nao fazem parte do Azgaar .map.
+    # Ao regenerar dados a partir de um novo mapa, PRESERVAR esses overrides.
+    if out_path.is_file():
+        try:
+            old_records=json.loads(out_path.read_text(encoding='utf-8')).get('cities',{})
+        except (ValueError,OSError,TypeError):
+            old_records={}
+        for key,item in records.items():
+            previous=old_records.get(key,{})
+            for manual in ('terrain','urbanDesign','classification'):
+                if manual in previous:item[manual]=previous[manual]
     data={
         'schema':'silvengard.city-blueprints/1',
         'mapFile':map_path.name,
@@ -261,7 +272,12 @@ def generate(world_path, map_path, out_path, report_path):
       '', '## Compatibilidade', '',
       'O upgrade modifica apenas os arquivos da visao local e adiciona dados de planta; nao altera `world.json`, economia, territorios, fichas ou edicoes anteriores.','']
     report_path.parent.mkdir(parents=True,exist_ok=True)
-    report_path.write_text('\n'.join(text),encoding='utf-8')
+    # Nao sobrescrever o relatorio revisado manualmente com lore e especificacao v4.
+    report_is_manual=report_path.is_file() and '## Revisão v4 — interiores anões navegáveis' in report_path.read_text(encoding='utf-8')
+    if not report_is_manual:
+        report_path.write_text('\n'.join(text),encoding='utf-8')
+    else:
+        print('Relatorio v4 preservado: revisoes manuais devem ser reconciliadas pelo autor.')
     print('BURG DATA ROW',i,'map',len(burgs),'atlas',len(records),'links',data['watabouLinkedCities'],'moved',len(moved),'methods',dict(tally))
     print('RELOCATIONS with links:',[(v['name'],v['source']['positionDifference'],v['source']['mode']) for v in moved if v['source']['watabouUrl']])
     return data

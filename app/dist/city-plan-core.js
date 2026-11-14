@@ -50,6 +50,14 @@ export function applyBlueprintTerrain(site,blueprint){
   site.port=true;site.shoreDistM=island.harbourFacingCoastM;
   site.portDir=Number.isFinite(site.waterAng)?site.waterAng:0;
  }
+ const mountainWall=blueprint.terrain?.mountainWall;
+ if(mountainWall)site.mountainWall={...mountainWall};
+ const subterranean=blueprint.terrain?.subterranean;
+ if(subterranean){
+  site.subterranean={...subterranean};
+  site.mountainWall={...(site.mountainWall||{}),...(subterranean.mountainWall||{})};
+  site.forest=Math.min(site.forest,.22);
+ }
  if(blueprint.pattern==='marsh-causeways'){
   site.climate='wet';site.forest=Math.max(site.forest,.36);
  }
@@ -179,6 +187,8 @@ export function applyCityBlueprint(layout,blueprint,site){
  layout.gates=gates;
  layout.roadModel=p;
  layout.features=blueprint.features||{};
+ layout.urbanDesign=blueprint.urbanDesign||null;
+ if(Array.isArray(blueprint.urbanDesign?.districts)&&blueprint.urbanDesign.districts.length)layout.customDistricts=blueprint.urbanDesign.districts;
  if(blueprint.features?.walls&&p!=='ruins'&&p!=='steppe-camp')layout.walled=true;
  if(blueprint.features?.market===false)layout.center='none';
  return layout;

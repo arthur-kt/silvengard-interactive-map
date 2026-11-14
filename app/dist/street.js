@@ -8,12 +8,13 @@
 import * as THREE from 'three';
 import {shared,treeMaterial} from './visuals.js?v=56';
 import {Mesher,retexture,rng,tc,PAL,STYLES} from './settlements.js?v=56';
-import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=64';
-import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=64';
+import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=66';
+import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=66';
 import {buildTerrain,localGroundMaterial,buildWater,localWaterMaterial,buildForest,buildScatter,skyTexture,localRoadMaterial,buildRoads} from './local-scene.js?v=56';
 import {indexLore,loreForCity} from './local-lore.js?v=56';
-import {applyCityBlueprint,applyBlueprintTerrain} from './city-plan-core.js?v=64';
-import {drawCityPlan} from './city-plan-preview.js?v=64';
+import {applyCityBlueprint,applyBlueprintTerrain} from './city-plan-core.js?v=66';
+import {drawCityPlan} from './city-plan-preview.js?v=66';
+import {buildDwarvenInterior,drawUndergroundPlan} from './dwarven-interior.js?v=66';
 
 const EYE_M=1.72, WALK_M=2.8, RUN_M=10.5, FLY_M=110, FLY_V=45, JUMP_V=5.9, GRAV=17.5;
 const EYE=EYE_M/M, WALK=WALK_M/M, RUN=RUN_M/M, FLY=FLY_M/M, FLYV=FLY_V/M, JUMP=JUMP_V/M, G=GRAV/M;
@@ -38,7 +39,8 @@ export function createStreetMode(ctx){
  const root=new THREE.Group();root.name='streetMode';root.visible=false;scene.add(root);
  const S={active:false,entering:false,picking:false,hud:null,saved:null,built:null,x:0,y:0,feet:0,vy:0,yaw:0,pitch:0,
   keys:new Set(),locked:false,time:'dia',bob:0,moving:false,grounded:true,flying:false,lastSpace:0,
-  cx:0,cy:0,cityR:120,site:null,field:null,R:500,lay:null,curCity:null};
+  cx:0,cy:0,cityR:120,site:null,field:null,R:500,lay:null,curCity:null,
+  interior:false,interiorData:null,exteriorPose:null,surfaceVisibility:null};
  let gmat=null,gmatBand=null,wmat=null,roadsMat=null,terrain=null,forest=null,scatter=null,water=null,grass=null,grassMat=null,
   people=null,peopleData=[],solids=new Map(),lamps=[],spin=null,fieldsMesh=null,nearInfo=null;
 
@@ -51,6 +53,7 @@ export function createStreetMode(ctx){
   return false;
  }
  function resolve(x,y){
+  if(S.interior)return[x,y]; // as paredes internas sao verificadas pelo layout da caverna
   if(S.flying&&S.feet>G+(1.2/M))return[x,y];
   for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++){const l=solids.get(key6(x+dx*6,y+dy*6));if(!l)continue;
    for(const[sx,sy,r]of l){const ex=x-sx,ey=y-sy,d=Math.hypot(ex,ey),m=r+RADIUS;if(d<m&&d>1e-4){x=sx+ex/d*m;y=sy+ey/d*m}}}
@@ -213,6 +216,7 @@ export function createStreetMode(ctx){
   <div class="svBar"><div class="svTimes">${Object.entries(PRESETS).map(([k,v])=>`<button data-time="${k}">${v.label}</button>`).join('')}</div>
    <button id="svFly" title="Ligar/desligar o voo (2× Espaço ou F)">🕊 Voo</button>
    <button id="svPlan" title="Mostrar a planta urbana deste local">▦ Planta urbana</button>
+   <button id="svCaves" title="Entrar ou sair da cidade sob a montanha" hidden>⛏ Entrar na montanha</button>
    <button id="svCombat" title="Abrir o tabuleiro tático 2D">⚔ Combate</button>
    <button id="svExit">⤴ Voltar ao mapa</button></div></div>`);
  const fade=el('<div id="streetFade"></div>'),pickChip=el('<div id="streetPick" hidden><b>Ver no local</b><span>Clique no mapa para descer no lugar · Esc cancela</span></div>');
@@ -231,15 +235,18 @@ export function createStreetMode(ctx){
   if(!S.active||!activePlan)return;
   if(document.pointerLockElement)document.exitPointerLock?.();
   const {lay,site,field,blueprint}=activePlan;
-  drawCityPlan(planOverlay.querySelector('#svPlanCanvas'),activePlan);
-  planOverlay.querySelector('#svPlanTitle').textContent=blueprint?.name||site.name||'Cidade';
-  planOverlay.querySelector('#svPlanType').textContent=blueprint?.patternLabel||'Planta procedural';
-  planOverlay.querySelector('#svPlanText').textContent=blueprint?.source?.watabouUrl
-   ?'Perfil com parametros originais do gerador Watabou; o Atlas constroi o seu proprio modelo em 3D.'
-   :'Perfil reconstruido a partir do local de referencia ou de sua historia, arquitetura e geografia.';
+  if(S.interior&&S.interiorData)drawUndergroundPlan(planOverlay.querySelector('#svPlanCanvas'),S.interiorData.layout);
+  else drawCityPlan(planOverlay.querySelector('#svPlanCanvas'),activePlan);
+  planOverlay.querySelector('#svPlanTitle').textContent=(blueprint?.name||site.name||'Cidade')+(S.interior?' · Galerias subterrâneas':'');
+  planOverlay.querySelector('#svPlanType').textContent=S.interior?'Planta dos salões e passagens exploráveis':blueprint?.patternLabel||'Planta procedural';
+  planOverlay.querySelector('.svPlanCaveat').textContent=S.interior?'A planta subterrânea corresponde às salas, ao teto rochoso e aos corredores navegáveis do protótipo 3D. O complexo representado é apenas uma parte da cidade, não todas as moradias.' :'As vias e o relevo correspondem ao cenário 3D, com edifícios esquematizados. Não é o traçado vetorial original do Watabou.';
+  planOverlay.querySelector('#svPlanText').textContent=S.interior
+   ?'Galerias jogáveis do Atlas: as mesmas salas e corredores da cena 3D, com paredes e pisos físicos. Tecla E ou botão ⛏ para regressar à superfície.'
+   :blueprint?.source?.watabouUrl?'Perfil com parâmetros do gerador Watabou; o Atlas reconstrói o seu próprio modelo 3D.'
+   :'Perfil reconstruído a partir de história, geografia e cultura.';
   const facts=planOverlay.querySelector('#svPlanFacts');
   facts.replaceChildren();
-  const items=[['Referencia',blueprint?.source?.referenceName||'Contexto da regiao'],
+  const items=S.interior?[['Salão principal',S.interiorData.layout.spec.hub],['Galerias',S.interiorData.layout.wings.map(w=>w.name).join(' · ')],['Tipo','Montanha escavada · ambiente navegável']]:[['Referencia',blueprint?.source?.referenceName||'Contexto da regiao'],
    ['Correspondencia',blueprint?.source?.mode||'Procedural'],
    ['Habitantes',Math.round(lay.pop||0).toLocaleString('pt-BR')],
    ['Muralhas',lay.walled?'Sim':'Nao'],
@@ -247,7 +254,7 @@ export function createStreetMode(ctx){
   items.forEach(([k,v])=>{const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=v;facts.append(dt,dd)});
   const link=planOverlay.querySelector('#svPlanWatabou');
   const url=blueprint?.source?.watabouUrl;
-  if(url&&url.startsWith('https://watabou.github.io/city-generator/?')){link.href=url;link.hidden=false}
+  if(!S.interior&&url&&url.startsWith('https://watabou.github.io/city-generator/?')){link.href=url;link.hidden=false}
   else{link.hidden=true;link.removeAttribute('href')}
   planOverlay.hidden=false;S.keys.clear();
  }
@@ -261,6 +268,7 @@ export function createStreetMode(ctx){
  $h('#svExit').onclick=()=>exit();
  $h('#svCombat').onclick=()=>ctx.onCombat?.();
  $h('#svFly').onclick=()=>toggleFlight();
+ $h('#svCaves').onclick=()=>toggleInterior();
  $h('#svPause').onclick=()=>lock();
  function lock(){if(!planOverlay.hidden)return;try{const p=renderer.domElement.requestPointerLock?.();p?.catch?.(()=>{})}catch{}}
 
@@ -273,23 +281,26 @@ export function createStreetMode(ctx){
   scene.background=skyTexture(p.top,p.hor,p.bottom);
   shared.uNight.value=p.night;renderer.toneMappingExposure=p.exp;
   hud.querySelectorAll('[data-time]').forEach(b=>b.classList.toggle('active',b.dataset.time===name));
+  if(S.interior)applyCaveLighting();
  }
  function setMode(){
   const m=$h('#svMode');if(!m)return;
-  m.textContent=S.flying?'Voo':S.moving?(S.keys.has('ShiftLeft')||S.keys.has('ShiftRight')?'Correndo':'Andando'):'A pé';
+  m.textContent=S.interior?'Subterrâneo · '+(S.moving?'explorando':'a pé'):S.flying?'Voo':S.moving?(S.keys.has('ShiftLeft')||S.keys.has('ShiftRight')?'Correndo':'Andando'):'A pé';
   m.classList.toggle('fly',S.flying);
  }
  const DISTRICT_NAME={market:'Mercado',temple:'Templo',military:'Quartel',craft:'Oficinas',residential:'Bairro'};
  function updateDistrict(){
   const elD=$h('#svDistrict');if(!elD)return;
   let txt='';
-  if(S.lay?.districts){
+  if(S.interior&&S.interiorData){
+   txt='Salão · '+S.interiorData.roomAt(S.x-S.cx,S.y-S.cy);
+  }else if(S.lay?.districts){
    let best=null;
    for(const d of S.lay.districts){
     const dd=Math.hypot((S.x-S.cx)-d.u,(S.y-S.cy)-d.v);
     if(dd<d.r*1.35&&(!best||dd<best.dd))best={d,dd};
    }
-   if(best)txt='Distrito · '+(DISTRICT_NAME[best.d.kind]||best.d.kind);
+   if(best)txt='Distrito · '+(best.d.label||DISTRICT_NAME[best.d.kind]||best.d.kind);
   }
   if(txt!==elD.textContent){elD.textContent=txt;elD.hidden=!txt}
  }
@@ -297,6 +308,7 @@ export function createStreetMode(ctx){
  /* ---------- voo / pulo ---------- */
  function toggleFlight(force){
   if(!S.active)return;
+  if(S.interior){hudToast('No subsolo, explore as galerias a pé.');return}
   const on=force!==undefined?!!force:!S.flying;
   S.flying=on;S.vy=0;S.grounded=!on;
   const b=$h('#svFly');if(b)b.classList.toggle('on',on);
@@ -312,6 +324,56 @@ export function createStreetMode(ctx){
   if(now-S.lastSpace<340){S.lastSpace=0;toggleFlight();return}
   S.lastSpace=now;
   if(!S.flying)jump();
+ }
+
+ /* ---------- Cidade verdadeiramente subterranea: transicao jogavel ---------- */
+ function applyCaveLighting(){
+  if(!S.interior)return;
+  light.intensity=.20;hemi.intensity=.27;
+  hemi.color.set('#8798aa');hemi.groundColor.set('#2e3135');
+  scene.fog.color.set('#1b2027');scene.fog.near=20;scene.fog.far=165;
+  scene.background=new THREE.Color('#10141a');
+  renderer.toneMappingExposure=1.12;
+ }
+ function undergroundFloor(x,y){
+  if(!S.interior||!S.interiorData)return Gmap(x,y);
+  return S.interiorData.baseY+S.interiorData.floorAt(x-S.cx,y-S.cy);
+ }
+ function toggleInterior(force){
+  if(!S.active||!S.interiorData)return false;
+  const enter=force===undefined?!S.interior:!!force;
+  if(enter===S.interior)return true;
+  const cave=S.interiorData;
+  if(enter){
+   S.exteriorPose={x:S.x,y:S.y,feet:S.feet,yaw:S.yaw,pitch:S.pitch};
+   S.surfaceVisibility=new Map();
+   for(const obj of root.children){
+    if(obj===cave.group)continue;
+    S.surfaceVisibility.set(obj,obj.visible);obj.visible=false;
+   }
+   cave.group.visible=true;S.interior=true;S.flying=false;S.vy=0;
+   S.x=S.cx+cave.spawn.u;S.y=S.cy+cave.spawn.v;S.yaw=cave.spawn.yaw;S.pitch=-.05;
+   S.feet=undergroundFloor(S.x,S.y);S.camY=S.feet+EYE;S.grounded=true;S.keys.clear();
+   $h('#svFly').classList.remove('on');$h('#svFly').hidden=true;
+   $h('#svCaves').textContent='⇤ Voltar à superfície';
+   $h('#svPlan').textContent='▦ Mapa das galerias';
+   $h('#svSub').textContent='Cidade dentro da montanha · salões e galerias exploráveis';
+   applyCaveLighting();
+   hudToast('Entraste em '+cave.cityName+' · explora com WASD e Shift; E regressa à superfície');
+  }else{
+   S.interior=false;cave.group.visible=false;
+   for(const [obj,visible]of S.surfaceVisibility||[])obj.visible=visible;
+   S.surfaceVisibility=null;
+   if(S.exteriorPose){Object.assign(S,S.exteriorPose);S.exteriorPose=null;S.camY=S.feet+EYE}
+   S.vy=0;S.grounded=true;S.keys.clear();
+   $h('#svFly').hidden=false;
+   $h('#svCaves').textContent='⛏ Entrar na montanha';
+   $h('#svPlan').textContent='▦ Planta urbana';
+   $h('#svSub').textContent=(S.curCity?.settlementClass||'Cidade')+' · exterior · entrada para galerias subterrâneas';
+   applyPreset(S.time);
+   hudToast('Retornaste à superfície de '+cave.cityName);
+  }
+  updateDistrict();setMode();return true;
  }
 
  /* ---------- entrada ---------- */
@@ -351,7 +413,7 @@ export function createStreetMode(ctx){
  let blueprintIndex=null,blueprintLoading=null;
  function loadBlueprints(){
   if(blueprintIndex)return Promise.resolve(blueprintIndex);
-  if(!blueprintLoading)blueprintLoading=fetch('./city-blueprints.json?v=64',{cache:'no-cache'})
+  if(!blueprintLoading)blueprintLoading=fetch('./city-blueprints.json?v=66',{cache:'no-cache'})
    .then(r=>r.ok?r.json():null).then(data=>{blueprintIndex=data;return data})
    .catch(err=>{console.warn('Plantas urbanas nao disponiveis:',err);return null});
   return blueprintLoading;
@@ -450,13 +512,17 @@ export function createStreetMode(ctx){
    // cidade ou ermo
    if(lay){
     const t=buildTownV2({b:city,cx,cy,lay,rand,climate,color,G:Gmap,landAt,
-     toW,addSolid,pathAt:pathAtLocal,footprintY,special,field,site,blocked:blockedAt,style,snow:site.snowy,production});
+     toW,addSolid,pathAt:pathAtLocal,footprintY,special,field,site,blueprint,blocked:blockedAt,style,snow:site.snowy,production});
     t.groups.forEach(g=>root.add(g));
     buildPeople([]);addFields(t.fields);addWindmill(t.windmill);addSmoke(t.smoke);lamps=t.lamps||[];
     roadsMat=localRoadMaterial({snow:site.snowy?.55:0});
     const roads=buildRoads({roads:lay.roads,cx,cy,plaza:lay.fort?0:lay.plaza,squares:lay.squares||[],heightAt:(u,v)=>Gmap(cx+u,cy+v),toW,urbanR:lay.Rt*.94,material:roadsMat});
     root.add(roads);
-    const sp=special?ctx.specialModel?.(city):null;
+    if(blueprint?.classification?.dwarvenModel==='subterranean'){
+    const c=buildDwarvenInterior({cityId:city.i,blueprint,cx,cy,W,H,baseY:5});
+    if(c){S.interiorData=c;root.add(c.group)}
+   }else S.interiorData=null;
+   const sp=special?ctx.specialModel?.(city):null;
     if(sp){sp.scale.setScalar(2.1);sp.position.set(cx-W/2,footprintY(cx,cy,10)+.2,cy-H/2);retexture(sp);
      sp.traverse(o=>{if(o.isMesh)o.castShadow=o.receiveShadow=true});root.add(sp);addSolid(cx,cy,9)}
    }else{
@@ -529,6 +595,9 @@ export function createStreetMode(ctx){
    profileEl.hidden=!blueprint;
    $h('#svPlan').hidden=!lay;
    $h('#svPlan').disabled=!lay;
+   $h('#svCaves').hidden=!S.interiorData;
+   $h('#svCaves').textContent='⛏ Entrar na montanha';
+   $h('#svFly').hidden=false;
    activePlan={lay,site,field,blueprint};
    $h('#svSub').textContent=(city
       ?(city.settlementClass||'Localidade')+' · '+Math.round(lay.pop).toLocaleString('pt-BR')+' hab.'+extra
@@ -559,9 +628,11 @@ export function createStreetMode(ctx){
   gmat?.dispose();wmat?.dispose();gmatBand?.dispose();roadsMat?.dispose();gmat=null;wmat=null;gmatBand=null;roadsMat=null;
   grassMat?.dispose();grassMat=null;
   S.field=null;S.site=null;S.lay=null;nearInfo=null;
+  S.interior=false;S.interiorData=null;S.exteriorPose=null;S.surfaceVisibility=null;
  }
  function exit(silent){
   if(!S.active&&!silent)return;
+  if(S.interior)toggleInterior(false);
   if(document.pointerLockElement)document.exitPointerLock?.();
   const sv=S.saved;
   if(sv){camera.position.copy(sv.camPos);controls.target.copy(sv.target);camera.fov=sv.fov;camera.near=sv.near;camera.far=sv.far;camera.updateProjectionMatrix();
@@ -626,6 +697,18 @@ export function createStreetMode(ctx){
   if(!planOverlay.hidden){if(e.key==='Escape'){closePlan();e.stopImmediatePropagation();e.preventDefault()}return;}
   if(e.target.matches?.('input,textarea,select'))return;
   if(e.key==='Escape'&&!S.locked){exit();return}
+  if(e.code==='KeyE'&&!e.repeat&&S.interiorData){
+   if(S.interior){
+    const g=S.interiorData.exit;
+    if(Math.hypot(S.x-S.cx-g.u,S.y-S.cy-g.v)<11)toggleInterior(false);
+    else hudToast('Para sair: aproxime-se do arco de entrada ou use o botão ⛏');
+   }else{
+    const gate=S.lay?.caveGate;
+    if(gate&&Math.hypot(S.x-S.cx-gate.u,S.y-S.cy-gate.v)<13)toggleInterior(true);
+    else hudToast('A entrada fica no portão da montanha; use ⛏ para acessar diretamente');
+   }
+   e.preventDefault();return;
+  }
   if(e.code==='KeyT'&&!e.repeat){const ks=Object.keys(PRESETS);applyPreset(ks[(ks.indexOf(S.time)+1)%ks.length]);return}
   if(e.code==='KeyF'&&!e.repeat){toggleFlight();return}
   if(e.code==='Space'){if(!e.repeat){spaceTap();S.keys.add('Space')}e.preventDefault();return}
@@ -652,6 +735,11 @@ export function createStreetMode(ctx){
    let nx=S.x+(fx*f+rx*st)*sp,ny=S.y+(fz*f+rz*st)*sp;
    [nx,ny]=resolve(nx,ny);
    const canWalk=(x,y)=>{
+    if(S.interior){
+     if(!S.interiorData?.accessible(x-S.cx,y-S.cy,RADIUS))return false;
+     const rise=(undergroundFloor(x,y)-undergroundFloor(S.x,S.y))*M;
+     return rise<1.8||S.vy>0;
+    }
     if(S.flying)return true;
     if(!landAt(x,y))return false;
     if(S.field.depthM((x-S.cx)*M,(y-S.cy)*M)>.55)return false;      // não atravessa água funda a pé
@@ -673,14 +761,14 @@ export function createStreetMode(ctx){
    S.vy=0;S.grounded=false;
   }else{
    S.vy-=GRAV*dt;S.feet+=S.vy*dt;
-   const g=Gmap(S.x,S.y);
+   const g=undergroundFloor(S.x,S.y);
    if(S.feet<=g){S.feet=g;S.vy=0;S.grounded=true}else S.grounded=false;
   }
   // limites do lugar
   const dxm=(S.x-S.cx)*M,dym=(S.y-S.cy)*M,dr=Math.hypot(dxm,dym),lim=S.site?Math.max(4500,S.cityR*5):3200;
   if(dr>lim){S.x=S.cx+dxm/dr*lim/M;S.y=S.cy+dym/dr*lim/M}
   if(spin)spin.rotation.z=now*.0008;
-  if(terrain)terrain.update((S.x-S.cx)*M,(S.y-S.cy)*M);
+  if(terrain&&!S.interior)terrain.update((S.x-S.cx)*M,(S.y-S.cy)*M);
   // câmera
   const by=S.moving&&S.grounded?Math.sin(S.bob)*.03:0;
   const wx=S.x-W/2,wz=S.y-H/2;
@@ -692,12 +780,12 @@ export function createStreetMode(ctx){
   light.target.position.set(wx,S.feet,wz);light.position.set(wx+d.x*2200*(M===M?1:1),S.feet+d.y*2200,wz+d.z*2200);
   light.target.updateMatrixWorld();renderer.shadowMap.needsUpdate=true;
   // grama local
-  if(Math.hypot(S.x-grassCenter[0],S.y-grassCenter[1])*M>34)scatterGrass(S.x,S.y);
+  if(!S.interior&&Math.hypot(S.x-grassCenter[0],S.y-grassCenter[1])*M>34)scatterGrass(S.x,S.y);
   updatePeople(dt,now);
   const bearing=((-S.yaw*180/Math.PI)%360+360)%360;
   $h('#svDir').textContent=DIRS[Math.round(bearing/45)%8];
   $h('#svDeg').textContent=Math.round(bearing)+'°';
-  $h('#svAlt').textContent=(S.flying?'voo · ':'alt. ')+Math.round(S.feet*M)+' m';
+  $h('#svAlt').textContent=S.interior?'piso das galerias · '+Math.round((S.feet-S.interiorData.baseY)*M)+' m':(S.flying?'voo · ':'alt. ')+Math.round(S.feet*M)+' m';
   updateDistrict();
   setMode();
   return true;
@@ -705,6 +793,8 @@ export function createStreetMode(ctx){
 
  return {get active(){return S.active},get picking(){return S.picking},pick,cancelPick,enterAt,exit,update,nearestCity,presets:PRESETS,setTime:applyPreset,
   debug:{
+   toggleInterior:force=>toggleInterior(force),
+   interior:()=>S.interior?{room:S.interiorData?.roomAt(S.x-S.cx,S.y-S.cy),city:S.curCity?.i,x:S.x-S.cx,z:S.y-S.cy}:null,
    state:()=>({x:S.x,y:S.y,cx:S.cx,cy:S.cy,feet:S.feet,yaw:S.yaw,pitch:S.pitch,flying:S.flying,grounded:S.grounded,city:S.curCity?.i,radius:S.cityR,timing:S.timing,
     site:S.site?{water:S.site.waterKind,shore:S.site.shoreDistM,lake:S.site.lakeR,ranges:S.site.ranges.map(r=>({d:r.distM,h:r.heightM}))}:null}),
    pose:(x,y,yaw,pitch=.0)=>{if(!S.active)return false;S.x=x;S.y=y;if(yaw!=null)S.yaw=yaw;S.pitch=pitch;S.feet=Gmap(x,y);S.vy=0;S.grounded=true;return true},

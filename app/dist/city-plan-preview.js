@@ -1,6 +1,6 @@
 // Silvengard Atlas: uma planta legivel da MESMA malha que alimenta o modelo 3D.
 // Nao e o SVG gerado pelo Medieval Fantasy City Generator (Watabou).
-import {wallRadiusAt} from './city-plan-core.js?v=64';
+import {wallRadiusAt} from './city-plan-core.js?v=66';
 
 const M=2.2;
 const TAU=Math.PI*2;

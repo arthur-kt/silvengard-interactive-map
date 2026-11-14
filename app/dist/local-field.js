@@ -335,6 +335,23 @@ export function createField(site){
    const crest=.62+.22*Math.sin((x*rtx+z*rtz)/950+rg.seed*.7)+.26*fbm2((x*rtx+z*rtz)/2300,rg.seed*.3,seed+61);
    h+=rg.heightM*across*taper*Math.max(.34,crest);
   }
+  if(site.mountainWall){
+   const mw=site.mountainWall;
+   const ang=Number.isFinite(mw.ang)?mw.ang:(site.portDir+Math.PI*.85);
+   const rx=Math.cos(ang),rz=Math.sin(ang),rtx=-rz,rtz=rx;
+   const dist=Number.isFinite(mw.distM)?mw.distM:R*(mw.distanceFactor||1.02);
+   const half=Number.isFinite(mw.halfLenM)?mw.halfLenM:Math.max(1200,R*(mw.halfLenFactor||7.6));
+   const height=Number.isFinite(mw.heightM)?mw.heightM:260;
+   const spread=Number.isFinite(mw.spreadM)?mw.spreadM:340;
+   const along=x*rx+z*rz;
+   const across=Math.abs(x*rtx+z*rtz);
+   const face=smooth(dist-170,dist+110,along);
+   const taper=1-smooth(half*.82,half*1.08,across);
+   if(face>0&&taper>0){
+    const crag=.78+.22*ridged(x/420+seed*.17,z/420-seed*.11,seed+91)+.18*fbm2(x/1600+seed*.07,z/1600+seed*.09,seed+97);
+    h+=height*face*taper*Math.max(.45,crag);
+   }
+  }
   // terraço urbano: a cidade assenta num chão quase plano, levemente inclinado
   const pad=1-smooth(R*.86,R*1.32,r);
   h=h*(1-.6*pad)+1.9*pad;

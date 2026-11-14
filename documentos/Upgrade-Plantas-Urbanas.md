@@ -1,5 +1,13 @@
 # Atlas de Silvengard — upgrade das plantas urbanas (1277 AQD)
 
+## Revisão v4 — interiores anões navegáveis
+
+A v3 apenas acrescentava um paredão de montanha e um portão; isso não equivalia a uma cidade subterrânea. A v4 inclui efetivamente uma **cena 3D interna separada** em cada uma das sete cidades subterrâneas: piso caminhável, teto rochoso, paredes com colisão, colunas, iluminação, desníveis, salão central, quatro galerias principais e oito câmaras de anexos, num total de **13 espaços conectados** por galerias. O modelo interno é acessado no botão **⛏ Entrar na montanha** ou na entrada monumental por meio da tecla E, e pode ser explorado em primeira pessoa com WASD/Shift. No subsolo, o botão **▦ Mapa das galerias** apresenta a mesma topologia do 3D.
+
+A geração troca o grande casario externo das cidades escavadas por um acesso fortificado mais enxuto; as cidades híbridas e de superfície não recebem o teleporte subterrâneo. A mudança se aplica a Dagorah, Mauron, Liotorn, Khizdush, Adush, Shararukthu e Shunzargil, e respeita as anteriores distinções de Grenolk e as demais.
+
+**Escopo real:** o ambiente implementado representa o núcleo público de cada cidade, não a cidade inteira com todas as habitações, oficinas e túneis em escala de população. A transição entre exterior e cavernas carrega uma cena separada; não há um túnel único aberto que ligue fisicamente as duas malhas. Sem NPCs internos nesta versão. Todas as 13 câmaras são procedurais e não copiadas do Watabou.
+
 ## O que o arquivo de Azgaar fornece
 
 - `Silvangad 5.0.map`: 239 localidades ativas; dados de posicao e caracteristicas.
@@ -166,6 +174,39 @@
 | 4003 | Aleravum | organic-town | Aleravum (#130) | identidade-relocada | 51.3 | nao |
 | 10001 | Porto Naril | elfic-organic | Meethethyr (#217) | proximidade | — | nao |
 | 10002 | Porto Sarandir | harbor-front | Gugacon (#33) | proximidade | — | nao |
+
+
+## Ajustes visuais adicionais desta revisao
+
+- **Asgorath, Elucitor e Velaffeld** agora recebem um **distrito palaciano** dedicado, tratado como cidade alta/cidadela.
+- **Elucitor** passa a ter distritos mais explicitamente separados: **cidade alta/palacio**, **bairro alto**, **porto e armazens**, **mercado baixo**, **grande templo**, **bairro nobre** e **cidade baixa**.
+- **Winterhelm** recebeu um **maciço montanhoso encostado em um dos lados** da cidade, para reforcar a leitura de fortaleza de fronteira.
+- **Dagorah** passa a ser tratada como uma cidade ana **embutida na montanha**, com paredao rochoso proximo e **portal monumental** de entrada, alem do perfil de terracos.
+- Os novos distritos usam lotes e marcos diferentes (palacios, armazens, bairros nobres, pracas altas), mas continuam dentro do modelo procedural do Atlas.
+
+## Classificacao proposta para as cidades anas
+
+### Subterraneas
+- Dagorah
+- Mauron
+- Liotorn
+- Khizdush
+- Adush
+- Shararukthu
+- Shunzargil
+
+### Hibridas (superficie + galerias)
+- Shaled
+- Kharagz
+
+### De superficie
+- Grenolk
+- Allos
+- Ginar
+- Brelas
+- Bilnulbun
+
+Nesta revisao do upgrade, as cidades do primeiro grupo recebem parede montanhosa proxima e um tratamento de **cidade anã dentro da montanha**, com portao monumental. As cidades do segundo grupo recebem uma montanha encostada e leitura de fortaleza de encosta, mas sem serem tratadas como plenamente subterraneas. O terceiro grupo permanece com urbanismo anao de superficie, sem montanha artificial imediata.
 
 ## Limites de fidelidade
 

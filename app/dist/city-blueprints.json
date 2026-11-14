@@ -52,6 +52,64 @@
           "sea": 1.69,
           "style": "natural"
         }
+      },
+      "terrain": {
+        "water": "sea"
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "palace",
+            "label": "Palácio Alto",
+            "angleOffset": -1.15,
+            "radiusFactor": 0.3,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "market",
+            "label": "Mercado do Porto",
+            "usePortDir": true,
+            "angleOffset": 0.18,
+            "radiusFactor": 0.46,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "harbour",
+            "label": "Cais e Entrepostos",
+            "usePortDir": true,
+            "angleOffset": 0.02,
+            "radiusFactor": 0.73,
+            "widthFactor": 0.26
+          },
+          {
+            "kind": "temple",
+            "label": "Distrito do Grande Templo",
+            "angleOffset": 2.08,
+            "radiusFactor": 0.44,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "noble",
+            "label": "Bairro Nobre",
+            "angleOffset": -2.24,
+            "radiusFactor": 0.63,
+            "widthFactor": 0.25
+          },
+          {
+            "kind": "residential",
+            "label": "Cidade Baixa",
+            "angleOffset": 3.05,
+            "radiusFactor": 0.78,
+            "widthFactor": 0.34
+          },
+          {
+            "kind": "craft",
+            "label": "Oficinas e Artesãos",
+            "angleOffset": -0.88,
+            "radiusFactor": 0.53,
+            "widthFactor": 0.2
+          }
+        ]
       }
     },
     "2": {
@@ -146,6 +204,71 @@
           "sea": 1.13,
           "style": "natural"
         }
+      },
+      "terrain": {
+        "water": "sea"
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "palace",
+            "label": "Alto Palácio",
+            "angleOffset": -1.0,
+            "radiusFactor": 0.28,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "market",
+            "label": "Mercado Central",
+            "usePortDir": true,
+            "angleOffset": 0.1,
+            "radiusFactor": 0.42,
+            "widthFactor": 0.21
+          },
+          {
+            "kind": "harbour",
+            "label": "Bairro do Porto",
+            "usePortDir": true,
+            "angleOffset": -0.04,
+            "radiusFactor": 0.72,
+            "widthFactor": 0.27
+          },
+          {
+            "kind": "temple",
+            "label": "Templos da Capital",
+            "angleOffset": 2.26,
+            "radiusFactor": 0.46,
+            "widthFactor": 0.21
+          },
+          {
+            "kind": "military",
+            "label": "Recinto Militar",
+            "angleOffset": 1.34,
+            "radiusFactor": 0.47,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "noble",
+            "label": "Bairro Nobre",
+            "angleOffset": -2.42,
+            "radiusFactor": 0.61,
+            "widthFactor": 0.24
+          },
+          {
+            "kind": "craft",
+            "label": "Oficinas",
+            "angleOffset": -0.92,
+            "radiusFactor": 0.55,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "residential",
+            "label": "Cidade Baixa",
+            "angleOffset": 3.02,
+            "radiusFactor": 0.77,
+            "widthFactor": 0.34
+          }
+        ]
       }
     },
     "4": {
@@ -293,6 +416,68 @@
           "waterOnAllSides": true
         },
         "water": "sea"
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "palace",
+            "label": "Cidade Alta / Palácio",
+            "angleOffset": -1.18,
+            "radiusFactor": 0.28,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "high",
+            "label": "Bairro Alto",
+            "angleOffset": -1.02,
+            "radiusFactor": 0.5,
+            "widthFactor": 0.24
+          },
+          {
+            "kind": "market",
+            "label": "Mercado Baixo",
+            "usePortDir": true,
+            "angleOffset": 0.18,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "harbour",
+            "label": "Porto e Armazéns",
+            "usePortDir": true,
+            "angleOffset": 0.02,
+            "radiusFactor": 0.78,
+            "widthFactor": 0.29
+          },
+          {
+            "kind": "temple",
+            "label": "Distrito do Grande Templo",
+            "angleOffset": 2.04,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.21
+          },
+          {
+            "kind": "noble",
+            "label": "Distrito Nobre",
+            "angleOffset": -2.38,
+            "radiusFactor": 0.64,
+            "widthFactor": 0.26
+          },
+          {
+            "kind": "craft",
+            "label": "Oficinas e Mercado Secundário",
+            "angleOffset": -0.72,
+            "radiusFactor": 0.55,
+            "widthFactor": 0.21
+          },
+          {
+            "kind": "residential",
+            "label": "Cidade Baixa",
+            "angleOffset": 3.1,
+            "radiusFactor": 0.8,
+            "widthFactor": 0.34
+          }
+        ]
       }
     },
     "8": {
@@ -402,6 +587,62 @@
         "referenceDistance": 19.2,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "terrain": {
+        "mountainWall": {
+          "ang": -1.32,
+          "distanceFactor": 0.62,
+          "heightM": 340,
+          "halfLenFactor": 7.4,
+          "spreadM": 270
+        },
+        "subterranean": {
+          "entryAngle": -1.32,
+          "hallDepthM": 220,
+          "gateWidthM": 120
+        }
+      },
+      "urbanDesign": {
+        "districts": [
+          {
+            "kind": "palace",
+            "label": "Grande Salão",
+            "angleOffset": -1.16,
+            "radiusFactor": 0.24,
+            "widthFactor": 0.2
+          },
+          {
+            "kind": "military",
+            "label": "Guarnição",
+            "angleOffset": 1.32,
+            "radiusFactor": 0.44,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "craft",
+            "label": "Forjas",
+            "angleOffset": -0.42,
+            "radiusFactor": 0.48,
+            "widthFactor": 0.22
+          },
+          {
+            "kind": "market",
+            "label": "Praça do Mercado",
+            "angleOffset": 2.18,
+            "radiusFactor": 0.4,
+            "widthFactor": 0.18
+          },
+          {
+            "kind": "residential",
+            "label": "Salões Habitacionais",
+            "angleOffset": 3.04,
+            "radiusFactor": 0.63,
+            "widthFactor": 0.3
+          }
+        ]
+      },
+      "classification": {
+        "dwarvenModel": "subterranean"
       }
     },
     "11": {
@@ -842,6 +1083,15 @@
           "hub": 0,
           "style": "natural"
         }
+      },
+      "terrain": {
+        "mountainWall": {
+          "ang": -1.48,
+          "distanceFactor": 0.82,
+          "heightM": 260,
+          "halfLenFactor": 8.0,
+          "spreadM": 340
+        }
       }
     },
     "24": {
@@ -1038,6 +1288,23 @@
         "referenceDistance": 41.5,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "terrain": {
+        "mountainWall": {
+          "ang": -1.12,
+          "distanceFactor": 0.7,
+          "heightM": 300,
+          "halfLenFactor": 7.2,
+          "spreadM": 300
+        },
+        "subterranean": {
+          "entryAngle": -1.12,
+          "hallDepthM": 210,
+          "gateWidthM": 110
+        }
+      },
+      "classification": {
+        "dwarvenModel": "subterranean"
       }
     },
     "30": {
@@ -1265,6 +1532,9 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "dwarvenModel": "surface"
       }
     },
     "38": {
@@ -1925,6 +2195,9 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "dwarvenModel": "surface"
       }
     },
     "93": {
@@ -2195,6 +2468,9 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "dwarvenModel": "surface"
       }
     },
     "113": {
@@ -2375,6 +2651,23 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "terrain": {
+        "mountainWall": {
+          "ang": -1.38,
+          "distanceFactor": 0.65,
+          "heightM": 350,
+          "halfLenFactor": 8.2,
+          "spreadM": 280
+        },
+        "subterranean": {
+          "entryAngle": -1.38,
+          "hallDepthM": 245,
+          "gateWidthM": 126
+        }
+      },
+      "classification": {
+        "dwarvenModel": "subterranean"
       }
     },
     "128": {
@@ -2825,6 +3118,9 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "dwarvenModel": "surface"
       }
     },
     "153": {
@@ -3125,6 +3421,9 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "classification": {
+        "dwarvenModel": "surface"
       }
     },
     "174": {
@@ -3185,6 +3484,23 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "terrain": {
+        "mountainWall": {
+          "ang": -1.25,
+          "distanceFactor": 0.68,
+          "heightM": 330,
+          "halfLenFactor": 7.8,
+          "spreadM": 290
+        },
+        "subterranean": {
+          "entryAngle": -1.25,
+          "hallDepthM": 230,
+          "gateWidthM": 118
+        }
+      },
+      "classification": {
+        "dwarvenModel": "subterranean"
       }
     },
     "177": {
@@ -3215,6 +3531,18 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "terrain": {
+        "mountainWall": {
+          "ang": -1.14,
+          "distanceFactor": 0.8,
+          "heightM": 275,
+          "halfLenFactor": 7.0,
+          "spreadM": 320
+        }
+      },
+      "classification": {
+        "dwarvenModel": "hybrid"
       }
     },
     "179": {
@@ -4071,6 +4399,18 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "terrain": {
+        "mountainWall": {
+          "ang": -1.28,
+          "distanceFactor": 0.83,
+          "heightM": 285,
+          "halfLenFactor": 7.2,
+          "spreadM": 310
+        }
+      },
+      "classification": {
+        "dwarvenModel": "hybrid"
       }
     },
     "238": {
@@ -4117,6 +4457,23 @@
           "hub": 0,
           "style": "natural"
         }
+      },
+      "terrain": {
+        "mountainWall": {
+          "ang": -1.18,
+          "distanceFactor": 0.64,
+          "heightM": 345,
+          "halfLenFactor": 7.9,
+          "spreadM": 285
+        },
+        "subterranean": {
+          "entryAngle": -1.18,
+          "hallDepthM": 240,
+          "gateWidthM": 125
+        }
+      },
+      "classification": {
+        "dwarvenModel": "subterranean"
       }
     },
     "239": {
@@ -4147,6 +4504,23 @@
         "referenceDistance": 0.0,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "terrain": {
+        "mountainWall": {
+          "ang": -1.06,
+          "distanceFactor": 0.67,
+          "heightM": 335,
+          "halfLenFactor": 7.7,
+          "spreadM": 300
+        },
+        "subterranean": {
+          "entryAngle": -1.06,
+          "hallDepthM": 235,
+          "gateWidthM": 122
+        }
+      },
+      "classification": {
+        "dwarvenModel": "subterranean"
       }
     },
     "242": {
@@ -4582,6 +4956,23 @@
         "referenceDistance": 33.1,
         "watabouUrl": null,
         "watabouParams": null
+      },
+      "terrain": {
+        "mountainWall": {
+          "ang": -1.46,
+          "distanceFactor": 0.66,
+          "heightM": 360,
+          "halfLenFactor": 8.0,
+          "spreadM": 290
+        },
+        "subterranean": {
+          "entryAngle": -1.46,
+          "hallDepthM": 250,
+          "gateWidthM": 130
+        }
+      },
+      "classification": {
+        "dwarvenModel": "subterranean"
       }
     },
     "4001": {
