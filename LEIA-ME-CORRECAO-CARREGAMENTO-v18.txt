@@ -1,0 +1,55 @@
+SILVENGARD ATLAS - v18: CORRECAO DE CARREGAMENTO
+==================================================
+
+Problema identificado na v17:
+O arquivo app/dist/local-scene.js continha seis quebras de linha
+literais dentro de strings JavaScript. Navegadores rejeitam esse modulo,
+impedindo a execucao do app.js e deixando o indicador de carregamento
+na tela para sempre.
+
+Correcoes da v18:
+- app/dist/local-scene.js: sintaxe corrigida
+- app/dist/street.js e app/dist/app.js: nova versao de importacao, para
+  evitar reutilizar arquivos JavaScript antigos no cache do navegador
+- app/dist/index.html: novo aviso de erro durante a inicializacao
+- Nenhuma mudanca no mapa-mundi, nas cidades, no acervo historico
+  ou nos dados salvos do usuario
+
+COMO INSTALAR NO WINDOWS
+-----------------------
+1. Feche o Atlas (e, se houver, a guia aberta no navegador).
+2. Se a v17 ja estiver instalada, use o arquivo menor:
+   Silvengard_Atlas_Hotfix_v18_Carregamento.zip.
+   Ou use o pacote completo v18, que contem todas as melhorias anteriores.
+3. Extraia o ZIP NA PASTA PAI daquela chamada "silvengard-interactive-map".
+   Se o Windows pedir, aceite mesclar/substituir os arquivos.
+   O resultado deve ser:
+     silvengard-interactive-map/app/dist/local-scene.js
+     silvengard-interactive-map/app/dist/app.js
+     silvengard-interactive-map/app/dist/street.js
+     silvengard-interactive-map/app/dist/index.html
+4. Abra o Silvengard-Atlas.exe original.
+5. Se houver uma guia antiga aberta, pressione Ctrl+Shift+R nela.
+
+TEXTURAS
+--------
+NAO e necessario reinstalar texturas. Os sete JPGs presentes em
+app/dist/textures/cc0/ continuam no lugar e nao sao apagados pelo patch.
+
+SE O PROBLEMA PERSISTIR
+-----------------------
+- Confira se extraiu o ZIP na pasta correta: evite criar duas pastas
+  "silvengard-interactive-map" uma dentro da outra.
+- Reabra o Atlas no executavel original, e confira se esta usando
+  o endereco do servidor local mostrado pelo programa.
+- No navegador, pressione F12 > Console e envie uma captura do erro.
+- Evite limpar os dados do site, pois o Atlas armazena algumas edicoes
+  localmente no navegador.
+
+TESTES
+------
+- 77 arquivos JS verificados pelo parser ESM
+- Cadeia de imports da interface principal verificada, 75 modulos
+- 37 testes direcionados de regressao passaram
+- Imagens de textura JPEG verificadas no ZIP instalado fornecido
+- A execucao visual completa no Windows nao pode ser reproduzida neste ambiente.

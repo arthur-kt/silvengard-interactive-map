@@ -7,14 +7,19 @@
 // ou voando (dois toques no espaço), com moradores que só andam em terra firme.
 import * as THREE from 'three';
 import {shared,treeMaterial} from './visuals.js?v=56';
-import {Mesher,retexture,rng,tc,PAL,STYLES} from './settlements.js?v=56';
-import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=67';
-import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=66';
-import {buildTerrain,localGroundMaterial,buildWater,localWaterMaterial,buildForest,buildScatter,skyTexture,localRoadMaterial,buildRoads} from './local-scene.js?v=56';
+import {Mesher,retexture,rng,tc,PAL,STYLES} from './settlements.js?v=80';
+import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=84';
+import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=81';
+import {buildTerrain,localGroundMaterial,buildWater,localWaterMaterial,buildForest,buildScatter,skyTexture,localRoadMaterial,buildRoads} from './local-scene.js?v=18.1';
 import {indexLore,loreForCity} from './local-lore.js?v=56';
-import {applyCityBlueprint,applyBlueprintTerrain} from './city-plan-core.js?v=67';
-import {drawCityPlan} from './city-plan-preview.js?v=67';
+import {applyCityBlueprint,applyBlueprintTerrain} from './city-plan-core.js?v=84';
+import {drawCityPlan} from './city-plan-preview.js?v=84';
+import {planUrbanV7Site,bridgeDeckHeight} from './urban-v7-core.js?v=70';
 import {buildDwarvenInterior,drawUndergroundPlan,caveFlightBounds} from './dwarven-interior.js?v=67';
+import {resolveMaterialPreset} from './material-presets.js?v=84';
+import {preloadCC0Textures,releaseCC0Textures} from './cc0-textures.js?v=19';
+import {createCityAssetManager} from './city-assets-v19.js?v=19';
+import {mountCityModelsV19} from './city-models-v19.js?v=19';
 
 const EYE_M=1.72, WALK_M=2.8, RUN_M=10.5, FLY_M=110, FLY_V=45, CAVE_FLY_M=16, CAVE_FLY_V=10, JUMP_V=5.9, GRAV=17.5;
 const EYE=EYE_M/M, WALK=WALK_M/M, RUN=RUN_M/M, FLY=FLY_M/M, FLYV=FLY_V/M, CAVE_FLY=CAVE_FLY_M/M, CAVE_FLYV=CAVE_FLY_V/M, JUMP=JUMP_V/M, G=GRAV/M;
@@ -28,6 +33,11 @@ const PRESETS={
  noite:{label:'Noite',sun:[.4,.7,.5],sunC:'#9fb4ff',sunI:1.0,hemiI:.9,sky:'#4a5f96',gnd:'#1c2430',top:'#081226',hor:'#27395c',bottom:'#1c2b47',fogN:300,fogF:7000,night:1,exp:1.1}
 };
 const DIRS=['N','NE','L','SE','S','SO','O','NO'];
+const ELUCITOR_CITY_ID=7;
+const ELUCITOR_DISTRICT_KIND_NAME={palace:'Cidade Alta / Palácio',high:'Bairro Alto',market:'Mercado Baixo',harbour:'Porto e Armazéns',temple:'Distrito do Grande Templo',noble:'Distrito Nobre',craft:'Oficinas e Mercado Secundário',residential:'Cidade Baixa'};
+const elucitorDistrictOptions=bp=>Array.isArray(bp?.urbanDesign?.districts)?bp.urbanDesign.districts.map((d,i)=>({kind:d.kind||`distrito-${i+1}`,label:d.label||ELUCITOR_DISTRICT_KIND_NAME[d.kind]||`Distrito ${i+1}`,spec:d})):[];
+const isElucitorCity=(city,bp)=>!!city&&(city.i===ELUCITOR_CITY_ID||/elucitor/i.test(bp?.name||city.name||''));
+const shouldPromptElucitorDistrict=(city,bp,opts={})=>isElucitorCity(city,bp)&&!opts.skipDistrictPrompt;
 
 function merge(parts){const pos=[],nor=[];for(const g0 of parts){const g=g0.index?g0.toNonIndexed():g0;pos.push(...g.attributes.position.array);nor.push(...g.attributes.normal.array)}
  const o=new THREE.BufferGeometry();o.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));o.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3));return o}
@@ -35,11 +45,14 @@ const at=(g,x,y,z)=>{g.translate(x,y,z);return g};
 
 export function createStreetMode(ctx){
  const {scene,camera,renderer,controls,light,world,D,W,H,surface,cellAt,getRelief,toast,title,inhabitants,stateColor,onExit}=ctx;
+ const cityPackages=createCityAssetManager();
+ const progress=message=>ctx.onCityLoadingProgress?.(message);
  const hemi=scene.children.find(o=>o.isHemisphereLight);
  const root=new THREE.Group();root.name='streetMode';root.visible=false;scene.add(root);
  const S={active:false,entering:false,picking:false,hud:null,saved:null,built:null,x:0,y:0,feet:0,vy:0,yaw:0,pitch:0,
   keys:new Set(),locked:false,time:'dia',bob:0,moving:false,grounded:true,flying:false,lastSpace:0,
   cx:0,cy:0,cityR:120,site:null,field:null,R:500,lay:null,curCity:null,
+  districtPrompt:false,districtFocusKey:'',districtFocusLabel:'',districtScale:1,
   interior:false,interiorData:null,exteriorPose:null,surfaceVisibility:null};
  let gmat=null,gmatBand=null,wmat=null,roadsMat=null,terrain=null,forest=null,scatter=null,water=null,grass=null,grassMat=null,
   people=null,peopleData=[],solids=new Map(),lamps=[],spin=null,fieldsMesh=null,nearInfo=null;
@@ -228,8 +241,31 @@ export function createStreetMode(ctx){
     <p class="svPlanCaveat">A planta e o cenário 3D compartilham ruas, muralhas e geografia. Não é a malha vetorial original do Watabou.</p></aside></div>
    <footer>Esc para fechar · ruas escuras: vias principais · azul: água · traço escuro: muralhas</footer>
   </div></div>`);
- document.body.append(hud,fade,pickChip,planOverlay);
+ const districtOverlay=el(`<div id="svDistrictOverlay" hidden role="dialog" aria-modal="true" aria-label="Escolher distrito de Elucitor">
+  <div class="svDistrictPanel">
+   <header><div><small>ELUCITOR · ESCALA URBANA</small><b id="svDistrictTitle">Escolher foco da visita</b></div><button id="svDistrictClose" title="Fechar" aria-label="Fechar seletor">✕</button></header>
+   <p id="svDistrictLead">Elucitor é vasta demais para caber num único quadro sem comprimir demais a cidade. Escolhe se quer entrar na visão geral ou numa versão distrital ampliada.</p>
+   <div class="svDistrictChoices" id="svDistrictChoices"></div>
+   <footer>Visão geral = capital inteira · Distritos = mais detalhe, mais espaço e menor densidade aparente.</footer>
+  </div></div>`);
+ document.body.append(hud,fade,pickChip,planOverlay,districtOverlay);
  const $h=s=>hud.querySelector(s);
+ const districtPanel=districtOverlay.querySelector('#svDistrictChoices');
+ const closeDistrictSelector=()=>{districtOverlay.hidden=true;S.districtPrompt=false;districtPanel.replaceChildren();};
+ districtOverlay.querySelector('#svDistrictClose').onclick=closeDistrictSelector;
+ districtOverlay.addEventListener('pointerdown',e=>{if(e.target===districtOverlay)closeDistrictSelector()});
+ function openElucitorDistrictSelector({city,blueprint,mx,my}){
+  const options=elucitorDistrictOptions(blueprint);
+  districtPanel.replaceChildren();
+  const makeBtn=(title,desc,onClick,klass='')=>{
+   const b=document.createElement('button');b.type='button';b.className='svDistrictChoice'+(klass?' '+klass:'');
+   b.innerHTML=`<b>${title}</b><span>${desc}</span>`;b.onclick=onClick;districtPanel.appendChild(b);
+  };
+  makeBtn('Visão geral da capital','Mostra a ilha-capital inteira, mantendo o porto, a Cidade Alta e a malha imperial numa única visita.',()=>{closeDistrictSelector();enterAt(mx,my,{cityId:city.i,skipDistrictPrompt:true,districtKey:'overview'});},'is-overview');
+  options.forEach((opt,idx)=>makeBtn(opt.label,idx===0?'Versão ampliada do setor, com mais espaço e leitura melhor da escala urbana.':'Entrar com foco distrital, aproximando este setor da cidade.',()=>{closeDistrictSelector();enterAt(mx,my,{cityId:city.i,skipDistrictPrompt:true,districtKey:opt.kind});}));
+  districtOverlay.querySelector('#svDistrictTitle').textContent=`${city?.name||'Elucitor'} · escolher escala`;
+  districtOverlay.hidden=false;S.districtPrompt=true;
+ }
  let activePlan=null;
  function openPlan(){
   if(!S.active||!activePlan)return;
@@ -270,7 +306,7 @@ export function createStreetMode(ctx){
  $h('#svFly').onclick=()=>toggleFlight();
  $h('#svCaves').onclick=()=>toggleInterior();
  $h('#svPause').onclick=()=>lock();
- function lock(){if(!planOverlay.hidden)return;try{const p=renderer.domElement.requestPointerLock?.();p?.catch?.(()=>{})}catch{}}
+ function lock(){if(!planOverlay.hidden||!districtOverlay.hidden)return;try{const p=renderer.domElement.requestPointerLock?.();p?.catch?.(()=>{})}catch{}}
 
  function applyPreset(name){
   const p=PRESETS[name]||PRESETS.dia;S.time=name;
@@ -338,8 +374,13 @@ export function createStreetMode(ctx){
   scene.background=new THREE.Color('#10141a');
   renderer.toneMappingExposure=1.12;
  }
+ // Os passadicos de Crild sao caminhaveis mesmo sobre o leito dos canais.
+ function bridgeDeckAt(x,y){
+  if(S.interior)return null;
+  return bridgeDeckHeight(S.lay,x-S.cx,y-S.cy);
+ }
  function undergroundFloor(x,y){
-  if(!S.interior||!S.interiorData)return Gmap(x,y);
+  if(!S.interior||!S.interiorData)return bridgeDeckAt(x,y)??Gmap(x,y);
   return S.interiorData.baseY+S.interiorData.floorAt(x-S.cx,y-S.cy);
  }
  function toggleInterior(force){
@@ -401,7 +442,7 @@ export function createStreetMode(ctx){
    .then(r=>r.ok?r.json():null).then(a=>{if(a)loreIndex=indexLore(a);return loreIndex}).catch(()=>null);
   return loreLoading;
  }
- loadLore();
+ // v19: somente buscar quando o jogador entrar na visao local.
  let econIndex=null,econLoading=null;
  function loadEconomy(){
   if(econIndex)return Promise.resolve(econIndex);
@@ -412,16 +453,16 @@ export function createStreetMode(ctx){
    }).catch(()=>null);
   return econLoading;
  }
- loadEconomy();
+ // v19: somente buscar quando o jogador entrar na visao local.
  let blueprintIndex=null,blueprintLoading=null;
  function loadBlueprints(){
   if(blueprintIndex)return Promise.resolve(blueprintIndex);
-  if(!blueprintLoading)blueprintLoading=fetch('./city-blueprints.json?v=67',{cache:'no-cache'})
+  if(!blueprintLoading)blueprintLoading=fetch('./city-blueprints.json?v=84',{cache:'no-cache'})
    .then(r=>r.ok?r.json():null).then(data=>{blueprintIndex=data;return data})
    .catch(err=>{console.warn('Plantas urbanas nao disponiveis:',err);return null});
   return blueprintLoading;
  }
- loadBlueprints();
+ // v19: somente buscar quando o jogador entrar na visao local.
  function topProduction(cityId,n=3){
   if(!econIndex||cityId==null)return [];
   const d=econIndex.defaults[String(cityId)]||{};
@@ -429,9 +470,11 @@ export function createStreetMode(ctx){
    .map(([gid])=>econIndex.goods.get(String(gid))).filter(Boolean);
  }
  async function enterAt(mx,my,opts={}){
-  if(S.active||S.entering)return;
-  S.entering=true;
+  if(S.active||S.entering||S.districtPrompt)return;
   const city=opts.cityId!=null?D.cities.find(c=>c.i===opts.cityId):nearestCity(mx,my);
+  let blueprint=city?(await loadBlueprints())?.cities?.[String(city.i)]||null:null;
+  if(shouldPromptElucitorDistrict(city,blueprint,opts)){openElucitorDistrictSelector({city,blueprint,mx,my});return;}
+  S.entering=true;
   let cx=city?city.x:mx,cy=city?city.y:my;
   if(!city){const land=findLand(cx,cy);if(!land){S.entering=false;toast?.('Escolha um ponto em terra firme.');return}[cx,cy]=land}
   if(!S.field&&!cellAt(cx,cy)){S.entering=false;toast?.('Escolha um ponto em terra firme.');return}
@@ -439,6 +482,9 @@ export function createStreetMode(ctx){
   fade.classList.add('on');
   await new Promise(r=>setTimeout(r,380));
   try{
+   progress('Preparando os recursos desta localidade…');
+   const assetPack=city?await cityPackages.load(city.i,{onProgress:progress}):{cityId:null,kit:'default',textures:['ground','stone','wood','roofing'],models:[]};
+   S.assetPack=assetPack;
    let lore=null,production=[];
    if(city){
     try{
@@ -451,13 +497,28 @@ export function createStreetMode(ctx){
      production=topProduction(city.i);
     }catch{}
    }
-   const blueprint=city?(await loadBlueprints())?.cities?.[String(city.i)]||null:null;
    const cell=cellAt(cx,cy);
    const climate=climateOf(cell);
-   const pop=city?Math.max(120,inhabitants(D,city)||400):140;
+   const pop=city?.i===2003?0:(city?Math.max(120,inhabitants(D,city)||400):140);
    const t0=performance.now();
    const site=siteFor({D,point:[cx,cy],cellAt,surface,population:pop,city});
    applyBlueprintTerrain(site,blueprint);
+   const districtChoice=isElucitorCity(city,blueprint)?(opts.districtKey||'overview'):'';
+   const districtScale=isElucitorCity(city,blueprint)?(districtChoice&&districtChoice!=='overview'?1.34:1.16):1;
+   if(isElucitorCity(city,blueprint)){
+    site.cityR*=districtScale;site.urbanR=site.cityR;
+    if(site.shoreDistM)site.shoreDistM*=districtChoice&&districtChoice!=='overview'?1.08:1.03;
+    if(site.island){site.island.radiusEastWestM*=districtChoice&&districtChoice!=='overview'?1.08:1.04;site.island.radiusNorthSouthM*=districtChoice&&districtChoice!=='overview'?1.08:1.04;}
+   }
+   if(site.imperialV12?.kind==='castamor'){
+    site.snowCover=Math.max(site.snowCover,.30);site.snowLineM=Math.min(site.snowLineM,78);site.snowy=true;
+    site.forest=Math.min(site.forest,.42);
+   }else if(site.imperialV12?.kind==='lorvus'){
+    site.forest=Math.min(site.forest,.16);
+   }else if(site.imperialV12?.kind==='alia'){
+    site.grass=['#90ac79','#71986e'];site.palette=['#8eaa75','#759a6c','#adc38b'];
+    site.forest=Math.max(.25,Math.min(site.forest,.46));
+   }
    if(!city){site.cityR=110;site.port=false;site.urbanR=0}
    const specific=!!lore&&!/^Ainda não foi registrada/i.test(lore.quote||'');
    const tr=specific?lore.traits:null;
@@ -470,9 +531,10 @@ export function createStreetMode(ctx){
    const field=createField(site);
    const tSite=performance.now();
    S.site=site;S.field=field;S.cx=cx;S.cy=cy;S.cityR=site.cityR;S.R=site.cityR*2+1200;
+   S.districtScale=districtScale;S.districtFocusKey=districtChoice==='overview'?'':districtChoice;S.districtFocusLabel='';
    const cls=city?.settlementClass||'',special=!!(city?.magicSchool||city?.dwarvenFortress),
     // Uma cidadela NAO reduz uma capital a um forte isolado.
-    fort=!!(cls.startsWith('Forte')&&pop<5000&&!city?.capital);
+    fort=!!(cls.startsWith('Forte')&&pop<5000&&!city?.capital&&blueprint?.imperialV12?.kind!=='rimae-fort');
    const rand=rng(blueprint?.seed??(Math.floor(cx*13+cy*7)+1));
    const kind=!city?'wild':blueprint?.pattern==='ruins'?'ruins':blueprint?.pattern==='steppe-camp'?'camp':fort?'fort':city.capital?'capital':(pop<1500||cls==='Vila'||cls==='Povoado')?'village':site.port?'port':'town';
    const lay=city?makeLayout({pop,capital:!!city.capital,village:kind==='village',fort,rand,port:site.port,kind}):null;
@@ -481,6 +543,11 @@ export function createStreetMode(ctx){
     lay.cx=cx;lay.cy=cy;
     lay.walled=(!!(city.walls||lay.capital||city.citadel)||!!tr?.walls)&&!lay.fort&&!special&&(pop>1200||!!city.citadel);
     applyCityBlueprint(lay,blueprint,site);
+    planUrbanV7Site(site,lay,blueprint);
+    if(S.districtFocusKey&&lay.districts?.length){
+     const focus=lay.districts.find(d=>d.kind===S.districtFocusKey||d.label===S.districtFocusKey);
+     S.districtFocusLabel=focus?.label||ELUCITOR_DISTRICT_KIND_NAME[S.districtFocusKey]||S.districtFocusKey;
+    }
    }
    // Estilos arquitetonicos passam a refletir tambem a historia e a cultura.
    let style=city?.dwarven||city?.dwarvenFortress?STYLES.dwarven:city?.magicSchool?STYLES.arcane:STYLES[site.climate]||STYLES.temperate;
@@ -497,23 +564,42 @@ export function createStreetMode(ctx){
     else if(arch==='woodland-elf')style={...style,cols:['#e8ead8','#d7dec8','#c7d7c1','#b9ccb4'],roofCols:['#486f58','#5f8469','#79916e']};
     else if(arch==='goblin-marsh')style={...STYLES.wet,cols:['#b5ab91','#9a9278','#8d866f'],roofCols:['#5a5547','#756956','#49463d'],pitch:.38};
     else if(arch==='northern-human')style={...style,cols:['#d8d1c2','#c2b6a7','#b7b0a1','#9e9587'],roofCols:['#6a5248','#7a6357','#8a776a']};
+    // V14: diversidade cultural de Dragonfall, sem arquitetura nortenha generica para todos.
+    if(arch==='halfling')style={...STYLES.temperate,cols:['#d8c5a5','#e4d2b8','#c8ad86'],roofCols:['#927149','#977a53','#6b684b'],roofKind:'thatch',pitch:.65};
+    else if(arch==='khajitt')style={...STYLES.wet,cols:['#baa584','#cbb89a','#9d8f78'],roofCols:['#654f42','#816951','#9c7957'],pitch:.45};
+    else if(arch==='husajita')style={...STYLES.arid,cols:['#d9ba93','#c9ab82','#b89974'],roofCols:['#ad7756','#986951','#c09067'],roofKind:'flat',pitch:.24};
+    else if(arch==='ash-northern')style={...STYLES.temperate,cols:['#a5a098','#b1a9a0','#857e78'],roofCols:['#504947','#75605a','#655650'],pitch:.45};
+    else if(arch==='draconato-volcanic')style={...STYLES.dwarven,cols:['#877e75','#77747b','#aaa097'],roofCols:['#4a4347','#655058','#5d5862'],pitch:.33};
+    else if(arch==='northern-arcane')style={...STYLES.temperate,cols:['#c8c9be','#b0b9b7','#aeb1ac'],roofCols:['#4b637e','#657590','#566878'],pitch:.43};
+    else if(arch==='northern-imperial-ruins')style={...STYLES.temperate,cols:['#888780','#b0ada1'],roofCols:['#6b665d']};
     if(magicCampus){
      const arcCols=arch==='high-elf'||arch==='woodland-elf'?['#eef3ea','#e4eddc','#dbe6d5','#cad8cb']:['#ede7dc','#e1d9cc','#d4cbbb','#c8c0b2'];
      const arcRoofs=arch==='high-elf'||arch==='woodland-elf'?['#436d72','#567f7c','#72908b']:['#586e82','#6d7f8e','#7e90a3'];
      style={...style,cols:arcCols,roofCols:arcRoofs,pitch:Math.max(style.pitch||.36,.38)};
     }
    }
+   const imperialRole=blueprint?.imperialV12?.kind||'';
+   if(imperialRole==='castamor')style={...STYLES.alpine,wall:'stone',cols:['#a6a5a0','#92928d','#777d80','#bab6a8'],roofCols:['#555d65','#66666b','#4b4f59'],pitch:.79};
+   else if(imperialRole==='lorvus')style={...STYLES.alpine,wall:'stone',cols:['#8d8074','#a19382','#786f68','#9c8e7d'],roofCols:['#675346','#716156','#5b5048'],pitch:.65,quoins:false};
+   else if(imperialRole==='alia')style={...STYLES.temperate,wall:'plaster',cols:['#efe6cd','#dcd5ae','#e6d3b2','#c8c9a5'],roofKind:'thatch',roofCols:['#a7925f','#9b8d5b','#bdad74'],pitch:.75,quoins:false};
+   else if(imperialRole==='tramor')style={...STYLES.temperate,cols:['#d6c2a1','#cfb797','#e0c9a8'],roofCols:['#866754','#97715b','#765b4c'],pitch:.58};
+   else if(imperialRole==='rimae-fort')style={...STYLES.alpine,wall:'stone',cols:['#b1afa5','#9e9f9a','#868a87'],roofCols:['#62666a','#757579','#505359'],pitch:.55};
+   else if(imperialRole==='rimae-market')style={...STYLES.temperate,cols:['#d6c8b2','#cec0a5','#c5b69a'],roofCols:['#8d6654','#7a5d50','#a27960']};
    if(site.snowy&&site.climate!=='arid'&&blueprint?.pattern!=='volcanic')style={...style,roofCols:['#edf2f4','#e3ebee','#f5f8f7']};
    S.style=style;
    solids.clear();lamps=[];spin=null;fieldsMesh=null;
    const pathAtLocal=makePathField(lay);
    nearInfo=pathAtLocal;
    const pathAtMetres=(x,z)=>pathAtLocal(x/M,z/M);
+   progress('Carregando as texturas selecionadas…');
+   await preloadCC0Textures(assetPack.textures);
    const color=city?stateColor(city):'#c0392b';
+   const materialPreset=resolveMaterialPreset({cityName:city?.name||'',districtKey:S.districtFocusKey||'',architecture:blueprint?.classification?.architecture||'',blueprintPattern:blueprint?.pattern||'',climate:site.climate||climate});
+   S.materialPreset=materialPreset;
    // materiais e cena
-   gmat=localGroundMaterial();gmat.userData.uSnow.value=site.snowLineM;
+   gmat=localGroundMaterial({preset:materialPreset});gmat.userData.uSnow.value=site.snowLineM;
    gmat.userData.uSnowCover.value=site.snowCover;
-   gmatBand=localGroundMaterial({clip:true});gmatBand.userData.uSnow.value=site.snowLineM;
+   gmatBand=localGroundMaterial({clip:true,preset:materialPreset});gmatBand.userData.uSnow.value=site.snowLineM;
    gmatBand.userData.uClipR.value=402;gmatBand.userData.uSnowCover.value=site.snowCover;
    wmat=localWaterMaterial();
    terrain=buildTerrain({field,site,material:gmat,bandMaterial:gmatBand,pathAt:pathAtMetres});
@@ -524,11 +610,13 @@ export function createStreetMode(ctx){
    const tTerrain=performance.now();
    // cidade ou ermo
    if(lay){
+    progress('Construindo ruas, casas e marcos históricos…');
     const t=buildTownV2({b:city,cx,cy,lay,rand,climate,color,G:Gmap,landAt,
      toW,addSolid,pathAt:pathAtLocal,footprintY,special,field,site,blueprint,blocked:blockedAt,style,snow:site.snowy,production});
+    if(S.districtFocusKey&&lay?.districts?.length){const focus=lay.districts.find(d=>d.key===S.districtFocusKey);if(focus)S.districtFocusLabel=focus.label||focus.key}
     t.groups.forEach(g=>root.add(g));
-    buildPeople([]);addFields(t.fields);addWindmill(t.windmill);addSmoke(t.smoke);lamps=t.lamps||[];
-    roadsMat=localRoadMaterial({snow:site.snowy?.55:0});
+    S.built=t;buildPeople(t.people||[]);addFields(t.fields);addWindmill(t.windmill);addSmoke(t.smoke);lamps=t.lamps||[];
+    roadsMat=localRoadMaterial({snow:site.snowy?.55:0,preset:materialPreset});
     const roads=buildRoads({roads:lay.roads,cx,cy,plaza:lay.fort?0:lay.plaza,squares:lay.squares||[],heightAt:(u,v)=>Gmap(cx+u,cy+v),toW,urbanR:lay.Rt*.94,material:roadsMat});
     root.add(roads);
     if(blueprint?.classification?.dwarvenModel==='subterranean'){
@@ -546,19 +634,31 @@ export function createStreetMode(ctx){
    // floresta e pedras
    const blockedLocal=(x,z,r)=>{const mx=cx+x/M,my=cy+z/M;return blockedAt(mx,my,r/M)};
    const tTown=performance.now();
-   forest=buildForest({field,site,blocked:blockedLocal,radius:Math.min(2600,Math.max(1500,site.cityR*2.2)),seed:Math.floor(cx*7+cy*3)});
+   forest=buildForest({field,site,blocked:blockedLocal,
+    pathAt:lay?(x,z)=>pathAtLocal(x/M,z/M):null,
+    radius:Math.min(2600,Math.max(1500,site.cityR*2.2)),seed:Math.floor(cx*7+cy*3)});
    forest.position.set(cx-W/2,0,cy-H/2);
    root.add(forest);
    scatter=buildScatter({field,site,blocked:blockedLocal,seed:Math.floor(cx+cy*3)});
    scatter.position.set(cx-W/2,0,cy-H/2);
    root.add(scatter);
    const tNature=performance.now();
+   S.modelStats=await mountCityModelsV19({pack:assetPack,root,lay,cx,cy,W,H,Gmap,landAt,blockedAt,addSolid,onProgress:progress});
    S.timing={site:Math.round(tSite-t0),terrain:Math.round(tTerrain-tSite),town:Math.round(tTown-tTerrain),nature:Math.round(tNature-tTown),total:Math.round(performance.now()-t0)};
    grassMat=grassMaterial();
    grass=null;
    // posição inicial: numa avenida, olhando para o centro (ou para o porto)
    let sx,sy,yaw;
    if(lay){
+    if(S.districtFocusKey&&lay.districts?.length){
+     const focus=lay.districts.find(d=>d.kind===S.districtFocusKey||d.label===S.districtFocusKey);
+     if(focus){
+      const step=Math.max(4,Math.min(12,focus.r*.18));
+      const ux=focus.u+Math.cos(focus.ang)*step,uy=focus.v+Math.sin(focus.ang)*step;
+      if(landAt(cx+ux,cy+uy)&&!blockedAt(cx+ux,cy+uy,.9)){sx=cx+ux;sy=cy+uy;yaw=Math.atan2(-focus.u,-focus.v);}
+     }
+    }
+    if(sx==null||sy==null){
     // começa junto à praça, olhando para fora por uma avenida (rua livres à frente)
     const lookAz=Math.atan2(controls.target.x-camera.position.x,controls.target.z-camera.position.z);
     const mains=lay.roads.filter(r=>r.main&&!r.ring);
@@ -579,6 +679,7 @@ export function createStreetMode(ctx){
     }else{
      const p=mains[0]?.pts.at(-1)||[0,lay.coreR*.7];sx=cx+p[0];sy=cy+p[1];
      yaw=Math.atan2(-(cx-sx),-(cy-sy));
+    }
     }
    }else{sx=cx;sy=cy;yaw=Math.atan2(camera.position.x-controls.target.x,camera.position.z-controls.target.z)}
    if(!landAt(sx,sy)){sx=cx;sy=cy}
@@ -604,7 +705,8 @@ export function createStreetMode(ctx){
    const feat=['camp','ruins','stones','hut','tower'];
    const extra=city?(site.port?' · porto':'')+(lay.walled?' · muralhas':''):'';
    const profileEl=$h('#svBlueprint');
-   profileEl.textContent=blueprint?blueprint.patternLabel+' · base '+(blueprint.source?.referenceName||'contexto historico')+' · planta procedural':'';
+   profileEl.textContent=blueprint?blueprint.patternLabel+' · base '+(blueprint.source?.referenceName||'contexto historico')+(isElucitorCity(city,blueprint)?(S.districtFocusLabel?' · corte distrital ampliado':' · visão geral ampliada'):'')+' · planta procedural':'';
+   if(blueprint?.imperialV12?.kind)profileEl.textContent+=' · '+(blueprint.urbanIdentityV12||blueprint.classification?.imperialProvince||'Elucitor');
    profileEl.hidden=!blueprint;
    $h('#svPlan').hidden=!lay;
    $h('#svPlan').disabled=!lay;
@@ -612,13 +714,15 @@ export function createStreetMode(ctx){
    $h('#svCaves').textContent='⛏ Entrar na montanha';
    $h('#svFly').hidden=false;
    activePlan={lay,site,field,blueprint};
+   const districtNote=isElucitorCity(city,blueprint)?(S.districtFocusLabel?' · foco '+S.districtFocusLabel+' · escala distrital':' · visão geral da capital ampliada'):'';
    $h('#svSub').textContent=(city
       ?(city.settlementClass||'Localidade')+' · '+Math.round(lay.pop).toLocaleString('pt-BR')+' hab.'+extra
-      :'Ermo · pontos de interesse')+' · '+CLIMATE_NAME[climate]+(site.snowy?' · neve':'')+(production.length?' · produz '+production.slice(0,2).join(' e '):'')+' · horizonte 15 km';
+      :'Ermo · pontos de interesse')+districtNote+' · '+CLIMATE_NAME[climate]+(site.snowy?' · neve':'')+(production.length?' · produz '+production.slice(0,2).join(' e '):'')+' · horizonte 15 km';
    const loreEl=$h('#svLore');
    if(specific&&lore?.quote){loreEl.textContent='“'+lore.quote+'”';loreEl.hidden=false}
    else{loreEl.hidden=true;loreEl.textContent=''}
    $h('#svAlt').textContent='alt. '+(S.feet*M).toFixed(1)+' m';
+   progress('Cidade pronta. Entrando…');
    S.active=true;S.t0=0;document.body.classList.add('street');hud.hidden=false;setMode();
    $h('#svPause').classList.add('show');
    S.entering=false;
@@ -641,6 +745,7 @@ export function createStreetMode(ctx){
   gmat?.dispose();wmat?.dispose();gmatBand?.dispose();roadsMat?.dispose();gmat=null;wmat=null;gmatBand=null;roadsMat=null;
   grassMat?.dispose();grassMat=null;
   S.field=null;S.site=null;S.lay=null;nearInfo=null;
+  cityPackages.leave();releaseCC0Textures();S.assetPack=null;S.modelStats=null;
   S.interior=false;S.interiorData=null;S.exteriorPose=null;S.surfaceVisibility=null;
  }
  function exit(silent){
@@ -660,7 +765,8 @@ export function createStreetMode(ctx){
   disposeScene();
   root.visible=false;S.active=false;S.flying=false;S.saved=null;S.keys.clear();
   document.body.classList.remove('street');hud.hidden=true;hud.querySelector('#svFly')?.classList.remove('on');
-  activePlan=null;planOverlay.hidden=true;
+  activePlan=null;planOverlay.hidden=true;closeDistrictSelector();
+  S.districtFocusKey='';S.districtFocusLabel='';S.districtScale=1;
   controls.update();onExit?.();
  }
 
@@ -705,8 +811,10 @@ export function createStreetMode(ctx){
  document.addEventListener('pointerlockchange',()=>{S.locked=document.pointerLockElement===renderer.domElement;$h('#svPause').classList.toggle('show',S.active&&!S.locked)});
  document.addEventListener('mousemove',e=>{if(!S.active||!S.locked)return;S.yaw-=e.movementX*.0022;S.pitch=Math.max(-1.35,Math.min(1.35,S.pitch-e.movementY*.0022))});
  addEventListener('keydown',e=>{
+  if(S.districtPrompt&&e.key==='Escape'){closeDistrictSelector();return}
   if(S.picking&&e.key==='Escape'){cancelPick();return}
-  if(!S.active)return;
+  if(!S.active){return}
+  if(!districtOverlay.hidden){if(e.key==='Escape'){closeDistrictSelector();e.stopImmediatePropagation();e.preventDefault()}return;}
   if(!planOverlay.hidden){if(e.key==='Escape'){closePlan();e.stopImmediatePropagation();e.preventDefault()}return;}
   if(e.target.matches?.('input,textarea,select'))return;
   if(e.key==='Escape'&&!S.locked){exit();return}
@@ -755,9 +863,10 @@ export function createStreetMode(ctx){
      return rise<1.8||S.vy>0;
     }
     if(S.flying)return true;
-    if(!landAt(x,y))return false;
-    if(S.field.depthM((x-S.cx)*M,(y-S.cy)*M)>.55)return false;      // não atravessa água funda a pé
-    const climb=(Gmap(x,y)-Gmap(S.x,S.y))*M;
+    const deck=bridgeDeckAt(x,y);
+    if(deck==null&&!landAt(x,y))return false;
+    if(deck==null&&S.field.depthM((x-S.cx)*M,(y-S.cy)*M)>.55)return false;
+    const climb=((deck??Gmap(x,y))-undergroundFloor(S.x,S.y))*M;
     return climb<1.8||S.vy>0;                                      // não escala paredes
    };
    let moved=false;
@@ -775,7 +884,7 @@ export function createStreetMode(ctx){
     const {min,max}=caveFlightBounds(S.interiorData.layout,S.x-S.cx,S.y-S.cy,S.interiorData.baseY,EYE);
     S.feet=Math.max(min,Math.min(S.feet,max));
    }else{
-    const g=Gmap(S.x,S.y);
+    const g=undergroundFloor(S.x,S.y);
     S.feet=Math.max(g+.1/M,Math.min(S.feet,g+1800/M));
    }
    S.vy=0;S.grounded=false;
@@ -815,7 +924,7 @@ export function createStreetMode(ctx){
   debug:{
    toggleInterior:force=>toggleInterior(force),
    interior:()=>S.interior?{room:S.interiorData?.roomAt(S.x-S.cx,S.y-S.cy),city:S.curCity?.i,x:S.x-S.cx,z:S.y-S.cy}:null,
-   state:()=>({x:S.x,y:S.y,cx:S.cx,cy:S.cy,feet:S.feet,yaw:S.yaw,pitch:S.pitch,flying:S.flying,grounded:S.grounded,city:S.curCity?.i,radius:S.cityR,timing:S.timing,
+   state:()=>({x:S.x,y:S.y,cx:S.cx,cy:S.cy,feet:S.feet,yaw:S.yaw,pitch:S.pitch,flying:S.flying,grounded:S.grounded,city:S.curCity?.i,radius:S.cityR,timing:S.timing,cityKit:S.assetPack?.kit||null,models:S.modelStats||null,
     site:S.site?{water:S.site.waterKind,shore:S.site.shoreDistM,lake:S.site.lakeR,ranges:S.site.ranges.map(r=>({d:r.distM,h:r.heightM}))}:null}),
    pose:(x,y,yaw,pitch=.0)=>{if(!S.active)return false;S.x=x;S.y=y;if(yaw!=null)S.yaw=yaw;S.pitch=pitch;S.feet=Gmap(x,y);S.vy=0;S.grounded=true;return true},
    look:(yaw,pitch=0)=>{S.yaw=yaw;S.pitch=pitch;return true},
@@ -828,6 +937,7 @@ export function createStreetMode(ctx){
    path:(u,v)=>nearInfo?nearInfo(u,v):null,
    water:(on=true)=>{if(water)water.visible=!!on;return true},
    people:()=>({count:peopleData.length,shown:people?peopleData.length:0}),
+   imperialV12:()=>S.built?.v12||null,
    sites:()=>({cityR:S.cityR,lay:S.lay?{N:S.lay.N,Rt:S.lay.Rt,coreR:S.lay.coreR,roads:S.lay.roads.length,walled:!!S.lay.walled}:null,
     placed:S.lay?.placed?.length,lamps:lamps.length,near:terrain?.centre,harbour:!!root.getObjectByName('harbour')}),
    teleportLocal:(dx,dz)=>{S.x=S.cx+dx/M;S.y=S.cy+dz/M;S.feet=Gmap(S.x,S.y);S.vy=0;return true},

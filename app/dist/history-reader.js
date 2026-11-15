@@ -15,7 +15,37 @@ export function createHistoryReader({D,selectCity,selectState,focus,provinces,pr
  let fontScale=Number(localStorage.getItem('silvengard-lore-font'))||1;
  async function getArchive(refresh=false){
   if(pending)return pending;if(archive&&!refresh&&Date.now()-loadedAt<30000)return archive;
-  pending=(async()=>{let response=await fetch('./api/history',{cache:'no-store'});if(response.status===404)response=await fetch('./history-archive.json',{cache:'no-store'});if(!response.ok)throw Error('Não foi possível ler as histórias.');archive=await response.json();loadedAt=Date.now();return archive;})();
+  pending=(async()=>{
+   let response=await fetch('./api/history',{cache:'no-store'});
+   if(response.status===404)response=await fetch('./history-archive.json',{cache:'no-store'});
+   if(!response.ok)throw Error('Não foi possível ler as histórias.');
+   archive=await response.json();
+   // Identidades aprovadas de Navï Velaffëll: a API local pode servir uma cópia anterior.
+   // O complemento não muda a história existente nem adiciona acontecimentos retrospectivos.
+   try{
+    const supplementResponse=await fetch('./city-descriptions-v17.json',{cache:'no-store'});
+    if(supplementResponse.ok){
+     const supplement=await supplementResponse.json();
+     if(Array.isArray(archive.sections)&&Array.isArray(archive.records)){
+      const sectionsById=new Map(archive.sections.map(s=>[s.id,s]));
+      for(const r of archive.records){
+       const cityId=r.kind==='city'?r.target?.id:null;
+       const entry=supplement.cities?.[String(cityId)];
+       if(!entry)continue;
+       const sid=r.sections?.[0],section=sectionsById.get(sid);
+       if(!section)continue;
+       const marker=`<!-- naviv17:urbano:${cityId} -->`;
+       if(String(section.markdown||'').includes(marker))continue;
+       const para=`**Identidade urbana e vida cotidiana (1277 AQD):** ${entry.description1277}`;
+       section.markdown=String(section.markdown||'').trimEnd()+'\n\n'+marker+'\n\n'+para;
+       section.displayMarkdown=String(section.displayMarkdown||'').trimEnd()+'\n\n'+para;
+       if(!r.intro)r.intro=entry.role+'. '+entry.description1277.split('.')[0]+'.';
+      }
+     }
+    }
+   }catch(_){/* As histórias originais continuam disponíveis sem o complemento. */}
+   loadedAt=Date.now();return archive;
+  })();
   try{return await pending;}finally{pending=null;}
  }
  const facts=createHistoryFacts({getData:()=>getArchive(),open:(kind,id)=>open(kind,id)});

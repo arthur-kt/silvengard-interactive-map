@@ -531,6 +531,7 @@ export function createCharacters({toast = () => {}} = {}) {
       <section id="charDiceTab" class="charTab" hidden></section>
     </div>
     <input type="file" id="charFile" accept=".cah,.json,application/json" hidden>
+    <input type="file" id="charUpdateFile" accept=".cah,.json,application/json" hidden>
   `;
 
   const sheetTab = panel.querySelector('#charSheetTab');
@@ -538,6 +539,8 @@ export function createCharacters({toast = () => {}} = {}) {
   const creatorTab = panel.querySelector('#charCreatorTab');
   const diceTab = panel.querySelector('#charDiceTab');
   const fileInput = panel.querySelector('#charFile');
+  const updateFileInput = panel.querySelector('#charUpdateFile');
+  let updateTargetId = null;
 
   function setTab(tab) {
     state.tab = tab;
@@ -672,6 +675,7 @@ export function createCharacters({toast = () => {}} = {}) {
         </div>
         <div class="sheetActions">
           <button data-char-download="${esc(model.id)}">Baixar ficha</button>
+          ${model.kind === 'cah' ? `<button data-char-replace="${esc(record.id)}" title="Importar uma versão mais recente da ficha mantendo o personagem e seu histórico">↻ Atualizar ficha</button>` : ''}
           <button data-char-levelup="${esc(model.id)}" class="charPrimary">Subir nível</button>
           ${model.kind === 'atlas' ? `<button data-add-class="${esc(model.id)}">+ Multiclasse</button>` : ''}
           <button data-short-rest="${esc(model.id)}">Descanso curto</button>
@@ -1634,6 +1638,41 @@ export function createCharacters({toast = () => {}} = {}) {
     }
   }
 
+  async function replaceSheetFromFile(id, file) {
+    if (!file) return null;
+    if (file.size > MAX_FILE_SIZE) throw new Error('Arquivo muito grande (limite de 20 MB).');
+    await refreshRecords(id);
+    const old = state.records.find((record) => String(record.id) === String(id));
+    if (!old) throw new Error('A ficha original não foi encontrada.');
+    if (old.kind !== 'cah') throw new Error('Esta atualização aceita fichas .cah importadas.');
+    let raw;
+    try { raw = JSON.parse(await file.text()); }
+    catch { throw new Error('O arquivo precisa conter um JSON .cah válido.'); }
+    const proposed = normalizeCah(raw);
+    if (proposed.name.trim().toLocaleLowerCase('pt-BR') !== old.name.trim().toLocaleLowerCase('pt-BR')) {
+      const ok = window.confirm(`A nova ficha se chama "${proposed.name}", mas substituirá "${old.name}". Continuar?`);
+      if (!ok) return null;
+    }
+    // Mantém o id original: campanhas e tabuleiro continuam referenciando a mesma ficha.
+    const corrected = {...raw, id: old.id};
+    const updated = normalizeCah(corrected);
+    const record = {
+      ...old, id: old.id, name: updated.name, raw: corrected,
+      fileName: file.name, updatedAt: new Date().toISOString(),
+      versions: [...(old.versions || []), {at: old.updatedAt, fileName: old.fileName, raw: old.raw}].slice(-MAX_VERSIONS),
+    };
+    await putRecord(record);
+    applyRecord(record, false);
+    document.dispatchEvent(new CustomEvent('silvengard:characters-updated', {detail: {id: record.id, name: record.name}}));
+    flash(`Ficha de ${record.name} atualizada. Versão anterior preservada.`);
+    return updated;
+  }
+
+  function requestReplaceSheet(id) {
+    updateTargetId = id;
+    updateFileInput.click();
+  }
+
   function savePlay(record) {
     record.updatedAt = new Date().toISOString();
     void putRecord(record);
@@ -2535,6 +2574,8 @@ export function createCharacters({toast = () => {}} = {}) {
     if (tabButton) return setTab(tabButton.dataset.charTab);
     if (event.target.closest('#charClose')) return close();
     if (event.target.closest('#charImportBtn') || event.target.closest('#charEmptyImport')) return fileInput.click();
+    const replace = event.target.closest('[data-char-replace]');
+    if (replace) return requestReplaceSheet(replace.dataset.charReplace);
     if (event.target.closest('#charCreateBtn') || event.target.closest('#charEmptyCreate')) return setTab('creator');
     const listItem = event.target.closest('[data-char-id]');
     if (listItem && !event.target.closest('[data-char-download]') && !event.target.closest('[data-char-delete]') && !event.target.closest('[data-char-levelup]') && !event.target.closest('[data-char-version]')) {
@@ -2701,6 +2742,17 @@ export function createCharacters({toast = () => {}} = {}) {
     if (file) handleFile(file);
   });
 
+  updateFileInput.addEventListener('change', async () => {
+    const file = updateFileInput.files?.[0];
+    const id = updateTargetId;
+    updateFileInput.value = '';
+    updateTargetId = null;
+    if (file && id) {
+      try { await replaceSheetFromFile(id, file); }
+      catch (error) { flash(`Não foi possível atualizar a ficha: ${error.message}`, true); }
+    }
+  });
+
   panel.addEventListener('dragstart', (event) => {
     const button = event.target.closest('[data-comp-index]');
     if (!button) return;
@@ -2772,5 +2824,23 @@ export function createCharacters({toast = () => {}} = {}) {
     return play.hp.current;
   }
 
-  return {open, close, refresh, importRaw, createFromCreator, getSheets, setSheetHp, panel};
+  async function listSheets() {
+    await refreshRecords(state.activeId);
+    return getSheets();
+  }
+
+  async function openSheet(id) {
+    await refreshRecords(id);
+    if (!state.records.some((record) => String(record.id) === String(id))) {
+      flash('A ficha vinculada não está disponível. Importe o arquivo .cah para recuperá-la.', true);
+      return false;
+    }
+    state.activeId = state.records.find((record) => String(record.id) === String(id)).id;
+    panel.hidden = false;
+    setTab('sheet');
+    return true;
+  }
+
+  return {open, close, refresh, importRaw, createFromCreator, getSheets, listSheets, openSheet,
+          replaceSheetFromFile, requestReplaceSheet, setSheetHp, panel};
 }

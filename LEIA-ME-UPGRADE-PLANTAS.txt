@@ -1,18 +1,35 @@
-SILVENGARD - UPGRADE CIDADES, PLANTAS E INTERIORES ANOES - V6
+SILVENGARD - UPGRADE V7 - CIDADES MONUMENTAIS E CULTURAS
 Edicao 1277 AQD | Pacote incremental do Atlas interativo Windows
 
 INSTALACAO
 
 1. Faca uma copia da pasta original "silvengard-interactive-map".
 2. Se necessario, descompacte primeiro o ZIP COMPLETO original do Atlas.
-3. Coloque este ZIP v6 na pasta PAI da pasta "silvengard-interactive-map".
-4. Extraia o ZIP v6 nessa pasta pai. O conteudo do ZIP ja traz a pasta
+3. Coloque este ZIP v7 na pasta PAI da pasta "silvengard-interactive-map".
+4. Extraia o ZIP v7 nessa pasta pai. O conteudo do ZIP ja traz a pasta
    "silvengard-interactive-map" correta. Aceite SUBSTITUIR arquivos.
 5. Continue usando "silvengard-interactive-map/Silvengard-Atlas.exe".
 
 NAO ABRA ESTE ZIP COMO APLICATIVO: ele e uma atualizacao dos arquivos do
-Atlas original, nao um instalador independente. A v6 SUBSTITUI v5/v4/v3/v2;
+Atlas original, nao um instalador independente. A v7 SUBSTITUI v6/v5/v4/v3/v2;
 nao e necessario aplicar upgrades antigos antes.
+
+NOVIDADES V7 - ELUCITOR, ASGORATH, VELAFFELD E CRILD
+
+- Elucitor: relevo real com Cidade Alta e palacio num morro de ate 51 m,
+  bairro alto de ate 25 m, escadarias, grande complexo imperial, bairro
+  nobre menos denso e mercado/porto mais compactos.
+- Asgorath: palacio e complexo de corte nortenho com torres, muralhas,
+  patios e edificio central em escala monumental.
+- Velaffeld: palacio monumental alto-elfico, arvores antigas no meio
+  da cidade, plataformas com casas e passarelas nas copas.
+- Vir, Triovorn e Porto de Vern: bosques internos e construcoes integradas
+  as arvores, preservando suas muralhas historicas.
+- Crild: tres canais de AGUA REAL, pontes de madeira caminhaveis,
+  casas sobre estacas em parte sobre os canais, trapiches e botes.
+- A planta 2D mostra o relevo da Cidade Alta, os bosques e as pontes/canais.
+- Winterhelm, as sete cidades anas e as sete escolas de magia mantem
+  todas as alteracoes das revisoes anteriores.
 
 CIDADES ANA SUBTERRANEAS (SETE)
 
@@ -75,6 +92,10 @@ completos. As galerias nao sao copias de um original nem alteram world.json.
 
 ARQUIVOS PRINCIPAIS
 
+- app/dist/urban-v7-core.js : matematica comum de relevo, canais e pontes.
+- app/dist/urban-v7-art.js : palacios, arvores-casa, pontes e palafitas.
+- app/dist/local-scene.js : canais com agua de verdade e bosque urbano.
+- desenvolvimento/testes/v7-urbanismo.test.mjs : testes v7.
 - app/dist/dwarven-interior.js : topologia, malha 3D, interiores, teto para voo e planta 2D.
 - app/dist/city-blueprints.json : perfis de 152 cidades e 3 classes anas.
 - app/dist/street.js : botao de transicao, HUD e movimento no interior.
@@ -93,4 +114,5 @@ VALIDACAO
 - Testes das plantas, culturas, cavernas e limites verticais de voo executados nesta revisao.
 - O construtor 3D foi exercitado para localidades selecionadas, sem WebGL.
 - Testes percorreram computacionalmente os caminhos das 12 salas por cidade.
-- Interface completa em navegador nao foi validada neste ambiente.
+- 5 testes v7 de geometria e navegacao, mais 11 testes herdados, passaram.
+- Interface completa em navegador/Windows nao foi validada neste ambiente.

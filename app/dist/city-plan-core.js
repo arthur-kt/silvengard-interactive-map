@@ -1,5 +1,6 @@
 // Silvengard - cidade 3D orientada por perfis do arquivo .map (Azgaar).
 // ESM sem dependencias externas: uso no navegador e testes Node.
+import {makeCastamorAccessRoad,miningPassPoint} from './imperial-v12-core.js?v=72';
 // As malhas nao sao importacoes geometricas dos SVG Watabou.
 const PI=Math.PI;
 const TAU=PI*2;
@@ -42,6 +43,8 @@ const spokes=(R,count,a0,{curve=0.04,inner=12,width=2.3}={})=>{
 /** Aplica o perfil de cidade ao terreno local. Nao altera mundo nem coordenadas do Atlas. */
 export function applyBlueprintTerrain(site,blueprint){
  if(!blueprint)return site;
+ if(blueprint.imperialV12){site.imperialV12=structuredClone(blueprint.imperialV12);}
+ if(blueprint.dragonfallV14)site.dragonfallV14={...blueprint.dragonfallV14};
  const island=blueprint.terrain?.island;
  if(island){
   site.island={...island};
@@ -193,6 +196,40 @@ export function applyCityBlueprint(layout,blueprint,site){
   }
   roads.push(road(pts,main*1.15,true,{a,portAxis:true}));
  }
+ const v12=blueprint.imperialV12||{};
+ if(v12.kind==='castamor'){
+  roads.push(makeCastamorAccessRoad({radiusM:v12.citadelHill?.radiusM||285,plateauM:v12.citadelHill?.plateauM||72,angle:-Math.PI/2-1.7*2*Math.PI}));
+  // Ladeira de chegada e dois percursos em anel explicam o acesso a cidadela.
+  roads.push(ring(Math.max(18,(v12.citadelHill?.plateauM||72)/2.2*.82),angle,80,2.3,.005));
+  layout.center='none';
+ }
+ if(v12.kind==='lorvus'&&v12.miningPass){
+  // Uma estrada modesta acompanha o corredor de lavra nos dois sentidos.
+  const pts=[];for(let m=-42;m<=340;m+=8){const q=miningPassPoint({imperialV12:v12},m);pts.push([q.x/2.2,q.z/2.2]);}
+  roads.push(road(pts,1.6,true,{mineRoad:true}));
+  layout.plaza=Math.min(layout.plaza,4.4);layout.center='well';layout.N=Math.min(layout.N,v12.coreCap||36);
+ }
+ if(v12.kind==='alia'){
+  layout.plaza=Math.min(layout.plaza,7.5);
+  layout.N=Math.min(layout.N,80);
+  layout.center='well';
+ }
+ if(v12.kind==='tramor'){
+  layout.N=Math.min(layout.N,v12.coreCap||50);layout.center='market';
+ }
+ if(v12.kind==='rimae-fort'){
+  layout.center='none';
+  // Percursos de patrulha seguem a direcao dos outros fortes no mapa.
+  for(const a of v12.rampartBearings||[]){
+   const pts=[];for(let t=8;t<=720/2.2;t+=12)pts.push([Math.cos(a)*t,Math.sin(a)*t]);
+   roads.push(road(pts,1.7,true,{borderRoad:true,a}));
+  }
+ }
+ layout.imperialV12=v12;
+ layout.dragonfallV14=blueprint.dragonfallV14||null;
+ if(layout.dragonfallV14?.role==='nilhelm-uninhabited'){layout.N=0;layout.pop=0;layout.walled=false;layout.center='none';}
+ if(layout.dragonfallV14?.role==='savhalla-caravan'){layout.N=Math.min(layout.N,58);layout.walled=false;layout.center='market';}
+ if(layout.dragonfallV14?.role==='sardinhas-woodland-fishers'){layout.N=Math.min(layout.N,38);layout.walled=false;layout.center='well';}
  layout.roads=roads;
  layout.gates=gates;
  layout.roadModel=p;
@@ -200,6 +237,10 @@ export function applyCityBlueprint(layout,blueprint,site){
  layout.urbanDesign=blueprint.urbanDesign||null;
  if(Array.isArray(blueprint.urbanDesign?.districts)&&blueprint.urbanDesign.districts.length)layout.customDistricts=blueprint.urbanDesign.districts;
  if(blueprint.features?.walls&&p!=='ruins'&&p!=='steppe-camp')layout.walled=true;
+ // Crild nao tem muralha regular de capital: bairros lacustres e defesa dispersa.
+ if(blueprint.classification?.architecture==='goblin-marsh'){
+  layout.walled=false;layout.wallShape='none';layout.gates=[];
+ }
  if(blueprint.features?.market===false)layout.center='none';
  return layout;
 }

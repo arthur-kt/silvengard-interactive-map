@@ -1,0 +1,42 @@
+SILVENGARD - ARQUIVOS DE CAMPANHA (UPGRADE V20)
+
+Cada campanha criada pela interface vira um arquivo .json nesta pasta.
+Pode abrir qualquer arquivo .json no VS Code, Notepad++ ou Bloco de Notas e
+alterar os campos em texto simples. Salve em UTF-8, mantendo o JSON válido.
+
+A aba CAMPANHAS consulta os arquivos a cada 7,5 segundos enquanto aberta,
+sem exigir que o Atlas reinicie. Você também pode clicar em "Sincronizar".
+
+ATENÇÃO: NÃO RENOMEIE O ID DO ARQUIVO NEM O CAMPO "id".
+Para adicionar uma campanha nova, use o botão "+ Nova campanha" na interface
+ou "Importar campanha JSON" (ele cria um novo identificador automaticamente).
+
+Campos principais do JSON:
+  title: nome da campanha
+  subtitle: subtítulo / gancho de apresentação
+  status, year, region: situação, data fictícia e região
+  premise: contexto inicial da história
+  summary: situação atual da equipe
+  party.name: nome da companhia
+  party.journeyPartyId: id de grupo do módulo Jornadas (associado pela interface)
+  party.members[]: integrantes, com sheetId referenciando uma ficha importada
+  npcs[]: personagens importantes, alianças e descrições
+  events[]: acontecimentos na ordem em que foram registrados
+    title: título do episódio
+    when: data fictícia, por exemplo "1277 AQD"
+    session: sessão da mesa
+    chapter: capítulo
+    place: cidade/região
+    type: event, discovery, combat, roleplay ou milestone
+    body: narrativa em texto/Markdown simples
+
+O Atlas cria backups antes de salvar alterações feitas pela interface e antes
+de excluir campanhas. As cópias ficam em .backups/<id>/.
+
+As fichas .cah permanecem no IndexedDB do navegador (como antes): use Fichas
+para importar personagens e a ação "Atualizar ficha" para carregar uma versão
+nova. A versão anterior ficará no histórico da ficha (até três cópias).
+
+IMPORTANTE: "Exportar edição" no mapa exporta a edição do mapa e Jornadas,
+mas NÃO os arquivos de campanhas desta pasta. Para transferir o diário, use
+"Exportar JSON" dentro de cada campanha ou copie a pasta app/campaigns.

@@ -235,8 +235,12 @@ def generate(world_path, map_path, out_path, report_path):
             old_records={}
         for key,item in records.items():
             previous=old_records.get(key,{})
-            for manual in ('terrain','urbanDesign','classification'):
+            for manual in ('terrain','urbanDesign','classification','urbanV7','imperialV12','dragonfallV14'):
                 if manual in previous:item[manual]=previous[manual]
+            # Perfis culturais já aprovados (v12-v14) também preservam padrões e flags urbanas.
+            if previous.get('imperialV12') or previous.get('dragonfallV14') or previous.get('classification'):
+                for manual in ('pattern','patternLabel','features'):
+                    if manual in previous:item[manual]=previous[manual]
     data={
         'schema':'silvengard.city-blueprints/1',
         'mapFile':map_path.name,

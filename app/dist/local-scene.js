@@ -4,6 +4,8 @@
 // world.json: o lugar é uma leitura em escala real do ponto escolhido.
 import * as THREE from 'three';
 import {shared,NOISE} from './visuals.js?v=56';
+import {materialPreset} from './material-presets.js?v=1';
+import {cc0Uniforms} from './cc0-textures.js?v=1';
 import {rng} from './settlements.js?v=56';
 import {M_PER_UNIT as U,WORLD_M_PER_UNIT,smooth,vnoise,fbm2} from './local-field.js?v=56';
 
@@ -13,21 +15,23 @@ const col=hex=>new THREE.Color(hex);
 /* =====================================================================
    materiais
    ===================================================================== */
-export function localGroundMaterial({clip=false}={}){
- const uni={uM:{value:M},uSnow:{value:820},uSand:{value:col('#cdb78c')},uRock:{value:col('#8d867a')},
-  uWet:{value:col('#6f6550')},uSnowCol:{value:col('#eef2ef')},uGrassHi:{value:col('#a8bd72')},
+export function localGroundMaterial({clip=false,preset=null}={}){
+ const presetDef=materialPreset(preset?.id||preset?.base||'default'),ground=presetDef.ground||{};
+ const uni={uM:{value:M},uSnow:{value:820},uSand:{value:col(ground.sand||'#cdb78c')},uRock:{value:col(ground.rock||'#8d867a')},
+  uWet:{value:col(ground.wet||'#6f6550')},uSnowCol:{value:col(ground.snow||'#eef2ef')},uGrassHi:{value:col(ground.grass||'#a8bd72')},
+  uUrbanBase:{value:col(ground.urbanBase||'#53473a')},uUrbanHi:{value:col(ground.urbanHi||'#847664')},uUrbanStone:{value:col(ground.urbanStone||'#9c927f')},uUrbanDirt:{value:col(ground.urbanDirt||'#6f5b42')},
   uClip:{value:clip?1:0},uClipR:{value:400},uPlayer:{value:new THREE.Vector2()},uSnowCover:{value:0}};
  const m=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.98,metalness:0,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1});
  m.userData=uni;
  m.onBeforeCompile=shader=>{
-  Object.assign(shader.uniforms,uni);
+  Object.assign(shader.uniforms,uni,cc0Uniforms('ground'));
   shader.vertexShader='attribute float aShore;attribute float aHeight;attribute vec2 aPath;attribute float aUrban;varying float vShore;varying float vHeight;varying vec2 vPath;varying float vUrban;varying vec3 vGPos;varying vec3 vGN;\n'+
    shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvShore=aShore;vHeight=aHeight;vPath=aPath;vUrban=aUrban;vGPos=position;vGN=normal;');
-  shader.fragmentShader='varying float vShore;varying float vHeight;varying vec2 vPath;varying float vUrban;varying vec3 vGPos;varying vec3 vGN;uniform float uM,uSnow,uClip,uClipR,uSnowCover;uniform vec2 uPlayer;uniform vec3 uSand,uRock,uWet,uSnowCol,uGrassHi;\n'+NOISE+
+  shader.fragmentShader='varying float vShore;varying float vHeight;varying vec2 vPath;varying float vUrban;varying vec3 vGPos;varying vec3 vGN;uniform float uM,uSnow,uClip,uClipR,uSnowCover;uniform vec2 uPlayer;uniform vec3 uSand,uRock,uWet,uSnowCol,uGrassHi,uUrbanBase,uUrbanHi,uUrbanStone,uUrbanDirt;uniform sampler2D uCC0Map;uniform float uCC0Mix;\n'+NOISE+
    shader.fragmentShader
    .replace('#include <color_fragment>',`#include <color_fragment>
    vec2 gp=vGPos.xz*uM;
-   if(uClip>.5&&distance(gp,uPlayer)<uClipR)discard;              // faixas grossas cedem lugar à malha fina
+   if(uClip>.5&&distance(gp,uPlayer)<uClipR)discard;
    vec3 base=diffuseColor.rgb;
    float slope=1.-clamp(normalize(vGN).y,0.,1.);
    float n1=atlasFbm(gp*.012),n2=atlasFbm(gp*.085+3.1),n3=atlasNoise(gp*.42),n4=atlasNoise(gp*1.7);
@@ -36,11 +40,10 @@ export function localGroundMaterial({clip=false}={}){
    vec3 c=base*(.88+.2*n1)*(.94+.12*n2);
    c=mix(c,c*1.14+uGrassHi*.08,smoothstep(.42,.78,n1)*.5);
    c*=1.+(n3-.5)*.2*fine;
-   // chão urbano: terra batida, cascalho e lajes entre as casas
    float urb=min(1.,vUrban*1.15)*(.55+.45*atlasNoise(gp*.05));
-   vec3 packed=mix(vec3(.26,.22,.16),vec3(.38,.32,.24),n2)*(.86+.24*n3);
+   vec3 packed=mix(uUrbanBase,uUrbanHi,n2)*(.86+.24*n3);
    c=mix(c,packed,urb*.9);
-   c=mix(c,vec3(.47,.43,.36)*(.82+.28*n3),smoothstep(.7,.95,atlasNoise(gp*.22))*urb*.5);
+   c=mix(c,uUrbanStone*(.82+.28*n3),smoothstep(.7,.95,atlasNoise(gp*.22))*urb*.5);
    float rock=smoothstep(.2,.46,slope+(n2-.5)*.14);
    c=mix(c,uRock*(.78+.42*n2),rock*.9);
    float snow=smoothstep(uSnow*.94,uSnow*1.05,vHeight+(n1-.5)*90.)*(1.-smoothstep(.5,.78,slope));
@@ -50,15 +53,14 @@ export function localGroundMaterial({clip=false}={}){
    c=mix(c,sandC,sand);
    float wet=smoothstep(5.,-1.,vShore);
    c=mix(c,uWet,wet*.5);
-   c=mix(c,vec3(.36,.38,.31)*(.8+.3*n2),smoothstep(-.5,-7.,vShore)*.65);
-   float cob=0.;                                                   // as ruas são geometria própria
+   c=mix(c,mix(uWet,uUrbanDirt,.32)*(.8+.3*n2),smoothstep(-.5,-7.,vShore)*.65);
    float dirt=smoothstep(.16,.5,vPath.x);
-   vec3 dirtC=mix(vec3(.31,.24,.16),vec3(.46,.36,.24),n2)*(.85+.3*n3);
+   vec3 dirtC=mix(uUrbanDirt*0.86,uUrbanDirt*1.18,n2)*(.85+.3*n3);
    c=mix(c,dirtC,dirt*.22);
-   // neve de baixa altitude: cobre o chão do lugar (e o chão urbano) com manchas
    float cover=uSnowCover*(.55+.45*atlasNoise(gp*.62+n1*1.7));
    c=mix(c,uSnowCol,clamp(cover,0.,.94));
-   diffuseColor.rgb=c;`)
+   c*=mix(vec3(1.),texture2D(uCC0Map,gp*.15).rgb*1.55,uCC0Mix*.32);
+  diffuseColor.rgb=c;`)
    .replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
    {float amp=.16*(1.-smoothstep(90.,420.,length(vViewPosition)));float hh=(atlasFbm(gp*.5)*.6+atlasNoise(gp*2.1)*.4)*amp;
     vec3 dpdx=dFdx(-vViewPosition),dpdy=dFdy(-vViewPosition);vec3 r1=cross(dpdy,normal),r2=cross(normal,dpdx);float det=dot(dpdx,r1);
@@ -215,8 +217,8 @@ export function buildTerrain({field,site,material,bandMaterial,pathAt}){
    ===================================================================== */
 export function buildWater({field,site,material}){
  const group=new THREE.Group();group.name='localWater';
- const bands=site.waterKind==='none'&&!site.hasRiver?[]:
-  [{half:Math.min(1700,Math.max(900,site.cityR*1.2)),step:14},
+ const bands=site.waterKind==='none'&&!site.hasRiver&&!site.urbanCanals?[]:
+  [{half:Math.min(1700,Math.max(900,site.cityR*1.2)),step:site.urbanCanals?5.6:14},
    {half:5200,step:60,inner:null},
    {half:15500,step:240,inner:null}];
  bands.forEach((b,i)=>{if(i)b.inner=bands[i-1].half-20});
@@ -251,15 +253,16 @@ export function buildWater({field,site,material}){
 /* =====================================================================
    ruas, praça e caminhos (geometria própria, cobblestone de verdade)
    ===================================================================== */
-export function localRoadMaterial({snow=0}={}){
+export function localRoadMaterial({snow=0,preset=null}={}){
+ const presetDef=materialPreset(preset?.id||preset?.base||'default'),roads=presetDef.roads||{};
  const m=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.94,metalness:0,
   polygonOffset:true,polygonOffsetFactor:-3,polygonOffsetUnits:-3});
- const uni={uSnow:{value:snow}};
+ const uni={uSnow:{value:snow},uStoneA:{value:col(roads.stoneA||'#5d5448')},uStoneB:{value:col(roads.stoneB||'#8c806d')},uDirtA:{value:col(roads.dirtA||'#6f5a44')},uDirtB:{value:col(roads.dirtB||'#8d7251')},uRoadSnow:{value:col(roads.snow||'#eef2f4')}};
  m.userData={...m.userData,...uni};
  m.onBeforeCompile=shader=>{
-  shader.uniforms.uSnow=uni.uSnow;
+  Object.assign(shader.uniforms,uni,cc0Uniforms('paving'));
   shader.vertexShader='varying vec3 vRP;\n'+shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvRP=position;');
-  shader.fragmentShader='varying vec3 vRP;uniform float uSnow;\n'+NOISE+shader.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+  shader.fragmentShader='varying vec3 vRP;uniform float uSnow;uniform vec3 uStoneA,uStoneB,uDirtA,uDirtB,uRoadSnow;uniform sampler2D uCC0Map;uniform float uCC0Mix;\n'+NOISE+shader.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
   vec2 gp=vRP.xz*${M.toFixed(2)};
   float n2=atlasFbm(gp*.08+3.1),n3=atlasNoise(gp*.5);
   float urban=diffuseColor.r;
@@ -269,11 +272,12 @@ export function localRoadMaterial({snow=0}={}){
   vec2 cu=vec2(gp.x/bw, gp.y/rowH);cu.x+=mod(row,2.)*.5;
   vec2 cf=fract(cu);
   float ce=min(min(cf.x,1.-cf.x),min(cf.y,1.-cf.y));float cm=smoothstep(.07,.3,ce);
-  vec3 stone=mix(vec3(.34,.31,.27),vec3(.56,.51,.43),atlasHash(floor(cu)+row))*(.78+.22*cm)*(.9+.12*n2);
-  vec3 dirtC=mix(vec3(.36,.28,.19),vec3(.5,.4,.27),n2)*(.86+.2*n3)+step(.94,atlasNoise(gp*2.6))*.06;
+  vec3 stone=mix(uStoneA,uStoneB,atlasHash(floor(cu)+row))*(.78+.22*cm)*(.9+.12*n2);
+  vec3 dirtC=mix(uDirtA,uDirtB,n2)*(.86+.2*n3)+step(.94,atlasNoise(gp*2.6))*.06;
   vec3 c=mix(dirtC,stone,urban);
   c*= .94+.1*n3;
-  c=mix(c,vec3(.9,.93,.95),uSnow*(.35+.4*atlasNoise(gp*.7)));
+  c=mix(c,uRoadSnow,uSnow*(.35+.4*atlasNoise(gp*.7)));
+  c*=mix(vec3(1.),texture2D(uCC0Map,gp*.25).rgb*1.55,uCC0Mix*.57*urban);
   diffuseColor.rgb=c;`)
   .replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
   {float amp=.045;float hh=(1.-cm)*amp;vec3 dpdx=dFdx(-vViewPosition),dpdy=dFdy(-vViewPosition);vec3 r1=cross(dpdy,normal),r2=cross(normal,dpdx);float det=dot(dpdx,r1);
@@ -369,7 +373,7 @@ function treeKit(){
  return {trunk,conifer,round,acacia,palm};
 }
 
-export function buildForest({field,site,blocked=()=>false,radius=null,seed=1}){
+export function buildForest({field,site,blocked=()=>false,pathAt=null,radius=null,seed=1}){
  const R=site.cityR,rad=Math.min(radius||Math.max(1500,R*2.2),2600);
  const rand=rng(seed|0);
  const climate=site.climate;
@@ -388,9 +392,12 @@ export function buildForest({field,site,blocked=()=>false,radius=null,seed=1}){
   const a=rand()*6.283,r=rad*Math.sqrt(rand()),x=Math.cos(a)*r,z=Math.sin(a)*r;
   const f=field.forestAt(x,z);if(f<.04)continue;
   const clump=.35+1.5*fbm2(x*.0019,z*.0019,seed+7);
-  if(rand()>f*clump)continue;
+  if(rand()>f*clump*(r<R&&site.urbanWoodland?1.1:1))continue;
   const h=field.heightM(x,z);if(h<1.2)continue;
-  if(r<R*1.02)continue;                      // a cidade não tem mata dentro
+  if(r<R*1.02){
+   if(!site.urbanWoodland||r<R*.19)continue;
+   if(pathAt){const [dirt,cob]=pathAt(x,z);if(dirt>.2||cob>.2)continue}
+  }
   if(blocked(x,z,2.6))continue;
   const type=kinds[Math.floor(rand()*kinds.length)];
   const sc=(climate==='boreal'||climate==='alpine'?.8:.65)+rand()*.6;

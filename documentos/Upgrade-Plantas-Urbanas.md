@@ -1,5 +1,22 @@
 # Atlas de Silvengard — upgrade das plantas urbanas (1277 AQD)
 
+## Revisão v7 — monumentalidade e geografia urbana
+
+Esta revisão incorpora as atualizações v2–v6 e torna **físicas** várias características que antes eram somente rótulos de distrito.
+
+- **Elucitor (7):** permanece uma ilha cercada de mar, mas a cidade alta agora possui dois patamares elevados no campo de terreno: **terraço do palácio (até 51 m adicionais)** e **bairro alto (até 25 m adicionais)**, com morros suavizados, vias que sobem, escadarias de pedra e um complexo palaciano de grande escala. Na planta 2D esses patamares aparecem com curvas e manchas de elevação; o entorno portuário permanece mais baixo e denso. Os bairros nobres são menos compactos que os do mercado e do porto.
+- **Asgorath (3):** o antigo marcador palaciano virou um **complexo régio nortenho** com fundações, muralha, quatro grandes torres de esquina, torres de vigia adicionais, ala central e pátios. Não mudou a localização, a capital ou o perfil histórico.
+- **Velaffeld (1):** o palácio é um **conjunto alto-élfico monumental** com colunatas, torres esguias e pavilhões; os bosques internos incluem árvores gigantes, plataformas habitadas e pequenas passarelas suspensas. A cidade mantém o porto, santuários e bairros históricos.
+- **Vir (16), Triovorn (19) e Porto de Vern (26):** nas clareiras arborizadas, algumas árvores grandes sustentam pavilhões e passarelas nas copas. Permanecem núcleos fortificados da Tríplice Élfica, com traçado florestal e floresta também **dentro** da área urbana.
+- **Crild (223):** três canais sinuosos são realmente **escavados no campo de altura** e preenchidos pela camada de água existente do Atlas. As ruas são interrompidas ao encontrar água; pontes de madeira ligam trechos de terra e possuem piso reconhecido pelo sistema de caminhada. Foram adicionadas casas em **palafitas construídas em parte sobre a água**, postes, plataformas e barquinhos. A planta 2D mostra canais e pontes reais. A disposição é procedural e respeita a identidade de cidade pantanosa descrita nas crônicas.
+- **Winterhelm (23):** preserva a serra junto à muralha, o recinto militar e a identidade de fortaleza de fronteira.
+- **Cidades de magia:** os campus arcanos da revisão v5 (torre principal, edifícios de estudo, alojamentos e oficinas) permanecem incluídos.
+- **Anões:** a revisão v4 dos interiores subterrâneos e o voo da v6 (F, Espaço, C/Ctrl, Shift) permanecem incluídos, assim como a classificação de cidades subterrâneas, híbridas e de superfície.
+
+**Limites de fidelidade:** a simulação continua procedural e compacta, não uma réplica geográfica casa a casa nem uma reprodução de polígono do Watabou. Os palácios são exteriores monumentais, não possuem cômodos internos. As casas elevadas nas árvores são visuais com plataformas e passadiços; não há uma rede de escaladas/colisão especificamente dedicada a percorrê-las a pé. Em Crild, o piso das pontes pode ser percorrido, mas os barcos são decorativos. O fluxo completo em WebGL/Windows ainda exige conferência no computador do usuário.
+
+**Arquivos principais v7:** `app/dist/urban-v7-core.js` (matemática e dados compartilhados por 2D/3D), `app/dist/urban-v7-art.js` (palácios, árvore-casas, pontes e palafitas), `local-field.js` (relevo e canais), `local-scene.js` (água e mata dentro da cidade), `town.js` (urbanismo), `street.js` (caminhada nas pontes), `city-plan-preview.js` (mapa), `city-blueprints.json` (identidades), `app.js`/`index.html` (cache). Não há alteração em `world.json`, nas cidades políticas ou na economia.
+
 ## Revisão v6 — voo nas cidades anãs subterrâneas
 
 A partir da v6, **as sete cidades subterrâneas permitem voo dentro das galerias** por F, dois toques em Espaço ou pelo botão Voo. O voo no interior é mais lento que em céu aberto, e o deslocamento respeita **chão, paredes e teto rochoso**. Espaço sobe, C/Ctrl desce e Shift acelera. A tecla E permanece reservada à saída perto do portal. Ao voltar à superfície, o estado anterior de voo é restaurado. Esta alteração preserva a v5 (culturas élficas, Crild e campus de magia), v4 (interiores) e os ajustes anteriores de Asgorath, Velaffeld, Elucitor e Winterhelm.
