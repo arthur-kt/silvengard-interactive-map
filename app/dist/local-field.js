@@ -1,3 +1,5 @@
+import {urbanTerraceHeight,urbanCanalSignedDistance} from './urban-v7-core.js?v=70';
+import {castamorHillHeight,miningRidgeHeight} from './imperial-v12-core.js?v=72';
 // Silvengard · v44 — geografia local em escala real.
 //
 // O mapa-múndi é grande: 1 unidade do mapa vale 1,5 km (settings.distanceScale). Uma
@@ -257,6 +259,20 @@ export function createField(site){
  // desenho da costa/lagoa
  function coastSD(x,z){
   if(site.waterKind==='none')return 1e6;
+  if(site.island){
+   // Ilha completa de Elucitor: o oceano deve existir em TODAS as direcoes.
+   // A enseada principal e mais proxima; a ilha cresce nas outras margens.
+   const shape=site.island,ang=Math.atan2(z,x),dist=Math.hypot(x,z);
+   const rx=shape.radiusEastWestM||1750,rz=shape.radiusNorthSouthM||1620;
+   const co=Math.cos(ang),si=Math.sin(ang);
+   const radius=1/Math.sqrt(co*co/(rx*rx)+si*si/(rz*rz));
+   const delta=Math.atan2(Math.sin(ang-site.portDir),Math.cos(ang-site.portDir));
+   const cove=Math.exp(-delta*delta/(.34*.34));
+   const coast=radius-(radius-(shape.harbourFacingCoastM||940))*cove;
+   const irregular=88*Math.sin(5*ang+seed*.11)+51*Math.sin(9*ang-seed*.17);
+   const inlet=42*(fbm2(co*4.3+seed*.19,si*4.3-seed*.23,seed+73)-.5);
+   return coast+irregular+inlet-dist;
+  }
   if(sea){
    const along=x*nx+z*nz,side=x*tx+z*tz;
    let D=site.shoreDistM;
@@ -285,7 +301,7 @@ export function createField(site){
   const wob=(fbm2(side/420+seed*.51,2.3,seed+17)-.5)*260;
   return Math.abs(along-(site.riverDistM+wob))-site.riverWidthM*.5;
  }
- const shoreAt=(x,z)=>Math.min(coastSD(x,z),riverSD(x,z));
+ const shoreAt=(x,z)=>Math.min(coastSD(x,z),riverSD(x,z),urbanCanalSignedDistance(site,x,z));
 
  // distância à água com sinal: positiva em terra
  const sdCache={x:NaN,z:NaN,v:0};
@@ -321,6 +337,23 @@ export function createField(site){
    const crest=.62+.22*Math.sin((x*rtx+z*rtz)/950+rg.seed*.7)+.26*fbm2((x*rtx+z*rtz)/2300,rg.seed*.3,seed+61);
    h+=rg.heightM*across*taper*Math.max(.34,crest);
   }
+  if(site.mountainWall){
+   const mw=site.mountainWall;
+   const ang=Number.isFinite(mw.ang)?mw.ang:(site.portDir+Math.PI*.85);
+   const rx=Math.cos(ang),rz=Math.sin(ang),rtx=-rz,rtz=rx;
+   const dist=Number.isFinite(mw.distM)?mw.distM:R*(mw.distanceFactor||1.02);
+   const half=Number.isFinite(mw.halfLenM)?mw.halfLenM:Math.max(1200,R*(mw.halfLenFactor||7.6));
+   const height=Number.isFinite(mw.heightM)?mw.heightM:260;
+   const spread=Number.isFinite(mw.spreadM)?mw.spreadM:340;
+   const along=x*rx+z*rz;
+   const across=Math.abs(x*rtx+z*rtz);
+   const face=smooth(dist-170,dist+110,along);
+   const taper=1-smooth(half*.82,half*1.08,across);
+   if(face>0&&taper>0){
+    const crag=.78+.22*ridged(x/420+seed*.17,z/420-seed*.11,seed+91)+.18*fbm2(x/1600+seed*.07,z/1600+seed*.09,seed+97);
+    h+=height*face*taper*Math.max(.45,crag);
+   }
+  }
   // terraço urbano: a cidade assenta num chão quase plano, levemente inclinado
   const pad=1-smooth(R*.86,R*1.32,r);
   h=h*(1-.6*pad)+1.9*pad;
@@ -335,13 +368,18 @@ export function createField(site){
 
  const heightM=(x,z)=>{
   const sd=shoreM(x,z);
+  // O leito dos canais de Crild tem profundidade real, independente do mar.
+  const canal=urbanCanalSignedDistance(site,x,z);
+  if(canal<=0)return -.30-2.3*smooth(0,12,-canal);
   if(sd<=0)return -depthProfile(sd);
   const land=inlandM(x,z);
   const d=sd;
-  // praia → terra: 0,4 m junto à água, 6 m a 45 m, depois o relevo
   const beach=.35+6.2*smooth(0,48,d)+3.4*smooth(48,190,d);
   const w=smooth(45,260,d);
-  return Math.max(.05,beach*(1-w)+Math.max(land,.3)*w);
+  const base=Math.max(.05,beach*(1-w)+Math.max(land,.3)*w);
+  // Relevo físico: patamares reais da Cidade Alta de Elucitor, não só etiquetas.
+  const terrace=urbanTerraceHeight(site.urbanTerraces,x,z)*smooth(0,25,d);
+  return base+terrace+castamorHillHeight(site,x,z)+miningRidgeHeight(site,x,z);
  };
  const depthM=(x,z)=>Math.max(0,-heightM(x,z));
 
@@ -352,10 +390,17 @@ export function createField(site){
   const f=site.forest*(.45+.85*fbm2(x/620+seed*.31,z/620-seed*.17,seed+71));
   const alt=heightM(x,z);
   const treeLine=1-smooth(650+site.forest*300,1150,alt);
-  return clamp(f*(1-.92*pad)*treeLine,0,1);
+  const urbanForest=site.urbanWoodland;
+  // Lorvus nao e coberta por bosque no centro de lavra; o vale de Alia permanece campestre.
+  const mine=site.imperialV12?.miningPass;
+  if(mine){const a=mine.angle||0,forward=x*Math.cos(a)+z*Math.sin(a);if(Math.abs(forward-(mine.centerM||188))<160)return f*.35;}
+
+  const inside=urbanForest?Math.max(0,(r-R*.13)/(R*.9)):0;
+  const urbanFactor=urbanForest?(1-.26*pad)*(.65+.35*smooth(0,.5,inside)):(1-.92*pad);
+  return clamp(f*urbanFactor*treeLine,0,1);
  }
 
  return {site,heightM,depthM,shoreM,forestAt,waterLevel:0,
-  debug:{inlandM,coastSD,riverSD},
+  debug:{inlandM,coastSD,riverSD,urbanCanalSD:(x,z)=>urbanCanalSignedDistance(site,x,z)},
   bounds:{near:R*1.35+320,mid:Math.max(3600,R*1.7),far:Math.max(15000,R*3.4)}};
 }

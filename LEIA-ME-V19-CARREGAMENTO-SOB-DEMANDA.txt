@@ -1,0 +1,44 @@
+SILVENGARD · Atlas · v19 | CARREGAMENTO SOB DEMANDA
+
+INSTALACAO
+1. Feche o Atlas e a aba do navegador.
+2. Extraia todo o ZIP v19 na pasta que CONTEM a pasta silvengard-interactive-map.
+3. Aceite substituir/mesclar os arquivos existentes.
+4. Abra o Silvengard-Atlas.exe ORIGINAL que voce ja tinha na instalacao base.
+5. Recarregue a pagina com Ctrl+Shift+R se o navegador mantiver arquivos antigos.
+
+O v19 e ACUMULATIVO em relacao ao v18 e anteriores. Nao apague seus arquivos
+originais/executavel nem os dados da sua edicao local. Texturas CC0 previamente
+instaladas nao precisam de novo download.
+
+COMPORTAMENTO
+- Ao abrir o Atlas, apenas o mapa global e seus dados principais sao carregados.
+- Ao selecionar uma cidade no mapa, so a ficha abre. NENHUM asset de cidade e requisitado.
+- Em 'Ver no local' (ou atalho V e escolha de um ponto), o Atlas importa o motor
+  urbano e somente entao consulta manifestos, kits e texturas da localidade.
+- Ao sair, a geometria 3D da cidade e descartada; a memoria GPU das CC0 e liberada.
+  O navegador pode manter um cache de disco para acelerar entradas seguintes.
+- Nao foi adicionado preview de cidade nem pre-carregamento no hover ou na ficha.
+- Elucitor conserva o seletor de distritos ja existente, pois ele define onde entrar.
+
+ESTRUTURA
+app/dist/city-assets/manifests/<ID>.json - perfil individual de 152 cidades.
+app/dist/city-assets/kits/<CULTURA>.json - recursos compartilhados por cultura.
+app/dist/city-assets/models/*.json - modelos 3D de autoria propria (Three ObjectLoader).
+app/dist/city-assets-v19.js - gerenciador sob demanda de manifests/kits.
+app/dist/city-models-v19.js - carrega e posiciona modelos 3D opcionais.
+
+PILOTOS VISUAIS (INICIAIS)
+- Elucitor: solar imperial detalhado.
+- Velaffeld: residencia alto-elfica com torres.
+- Dagorah: oficina ana de pedra talhada.
+
+A v19 estabelece a INFRAESTRUTURA para bibliotecas de modelos mais detalhados
+por cidade e cultura. NAO substitui todas as casas, torres e arvores neste patch.
+Os modelos piloto usam geometria 3D offline de autoria propria e texturas/materiais
+procedurais da cidade; nao sao modelos fotorealistas de bibliotecas externas.
+
+TESTES: node --test desenvolvimento/testes/city-assets-v19.test.mjs
+
+LIMITACOES: carregamento total depende do navegador/disco. A verificacao automatizada
+headless do mapa foi bloqueada pelo ambiente de testes e devera ser conferida no Windows.

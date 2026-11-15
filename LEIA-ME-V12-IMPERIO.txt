@@ -1,0 +1,34 @@
+SILVENGARD - UPDATE V12 - CIDADES DE ELUCITOR
+
+Esta atualizacao eh um PATCH, nao um novo EXE.
+Inclui o conteudo consolidado da v10 e altera a exploracao 3D local de:
+Castamor, Lorvus, Alia, Tramor, Ignis, Nostris, Vostris e Bomaria.
+
+CASTAMOR
+- morro central com fortaleza alta, torres e acessos por espiral
+- marcas de neve e paisagem do Tharok
+
+LORVUS
+- povoado simples e pobre, adequado aos 2.267 habitantes
+- mine passage with two walkable mouths, small forge, ore carts and sheds
+
+ALIA
+- casas rurais, pomares, campos e celeiros; influencia halfling, cultura imperial humana
+
+TRAMOR
+- cidade provincial contida, com mercado e vias de passagem
+
+RIMAE
+- fortes Ignis, Nostris e Vostris com setores de muralha e torres de sinal
+- Bomaria com mercado/pavilhao de tregua
+- as muralhas na vista 3D local sao trechos, nao uma caminhada unica entre os fortes
+
+INSTALACAO
+1. Faca backup da pasta silvengard-interactive-map.
+2. Extraia o ZIP na pasta PAI dessa pasta, aceitando substituir arquivos.
+3. Abra Silvengard-Atlas.exe como sempre.
+4. Opcional: execute INSTALAR-TEXTURAS-CC0.bat para baixar as imagens
+   gratuitas verificadas na v10, caso ainda nao estejam presentes.
+
+Os mapas antigos, os dados politicos e os saves nao foram substituidos.
+Tests: ver documentos/Repaginacao-Imperial-v12.md.

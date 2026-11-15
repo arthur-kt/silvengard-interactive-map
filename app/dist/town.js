@@ -6,8 +6,13 @@
 // vêm do campo local (local-field.js), então tudo assenta no chão de verdade.
 import * as THREE from 'three';
 import {Mesher,STYLES,addBuilding,addChurch2,addTownHall,addKeepHall,addFountain,addFence,addWell,addStall,addBarrel,addCrate,addLamp,addTower,addFort,addHaystack,addTent,addPillar,addLog,addWallSegment,addBanner,addHouse,addBoat,addCrane,tc,PAL,portModel} from './settlements.js?v=56';
-import {populationRadiusM,M_PER_UNIT} from './local-field.js?v=56';
+import {populationRadiusM,M_PER_UNIT} from './local-field.js?v=81';
 import {NOISE} from './visuals.js?v=56';
+import {cc0Uniforms} from './cc0-textures.js?v=1';
+import {wallRadiusAt} from './city-plan-core.js?v=81';
+import {addMonumentalPalaceV7,buildLivingGroveV7,buildCanalBridgesV7,addMarshStiltsV7} from './urban-v7-art.js?v=70';
+import {buildCastamorV12,buildLorvusV12,buildAliaV12,buildTramorV12,buildRimaeV12,buildBomariaV12} from './imperial-v12-art.js?v=72';
+import {buildDragonfallV14} from './dragonfall-v14-art.js?v=84';
 
 const smooth=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
 const clamp=(v,a,b)=>v<a?a:v>b?b:v;
@@ -16,6 +21,49 @@ const vn=(x,y)=>{const ix=Math.floor(x),iy=Math.floor(y),fx=x-ix,fy=y-iy,u=fx*fx
 const CLIMATE={1:'arid',2:'arid',3:'arid',4:'temperate',5:'tropical',6:'temperate',7:'tropical',8:'temperate',9:'cold',10:'cold',11:'cold',12:'wet'};
 export const CLIMATE_NAME={arid:'clima árido',tropical:'clima tropical',temperate:'clima temperado',cold:'clima frio',alpine:'terras altas',wet:'terras alagadiças',grass:'campos abertos',boreal:'floresta boreal'};
 export function climateOf(cell){if(!cell)return'temperate';if(cell.h>52)return'alpine';return CLIMATE[cell.biome]||'temperate'}
+
+const DISTRICT_STYLE_PATCH={
+ palace:{cols:['#f0e4c8','#e7d7b4','#dcc59d','#cbb288'],roofCols:['#8f5b46','#a5674f','#6f4a3c'],pitch:.42},
+ high:{cols:['#eadcc0','#dfcfb1','#d0bea0'],roofCols:['#8e5f4c','#9b6b56','#735243'],pitch:.4},
+ market:{cols:['#ddc6a4','#d1b58e','#c4a57a'],roofCols:['#965743','#ad6a50','#7a4e3e'],pitch:.5},
+ harbour:{cols:['#cdbca4','#bea98e','#ae987c'],roofCols:['#70574a','#856657','#5d483f'],pitch:.46},
+ temple:{cols:['#efe7d6','#e5dcc9','#dbd2bf'],roofCols:['#768796','#8b98a6','#657484'],pitch:.44},
+ noble:{cols:['#ead8bc','#dfcca9','#d4bf98'],roofCols:['#8b5a48','#9c6952','#754c40'],pitch:.43},
+ craft:{cols:['#cdbb9a','#bca786','#ac9577'],roofCols:['#6d5a52','#7d675c','#5a4a45'],pitch:.46},
+ residential:{cols:['#e2cfaf','#d7c39f','#cbb48f'],roofCols:['#8f624f','#a37259','#765243'],pitch:.5},
+ military:{cols:['#beb6aa','#a9a094','#989081'],roofCols:['#6d6e72','#7f8084','#57585d'],pitch:.38},
+ academy:{cols:['#e3e6e0','#d3d9d2','#c4cdc7'],roofCols:['#607283','#718391','#8596a3'],pitch:.42},
+ grove:{cols:['#d8dbc8','#cbd3c4','#bdd0c0'],roofCols:['#54725f','#64806b','#78907b'],pitch:.5},
+ caravan:{cols:['#d5b894','#c9a784','#baa080'],roofCols:['#a87856','#b28760','#9b7050'],pitch:.35},
+ shanty:{cols:['#bfa78a','#ad977b','#9c866c'],roofCols:['#6a594c','#78675a','#584a40'],pitch:.54}
+};
+const SNOW_ROOF_COLS=['#edf2f4','#e3ebee','#f5f8f7'];
+function styleForDistrict(baseStyle,district){
+ const patch=DISTRICT_STYLE_PATCH[district?.kind]||null;
+ return patch?{...baseStyle,...patch}:baseStyle;
+}
+function districtForPoint(lay,u,v,inflate=.92){
+ if(!lay?.districts?.length)return null;
+ let best=null,bestD=1e9;
+ for(const d of lay.districts){
+  const rr=(d.r||0)*inflate,dist=Math.hypot(u-d.u,v-d.v);
+  if(dist<=rr&&dist<bestD){best=d;bestD=dist}
+ }
+ return best;
+}
+function tuneHouseForDistrict(h0,district,rand){
+ if(!district)return h0;
+ const kind=district.kind;
+ if(kind==='market'||kind==='harbour'){h0.w*=.75;h0.d*=.87;h0.h+=1.15+rand()*2.2}
+ else if(kind==='noble'){h0.w*=1.18;h0.d*=1.16;h0.h+=.55+rand()*1.25}
+ else if(kind==='palace'){h0.w*=1.24;h0.d*=1.18;h0.h+=.85+rand()*1.4}
+ else if(kind==='high'){h0.w*=1.08;h0.d*=1.06;h0.h+=.45+rand()*1.1}
+ else if(kind==='temple'){h0.w*=1.06;h0.d*=1.04;h0.h+=.35+rand()*1.0}
+ else if(kind==='caravan'){h0.w*=.88;h0.d*=.94;h0.h=Math.max(1.8,h0.h-.55)}
+ else if(kind==='craft'){h0.w*=1.06;h0.d*=1.1;h0.h=Math.max(2.1,h0.h-.1+rand()*.6)}
+ else if(kind==='residential'){h0.w*=.96;h0.d*=1.03;h0.h=Math.max(1.9,h0.h-.2+rand()*.3)}
+ return h0;
+}
 
 /* ---------- traçado urbano ---------- */
 export function makeLayout({pop=400,capital=false,village=false,fort=false,rand=Math.random,radiusUnits=null,port=false,kind=null}){
@@ -116,7 +164,12 @@ function roofFlatGeometry(){
 }
 function addFabric(env){
  const{lay,cx,cy,rand,climate,field,G,landAt,pathAt,addSolid,toW,blocked}=env,style=env.style||STYLES[climate]||STYLES.temperate;
- const R=lay.Rt,r0=Math.max(lay.plaza*1.35,16),max=6000;
+ const R=lay.Rt,r0=Math.max(lay.plaza*1.35,16),urbanHomesPerResident=
+  ({'dwarven-terraces':.035,'elfic-organic':.04,'forest-settlement':.025,'fortress':.035,'marsh-causeways':.045,'desert-medina':.06})[lay.pattern]??.05,
+  max=lay.subterraneanExterior?Math.min(65,Math.max(20,Math.round((lay.pop||400)*.004))):Math.min(6000,Math.max(35,Math.round((lay.pop||400)*urbanHomesPerResident))),
+  cap=Number.isFinite(lay.fabricCap)?Math.min(max,lay.fabricCap):max;
+ // Limite de casario conforme a identidade local — especialmente Lorvus, pequena e pobre.
+ const fabricLimit=cap;
  const wallGeo=new THREE.BoxGeometry(1,1,1);wallGeo.translate(0,.5,0);
  const baseGeo=new THREE.BoxGeometry(1.06,.24,1.06);baseGeo.translate(0,.12,0);
  const gableGeo=roofGeometry(),hipGeo=roofHipGeometry(),flatGeo=roofFlatGeometry();
@@ -141,9 +194,11 @@ function addFabric(env){
  const roofMat=new THREE.MeshStandardMaterial({roughness:.9,metalness:0,side:THREE.DoubleSide});
  const frontMat=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.75});
  const wallUniform={uWallKind:{value:style.wall==='wood'?1:style.wall==='stone'?2:0}};
+ const cc0Walls=cc0Uniforms(style.wall==='wood'?'wood':'stone');
+ const cc0Roof=cc0Uniforms('roofing');
  wallMat.userData.uWallKind=wallUniform.uWallKind;
  wallMat.onBeforeCompile=sh=>{
-  Object.assign(sh.uniforms,wallUniform);
+  Object.assign(sh.uniforms,wallUniform,cc0Walls);
   sh.vertexShader='varying vec3 vWP;varying float vBase;varying vec3 vNW;\n'+sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
   vNW=normal;
   #ifdef USE_INSTANCING
@@ -151,7 +206,7 @@ function addFabric(env){
   #else
   vWP=(modelMatrix*vec4(position,1.)).xyz;vBase=0.;
   #endif`);
-  sh.fragmentShader='varying vec3 vWP;varying float vBase;varying vec3 vNW;uniform float uWallKind;\n'+NOISE+sh.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+  sh.fragmentShader='varying vec3 vWP;varying float vBase;varying vec3 vNW;uniform float uWallKind;uniform sampler2D uCC0Map;uniform float uCC0Mix;\n'+NOISE+sh.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
   float wn=atlasNoise(vWP.xz*2.3)+.5*atlasNoise(vWP.xz*7.1);
   diffuseColor.rgb*=.92+.11*wn;
   float wallFace=1.-smoothstep(.35,.85,abs(vNW.y));
@@ -173,69 +228,84 @@ function addFabric(env){
    float tone=atlasHash(floor(bl))*.16-.08;
    diffuseColor.rgb*=(1.+tone)*(1.-.28*joint);
   }
-  diffuseColor.rgb*=mix(.8,1.,smoothstep(0.,1.5,hy));`);
+  diffuseColor.rgb*=mix(.8,1.,smoothstep(0.,1.5,hy));
+  diffuseColor.rgb*=mix(vec3(1.),texture2D(uCC0Map,vec2(vWP.x+vWP.z*.21,hy)*.29).rgb*1.65,uCC0Mix*.48);`);
  };
  roofMat.onBeforeCompile=sh=>{
+  Object.assign(sh.uniforms,cc0Roof);
   sh.vertexShader='varying vec3 vWP;varying float vBase;\n'+sh.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
   #ifdef USE_INSTANCING
   vWP=(modelMatrix*instanceMatrix*vec4(position,1.)).xyz;vBase=instanceMatrix[3][1];
   #else
   vWP=(modelMatrix*vec4(position,1.)).xyz;vBase=0.;
   #endif`);
-  sh.fragmentShader='varying vec3 vWP;varying float vBase;\n'+NOISE+sh.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+  sh.fragmentShader='varying vec3 vWP;varying float vBase;uniform sampler2D uCC0Map;uniform float uCC0Mix;\n'+NOISE+sh.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
   float rn=atlasNoise(vWP.xz*3.7)+.5*atlasNoise(vWP.xz*11.);
   float rows=1.-smoothstep(.86,1.,abs(fract((vWP.y-vBase)/.32)-.5)*2.);
-  diffuseColor.rgb*=(.86+.2*rn)*(.92+.08*rows);`);
+  diffuseColor.rgb*=(.86+.2*rn)*(.92+.08*rows);
+  diffuseColor.rgb*=mix(vec3(1.),texture2D(uCC0Map,vWP.xz*.35).rgb*1.6,uCC0Mix*.58);`);
  };
- const walls=new THREE.InstancedMesh(wallGeo,wallMat,max),
-  bases=new THREE.InstancedMesh(baseGeo,baseMat,max),
-  fronts=new THREE.InstancedMesh(frontGeo,frontMat,max),
-  uppers=new THREE.InstancedMesh(upperGeo,frontMat,max),
-  gables=new THREE.InstancedMesh(gableGeo,roofMat,max),
-  hips=new THREE.InstancedMesh(hipGeo,roofMat,max),
-  flats=new THREE.InstancedMesh(flatGeo,roofMat,max);
+ const walls=new THREE.InstancedMesh(wallGeo,wallMat,fabricLimit),
+  bases=new THREE.InstancedMesh(baseGeo,baseMat,fabricLimit),
+  fronts=new THREE.InstancedMesh(frontGeo,frontMat,fabricLimit),
+  uppers=new THREE.InstancedMesh(upperGeo,frontMat,fabricLimit),
+  gables=new THREE.InstancedMesh(gableGeo,roofMat,fabricLimit),
+  hips=new THREE.InstancedMesh(hipGeo,roofMat,fabricLimit),
+  flats=new THREE.InstancedMesh(flatGeo,roofMat,fabricLimit);
  walls.castShadow=walls.receiveShadow=true;bases.castShadow=bases.receiveShadow=true;gables.castShadow=hips.castShadow=flats.castShadow=true;
  walls.frustumCulled=bases.frustumCulled=fronts.frustumCulled=uppers.frustumCulled=gables.frustumCulled=hips.frustumCulled=flats.frustumCulled=false;
  const m4=new THREE.Matrix4(),q=new THREE.Quaternion(),p=new THREE.Vector3(),s3=new THREE.Vector3(),up=new THREE.Vector3(0,1,0);
  const wallCols=style.cols&&style.cols.length?style.cols:['#efe4c8','#e6d6b4','#dfcaa1'];
  let roofCols=style.roofCols&&style.roofCols.length?style.roofCols:['#7c5548','#8a5a46','#6d5044'];
- if(env.snow)roofCols=['#edf2f4','#e3ebee','#f5f8f7'];
+ if(env.snow)roofCols=SNOW_ROOF_COLS.slice();
  const flatStyle=style.roofKind==='flat';
+ const themedStyle=d=>styleForDistrict(style,d);
  let n=0,ng=0,nh=0,nf=0,nu=0;
  const spotOK=(u,v)=>{
   const rr=Math.hypot(u,v);if(rr<r0||rr>R*1.02)return false;
   const mx=cx+u,my=cy+v;
   if(!landAt(mx,my))return false;
+  if(lay.palaceComplexes?.some(d=>Math.hypot(u-d.u,v-d.v)<d.radius*1.14))return false;
+  if(lay.imperialV12?.kind==='castamor'&&Math.hypot(u,v)<35)return false;
+  if(lay.districts?.some(d=>d.kind==='grove'&&Math.hypot(u-d.u,v-d.v)<d.r*.82))return false;
+  // Zonas nobres/altas têm lotes maiores e jardins. Portos e bairros baixos mantêm alta densidade.
+  const district=lay.districts?.find(d=>Math.hypot(u-d.u,v-d.v)<d.r*.9);
+  if(district?.kind==='noble'&&rand()<.74)return false;
+  if(district?.kind==='high'&&rand()<.48)return false;
   const sd=field?field.shoreM(u*M_PER_UNIT,v*M_PER_UNIT):999;
   if(sd<15)return false;
   const[dirt,cob]=pathAt(u,v);if(dirt>.17||cob>.15)return false;
   if(blocked&&blocked(mx,my,2.2))return false;
   return true;
  };
- const emit=(u,v,w,d,h,rot)=>{
-  if(n>=max)return false;
+ const emit=(u,v,w,d,h,rot,styleOverride=null)=>{
+  if(n>=fabricLimit)return false;
+  const localStyle=styleOverride||style;
+  const localWallCols=localStyle.cols&&localStyle.cols.length?localStyle.cols:wallCols;
+  const localRoofCols=env.snow?SNOW_ROOF_COLS:(localStyle.roofCols&&localStyle.roofCols.length?localStyle.roofCols:roofCols);
+  const localFlatStyle=localStyle.roofKind==='flat';
   const mx=cx+u,my=cy+v,gy=G(mx,my);
   const[ax,az]=toW(cx+u,cy+v);
   p.set(ax,gy+.02,az);q.setFromAxisAngle(up,rot);
   s3.set(w,h,d);m4.compose(p,q,s3);walls.setMatrixAt(n,m4);
-  walls.setColorAt(n,new THREE.Color(wallCols[Math.floor(rand()*wallCols.length)]).multiplyScalar(.9+rand()*.2));
+  walls.setColorAt(n,new THREE.Color(localWallCols[Math.floor(rand()*localWallCols.length)]).multiplyScalar(.9+rand()*.2));
   p.y=gy+.02+h;
   const townhouse=h>3.1;
-  if(flatStyle){
+  if(localFlatStyle){
    s3.set(w,1,d);m4.compose(p,q,s3);flats.setMatrixAt(nf,m4);
-   flats.setColorAt(nf,new THREE.Color(roofCols[Math.floor(rand()*roofCols.length)]).multiplyScalar(.88+rand()*.24));nf++;
+   flats.setColorAt(nf,new THREE.Color(localRoofCols[Math.floor(rand()*localRoofCols.length)]).multiplyScalar(.88+rand()*.24));nf++;
   }else if(townhouse&&rand()<.55){
    s3.set(w*1.1,w*.52,d*1.1);m4.compose(p,q,s3);hips.setMatrixAt(nh,m4);
-   hips.setColorAt(nh,new THREE.Color(roofCols[Math.floor(rand()*roofCols.length)]).multiplyScalar(.85+rand()*.28));nh++;
+   hips.setColorAt(nh,new THREE.Color(localRoofCols[Math.floor(rand()*localRoofCols.length)]).multiplyScalar(.85+rand()*.28));nh++;
   }else{
-   s3.set(w*1.08,w*(style.pitch||.58),d*1.08);m4.compose(p,q,s3);gables.setMatrixAt(ng,m4);
-   gables.setColorAt(ng,new THREE.Color(roofCols[Math.floor(rand()*roofCols.length)]).multiplyScalar(.85+rand()*.28));ng++;
+   s3.set(w*1.08,w*(localStyle.pitch||.58),d*1.08);m4.compose(p,q,s3);gables.setMatrixAt(ng,m4);
+   gables.setColorAt(ng,new THREE.Color(localRoofCols[Math.floor(rand()*localRoofCols.length)]).multiplyScalar(.85+rand()*.28));ng++;
   }
   p.set(ax,gy-.06,az);s3.set(w,1,d);m4.compose(p,q,s3);bases.setMatrixAt(n,m4);
   bases.setColorAt(n,new THREE.Color('#9a9184').multiplyScalar(.82+rand()*.32));
   const fz=d/2+.03;
   p.set(ax+Math.sin(rot)*fz,gy+.02,az+Math.cos(rot)*fz);s3.set(1,1,1);m4.compose(p,q,s3);fronts.setMatrixAt(n,m4);
-  if(townhouse&&nu<max){
+  if(townhouse&&nu<fabricLimit){
    p.set(ax+Math.sin(rot)*fz,gy+h-.85,az+Math.cos(rot)*fz);m4.compose(p,q,s3);uppers.setMatrixAt(nu,m4);nu++;
   }
   addSolid(mx,my,Math.max(w,d)*.42);
@@ -252,7 +322,7 @@ function addFabric(env){
  // 1. frente de rua
  for(const rd of lay.roads){
   const pp=pointsAlong(rd.pts),step=rd.main?5.8:6.6;
-  for(let s=0;s<pp.total&&n<max;s+=step){
+  for(let s=0;s<pp.total&&n<fabricLimit;s+=step){
    const q2=pp.at(s),r=Math.hypot(q2.x,q2.y);
    if(r<r0||r>R*.99)continue;
    const nx=-q2.ty,ny=q2.tx;
@@ -262,13 +332,15 @@ function addFabric(env){
     const u=q2.x+nx*side*off,v=q2.y+ny*side*off;
     if(!spotOK(u,v))continue;
     const h0=pickHouse(r,r<lay.coreR*1.7);
-    emit(u,v,h0.w,h0.d,h0.h,Math.atan2(-nx*side,-ny*side)+(rand()-.5)*.12);
+    const district=districtForPoint(lay,u,v,.9);
+    tuneHouseForDistrict(h0,district,rand);
+    emit(u,v,h0.w,h0.d,h0.h,Math.atan2(-nx*side,-ny*side)+(rand()-.5)*.12,district?themedStyle(district):null);
    }
   }
  }
  // 2. fundo dos quarteirões
  let attempts=0;
- while(n<max&&attempts<50000){
+ while(n<fabricLimit&&attempts<50000){
   attempts++;
   const r=Math.sqrt(r0*r0+rand()*(R*R-r0*r0));
   const a=rand()*Math.PI*2;
@@ -276,7 +348,9 @@ function addFabric(env){
   const u=Math.cos(a)*r+(rand()-.5)*spacing*.85,v=Math.sin(a)*r+(rand()-.5)*spacing*.85;
   if(!spotOK(u,v))continue;
   const h0=pickHouse(r,r<lay.coreR*1.7);
-  emit(u,v,h0.w,h0.d,h0.h,Math.atan2(-Math.cos(a),-Math.sin(a))+(rand()-.5)*.5);
+  const district=districtForPoint(lay,u,v,.9);
+  tuneHouseForDistrict(h0,district,rand);
+  emit(u,v,h0.w,h0.d,h0.h,Math.atan2(-Math.cos(a),-Math.sin(a))+(rand()-.5)*.5,district?themedStyle(district):null);
  }
  walls.count=bases.count=fronts.count=n;uppers.count=nu;
  gables.count=ng;hips.count=nh;flats.count=nf;
@@ -296,7 +370,7 @@ function buildHarbour(env){
  const dir=site.portDir;
  const edgeAt=angle=>{
   const start=Math.max(12,site.cityR*.18);
-  for(let r=start;r<site.cityR*1.45+160;r+=5){
+  for(let r=start;r<Math.max(site.cityR*1.45+160,(site.island?.harbourFacingCoastM||0)+320);r+=5){
    const x=Math.cos(angle)*r,z=Math.sin(angle)*r;
    if(field.heightM(x,z)<.5)return{x:x/M_PER_UNIT,z:z/M_PER_UNIT,angle};
   }
@@ -365,21 +439,90 @@ function landAtSafe(env,mx,my){return env.landAt?env.landAt(mx,my):true}
 
 /* ---------- construção da localidade ---------- */
 export function buildTownV2(env){
- const{b,cx,cy,lay,rand,climate,color,G,landAt,toW,addSolid,pathAt,footprintY,special,field,site}=env,style=env.style||STYLES[climate]||STYLES.temperate;
- const m=new Mesher(),placed=[],smoke=[],fields=[],lamps=[],people=[],counts={shop:0,tavern:0,smithy:0};let windmill=null;
+ const{b,cx,cy,lay,rand,climate,color,G,landAt,toW,addSolid,pathAt,footprintY,special,field,site,blueprint}=env,style=env.style||STYLES[climate]||STYLES.temperate;
+ const m=new Mesher(),placed=[],smoke=[],fields=[],lamps=[],people=[],counts={shop:0,tavern:0,smithy:0};let windmill=null;const giantFoliage=new THREE.Group();giantFoliage.name='arvoresSagradasV7';
+ const v12Foliage=new THREE.Group();v12Foliage.name='PomaresDeAlia';const v12Stats={};let v14Stats=null;
+ if(Number.isFinite(lay.imperialV12?.fabricCap))lay.fabricCap=lay.imperialV12.fabricCap;
+ // Nas cidades escavadas, a cidade exterior e um pequeno recinto de acesso: os verdadeiros bairros sao internos.
+ if(site?.subterranean){lay.subterraneanExterior=true;lay.N=Math.min(lay.N,18);}
  const world=(u,v)=>toW(cx+u,cy+v),flat=(u,v,r)=>{let lo=1e9,hi=-1e9;for(const[dx,dy]of[[0,0],[r,0],[-r,0],[0,r],[0,-r]]){const g=G(cx+u+dx,cy+v+dy);lo=Math.min(lo,g);hi=Math.max(hi,g)}return hi-lo};
  const free=(rc,pad)=>{for(const p of placed)if(rectsOverlap(rc,p,pad))return false;return true};
  const solid=(rc)=>{const long=Math.max(rc.hw,rc.hd),short=Math.min(rc.hw,rc.hd),n=Math.max(1,Math.ceil(long/short*.5)),ax=rc.hw>=rc.hd?axes(rc.r)[0]:axes(rc.r)[1];for(let i=0;i<n;i++){const t=n===1?0:(i/(n-1)-.5)*2*(long-short);addSolid(cx+rc.x+ax[0]*t,cy+rc.z+ax[1]*t,short*.92)}};
  const okPath=(rc)=>{for(const[sx,sz]of[[0,0],[1,1],[1,-1],[-1,1],[-1,-1]]){const ax=axes(rc.r),u=rc.x+ax[0][0]*sx*rc.hw+ax[1][0]*sz*rc.hd,v=rc.z+ax[0][1]*sx*rc.hw+ax[1][1]*sz*rc.hd,[d,c]=pathAt(u,v);if(d>.3||c>.3)return false;if(!landAt(cx+u,cy+v))return false}return true};
  const put=(type,u,v,rot,w,d,floors,opts={})=>{const rc={x:u,z:v,r:rot,hw:w/2,hd:d/2};if(!free(rc,opts.pad??.25)||!okPath(rc)||flat(u,v,Math.min(w,d)/2)>1.6)return false;
   const[x,z]=world(u,v),y=footprintY(cx+u,cy+v,Math.min(w,d)/2)+.05;
-  addBuilding(m,{at:[x,y,z],rot,w,d,floors,type,style,R:rand,smoke,gableFront:opts.gableFront});placed.push(rc);solid(rc);return true};
+  const localStyle=opts.styleOverride||style;
+  addBuilding(m,{at:[x,y,z],rot,w,d,floors,type,style:localStyle,R:rand,smoke,gableFront:opts.gableFront});placed.push(rc);solid(rc);return true};
+ const placePalace=(d)=>{
+  const styleName=blueprint?.urbanV7?.palaceStyle;
+  if(styleName){
+   const palace=addMonumentalPalaceV7({m,d,lay,rand,cx,cy,world,G,landAt,footprintY,color,styleName,addSolid});
+   if(palace){
+    placed.push({x:d.u,z:d.v,r:d.ang+Math.PI/2,hw:palace.radius,hd:palace.radius*.82});
+    lay.palaceComplexes=(lay.palaceComplexes||[]).concat([palace]);
+    lay.landmarks=(lay.landmarks||[]).concat([[d.u,d.v]]);
+    return true;
+   }
+  }
+  const rot=d.ang+Math.PI/2,u=d.u,v=d.v,rc={x:u,z:v,r:rot,hw:7.6,hd:6.6};
+  if(!free(rc,.95)||!landAt(cx+u,cy+v)||flat(u,v,5.5)>2.5)return false;
+  const[x,z]=world(u,v),y=footprintY(cx+u,cy+v,5.2)+.08;
+  addKeepHall(m,{at:[x,y,z],flag:color,R:rand});
+  for(const[ox,oz]of [[4.9,3.4],[-4.9,3.4],[4.9,-3.4],[-4.9,-3.4]]){
+   const uu=u+Math.cos(rot)*ox+Math.sin(rot)*oz,vv=v-Math.sin(rot)*ox+Math.cos(rot)*oz;
+   if(!landAt(cx+uu,cy+vv))continue;const[tx,tz]=world(uu,vv);addTower(m,{at:[tx,footprintY(cx+uu,cy+vv,1.1)+.05,tz],r:.9,h:4.9,sides:8,cap:'roof',capH:1.9});addSolid(cx+uu,cy+vv,1.1);
+  }
+  addBanner(m,{at:[x,y+8.6,z],h:2.4,color,scale:1});
+  placed.push(rc);solid(rc);addSolid(cx+u,cy+v,5.1);lay.landmarks=(lay.landmarks||[]).concat([[u,v]]);
+  return true;
+ };
+ // Assentamentos especiais preservam sua historia: ruinas nao se enchem de casas,
+ // e a sede das hordas de Marshell e uma cidade de encontros e acampamentos.
+ if(lay.pattern==='ruins'){
+  for(let i=0;i<34;i++){
+   const a=i*2.399963+lay.a0,r=8+Math.sqrt(i/34)*lay.Rt*.74;
+   const u=Math.cos(a)*r,v=Math.sin(a)*r;
+   if(!landAt(cx+u,cy+v))continue;
+   const[x,z]=world(u,v),h=G(cx+u,cy+v)+.03;
+   if(i%4===0)addPillar(m,{at:[x,h,z],h:2.8+rand()*1.2,r:.35,broken:true});
+   else if(i%5===0){addPillar(m,{at:[x,h,z],h:3.6,r:.33,broken:false});addSolid(cx+u,cy+v,.5)}
+   else{m.box('stone',2+rand()*3,.25+rand()*.4,1.2+rand()*1.2,{at:[x,h,z],rot:a+.7,tint:tc(PAL.stone,.73+rand()*.4)});addSolid(cx+u,cy+v,1.1)}
+  }
+  for(let k=0;k<10;k++){
+   const a=k*Math.PI/5,r=lay.Rt*.76,u=Math.cos(a)*r,v=Math.sin(a)*r;
+   const q=Math.min(11,lay.Rt*.14),ux=u+Math.cos(a+Math.PI/2)*q,vy=v+Math.sin(a+Math.PI/2)*q;
+   if(!landAt(cx+u,cy+v)||!landAt(cx+ux,cy+vy))continue;
+   const[x1,z1]=world(u,v),[x2,z2]=world(ux,vy);
+   addWallSegment(m,{a:[x1,z1],b:[x2,z2],y:Math.min(G(cx+u,cy+v),G(cx+ux,cy+vy)),h:1.1+rand()*1.5,t:.6});
+  }
+  if(lay.dragonfallV14?.role==='nilhelm-uninhabited')v14Stats=buildDragonfallV14({m,lay,cx,cy,G,world,landAt,addSolid,rand,color});
+  return{groups:[m.group()],people,fields,windmill,smoke,lamps,wallR:0,placed,fabric:0,v14:v14Stats};
+ }
+ if(lay.pattern==='steppe-camp'){
+  const[x0,z0]=world(0,0);addPillar(m,{at:[x0,G(cx,cy)+.1,z0],h:3.8,r:.55});
+  addBanner(m,{at:[x0,G(cx,cy)+3.8,z0],h:2.5,color,scale:1.2});
+  for(let i=0;i<85;i++){
+   const a=i*2.399963+lay.a0,rr=10+Math.sqrt((i+1)/85)*lay.Rt*.84,u=Math.cos(a)*rr,v=Math.sin(a)*rr;
+   if(!landAt(cx+u,cy+v))continue;
+   const[x,z]=world(u,v),h=G(cx+u,cy+v)+.05;
+   if(i%9===0){addStall(m,{at:[x,h,z],rot:a,R:rand});addSolid(cx+u,cy+v,1.4)}
+   else{addTent(m,{at:[x,h,z],rot:a,color:i%4===0?'#8f6b45':'#bca37b'});addSolid(cx+u,cy+v,1.6)}
+  }
+  return{groups:[m.group()],people,fields,windmill,smoke,lamps,wallR:0,placed,fabric:0};
+ }
+ if(lay.pattern==='fortress'&&!lay.fort&&!special&&!['castamor','rimae-fort'].includes(lay.imperialV12?.kind)){
+  const a=lay.a0+Math.PI*.6,rr=Math.min(lay.Rt*.35,60),u=Math.cos(a)*rr,v=Math.sin(a)*rr;
+  if(landAt(cx+u,cy+v)){
+   const[x,z]=world(u,v);addFort(m,{at:[x,footprintY(cx+u,cy+v,8)+.15,z],size:18,flag:color,R:rand});
+   placed.push({x:u,z:v,r:0,hw:12,hd:12});addSolid(cx+u,cy+v,9);
+  }
+ }
  // ----- frente de água: avenida do cais, antes das casas
- if(lay.kind==='port'&&field&&site&&site.waterKind!=='none'){
+ if(site?.port&&!lay.fort&&lay.kind!=='ruins'&&field&&site.waterKind!=='none'){
   const dir=site.portDir,pts=[];
   for(let k=-7;k<=7;k++){
    const a=dir+k*.05;let edge=null;
-   for(let r=lay.Rt*.55;r<lay.Rt*1.5;r+=2){
+   for(let r=lay.Rt*.55;r<Math.max(lay.Rt*1.5,(site.island?.harbourFacingCoastM||0)/M_PER_UNIT+140);r+=2){
     if(field.heightM(Math.cos(a)*r*M_PER_UNIT,Math.sin(a)*r*M_PER_UNIT)<.6){edge=r;break}
    }
    if(edge!=null){const back=Math.max(7,edge-9);pts.push([Math.cos(a)*back,Math.sin(a)*back])}
@@ -390,8 +533,14 @@ export function buildTownV2(env){
    lay.roads.push({pts:[mid,[mid[0]*.55,mid[1]*.55],[0,0]],w:1.7*(lay.wide||1),a:dir,main:true});
   }
  }
+ // O forte central de Castamor ocupa o ponto mais alto real do relevo.
+ if(lay.imperialV12?.kind==='castamor'){
+  v12Stats.castamor=buildCastamorV12({m,lay,cx,cy,G,world,landAt,addSolid,color});
+  if(v12Stats.castamor){placed.push({x:0,z:0,r:0,hw:29,hd:29});lay.landmarks=(lay.landmarks||[]).concat([[0,0]]);}
+ }
  // ----- marcos centrais
- if(special){placed.push({x:0,z:0,r:0,hw:9,hd:9})}
+ if(lay.imperialV12?.kind==='castamor'){ /* fortaleza ocupa o centro; nao colocar fonte no patio */ }
+ else if(special){placed.push({x:0,z:0,r:0,hw:9,hd:9})}
  else if(lay.fort){const[x,z]=world(0,0);addFort(m,{at:[x,footprintY(cx,cy,9)+.15,z],size:22,flag:color,R:rand});placed.push({x:0,z:0,r:0,hw:13,hd:13});for(let t=-11;t<=11;t+=1.6)for(const[ux,uv]of[[t,-11],[t,11],[-11,t],[11,t]]){if(uv===11&&Math.abs(ux)<2)continue;addSolid(cx+ux,cy+uv,.9)}}
  else{
   const P=lay.plaza,[x0,z0]=world(0,0),gy=G(cx,cy);
@@ -412,23 +561,35 @@ export function buildTownV2(env){
  // ----- distritos: mercado, templo, quartel e oficinas
  {
   const base=lay.a0,dr=Math.max(lay.plaza+5,lay.Rt*.30),dw=Math.max(8,lay.Rt*.24),districts=[];
-  const add=(kind,ang,rr,ww)=>districts.push({kind,ang,u:Math.cos(ang)*rr,v:Math.sin(ang)*rr,r:Math.max(7,ww)});
-  if(lay.kind!=='fort'){
-   add('market',base,dr,dw*1.15);
-   add('temple',base+2.05,dr*.92,dw*.9);
+  const add=(kind,ang,rr,ww,meta={})=>districts.push({kind,ang,u:Math.cos(ang)*rr,v:Math.sin(ang)*rr,r:Math.max(7,ww),...meta});
+  const addSpec=(spec={})=>{
+   const ang=Number.isFinite(spec.absoluteAngle)?spec.absoluteAngle:(spec.usePortDir&&site?.port?(site.portDir||0)+(spec.angleOffset||0):base+(spec.angleOffset||0));
+   const rr=Number.isFinite(spec.radiusM)?spec.radiusM/M_PER_UNIT:Math.max(lay.plaza+4,lay.Rt*(spec.radiusFactor||.3));
+   const ww=Number.isFinite(spec.widthM)?spec.widthM/M_PER_UNIT:Math.max(7,lay.Rt*(spec.widthFactor||.24));
+   add(spec.kind||'residential',ang,rr,ww,{label:spec.label||null,meta:spec});
+  };
+  if(Array.isArray(lay.customDistricts)&&lay.customDistricts.length){
+   lay.customDistricts.forEach(addSpec);
+  }else{
+   if(lay.kind!=='fort'){
+    add('market',base,dr,dw*1.15);
+    add('temple',base+2.05,dr*.92,dw*.9);
+   }
+   const military=lay.fort||special||!!env.b?.citadel||(lay.walled&&lay.pop>2000);
+   if(military)add('military',base+Math.PI*.72,dr*.95,dw);
+   add('craft',base-Math.PI*.62,dr*.95,dw);
+   add('residential',base+Math.PI,dr*1.05,dw*1.3);
   }
-  const military=lay.fort||special||!!env.b?.citadel||(lay.walled&&lay.pop>2000);
-  if(military)add('military',base+Math.PI*.72,dr*.95,dw);
-  add('craft',base-Math.PI*.62,dr*.95,dw);
-  add('residential',base+Math.PI,dr*1.05,dw*1.3);
   lay.districts=districts;
   lay.squares=districts.filter(d=>d.kind!=='residential').map(d=>({u:d.u,v:d.v,r:Math.min(d.r*.5,12)}));
   const D=k=>districts.find(d=>d.kind===k);
+  const DL=k=>districts.filter(d=>d.kind===k);
   const dPut=(d,type,w,dd,fl,pad=.55)=>{
+   const dStyle=styleForDistrict(style,d);
    for(let k=0;k<12;k++){
     const a=d.ang+(k?(k%2?1:-1)*Math.ceil(k/2)*.42:0),rr=d.r*(k<4?.25:.65)*Math.min(1,.9+k*.03);
     const u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;
-    if(put(type,u,v,a+Math.PI/2,w,dd,fl,{pad}))return {u,v};
+    if(put(type,u,v,a+Math.PI/2,w,dd,fl,{pad,styleOverride:dStyle}))return {u,v};
    }
    return null;
   };
@@ -440,6 +601,13 @@ export function buildTownV2(env){
    else{addCrate(m,{at:[x,y,z],rot:rand()*.6});addCrate(m,{at:[x+.5,y,z-.3],rot:rand()*.6,s:.8})}
    addSolid(cx+u,cy+v,.8);
   };
+  const placeTree=(u,v,scale=1)=>{
+   if(!landAt(cx+u,cy+v))return false;
+   const[x,z]=world(u,v),y=G(cx+u,cy+v)+.03,canopy=['#527a4f','#5f8557','#6e9463'][Math.floor(rand()*3)];
+   m.cyl('wood',.12*scale,.15*scale,1.75*scale,6,{at:[x,y,z],tint:tc(PAL.woodDark,.92)},false);
+   m.cyl('roof',1.05*scale,0,1.85*scale,7,{at:[x,y+1.25*scale,z],tint:tc(canopy,.92+rand()*.12),loc:[x,0,z]});
+   addSolid(cx+u,cy+v,.7*scale);return true;
+  };
   // mercado geral
   {const d=D('market');if(d){
    for(let i=0;i<3;i++){const a=d.ang+(i-1)*.5,rr=d.r*.55,u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;if(!landAt(cx+u,cy+v))continue;const[x,z]=world(u,v);addStall(m,{at:[x,G(cx+u,cy+v)+.05,z],rot:-a+Math.PI/2,R:rand});addSolid(cx+u,cy+v,.8);prop('food',u+.5,v+.5)}
@@ -449,12 +617,26 @@ export function buildTownV2(env){
   // templo
   {const d=D('temple');if(d){
    const[x,z]=world(d.u,d.v),gy=G(cx+d.u,cy+d.v)+.05;
-   m.box('stone',.55,3.1,.55,{at:[x,gy,z],tint:tc(PAL.stone,.96)});
-   m.box('stone',1.9,.45,.45,{at:[x,gy+2.15,z],tint:tc(PAL.stone,.96)});
-   m.box('gold',.16,.5,.16,{at:[x,gy+2.6,z]});
-   addSolid(cx+d.u,cy+d.v,1.3);
-   for(const s of[-1,1]){const u=d.u+s*2.2,v=d.v+1.2;if(!landAt(cx+u,cy+v))continue;const[lx,lz]=world(u,v);addLamp(m,{at:[lx,G(cx+u,cy+v)+.05,lz]})}
-   dPut(d,'house',3.4,4.2,2,.8);
+   if(d.meta?.cathedralStyle==='matilla-grand'){
+    m.cyl('stone',2.3,2.5,10.8,18,{at:[x,gy,z],tint:tc('#c8c0b3',.98)});
+    m.cyl('stone',2.75,2.95,.55,18,{at:[x,gy+.02,z],tint:tc('#a79d90',.96)});
+    m.cyl('stone',2.05,1.86,2.4,18,{at:[x,gy+10.5,z],tint:tc('#d7d0c4',.98)});
+    m.cyl('roof',1.38,0,3.35,18,{at:[x,gy+12.9,z],tint:tc('#6e8a99',.95)});
+    m.box('stone',1.55,.9,3.4,{at:[x,gy+1.2,z+3.2],tint:tc('#c1b7aa',.97)});
+    m.box('stone',1.25,1.55,1.65,{at:[x,gy+2.35,z+5.55],tint:tc('#c8c0b3',.98)});
+    m.box('gold',.18,.8,.18,{at:[x,gy+15.1,z]});
+    for(const s of[-1,1]){m.box('stone',.42,2.5,.42,{at:[x+s*2.8,gy,z+1.1],tint:tc('#b9b1a6',.96)});m.box('stone',.42,2.5,.42,{at:[x+s*2.8,gy,z-1.1],tint:tc('#b9b1a6',.96)})}
+    addSolid(cx+d.u,cy+d.v,2.9);
+    for(const s of[-1,1]){for(const t of[-1,1]){const u=d.u+s*3.1,v=d.v+t*2.2;if(!landAt(cx+u,cy+v))continue;const[lx,lz]=world(u,v);addLamp(m,{at:[lx,G(cx+u,cy+v)+.05,lz]})}}
+    dPut(d,'house',4.0,5.0,2,.95);
+   }else{
+    m.box('stone',.55,3.1,.55,{at:[x,gy,z],tint:tc(PAL.stone,.96)});
+    m.box('stone',1.9,.45,.45,{at:[x,gy+2.15,z],tint:tc(PAL.stone,.96)});
+    m.box('gold',.16,.5,.16,{at:[x,gy+2.6,z]});
+    addSolid(cx+d.u,cy+d.v,1.3);
+    for(const s of[-1,1]){const u=d.u+s*2.2,v=d.v+1.2;if(!landAt(cx+u,cy+v))continue;const[lx,lz]=world(u,v);addLamp(m,{at:[lx,G(cx+u,cy+v)+.05,lz]})}
+    dPut(d,'house',3.4,4.2,2,.8);
+   }
   }}
   // quartel (quando há estrutura militar)
   {const d=D('military');if(d){
@@ -466,6 +648,69 @@ export function buildTownV2(env){
    for(let i=0;i<4;i++){const a=d.ang-.6+i*.4;fence.push([d.u+Math.cos(a)*d.r*.8,d.v+Math.sin(a)*d.r*.8])}
    for(let i=1;i<fence.length;i++){if(!landAt(cx+fence[i-1][0],cy+fence[i-1][1]))continue;const[p1x,p1z]=world(fence[i-1][0],fence[i-1][1]),[p2x,p2z]=world(fence[i][0],fence[i][1]);addFence(m,{a:[p1x,p1z],b:[p2x,p2z],y0:G(cx+fence[i][0],cy+fence[i][1]),R:rand})}
   }}
+  // bairros palacianos / cidade alta
+  {for(const d of DL('palace')){
+   if(placePalace(d)){
+    for(let i=0;i<4;i++){const a=d.ang+(i-1.5)*.55,rr=d.r*.78,u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;put('house',u,v,a+Math.PI/2,5.2+rand()*1.1,5.8+rand()*1.1,2+(rand()<.5?1:0),{pad:.8,styleOverride:styleForDistrict(style,d)})}
+   }
+  }}
+  {for(const d of DL('high')){
+   const[x,z]=world(d.u,d.v),gy=G(cx+d.u,cy+d.v)+.05;addPillar(m,{at:[x,gy,z],h:4.2,r:.44});addBanner(m,{at:[x,gy+4.1,z],h:1.8,color,scale:.85});addSolid(cx+d.u,cy+d.v,1.1);
+   for(const s of[-1,1]){const u=d.u+s*1.7,v=d.v+1.5;if(!landAt(cx+u,cy+v))continue;const[lx,lz]=world(u,v);addLamp(m,{at:[lx,G(cx+u,cy+v)+.05,lz]})}
+  }}
+  // campus arcanos / cidades de magia: torre principal, edifícios auxiliares e moradias
+  {for(const d of DL('academy')){
+   const[x,z]=world(d.u,d.v),gy=footprintY(cx+d.u,cy+d.v,4.5)+.05;
+   addTower(m,{at:[x,gy,z],r:1.45,h:8.6,sides:8,cap:'roof',capH:2.4,tint:tc(PAL.stone,.96),capTint:tc('#6c8796')});
+   addBanner(m,{at:[x,gy+11.1,z],h:2.2,color,scale:.9});addSolid(cx+d.u,cy+d.v,2.2);
+   for(const off of[-1.9,1.9]){const u=d.u+Math.cos(d.ang+Math.PI/2)*off*2.2,v=d.v+Math.sin(d.ang+Math.PI/2)*off*2.2;put('hall',u,v,d.ang+Math.PI/2,6.8,5.8,2,{pad:.85,styleOverride:styleForDistrict(style,d)})}
+   for(let i=0;i<4;i++){const a=d.ang-.85+i*.57,rr=d.r*.75,u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;put('house',u,v,a+Math.PI/2,4.2+rand()*.6,4.9+rand()*.7,2,{pad:.8,styleOverride:styleForDistrict(style,d)})}
+   for(let i=0;i<6;i++){const a=i/6*Math.PI*2,uu=d.u+Math.cos(a)*Math.max(4.6,d.r*.34),vv=d.v+Math.sin(a)*Math.max(4.6,d.r*.34);if(!landAt(cx+uu,cy+vv))continue;const[lx,lz]=world(uu,vv);addLamp(m,{at:[lx,G(cx+uu,cy+vv)+.05,lz]})}
+  }}
+  // bosques internos para cidades élficas e bairros-jardim
+  {for(const d of DL('grove')){
+   const[x,z]=world(d.u,d.v),gy=G(cx+d.u,cy+d.v)+.05;addFountain(m,{at:[x,gy,z]});addSolid(cx+d.u,cy+d.v,1.2);
+   const n=site?.urbanWoodland?3:6+Math.floor(rand()*4);for(let i=0;i<n;i++){
+    const a=i/n*Math.PI*2+rand()*.35,rr=d.r*(.28+rand()*.5),u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;placeTree(u,v,.8+rand()*.32)
+   }
+   for(let i=0;i<3;i++){const a=d.ang-.5+i*.5,rr=d.r*.72,u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;put('house',u,v,a+Math.PI/2,4.2+rand()*.7,5+rand()*.7,2,{pad:1,styleOverride:styleForDistrict(style,d)})}
+   if(site?.urbanWoodland){
+    const nTrees=buildLivingGroveV7({m,d,world,cx,cy,G,landAt,addSolid,rand,style,extras:giantFoliage});
+    lay.livingTreeHomes=(lay.livingTreeHomes||0)+nTrees;
+   }
+  }}
+  // favelas pantanosas / bairros improvisados goblinoides
+  {for(const d of DL('shanty')){
+   for(let i=0;i<10;i++){const a=d.ang-1.05+i*.24,rr=d.r*(.2+rand()*.75),u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;put('house',u,v,a+Math.PI/2+(rand()-.5)*.45,2.6+rand()*.9,3.2+rand()*1.1,1,{pad:.22,styleOverride:styleForDistrict(style,d)})}
+   for(let i=0;i<5;i++){const a=d.ang-.7+i*.33,rr=d.r*(.24+rand()*.55),u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;if(!landAt(cx+u,cy+v))continue;const[x,z]=world(u,v);addStall(m,{at:[x,G(cx+u,cy+v)+.05,z],rot:-a+Math.PI/2,R:rand});prop(i%2?'goods':'food',u+.4,v+.2)}
+   const[x0,z0]=world(d.u,d.v);addBanner(m,{at:[x0,G(cx+d.u,cy+d.v)+.05,z0],h:2,color,scale:.75});
+  }}
+  // bairro do porto / armazéns
+  {for(const d of DL('harbour')){
+   dPut(d,'warehouse',4.9,6.2,2,.55);dPut(d,'warehouse',4.6,5.8,1,.55);
+   for(let i=0;i<3;i++){const a=d.ang+(i-1)*.42,rr=d.r*.58,u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;if(!landAt(cx+u,cy+v))continue;const[x,z]=world(u,v);addStall(m,{at:[x,G(cx+u,cy+v)+.05,z],rot:-a+Math.PI/2,R:rand});addSolid(cx+u,cy+v,.8);addCrate(m,{at:[x+.6,G(cx+u,cy+v)+.05,z-.2],rot:rand()*1.2})}
+   const[x,z]=world(d.u,d.v);addBanner(m,{at:[x,G(cx+d.u,cy+d.v)+.05,z],h:2.2,color,scale:.8});
+  }}
+  // bairros nobres, com lotes maiores e menor densidade
+  {for(const d of DL('noble')){
+   for(let i=0;i<5;i++){const a=d.ang+(i-2)*.38,rr=d.r*(i<2?.35:.7),u=d.u+Math.cos(a)*rr,v=d.v+Math.sin(a)*rr;put('house',u,v,a+Math.PI/2,5.6+rand()*1.5,6+rand()*1.6,2+(rand()<.7?1:0),{pad:1,styleOverride:styleForDistrict(style,d)})}
+   const[x,z]=world(d.u,d.v);addFountain(m,{at:[x,G(cx+d.u,cy+d.v)+.05,z]});addSolid(cx+d.u,cy+d.v,1.5);
+  }}
+  // portão monumental para cidades anãs dentro da montanha
+  if(site?.subterranean){
+   const ang=Number.isFinite(site.subterranean.entryAngle)?site.subterranean.entryAngle:(site.mountainWall?.ang||lay.a0);
+   const rr=Math.max(lay.plaza+7,lay.Rt*.82),u=Math.cos(ang)*rr,v=Math.sin(ang)*rr,rot=ang+Math.PI/2;
+   if(landAt(cx+u,cy+v)){
+    lay.caveGate={u,v};
+    const[x,z]=world(u,v),y=footprintY(cx+u,cy+v,6)+.05;
+    m.box('stone',12.5,7.4,2.2,{at:[x,y,z],rot,tint:tc(PAL.stone,.86)});
+    m.box('wood',4.4,4.8,.37,{at:[x,y+.25,z+.2],rot,tint:tc(PAL.woodDark,.5)});
+    m.box('gold',6.8,.5,.65,{at:[x,y+5.25,z+.2],rot});
+    for(const s of[-1,1]){const uu=u+Math.cos(rot)*s*5.6,vv=v-Math.sin(rot)*s*5.6;const[tx,tz]=world(uu,vv);addTower(m,{at:[tx,footprintY(cx+uu,cy+vv,1.1)+.05,tz],r:1.05,h:6.4,sides:8,cap:'roof',capH:1.8,tint:tc(PAL.stone,.92)})}
+    addBanner(m,{at:[x,y+8.4,z],h:2.4,color,scale:1});addSolid(cx+u,cy+v,5);
+   }
+  }
+
   // oficinas: o tipo segue a produção da cidade
   {const d=D('craft');if(d){
    const goods=env.production||[];const top=(goods[0]||'').toLowerCase();
@@ -478,6 +723,21 @@ export function buildTownV2(env){
   }}
  }
 
+ // V12: equipamentos reais de cada cidade imperial, sem alterar o territorio politico.
+ if(lay.imperialV12?.kind==='lorvus')v12Stats.lorvus=buildLorvusV12({m,lay,site,cx,cy,G,world,landAt,addSolid});
+ if(lay.imperialV12?.kind==='alia')v12Stats.alia=buildAliaV12({m,lay,site,cx,cy,G,world,landAt,addSolid,rand,pathAt},v12Foliage,fields);
+ if(lay.imperialV12?.kind==='tramor')v12Stats.tramor=buildTramorV12({m,lay,site,cx,cy,G,world,landAt,addSolid,rand});
+ if(lay.imperialV12?.kind==='rimae-fort')v12Stats.rimae=buildRimaeV12({m,lay,site,cx,cy,G,world,landAt,addSolid});
+ if(lay.imperialV12?.kind==='rimae-market')v12Stats.bomaria=buildBomariaV12({m,lay,site,cx,cy,G,world,landAt,addSolid});
+
+ // V14: Dragonfall recebe marcos cênicos historicamente diferenciados (não altera a política).
+ if(lay.dragonfallV14)v14Stats=buildDragonfallV14({m,lay,cx,cy,G,world,landAt,addSolid,rand,color});
+
+ // V7: canais com agua real, passarelas fisicas e conjuntos de palafitas em Crild.
+ if(site?.urbanCanals){
+  buildCanalBridgesV7({m,lay,site,field,cx,cy,world,G,addSolid});
+  lay.marshStilts=addMarshStiltsV7({m,site,field,lay,cx,cy,world,G,addSolid,rand,style});
+ }
  // ----- casas ao longo das ruas (núcleo detalhado)
  let count=placed.length;const target=lay.N,limit=lay.coreR*1.02;
  const order=lay.roads.slice().sort((a,c)=>(c.ring?3:c.main?2:c.cross?1:0)-(a.ring?3:a.main?2:a.cross?1:0));
@@ -514,12 +774,12 @@ export function buildTownV2(env){
   if(best&&!lay.fort&&!lay.village){placed.push(best.rc);addSolid(cx+best.u,cy+best.v,2.4);const[x,z]=world(best.u,best.v);windmill={x,z,y:footprintY(cx+best.u,cy+best.v,2)+.05,rot:Math.PI/3+(rand()-.5)}}}
  // ----- muralhas no limite da cidade
  let wallR=0;const mm=new Mesher();
- if(lay.walled){wallR=lay.Rt*1.02;const segs=clamp(Math.round(wallR*.9),48,260),gates=lay.roads.filter(r=>r.main&&!r.ring).map(r=>r.a),pts=[];
-  for(let i=0;i<=segs;i++){const a=i/segs*Math.PI*2;pts.push([cx+Math.cos(a)*wallR,cy+Math.sin(a)*wallR,a])}
+ if(lay.walled){wallR=lay.Rt*1.02;const segs=clamp(Math.round(wallR*.9),48,260),gates=lay.gates||lay.roads.filter(r=>r.main&&!r.ring).map(r=>r.a),pts=[];
+  for(let i=0;i<=segs;i++){const a=i/segs*Math.PI*2,r=wallRadiusAt(lay,a,wallR);pts.push([cx+Math.cos(a)*r,cy+Math.sin(a)*r,a])}
   for(let i=0;i<segs;i++){const a=pts[i],c=pts[i+1],mid=(a[2]+c[2])/2;if(gates.some(g=>Math.abs(Math.atan2(Math.sin(mid-g),Math.cos(mid-g)))<.05))continue;if(!landAtSafe(env,a[0],a[1])||!landAtSafe(env,c[0],c[1]))continue;
    const[ax,az]=toW(a[0],a[1]),[bx,bz]=toW(c[0],c[1]);addWallSegment(mm,{a:[ax,az],b:[bx,bz],y:Math.min(G(a[0],a[1]),G(c[0],c[1])),h:3.1,t:1});addSolid((a[0]+c[0])/2,(a[1]+c[1])/2,wallR*Math.PI*2/segs*.5)}
   for(let i=0;i<segs;i+=Math.max(5,Math.round(segs/16))){if(!landAtSafe(env,pts[i][0],pts[i][1]))continue;const[tx,tz]=toW(pts[i][0],pts[i][1]);addTower(mm,{at:[tx,G(pts[i][0],pts[i][1]),tz],r:1.5,h:5,sides:9,cap:'roof',capH:2.6,tint:tc(PAL.stone,.95),slits:true});addSolid(pts[i][0],pts[i][1],1.6)}
-  for(const g of gates){const gx=cx+Math.cos(g)*wallR,gy=cy+Math.sin(g)*wallR;if(!landAtSafe(env,gx,gy))continue;const[tx,tz]=toW(gx,gy);for(const s of[-1,1]){const px=gx+Math.cos(g+Math.PI/2)*s*2.6,py=gy+Math.sin(g+Math.PI/2)*s*2.6,[ux,uz]=toW(px,py);addTower(mm,{at:[ux,G(px,py),uz],r:1.25,h:5.4,sides:8,cap:'roof',capH:2.2,tint:tc(PAL.stone,.97),slits:true});addSolid(px,py,1.3)}}}
+  for(const g of gates){const wr=wallRadiusAt(lay,g,wallR),gx=cx+Math.cos(g)*wr,gy=cy+Math.sin(g)*wr;if(!landAtSafe(env,gx,gy))continue;const[tx,tz]=toW(gx,gy);for(const s of[-1,1]){const px=gx+Math.cos(g+Math.PI/2)*s*2.6,py=gy+Math.sin(g+Math.PI/2)*s*2.6,[ux,uz]=toW(px,py);addTower(mm,{at:[ux,G(px,py),uz],r:1.25,h:5.4,sides:8,cap:'roof',capH:2.2,tint:tc(PAL.stone,.97),slits:true});addSolid(px,py,1.3)}}}
  // ----- lampiões nas avenidas (moderados: uma cidade grande não precisa de 800 postes)
  let lampCount=0;
  for(const rd of lay.roads.filter(r=>r.main&&!r.ring)){
@@ -537,17 +797,18 @@ export function buildTownV2(env){
  let harbour=null;try{harbour=buildHarbour({...env,cx,cy,style})}catch(err){console.warn('porto:',err)}
  // ----- moradores (só em ruas de terra firme)
  const walkable=lay.roads.filter(rd=>rd.pts.every(([u,v])=>landAt(cx+u,cy+v)&&(!field||field.heightM(u*M_PER_UNIT,v*M_PER_UNIT)>.9)));
- const npc=0;   // sem pedestres: a cena fica mais limpa e o lugar mais crível
+ const npc=lay.dragonfallV14?(lay.dragonfallV14.role==='nilhelm-uninhabited'?0:Math.max(4,Math.min(24,Math.round(Math.sqrt(Math.max(100,lay.pop||120))/14)))):
+  (({lorvus:5,alia:12,castamor:12,tramor:7,'rimae-fort':8,'rimae-market':7})[lay.imperialV12?.kind]||0);
  const mainPool=walkable.filter(rd=>rd.main&&!rd.ring);
  for(let i=0;i<npc;i++){
   const pool=(i%5<3&&mainPool.length)?mainPool:(walkable.length?walkable:lay.roads),rd=pool[Math.floor(rand()*pool.length)],p=rd.pts;
   const t=rand()*(p.length-1),off=(rand()-.5)*rd.w*1.1;
   people.push({path:p,rd,t,dir:rand()<.5?1:-1,sp:.55+rand()*.75,off,col:new THREE.Color(['#8c4f3a','#4b6a7a','#7b7a52','#a27a4f','#5d4f6e','#6e6a5a','#9a5a5a','#3f6b4a'][i%8]),ph:rand()*6.28});
  }
- const groups=[m.group()];if(Object.keys(mm.k).length)groups.push(mm.group());
+ const groups=[m.group()];if(giantFoliage.children.length)groups.push(giantFoliage);if(v12Foliage.children.length)groups.push(v12Foliage);if(Object.keys(mm.k).length)groups.push(mm.group());
  if(fabric.count)groups.push(fabric.group);
  if(harbour){groups.push(harbour.mesh,...harbour.extras)}
- return{groups,people,fields,windmill,smoke,lamps,wallR,placed,fabric:fabric.count};
+ return{groups,people,fields,windmill,smoke,lamps,wallR,placed,fabric:fabric.count,v7:{palaces:lay.palaceComplexes?.length||0,bridges:lay.bridges?.length||0,stiltHouses:lay.marshStilts||0,treeHomes:lay.livingTreeHomes||0},v12:v12Stats,v14:v14Stats};
 }
 
 /* ---------- pontos de interesse do ermo ---------- */

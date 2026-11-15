@@ -51,7 +51,7 @@ function shortcuts(){
 function streetEntry(){
  const tools=$('#topTools');if(!tools||$('#streetBtn'))return;
  const b=document.createElement('button');b.id='streetBtn';b.type='button';b.title='Ver no local: caminhar pelo ponto escolhido (V)';b.innerHTML='<span class="ico">👁</span><span class="lbl"> Ver no local</span>';
- b.onclick=()=>{const s=window.__street;if(!s)return;s.picking?s.cancelPick():s.pick()};tools.append(b);
+ b.onclick=()=>window.__openStreetPicker?.();tools.append(b);
  addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey||e.key.toLowerCase()!=='v')return;const t=e.target;if(t&&(/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)||t.isContentEditable))return;if(document.querySelector('dialog[open]')||window.__street?.active)return;b.click()});
 }
 

@@ -1,0 +1,118 @@
+SILVENGARD - UPGRADE V7 - CIDADES MONUMENTAIS E CULTURAS
+Edicao 1277 AQD | Pacote incremental do Atlas interativo Windows
+
+INSTALACAO
+
+1. Faca uma copia da pasta original "silvengard-interactive-map".
+2. Se necessario, descompacte primeiro o ZIP COMPLETO original do Atlas.
+3. Coloque este ZIP v7 na pasta PAI da pasta "silvengard-interactive-map".
+4. Extraia o ZIP v7 nessa pasta pai. O conteudo do ZIP ja traz a pasta
+   "silvengard-interactive-map" correta. Aceite SUBSTITUIR arquivos.
+5. Continue usando "silvengard-interactive-map/Silvengard-Atlas.exe".
+
+NAO ABRA ESTE ZIP COMO APLICATIVO: ele e uma atualizacao dos arquivos do
+Atlas original, nao um instalador independente. A v7 SUBSTITUI v6/v5/v4/v3/v2;
+nao e necessario aplicar upgrades antigos antes.
+
+NOVIDADES V7 - ELUCITOR, ASGORATH, VELAFFELD E CRILD
+
+- Elucitor: relevo real com Cidade Alta e palacio num morro de ate 51 m,
+  bairro alto de ate 25 m, escadarias, grande complexo imperial, bairro
+  nobre menos denso e mercado/porto mais compactos.
+- Asgorath: palacio e complexo de corte nortenho com torres, muralhas,
+  patios e edificio central em escala monumental.
+- Velaffeld: palacio monumental alto-elfico, arvores antigas no meio
+  da cidade, plataformas com casas e passarelas nas copas.
+- Vir, Triovorn e Porto de Vern: bosques internos e construcoes integradas
+  as arvores, preservando suas muralhas historicas.
+- Crild: tres canais de AGUA REAL, pontes de madeira caminhaveis,
+  casas sobre estacas em parte sobre os canais, trapiches e botes.
+- A planta 2D mostra o relevo da Cidade Alta, os bosques e as pontes/canais.
+- Winterhelm, as sete cidades anas e as sete escolas de magia mantem
+  todas as alteracoes das revisoes anteriores.
+
+CIDADES ANA SUBTERRANEAS (SETE)
+
+Dagorah, Mauron, Liotorn, Khizdush, Adush, Shararukthu e Shunzargil.
+Estas recebem um nucleo interno jogavel com teto rochoso, chao em diferentes
+niveis, colunas, iluminacao, sala central, quatro galerias principais e
+8 camaras secundarias (13 salas interligadas por corredores).
+Cada cidade recebe etiquetas internas e objetos culturais diferenciados.
+
+Shaled e Kharagz sao HIBRIDAS (superficie com montanha proxima).
+Grenolk, Allos, Ginar, Brelas e Bilnulbun permanecem DE SUPERFICIE.
+
+COMO ENTRAR E EXPLORAR
+
+1. Selecione Dagorah (ID 10), ou outra cidade subterranea, no mapa principal.
+2. Clique em "Ver no local".
+3. Na barra inferior, clique em "Entrar na montanha" (botao de picareta).
+   Como alternativa, chegue ao portao de pedra na superficie e pressione E.
+4. Use WASD para andar, mouse para olhar e Shift para correr.
+   VOAR TAMBEM FUNCIONA NO SUBSOLO:
+   - pressione F, ou dois toques rapidos em Espaco, ou clique em "Voo";
+   - Espaco sobe; C ou Ctrl desce; Shift acelera o voo;
+   - teto rochoso, chao e paredes continuam impondo limites fisicos.
+   - E perto da saida continua retornando a superficie.
+5. Clique "Mapa das galerias" para a planta interna da rede de passagens.
+6. Para retornar ao exterior, clique em "Voltar a superficie". Tambem
+   pode apertar E junto ao arco de entrada no salao principal.
+7. Para sair totalmente do local, clique em "Voltar ao mapa".
+
+Para abrir Dagorah diretamente: abra o Atlas no navegador e acrescente
+?local=10 ao endereco (ou &local=10 caso ja existam parametros).
+
+OUTRAS MELHORIAS PRESERVADAS DAS VERSOES ANTERIORES
+
+- 152 cidades do Atlas receberam tracados urbanos procedurais diferentes.
+- 12 links/sementes Watabou foram identificados no arquivo .map de Azgaar.
+- Elucitor e uma ilha local completa com mar em todas as direcoes, alem de
+  cidade alta, palacio, bairros nobres, mercado, templo e porto diferenciados.
+- Asgorath, Velaffeld, Elucitor e Winterhelm mantem ajustes urbanos dedicados.
+- Winterhelm tem uma serra encostada num dos lados da fortaleza e um distrito militar coerente com a fronteira.
+- Vir, Triovorn e Porto de Vern usam agora um modelo urbano elfico-florestal compartilhado, com bosques internos e casario mais integrado a mata.
+- Crild ganhou identidade goblinoide de favela pantanosa, com palafitas, pontes e mercado improvisado.
+- Cidades de magia podem gerar um campus arcano com torre principal, edificios auxiliares e moradias academicas.
+- Dagorah e as outras seis cidades subterraneas agora reduzem as casas do
+  exterior a um acesso fortificado. A maior parte da cidade fica implicita
+  dentro da rocha, com NUCLEO EXPLORAVEL em uma cena subterranea separada.
+
+LIMITACOES IMPORTANTES
+
+As galerias sao um NUCLEO EXPLORAVEL PROCEDURAL (13 espacos), nao a cidade
+inteira reconstruida em escala de todas as familias e ruas subterraneas.
+A passagem pela porta carrega o interior como cena separada: nao e um tunel
+continuo percorrido sem transicao. O interior ainda nao tem NPCs, atividades
+ou interiores de casas individuais. A versao 3D e valida em testes de malha
+e navegacao calculada, mas o fluxo completo no navegador precisa ser
+conferido no computador Windows do usuario.
+
+O arquivo Azgaar .map NAO contem interiores 3D nem poligonos Watabou
+completos. As galerias nao sao copias de um original nem alteram world.json.
+
+ARQUIVOS PRINCIPAIS
+
+- app/dist/urban-v7-core.js : matematica comum de relevo, canais e pontes.
+- app/dist/urban-v7-art.js : palacios, arvores-casa, pontes e palafitas.
+- app/dist/local-scene.js : canais com agua de verdade e bosque urbano.
+- desenvolvimento/testes/v7-urbanismo.test.mjs : testes v7.
+- app/dist/dwarven-interior.js : topologia, malha 3D, interiores, teto para voo e planta 2D.
+- app/dist/city-blueprints.json : perfis de 152 cidades e 3 classes anas.
+- app/dist/street.js : botao de transicao, HUD e movimento no interior.
+- app/dist/town.js : portao e reducao do casario exterior nas cidades escavadas.
+- app/dist/local-field.js : relevo de montanha / costa de Elucitor.
+- app/dist/city-plan-core.js : eixos urbanos, distritos e fontes.
+- app/dist/city-plan-preview.js + city-plan.css : interface de plantas.
+- documentos/Upgrade-Plantas-Urbanas.md : referencia completa e limites.
+- desenvolvimento/testes/city-blueprints.test.mjs : testes atualizados das plantas e perfis culturais.
+- amostras-galerias/ : sete plantas do interior para consulta.
+- amostras/ : seis plantas do exterior de cidades selecionadas.
+- desenvolvimento/testes/dwarven-interiors.test.mjs : testes de galerias.
+
+VALIDACAO
+
+- Testes das plantas, culturas, cavernas e limites verticais de voo executados nesta revisao.
+- O construtor 3D foi exercitado para localidades selecionadas, sem WebGL.
+- Testes percorreram computacionalmente os caminhos das 12 salas por cidade.
+- 5 testes v7 de geometria e navegacao, mais 11 testes herdados, passaram.
+- Interface completa em navegador/Windows nao foi validada neste ambiente.

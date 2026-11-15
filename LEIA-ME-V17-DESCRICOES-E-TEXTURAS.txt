@@ -1,0 +1,32 @@
+SILVENGARD ATLAS v17 - DESCRICOES DE NAVI VELAFFELL
+
+Este ZIP e uma atualizacao acumulativa (v16 + descricoes v17), nao o app Windows completo.
+NAO apague a pasta original, pois o ZIP nao inclui o executavel.
+
+COMO INSTALAR
+1. Feche o Silvengard Atlas.
+2. Faca backup de sua pasta silvengard-interactive-map original.
+3. Extraia este ZIP na pasta PAI que contem silvengard-interactive-map.
+4. Aceite mesclar a pasta e sobrescrever os arquivos do aplicativo.
+5. Inicie Silvengard-Atlas.exe (existente na instalacao original).
+
+DESCRICOES
+- O acervo de historias (app/dist/history-archive.json) inclui novos paragrafos de
+  identidade urbana para as 15 cidades de Navi Velaffell.
+- O arquivo app/dist/city-descriptions-v17.json organiza os perfis atualizados.
+- As historias originais foram preservadas: as novidades descrevem o contexto urbano
+  atual (1277 AQD), nao datas ou eventos antigos inventados.
+- O documento em documentos/ e legivel separadamente.
+
+TEXTURAS
+- Materiais procedurais e paletas especificas ja funcionam sem internet.
+- As fotos CC0 NAO foram incluidas como JPGs neste ZIP.
+- Se desejar os arquivos reais, execute INSTALAR-TEXTURAS-CC0.bat no Windows.
+- Depois, execute VERIFICAR-TEXTURAS-CC0.bat para ver se cada JPG foi instalado.
+- Sem os arquivos JPG, a cena funciona com texturas/materiais anteriores.
+- Mesmo com as fotos instaladas, a cobertura e PARCIAL: nem todos os objetos
+  recebem uma textura externa.
+
+TESTES
+- Os testes de regressao (40) passaram.
+- A renderizacao em runtime no Windows e o download externo nao foram validados aqui.

@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "id": "exemplo-dragonfall-1277",
+  "title": "Crônicas de Dragonfall — Exemplo",
+  "subtitle": "Uma campanha ainda não iniciada no norte de Silvengard",
+  "status": "Planejada",
+  "year": "1277 AQD",
+  "region": "Dragonfall, Era Contemporânea",
+  "premise": "O ano é 1277 AQD. Quinze anos após sua independência, Dragonfall permanece sob o reinado de Arthur Dragonbane, com capital em Asgorath, junto ao Lago das Lágrimas. O reino mantém relações cautelosas com Elucitor, enquanto persistem tensões com Navï Velaffëll. A ilha vulcânica de Gugacon voltou a integrar as rotas comerciais.\n\nEste é apenas um CONTEXTO DE EXEMPLO, baseado nas crônicas do mundo. Personalize-o antes de jogar.",
+  "summary": "A equipe ainda não se reuniu e os acontecimentos da campanha não foram definidos.",
+  "party": {
+    "name": "A Companhia sem Nome",
+    "journeyPartyId": "",
+    "members": []
+  },
+  "npcs": [
+    {
+      "id": "arthur-dragonbane",
+      "name": "Arthur Dragonbane",
+      "role": "Rei de Dragonfall",
+      "affiliation": "Casa Dragonbane",
+      "location": "Asgorath",
+      "description": "Soberano de Dragonfall em 1277 AQD, veterano das campanhas finais da Guerra das Relíquias. Mantém o governo da monarquia eletiva após a independência."
+    },
+    {
+      "id": "hawen-windbear",
+      "name": "Hawen Windbear",
+      "role": "Responsável pelos interesses da Casa Windbear",
+      "affiliation": "Casa Windbear",
+      "location": "Winterhelm",
+      "description": "Irmã de Rodrick Windbear, preserva os juramentos de Winterhelm e a memória da resistência do norte."
+    }
+  ],
+  "events": [],
+  "createdAt": "",
+  "updatedAt": ""
+}

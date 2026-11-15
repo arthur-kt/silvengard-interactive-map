@@ -1,0 +1,24 @@
+ATLAS DE SILVENGARD — V14 DRAGONFALL (1277 AQD)
+
+Repaginadas as 17 localidades que pertencem ao Reino de Dragonfall no world.json.
+
+Inclui Asgorath, Ereth, Rivertown, Torre Solitaria, Dagorah, Malacatt,
+Savhalla, Porto das Cinzas, Winterhelm, Gugacon, Rinnton, Clifshore,
+Lakenford, Nilhelm, Vila Sardinhas, Porto Naril e Porto Sarandir.
+
+O MAPA POLITICO, as cidades e as populacoes nao foram alterados.
+Apenas os perfis urbanos, modelos 3D, materiais e plantas foram revisados.
+
+INSTALACAO:
+1. Faça backup da instalacao existente.
+2. Extraia o ZIP na pasta ACIMA de 'silvengard-interactive-map'.
+3. Confirme a substituicao dos arquivos e rode Silvengard-Atlas.exe.
+4. Se desejar texturas externas, execute INSTALAR-TEXTURAS-CC0.bat.
+
+V14 ja inclui o upgrade v13 e os anteriores. Nao precisa instalar a v13 antes.
+Nao inclui o executavel nem o mapa original completo; sobreponha na instalacao existente.
+
+As 17 plantas podem ser vistas em amostras-dragonfall-v14/.
+A revisao detalhada esta em documentos/Repaginacao_Dragonfall_v14_1277_AQD.md.
+
+Limitacoes: sem teste visual integral do aplicativo Windows neste ambiente.

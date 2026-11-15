@@ -1,0 +1,17 @@
+SILVENGARD ATLAS - UPGRADE V10 - TEXTURAS EXTERNAS CC0
+
+ATENCAO: Este ZIP contem atualizacao para um Atlas JA INSTALADO.
+Nao contem executavel novo nem substitui o Atlas original.
+
+PASSO 1: Faça backup de sua pasta silvengard-interactive-map.
+PASSO 2: Descompacte este ZIP na pasta PAI de silvengard-interactive-map,
+         permitindo substituir os arquivos anteriores.
+PASSO 3: Dentro da pasta silvengard-interactive-map, execute o arquivo
+         INSTALAR-TEXTURAS-CC0.bat (internet necessaria na primeira vez).
+PASSO 4: Abra Silvengard-Atlas.exe como sempre.
+
+Se o download nao funcionar, as aparencias procedurais anteriores permanecem.
+As fotos CC0 nao estao incluidas no ZIP; o instalador as baixa do ambientCG.
+A v10 inclui arquivos das versoes anteriores e nao requer instalar a v9 antes.
+
+Detalhes: documentos/Texturas-Externas-CC0-v10.md.

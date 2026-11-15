@@ -1,0 +1,5 @@
+Texturas CC0 (ambientCG) instaladas pelo script INSTALAR-TEXTURAS-CC0.ps1.
+O aplicativo funciona sem arquivos JPG: mantém os shaders procedurais.
+Arquivos esperados: paving.jpg, stone.jpg, rock.jpg, wood.jpg,
+roofing.jpg, ground.jpg, mud.jpg.
+Licenca dos originais ambientCG: CC0 1.0 (https://docs.ambientcg.com/license/)

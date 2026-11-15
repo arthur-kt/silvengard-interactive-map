@@ -1,0 +1,28 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Silvengard v7</title><style>body{margin:0;background:#14232a;color:#e0e1d5;font:15px system-ui;display:grid;justify-items:center;padding:20px}h1{font:26px Georgia;margin:0 0 10px}p{color:#b9c6c7;margin:0 0 12px}canvas{width:760px;height:760px;border:5px solid #bba681}#summary{color:#c9b98d;margin-top:10px}</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script><h1 id="heading">Silvengard v7</h1><p id="subheading">Carregando...</p><canvas id="plan"></canvas><div id="summary"></div>
+<script type="module">
+import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=70';
+import {makeLayout,buildTownV2,climateOf} from './town.js?v=70';
+import {rng,STYLES} from './settlements.js?v=56';
+import {applyCityBlueprint,applyBlueprintTerrain} from './city-plan-core.js?v=66';
+import {planUrbanV7Site} from './urban-v7-core.js?v=70';
+import {drawCityPlan} from './city-plan-preview.js?v=70';
+try{
+const id=Number(new URL(location.href).searchParams.get('city')||7),D=await fetch('./world.json').then(r=>r.json()),B=await fetch('./city-blueprints.json').then(r=>r.json());
+const c=D.cities.find(c=>c.i===id),b=B.cities[id],g=D.grid;
+const cellAt=(x,y)=>D.cells[Math.max(0,Math.min(g.rows-1,Math.floor(y/g.stepY)))*g.columns+Math.max(0,Math.min(g.columns-1,Math.floor(x/g.stepX)))];
+const H=h=>h<20?-2:1.4+Math.pow((h-18)/82,1.65)*115;
+const pop=c.demographics?.population??(c.population||10)*2000;
+const site=siteFor({D,point:[c.x,c.y],cellAt,surface:(x,y)=>H(cellAt(x,y).h),population:pop,city:c});applyBlueprintTerrain(site,b);
+const field=createField(site),rand=rng(b.seed),fort=c.settlementClass?.startsWith('Forte')&&pop<5000&&!c.capital;
+const lay=makeLayout({pop,capital:!!c.capital,village:false,fort:!!fort,rand,port:site.port,kind:fort?'fort':c.capital?'capital':site.port?'port':'town'});
+lay.cx=c.x;lay.cy=c.y;lay.walled=!!(c.walls||c.capital||c.citadel);
+applyCityBlueprint(lay,b,site);planUrbanV7Site(site,lay,b);
+const G=(mx,my)=>field.heightM((mx-c.x)*M,(my-c.y)*M)/M,isLand=(mx,my)=>field.heightM((mx-c.x)*M,(my-c.y)*M)>.55;
+const result=buildTownV2({b:c,cx:c.x,cy:c.y,lay,rand,climate:climateOf(cellAt(c.x,c.y)),color:'#345678',G,landAt:isLand,toW:(mx,my)=>[mx-c.x,my-c.y],addSolid:()=>{},pathAt:()=>[0,0],footprintY:(mx,my)=>G(mx,my),special:false,field,site,blueprint:b,blocked:()=>false,style:STYLES.temperate,production:[]});
+drawCityPlan(document.querySelector('#plan'),{lay,site,field,blueprint:b});
+document.querySelector('#heading').textContent=c.name+' · Silvengard v7';document.querySelector('#subheading').textContent=b.urbanV7?.cityIdentity||b.patternLabel;
+document.querySelector('#summary').textContent=`${pop.toLocaleString('pt-BR')} hab. · ${result.v7?.palaces||0} palácios · ${result.v7?.bridges||0} pontes · ${result.v7?.stiltHouses||0} palafitas · ${result.v7?.treeHomes||0} casas nas árvores`;
+window.previewStats={ready:true,id,...result.v7};
+}catch(e){document.querySelector('#subheading').textContent='ERRO: '+e.message;window.previewStats={error:String(e),stack:e.stack};console.error(e)}
+</script></html>

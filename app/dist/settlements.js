@@ -3,6 +3,7 @@
 // a partir de coordenadas locais de cada edifício, para o padrão acompanhar as paredes em qualquer rotação.
 import * as THREE from 'three';
 import {shared,NOISE} from './visuals.js?v=56';
+import {cc0Uniforms} from './cc0-textures.js?v=1';
 
 export const PAL={stone:'#dfcba2',cobble:'#b9aa8c',plaster:'#f1e8d0',roof:'#76584b',roofRed:'#8a5a46',wood:'#79664e',woodDark:'#4f4030',gold:'#d8b977',glass:'#25343b',thatch:'#c9b06a',cloth:'#b6483c',cloth2:'#e6d8b0'};
 export const rng=seed=>{let a=(seed|0)+0x6D2B79F5;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}};
@@ -55,13 +56,16 @@ export function buildingMaterial(kind,{baked=false,color=null}={}){
  m.customProgramCacheKey=()=>'bld:'+kind+(baked?':b':'');
  m.onBeforeCompile=shader=>{
   shader.uniforms.uTime=shared.uTime;shader.uniforms.uNight=shared.uNight;
+  const cc0Kind={stone:'stone',wood:'wood',roof:'roofing',thatch:'roofing',plaster:'stone'}[kind];
+  if(cc0Kind)Object.assign(shader.uniforms,cc0Uniforms(cc0Kind));
   const wave=kind==='cloth'?'\ntransformed.z+=sin(uTime*3.+transformed.x*2.6)*.13*clamp(transformed.x/1.1,0.,1.);':'';
   shader.vertexShader=`uniform float uTime;varying vec3 vLoc;varying vec3 vLn;${baked?'':'attribute vec3 aLoc;attribute vec3 aLn;'}\n`+shader.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>\nvLoc=${baked?'position':'aLoc'};vLn=${baked?'normal':'aLn'};${wave}`);
-  shader.fragmentShader=`varying vec3 vLoc;varying vec3 vLn;uniform float uNight;\n${NOISE}\nvec2 triUV(vec3 p,vec3 n){vec3 a=abs(n);return a.y>.55?p.xz:(a.x>a.z?p.zy:p.xy);}\n`+shader.fragmentShader
+  shader.fragmentShader=`varying vec3 vLoc;varying vec3 vLn;uniform float uNight;${cc0Kind?'uniform sampler2D uCC0Map;uniform float uCC0Mix;':''}\n${NOISE}\nvec2 triUV(vec3 p,vec3 n){vec3 a=abs(n);return a.y>.55?p.xz:(a.x>a.z?p.zy:p.xy);}\n`+shader.fragmentShader
   .replace('#include <color_fragment>',`#include <color_fragment>
   vec3 bN=normalize(vLn),bLoc=vLoc,bMul=vec3(1.);float bH=0.,bA=0.;float bLod=1.-smoothstep(70.,260.,length(vViewPosition));
   ${PATTERN[kind]}
-  diffuseColor.rgb*=mix(vec3(1.),bMul,bLod);`)
+  diffuseColor.rgb*=mix(vec3(1.),bMul,bLod);
+  ${cc0Kind?'vec3 img=texture2D(uCC0Map,triUV(bLoc,bN)*.42).rgb;diffuseColor.rgb*=mix(vec3(1.),mix(vec3(.64),img*1.4,.84),uCC0Mix*bLod);':''}`)
   .replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
   if(bA>0.){float hh=bH*bA*bLod;vec3 dpdx=dFdx(-vViewPosition),dpdy=dFdy(-vViewPosition);vec3 r1=cross(dpdy,normal),r2=cross(normal,dpdx);float det=dot(dpdx,r1);
    normal=normalize(abs(det)*normal-sign(det)*(dFdx(hh)*r1+dFdy(hh)*r2));}`)

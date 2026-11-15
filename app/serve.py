@@ -20,6 +20,8 @@ from logging.handlers import RotatingFileHandler
 from defaults_service import save_defaults
 from persistent_defaults import find_node
 from history_archive import build_archive
+from campaign_service import (CampaignInputError, CampaignConflict, list_campaigns, read_campaign,
+                              create_campaign, update_campaign, delete_campaign, valid_id)
 
 ROOT = pathlib.Path(__file__).resolve().parent / 'dist'
 DEFAULT_PORT = 8765
@@ -68,7 +70,60 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         port = self.server.server_address[1]
         return {f'127.0.0.1:{port}', f'localhost:{port}'}
 
+    def campaign_route(self):
+        from urllib.parse import urlsplit
+        path = urlsplit(self.path).path
+        if path == '/api/campaigns':
+            return 'list', None
+        if path.startswith('/api/campaigns/'):
+            campaign_id = path[len('/api/campaigns/'):]
+            return 'one', valid_id(campaign_id)
+        return None, None
+
+    def campaign_response(self, method):
+        try:
+            target, campaign_id = self.campaign_route()
+            if target is None:
+                return self.json_response(404, {'error': 'Rota não encontrada.'})
+            if method != 'GET' and not self.same_origin():
+                return self.json_response(403, {'error': 'Origem não autorizada.'})
+            if method == 'GET':
+                return self.json_response(200, list_campaigns(ROOT.parent) if target == 'list' else read_campaign(ROOT.parent, campaign_id))
+            if method == 'DELETE':
+                if target != 'one':
+                    return self.json_response(405, {'error': 'Método não permitido.'})
+                return self.json_response(200, delete_campaign(ROOT.parent, campaign_id, self.headers.get('If-Match', '')))
+            if self.headers.get('Content-Type', '').split(';')[0] != 'application/json':
+                return self.json_response(415, {'error': 'Envie JSON.'})
+            length = int(self.headers.get('Content-Length', '0'))
+            if not 0 < length <= 2000000:
+                raise CampaignInputError('Tamanho do JSON inválido.')
+            data = json.loads(self.rfile.read(length))
+            if method == 'POST' and target == 'list':
+                return self.json_response(201, create_campaign(ROOT.parent, data))
+            if method == 'PUT' and target == 'one':
+                return self.json_response(200, update_campaign(ROOT.parent, campaign_id, data, self.headers.get('If-Match', '')))
+            return self.json_response(405, {'error': 'Método não permitido.'})
+        except FileNotFoundError:
+            return self.json_response(404, {'error': 'Campanha não encontrada.'})
+        except CampaignConflict as error:
+            return self.json_response(409, {'error': str(error)})
+        except (CampaignInputError, ValueError, TypeError, json.JSONDecodeError) as error:
+            return self.json_response(400, {'error': str(error)})
+        except OSError as error:
+            log_save_error(error)
+            return self.json_response(500, {'error': 'Falha de leitura ou gravação no diretório app/campaigns.'})
+
+    def same_origin(self):
+        hosts = self.allowed_origins()
+        host = self.headers.get('Host', '')
+        origin = self.headers.get('Origin', '')
+        return (host in hosts and origin in {'http://' + h for h in hosts}
+                and self.headers.get('Sec-Fetch-Site') != 'cross-site')
+
     def do_GET(self):
+        if self.path.split('?', 1)[0].startswith('/api/campaigns'):
+            return self.campaign_response('GET')
         if self.path.split('?', 1)[0] == '/api/history':
             try:
                 return self.json_response(200, build_archive(ROOT.parent))
@@ -92,7 +147,15 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def do_PUT(self):
+        return self.campaign_response('PUT')
+
+    def do_DELETE(self):
+        return self.campaign_response('DELETE')
+
     def do_POST(self):
+        if self.path.split('?', 1)[0].startswith('/api/campaigns'):
+            return self.campaign_response('POST')
         if self.path.split('?', 1)[0] != '/api/defaults':
             return self.json_response(404, {'error': 'Não encontrado'})
         hosts = self.allowed_origins()
