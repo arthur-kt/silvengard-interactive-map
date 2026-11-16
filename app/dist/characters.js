@@ -1,5 +1,6 @@
 // Silvengard · Fichas, compêndio 5e e criador provisório.
 // Módulo de interface: IndexedDB + fetch dos pacotes em ./5e/.
+import {multiclassCheck, MULTICLASS_PROFS} from './combat-core.js?v=6';
 import {
   ABILITIES,
   SKILLS,
@@ -17,7 +18,7 @@ import {
   spellSlotsFor,
   XP_THRESHOLDS,
   xpForLevel,
-} from './sheet-core.js?v=5';
+} from './sheet-core.js?v=6';
 
 const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
@@ -423,6 +424,7 @@ export function createCharacters({toast = () => {}} = {}) {
     hp.temp = Math.max(0, num(play.hp?.temp));
     hp.failures = Math.max(0, Math.min(3, num(play.hp?.failures)));
     hp.successes = Math.max(0, Math.min(3, num(play.hp?.successes)));
+    for (const item of model.equipment || []) { const used = num(play.itemUsed?.[item.id]); if (used) { item.amountTotal = item.amount; item.amount = Math.max(0, num(item.amount, 1) - used); } }
     model.slotsUsed = Array.from({length: 9}, (_, index) => Math.max(0, Math.min(num(model.spellSlots?.[index]), num(play.slotsUsed?.[index]))));
     for (const resource of model.specialAbilities || []) {
       const state = play.resources?.[resource.id];
@@ -531,7 +533,6 @@ export function createCharacters({toast = () => {}} = {}) {
       <section id="charDiceTab" class="charTab" hidden></section>
     </div>
     <input type="file" id="charFile" accept=".cah,.json,application/json" hidden>
-    <input type="file" id="charUpdateFile" accept=".cah,.json,application/json" hidden>
   `;
 
   const sheetTab = panel.querySelector('#charSheetTab');
@@ -539,8 +540,6 @@ export function createCharacters({toast = () => {}} = {}) {
   const creatorTab = panel.querySelector('#charCreatorTab');
   const diceTab = panel.querySelector('#charDiceTab');
   const fileInput = panel.querySelector('#charFile');
-  const updateFileInput = panel.querySelector('#charUpdateFile');
-  let updateTargetId = null;
 
   function setTab(tab) {
     state.tab = tab;
@@ -675,7 +674,6 @@ export function createCharacters({toast = () => {}} = {}) {
         </div>
         <div class="sheetActions">
           <button data-char-download="${esc(model.id)}">Baixar ficha</button>
-          ${model.kind === 'cah' ? `<button data-char-replace="${esc(record.id)}" title="Importar uma versão mais recente da ficha mantendo o personagem e seu histórico">↻ Atualizar ficha</button>` : ''}
           <button data-char-levelup="${esc(model.id)}" class="charPrimary">Subir nível</button>
           ${model.kind === 'atlas' ? `<button data-add-class="${esc(model.id)}">+ Multiclasse</button>` : ''}
           <button data-short-rest="${esc(model.id)}">Descanso curto</button>
@@ -1638,41 +1636,6 @@ export function createCharacters({toast = () => {}} = {}) {
     }
   }
 
-  async function replaceSheetFromFile(id, file) {
-    if (!file) return null;
-    if (file.size > MAX_FILE_SIZE) throw new Error('Arquivo muito grande (limite de 20 MB).');
-    await refreshRecords(id);
-    const old = state.records.find((record) => String(record.id) === String(id));
-    if (!old) throw new Error('A ficha original não foi encontrada.');
-    if (old.kind !== 'cah') throw new Error('Esta atualização aceita fichas .cah importadas.');
-    let raw;
-    try { raw = JSON.parse(await file.text()); }
-    catch { throw new Error('O arquivo precisa conter um JSON .cah válido.'); }
-    const proposed = normalizeCah(raw);
-    if (proposed.name.trim().toLocaleLowerCase('pt-BR') !== old.name.trim().toLocaleLowerCase('pt-BR')) {
-      const ok = window.confirm(`A nova ficha se chama "${proposed.name}", mas substituirá "${old.name}". Continuar?`);
-      if (!ok) return null;
-    }
-    // Mantém o id original: campanhas e tabuleiro continuam referenciando a mesma ficha.
-    const corrected = {...raw, id: old.id};
-    const updated = normalizeCah(corrected);
-    const record = {
-      ...old, id: old.id, name: updated.name, raw: corrected,
-      fileName: file.name, updatedAt: new Date().toISOString(),
-      versions: [...(old.versions || []), {at: old.updatedAt, fileName: old.fileName, raw: old.raw}].slice(-MAX_VERSIONS),
-    };
-    await putRecord(record);
-    applyRecord(record, false);
-    document.dispatchEvent(new CustomEvent('silvengard:characters-updated', {detail: {id: record.id, name: record.name}}));
-    flash(`Ficha de ${record.name} atualizada. Versão anterior preservada.`);
-    return updated;
-  }
-
-  function requestReplaceSheet(id) {
-    updateTargetId = id;
-    updateFileInput.click();
-  }
-
   function savePlay(record) {
     record.updatedAt = new Date().toISOString();
     void putRecord(record);
@@ -2375,9 +2338,9 @@ export function createCharacters({toast = () => {}} = {}) {
         <form method="dialog">
           <div class="eyebrow">MULTICLASSE</div>
           <h2>${esc(model.name)}</h2>
-          <p class="charMuted">Adicionar uma classe no nível 1. O nível total continua ${model.level}; o próximo nível pode ir para qualquer classe.</p>
+          <p class="charMuted">Adiciona 1 nível na nova classe: o nível total passa de ${model.level} para ${model.level + 1}. Depois, cada novo nível pode ir para qualquer classe. É preciso atender aos pré-requisitos da classe atual e da nova (valor 13 no atributo).</p>
           <label>Nova classe<select id="multiClass">${choices.map((def) => `<option value="${esc(def.id)}">${esc(def.name)} (${esc(def.hitDie || 'd8')})</option>`).join('')}</select></label>
-          <label>PV ganhos no nível 1<input id="multiHp" type="number" min="1" max="30" value="8"></label>
+          <div id="multiReq" class="multiReq"></div><label class="multiIgnore"><input type="checkbox" id="multiIgnore"> Ignorar pré-requisitos (regra da casa)</label><p id="multiProf" class="charMuted"></p><label>PV ganhos no nível 1<input id="multiHp" type="number" min="1" max="30" value="8"></label>
           <div class="charDialogActions">
             <button value="cancel">Cancelar</button>
             <button value="confirm" class="charPrimary">Adicionar classe</button>
@@ -2391,13 +2354,24 @@ export function createCharacters({toast = () => {}} = {}) {
         const sides = Number(String(def?.hitDie || 'd8').replace(/[^0-9]/g, '')) || 8;
         hp.value = Math.max(1, sides + Math.floor((num(model.abilities?.con?.mod, 0))));
       };
-      select.onchange = updateHp;
+      const confirmBtn = dialog.querySelector('button[value="confirm"]');
+      const ignoreBox = dialog.querySelector('#multiIgnore');
+      const updateReq = () => {
+        const chk = multiclassCheck(model.abilities, (model.classes || []).map((cls) => cls.id), select.value);
+        dialog.querySelector('#multiReq').innerHTML = chk.items.map((it) => `<div class="multiReqRow ${it.ok ? 'ok' : 'bad'}"><span>${it.ok ? '✓' : '✗'}</span><b>${esc(it.classId)}</b><span>${esc(it.need)}</span><small>você tem ${esc(it.have)}</small></div>`).join('') || '<p class="charMuted">Sem pré-requisitos cadastrados.</p>';
+        dialog.querySelector('#multiProf').textContent = 'Proficiências ganhas ao multiclassar: ' + (MULTICLASS_PROFS[String(select.value).split('__')[0]] || '—') + '.';
+        confirmBtn.disabled = !chk.ok && !ignoreBox.checked;
+      };
+      select.onchange = () => { updateHp(); updateReq(); };
+      ignoreBox.onchange = updateReq;
       updateHp();
+      updateReq();
       dialog.querySelector('button[value="confirm"]')?.addEventListener('click', (event) => {
         event.preventDefault();
         try {
           const def = choices.find((entry) => entry.id === select.value);
           if (!def) return;
+          if (!multiclassCheck(model.abilities, (model.classes || []).map((cls) => cls.id), def.id).ok && !dialog.querySelector('#multiIgnore').checked) throw new Error('Pré-requisitos de multiclasse não atendidos.');
           const current = modelFor(record);
           if (current.level >= 20) throw new Error('Nível máximo (20) atingido.');
           const oldMax = current.hp.max;
@@ -2574,8 +2548,6 @@ export function createCharacters({toast = () => {}} = {}) {
     if (tabButton) return setTab(tabButton.dataset.charTab);
     if (event.target.closest('#charClose')) return close();
     if (event.target.closest('#charImportBtn') || event.target.closest('#charEmptyImport')) return fileInput.click();
-    const replace = event.target.closest('[data-char-replace]');
-    if (replace) return requestReplaceSheet(replace.dataset.charReplace);
     if (event.target.closest('#charCreateBtn') || event.target.closest('#charEmptyCreate')) return setTab('creator');
     const listItem = event.target.closest('[data-char-id]');
     if (listItem && !event.target.closest('[data-char-download]') && !event.target.closest('[data-char-delete]') && !event.target.closest('[data-char-levelup]') && !event.target.closest('[data-char-version]')) {
@@ -2742,17 +2714,6 @@ export function createCharacters({toast = () => {}} = {}) {
     if (file) handleFile(file);
   });
 
-  updateFileInput.addEventListener('change', async () => {
-    const file = updateFileInput.files?.[0];
-    const id = updateTargetId;
-    updateFileInput.value = '';
-    updateTargetId = null;
-    if (file && id) {
-      try { await replaceSheetFromFile(id, file); }
-      catch (error) { flash(`Não foi possível atualizar a ficha: ${error.message}`, true); }
-    }
-  });
-
   panel.addEventListener('dragstart', (event) => {
     const button = event.target.closest('[data-comp-index]');
     if (!button) return;
@@ -2824,23 +2785,51 @@ export function createCharacters({toast = () => {}} = {}) {
     return play.hp.current;
   }
 
-  async function listSheets() {
-    await refreshRecords(state.activeId);
-    return getSheets();
+  /* ---------- API de jogo para o tabuleiro (espaços, recursos, itens, PV temporário, mortes) ---------- */
+  const recordOf = (sheetId) => state.records.find((entry) => String(entry.id) === String(sheetId)) || null;
+  function touchRecord(record) {
+    record.updatedAt = new Date().toISOString();
+    void putRecord(record);
+    if (!panel.hidden && state.activeId === record.id) renderSheetTab();
+  }
+  function getPlay(sheetId) {
+    const record = recordOf(sheetId); if (!record) return null;
+    const play = ensurePlay(record, modelFor(record));
+    return {slotsUsed: play.slotsUsed, pactUsed: num(play.pactUsed), resources: play.resources, itemUsed: play.itemUsed || {}, hp: play.hp};
+  }
+  function spendSlot(sheetId, level, kind = 'slot') {
+    const record = recordOf(sheetId); if (!record) return false;
+    const model = modelFor(record), play = activePlay(record, model);
+    if (kind === 'pact') { if (num(play.pactUsed) >= num(model.pactMagic?.count)) return false; play.pactUsed = num(play.pactUsed) + 1; }
+    else { const i = level - 1; if (i < 0 || i > 8 || num(play.slotsUsed[i]) >= num(model.spellSlots?.[i])) return false; play.slotsUsed[i] = num(play.slotsUsed[i]) + 1; }
+    touchRecord(record); return true;
+  }
+  function refundSlot(sheetId, level, kind = 'slot') {
+    const record = recordOf(sheetId); if (!record) return false;
+    const play = activePlay(record, modelFor(record));
+    if (kind === 'pact') play.pactUsed = Math.max(0, num(play.pactUsed) - 1); else play.slotsUsed[level - 1] = Math.max(0, num(play.slotsUsed[level - 1]) - 1);
+    touchRecord(record); return true;
+  }
+  function useResource(sheetId, resourceId, amount = 1) {
+    const record = recordOf(sheetId); if (!record) return false;
+    const play = ensurePlay(record, modelFor(record)), res = play.resources?.[resourceId];
+    if (!res || num(res.current) < amount) return false;
+    res.current = num(res.current) - amount; touchRecord(record); return true;
+  }
+  function useItem(sheetId, itemId) {
+    const record = recordOf(sheetId); if (!record) return false;
+    const play = ensurePlay(record, modelFor(record)); play.itemUsed ||= {};
+    play.itemUsed[itemId] = num(play.itemUsed[itemId]) + 1; touchRecord(record); return true;
+  }
+  function setSheetState(sheetId, patch = {}) {
+    const record = recordOf(sheetId); if (!record) return null;
+    const model = modelFor(record), play = ensurePlay(record, model);
+    if (patch.hp != null) play.hp.current = Math.max(0, Math.min(model.hp.max, num(patch.hp)));
+    if (patch.temp != null) play.hp.temp = Math.max(0, num(patch.temp));
+    if (patch.death !== undefined) { play.hp.successes = num(patch.death?.success); play.hp.failures = num(patch.death?.fail); }
+    if (patch.conditions) play.boardConditions = [...patch.conditions];
+    touchRecord(record); return play.hp.current;
   }
 
-  async function openSheet(id) {
-    await refreshRecords(id);
-    if (!state.records.some((record) => String(record.id) === String(id))) {
-      flash('A ficha vinculada não está disponível. Importe o arquivo .cah para recuperá-la.', true);
-      return false;
-    }
-    state.activeId = state.records.find((record) => String(record.id) === String(id)).id;
-    panel.hidden = false;
-    setTab('sheet');
-    return true;
-  }
-
-  return {open, close, refresh, importRaw, createFromCreator, getSheets, listSheets, openSheet,
-          replaceSheetFromFile, requestReplaceSheet, setSheetHp, panel};
+  return {open, close, refresh, importRaw, createFromCreator, getSheets, setSheetHp, getPlay, spendSlot, refundSlot, useResource, useItem, setSheetState, panel};
 }

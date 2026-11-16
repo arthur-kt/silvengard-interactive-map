@@ -1,0 +1,47 @@
+SILVENGARD ATLAS v20 — MODELOS 3D E ARQUITETURA POR CULTURA
+
+O QUE MUDA
+- V19 foi a infraestrutura de carregamento; a v20 muda a geometria dos edificios.
+- Novos modelos 3D de casas por 10 kits culturais: imperial, alto-elfico,
+  elfo da floresta, anao, nortenho, draconato, goblin, desertico, porto e
+  medieval generico.
+- Tres variantes arquitetonicas e alturas de 1 a 3 pavimentos por kit.
+- Novas fachadas, telhados, janelas, portas, varandas, colunas, contrafortes,
+  chaminés e detalhes proprios de cada cultura.
+- Substitui casas reais no nucleo e em parte dos bairros exteriores proximos,
+  em vez de simplesmente adicionar ornamentos sobre as casas antigas.
+- Nas maiores cidades, ate ~340 casas ganham modelos novos. Nas cidades menores,
+  o numero depende dos lotes e do porte urbano.
+- Casas distantes continuam no modelo simplificado e instanciado, por desempenho.
+- Arvores com troncos ramificados e especies adicionais para culturas elficas.
+- Torres com novos detalhes de cantaria e reforcos.
+
+COMO O ATLAS CARREGA
+- Nenhum modelo de cidade e criado ao abrir o mapa mundial ou clicar na ficha.
+- Os modelos sao montados APENAS ao escolher "Ver no local".
+- A cena usa InstancedMesh (mesma geometria para varias casas) para reduzir
+  draw calls, e todos os objetos da cidade sao desmontados ao sair.
+- As texturas CC0 existentes continuam compativeis e sao carregadas sob demanda.
+
+INSTRUCOES — HOTFIX V20 (para quem ja esta com a v19 funcional)
+1. Fechar o Atlas e a aba do navegador.
+2. Descompactar todo o hotfix sobre a pasta que contem silvengard-interactive-map.
+3. Mesclar pastas e SOBRESCREVER quando solicitado.
+4. Abrir o executavel original e forcar Ctrl+Shift+R, se necessario.
+5. Entrar numa cidade e verificar a linha "casas com modelos 3D v20" na
+   ficha/indicador da exploracao local.
+
+PACOTE COMPLETO
+- A v20 acumulativa inclui todos os upgrades ate a v19.
+- Nao inclui o Silvengard-Atlas.exe da instalacao base. Nao apague o original.
+- Nao e preciso baixar novamente as sete imagens CC0 ja instaladas.
+
+LIMITACOES E DIRECAO DE ARTE
+- Os modelos geometricos sao ORIGINAIS, criados para esta versao com Three.js.
+  Nao sao modelos GLB fotorealistas externos: o visual continua estilizado,
+  apesar da mudanca real em fachadas, volume, telhados, arvores e torres.
+- A imagem de comparacao fornecida fora da pasta e uma projecao offline dos
+  modelos, NAO um print em tempo real do aplicativo.
+- Exteriores de fortalezas e palacios historicos continuam existentes.
+- O teste WebGL headless nao funcionou neste ambiente (sem inicializacao EGL).
+  Foram feitos testes automatizados de geometria, cidade e importacao.

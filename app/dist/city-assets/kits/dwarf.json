@@ -1,1 +1,20 @@
-{"kit":"dwarf","textures":["rock","stone","paving","wood","ground","roofing"],"quality":"mixed"}
+{
+  "kit": "dwarf",
+  "textures": [
+    "rock",
+    "stone",
+    "paving",
+    "wood",
+    "ground",
+    "roofing"
+  ],
+  "quality": "v20-rebuilt-geometry",
+  "architecture": {
+    "enabled": true,
+    "theme": "dwarf",
+    "coreCoverage": 0.55,
+    "maxHouses": 260,
+    "variants": 3,
+    "description": "prefabs geometricos reais instanciados, por cultura"
+  }
+}

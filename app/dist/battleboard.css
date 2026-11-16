@@ -84,3 +84,41 @@
   .bbHead h2 { font-size: 23px; }
   .bbLeft { padding: 8px; }
 }
+
+/* ===== v4: barra de ações do token, dados e rolagens ===== */
+#bbActionBar{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);z-index:6;display:flex;flex-direction:column;gap:6px;align-items:center;max-width:calc(100% - 24px)}
+#bbActionBar[hidden],#bbMenu[hidden],#bbHint[hidden]{display:none}
+.bbBarRow{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:6px 8px;border-radius:14px;background:rgba(11,23,28,.9);border:1px solid rgba(220,192,138,.3);backdrop-filter:blur(8px)}
+.bbBarRow button{height:30px;padding:0 11px;border-radius:9px;border:1px solid rgba(201,218,205,.14);background:rgba(255,255,255,.05);color:#e8e4d4;font:600 11.5px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap}
+.bbBarRow button:hover,.bbBarRow button.on{background:rgba(220,192,138,.2);border-color:rgba(220,192,138,.5);color:#f1dda9}
+.bbBarRow .danger{border-color:#ff8f86;color:#ff8f86}
+.bbTargetChip{display:inline-flex;align-items:center;gap:6px;padding:0 6px 0 10px;height:30px;border-radius:9px;background:rgba(255,143,134,.14);border:1px solid rgba(255,143,134,.4);color:#ffd2cd;font:600 11px 'DM Sans',sans-serif}
+.bbTargetChip.none{background:rgba(255,255,255,.04);border-color:rgba(201,218,205,.14);color:#9fb0aa}
+.bbTargetChip button{height:20px;width:20px;padding:0;border-radius:6px}
+.bbMode.adv{border-color:#8fd49b!important;color:#8fd49b!important}.bbMode.dis{border-color:#ff8f86!important;color:#ff8f86!important}
+.bbSeq{display:inline-flex;align-items:center;gap:6px;color:#f1dda9;font:600 11px 'DM Sans',sans-serif}
+#bbMenu{position:absolute;left:50%;bottom:112px;transform:translateX(-50%);z-index:7;width:min(560px,calc(100% - 24px));max-height:46%;overflow:auto;padding:8px;border-radius:14px;background:rgba(11,23,28,.96);border:1px solid rgba(220,192,138,.4);box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.bbMenuRow{display:flex;width:100%;justify-content:space-between;align-items:center;gap:10px;text-align:left;padding:7px 10px;margin:2px 0;border-radius:9px;border:1px solid transparent;background:transparent;color:#e8e4d4;cursor:pointer;font:500 12px 'DM Sans',sans-serif}
+.bbMenuRow:hover{background:rgba(220,192,138,.12);border-color:rgba(220,192,138,.3)}
+.bbMenuRow small{display:block;color:#9fb0aa;font-size:10.5px;margin-top:2px}.bbMenuRow i{font-style:normal;color:#f1dda9;font-weight:700}
+.bbMenuHead{margin:8px 4px 3px;font:700 9.5px 'DM Sans',sans-serif;letter-spacing:1.6px;text-transform:uppercase;color:#9fb0aa}
+.bbMenuNote{padding:4px 8px;font-size:11px;color:#c5d0c9}.bbMenuOpts{display:flex;gap:12px;flex-wrap:wrap;padding:4px 8px;font-size:11.5px;color:#e8e4d4}
+.bbMenuPair{display:flex;gap:6px;margin:3px 0}.bbMenuPair button,.bbMenuSkills button,.bbChips button{flex:1;height:28px;padding:0 8px;border-radius:8px;border:1px solid rgba(201,218,205,.14);background:rgba(255,255,255,.05);color:#e8e4d4;font:600 11px 'DM Sans',sans-serif;cursor:pointer}
+.bbMenuSkills,.bbChips{display:flex;flex-wrap:wrap;gap:5px}.bbMenuSkills button,.bbChips button{flex:0 0 auto}
+.bbChips button.on{background:rgba(220,192,138,.25);border-color:#dcc08a;color:#f1dda9}
+.bbMenuPair button:hover,.bbMenuSkills button:hover,.bbChips button:hover{background:rgba(220,192,138,.16)}
+#bbHint{position:absolute;left:50%;top:12px;transform:translateX(-50%);z-index:7;padding:8px 16px;border-radius:99px;background:rgba(11,23,28,.94);border:1px solid #ff8f86;color:#ffd2cd;font:600 12px 'DM Sans',sans-serif}
+#bbRollBanner{position:absolute;left:50%;top:22%;transform:translate(-50%,-10px) scale(.96);z-index:8;opacity:0;pointer-events:none;padding:14px 26px;border-radius:16px;background:rgba(11,23,28,.94);border:2px solid #dcc08a;color:#f1dda9;font:600 22px 'Cormorant Garamond',Georgia,serif;transition:opacity .2s,transform .2s;text-align:center}
+#bbRollBanner.show{opacity:1;transform:translate(-50%,0) scale(1)}#bbRollBanner.good{border-color:#8fd49b;color:#bfeac6}#bbRollBanner.bad{border-color:#ff8f86;color:#ffc7c2}
+.bbDice{position:absolute;left:10px;top:10px;z-index:6}.bbDiceTray{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.bbDiceToggle{height:32px;padding:0 12px;border-radius:10px;border:1px solid rgba(220,192,138,.4);background:rgba(11,23,28,.92);color:#f1dda9;font:700 12px 'DM Sans',sans-serif;cursor:pointer}
+.bbDiceBody{display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:12px;background:rgba(11,23,28,.94);border:1px solid rgba(220,192,138,.3)}.bbDiceBody[hidden]{display:none}
+.bbDiceRow{display:flex;gap:4px}.bbDiceRow button,.bbDiceRow input{height:28px;padding:0 9px;border-radius:8px;border:1px solid rgba(201,218,205,.16);background:rgba(255,255,255,.06);color:#e8e4d4;font:600 11px 'DM Sans',sans-serif;cursor:pointer}
+.bbDiceRow input{width:96px;cursor:text}.bbDiceRow button.on{background:rgba(220,192,138,.25);border-color:#dcc08a;color:#f1dda9}.bbDiceRow button:hover{background:rgba(220,192,138,.16)}
+.bbLog{max-height:260px;overflow:auto;display:flex;flex-direction:column;gap:6px}
+.bbLogRow{padding:7px 9px;border-radius:9px;background:rgba(255,255,255,.04);border-left:3px solid #dcc08a;font-size:11.5px;line-height:1.45;color:#dfe6df}.bbLogRow.miss{border-left-color:#7d8b87;opacity:.9}.bbLogRow.good{border-left-color:#8fd49b}
+.bbLogHead{display:flex;justify-content:space-between;gap:8px}.bbLogHead small{color:#9fb0aa}
+.bbDie{display:inline-block;min-width:20px;padding:0 4px;border-radius:5px;background:rgba(255,255,255,.1);text-align:center;font-weight:700}.bbDie.crit{background:#dcc08a;color:#1b2a2c}.bbDie.fumble{background:#ff8f86;color:#2a0f0d}
+.bbLogRow .good{color:#8fd49b}.bbLogRow .bad{color:#ff8f86}.warnTxt{color:#f0c36d}
+.bbLogActions{margin-top:5px}.bbLogActions button{margin-right:4px;padding:3px 8px;border-radius:7px;border:1px solid #dcc08a;background:rgba(220,192,138,.14);color:#f1dda9;font:600 10.5px 'DM Sans',sans-serif;cursor:pointer}
+.multiReq{display:flex;flex-direction:column;gap:3px;margin:8px 0}.multiReqRow{display:flex;gap:8px;align-items:center;font-size:12px}.multiReqRow.ok span:first-child{color:#8fd49b}.multiReqRow.bad span:first-child{color:#ff8f86}.multiReqRow small{margin-left:auto;color:#9fb0aa}.multiIgnore{display:flex;align-items:center;gap:8px;font-size:12px;margin:6px 0}

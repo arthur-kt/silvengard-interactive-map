@@ -1,1 +1,19 @@
-{"kit":"wood-elf","textures":["ground","wood","rock","roofing","stone"],"quality":"mixed"}
+{
+  "kit": "wood-elf",
+  "textures": [
+    "ground",
+    "wood",
+    "rock",
+    "roofing",
+    "stone"
+  ],
+  "quality": "v20-rebuilt-geometry",
+  "architecture": {
+    "enabled": true,
+    "theme": "wood-elf",
+    "coreCoverage": 0.66,
+    "maxHouses": 260,
+    "variants": 3,
+    "description": "prefabs geometricos reais instanciados, por cultura"
+  }
+}

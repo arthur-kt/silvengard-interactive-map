@@ -284,6 +284,19 @@ function computeWeaponAttack(weapon, abilities, pb) {
   };
 }
 
+/** Uma entrada por classe conjuradora (multiclasse): cada uma com a sua CD, ataque e atributo. */
+function casterClassesOf(classEntries, abilities, pb) {
+  const out = [];
+  for (const entry of classEntries || []) {
+    const raw = String(entry.class?.spellcastingAbility || '').toLowerCase();
+    const key = ABILITY_BY_NAME[raw] || (raw.startsWith('char') ? 'cha' : raw.startsWith('wis') ? 'wis' : raw.startsWith('int') ? 'int' : '');
+    if (!key) continue;
+    const mod = abilityMod(abilities[key]?.score ?? 10);
+    out.push({id: String(entry.class?.id || '').split('__')[0], name: String(entry.class?.name || ''), ability: key, mod, dc: 8 + pb + mod, attack: pb + mod});
+  }
+  return out;
+}
+
 function computeSpellcasting(classDefs, abilities, pb, cah) {
   const caster = classDefs.find((classDef) => classDef?.spellcastingAbility) || classDefs[0];
   const rawAbility = String(caster?.spellcastingAbility || '').toLowerCase();
@@ -759,6 +772,7 @@ export function normalizeNative(native) {
       attack: pb + abilityModifier,
       abilityMod: abilityModifier,
     },
+    casterClasses: casterClassesOf(classEntries, abilities, pb),
     hitDice: classEntries.map((entry) => ({die: entry.class?.hitDie || 'd8', max: num(entry.level, 1), current: num(entry.level, 1)})),
     spellSlots: slots.slots || [],
     bonusSpellSlots: [0, 0, 0, 0, 0, 0, 0, 0, 0],

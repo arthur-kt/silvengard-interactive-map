@@ -96,6 +96,8 @@ function spellRange(spell) {
   return match ? Number(match[1]) : null;
 }
 
+import {createActions} from './battle-actions.js?v=6';
+
 export function createBattleboard({characters, toast = () => {}} = {}) {
   const panel = document.createElement('aside');
   panel.id = 'battleboard';
@@ -157,6 +159,7 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
       </aside>
       <div class="bbCanvasWrap" id="bbCanvasWrap">
         <canvas id="bbCanvas"></canvas>
+        <div id="bbDice" class="bbDice"></div>
         <div class="bbLegend">Arraste os tokens ou use as setas · 1 quadrado = 5 pés · 30 × 20 · sem scroll: use ← ↑ ↓ → e +/−</div>
       </div>
       <aside class="bbRight">
@@ -165,6 +168,9 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
         <h3>Magia</h3>
         <label class="bbSpellLabel">Magia do personagem<select id="bbSpell"><option value="">Escolha uma magia…</option></select></label>
         <div id="bbAreaInfo" class="bbAreaInfo"></div>
+        <h3>Rolagens</h3>
+        <div id="bbLog" class="bbLog"></div>
+        <button class="bbClearTerrain" data-bb-clear-log>Limpar rolagens</button>
         <h3>Iniciativa</h3>
         <div class="bbCombat" id="bbCombat"></div>
         <h3>Combates</h3>
@@ -244,6 +250,8 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
       token.maxHp = sheet.hp.max;
       token.hp = Math.min(sheet.hp.current, sheet.hp.max);
       token.initiativeBonus = Number(sheet.initiative) || 0;
+      token.ac = sheet.ac;
+      token.tempHp = Number(sheet.hp?.temp) || 0;
     }
     save();
     renderSelected();
@@ -318,6 +326,7 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
       initiativeBonus: Number(monster.initiative) || 0,
     };
     data.tokens.push(token);
+    actions?.initToken(token);
     selectedId = token.id;
     save();
     renderSelected();
@@ -375,6 +384,7 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
     if (!token) {
       box.innerHTML = '<p class="charMuted">Clique em um token para ver detalhes.</p>';
       renderSpellOptions();
+      actions?.render(null);
       return;
     }
     box.innerHTML = `
@@ -418,6 +428,7 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
       draw();
     });
     renderSpellOptions();
+    actions?.render(token);
   }
 
   function renderCombat() {
@@ -505,7 +516,7 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
       data.combat.round += 1;
     }
     const next = data.tokens.find((entry) => entry.id === data.combat.order[data.combat.turn]);
-    if (next) next.moved = 0;
+    if (next) { next.moved = 0; actions?.onTurnStart(next); }
     selectedId = next?.id || selectedId;
     save();
     renderCombat();
@@ -690,6 +701,7 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
     if (template) drawTemplate(ctx);
     if (measure?.start) drawMeasure(ctx);
     for (const token of data.tokens) drawToken(ctx, token);
+    actions?.drawOverlay(ctx, {cell});
     ctx.restore();
   }
 
@@ -828,6 +840,15 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
   canvas = $('#bbCanvas');
   wrap = $('#bbCanvasWrap');
   ctx = canvas.getContext('2d');
+  const actions = createActions({
+    wrap, logBox: $('#bbLog'), characters, toast,
+    getTokens: () => data.tokens, getSelected: () => selectedToken(), selectToken: (id) => { selectedId = id; renderSelected(); draw(); },
+    save, redraw: () => draw(), rerenderSelected: () => { renderSelected(); renderCombat(); draw(); },
+    getTemplate: () => template, clearTemplate: () => { template = null; draw(); }, getMonsters: () => monsters, distanceFt,
+    armArea: (pseudo) => { spell = pseudo; template = null; mode = 'template'; setModeButton(); draw(); },
+  });
+  actions.mountDice($('#bbDice'));
+  $('[data-bb-clear-log]')?.addEventListener('click', () => { try { localStorage.removeItem('silvengard-battlelog-v1'); } catch { /* sem persistência */ } $('#bbLog').innerHTML = '<p class="charMuted">As rolagens aparecem aqui.</p>'; });
 
   canvas.addEventListener('wheel', (event) => {
     event.preventDefault();
@@ -835,7 +856,15 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
     draw();
   }, {passive: false});
 
+  canvas.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+    const point = cellAt(event);
+    const token = tokenAt(point.x, point.y);
+    if (token) actions.setTarget(token, event.shiftKey); else actions.setTarget(null);
+  });
+
   canvas.addEventListener('pointerdown', (event) => {
+    if (event.button === 2) return;
     const point = cellAt(event);
     if (mode === 'measure') {
       if (!measure?.start || measure.end) measure = {start: point, end: null, hover: null};
@@ -859,6 +888,7 @@ export function createBattleboard({characters, toast = () => {}} = {}) {
       return;
     }
     const token = tokenAt(point.x, point.y);
+    if (token && actions?.isTargeting()) { actions.pickTarget(token); return; }
     selectedId = token?.id || null;
     if (token) {
       dragging = {token, startX: token.x, startY: token.y, movedBefore: num(token.moved), offsetX: point.x - token.x, offsetY: point.y - token.y};

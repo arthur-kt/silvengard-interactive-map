@@ -1,1 +1,19 @@
-{"kit":"port","textures":["ground","paving","stone","wood","roofing"],"quality":"mixed"}
+{
+  "kit": "port",
+  "textures": [
+    "ground",
+    "paving",
+    "stone",
+    "wood",
+    "roofing"
+  ],
+  "quality": "v20-rebuilt-geometry",
+  "architecture": {
+    "enabled": true,
+    "theme": "port",
+    "coreCoverage": 0.57,
+    "maxHouses": 340,
+    "variants": 3,
+    "description": "prefabs geometricos reais instanciados, por cultura"
+  }
+}

@@ -5,7 +5,7 @@
 // com cais e trapiches quando há água, campos e moinho no entorno. O relevo e a água
 // vêm do campo local (local-field.js), então tudo assenta no chão de verdade.
 import * as THREE from 'three';
-import {Mesher,STYLES,addBuilding,addChurch2,addTownHall,addKeepHall,addFountain,addFence,addWell,addStall,addBarrel,addCrate,addLamp,addTower,addFort,addHaystack,addTent,addPillar,addLog,addWallSegment,addBanner,addHouse,addBoat,addCrane,tc,PAL,portModel} from './settlements.js?v=56';
+import {Mesher,STYLES,addBuilding,addChurch2,addTownHall,addKeepHall,addFountain,addFence,addWell,addStall,addBarrel,addCrate,addLamp,addTower,addFort,addHaystack,addTent,addPillar,addLog,addWallSegment,addBanner,addHouse,addBoat,addCrane,tc,PAL,portModel} from './settlements.js?v=20.0';
 import {populationRadiusM,M_PER_UNIT} from './local-field.js?v=81';
 import {NOISE} from './visuals.js?v=56';
 import {cc0Uniforms} from './cc0-textures.js?v=1';
@@ -260,7 +260,7 @@ function addFabric(env){
  if(env.snow)roofCols=SNOW_ROOF_COLS.slice();
  const flatStyle=style.roofKind==='flat';
  const themedStyle=d=>styleForDistrict(style,d);
- let n=0,ng=0,nh=0,nf=0,nu=0;
+ let n=0,nTotal=0,ng=0,nh=0,nf=0,nu=0;
  const spotOK=(u,v)=>{
   const rr=Math.hypot(u,v);if(rr<r0||rr>R*1.02)return false;
   const mx=cx+u,my=cy+v;
@@ -279,13 +279,23 @@ function addFabric(env){
   return true;
  };
  const emit=(u,v,w,d,h,rot,styleOverride=null)=>{
-  if(n>=fabricLimit)return false;
+  if(nTotal>=fabricLimit)return false;
   const localStyle=styleOverride||style;
   const localWallCols=localStyle.cols&&localStyle.cols.length?localStyle.cols:wallCols;
   const localRoofCols=env.snow?SNOW_ROOF_COLS:(localStyle.roofCols&&localStyle.roofCols.length?localStyle.roofCols:roofCols);
   const localFlatStyle=localStyle.roofKind==='flat';
   const mx=cx+u,my=cy+v,gy=G(mx,my);
   const[ax,az]=toW(cx+u,cy+v);
+  // v20: ampliar a substituicao real aos bairros do casario exterior mais proximos
+  // das ruas centrais. As casas antigas sao omitidas deste lote, nao sobrepostas.
+  const kit=env.assetPack?.architecture,slots=env.v20Slots;
+  const inner=Math.hypot(u,v)<R*.67;
+  if(kit?.enabled&&slots&&inner&&slots.length<(kit.maxHouses||280)&&rand()<(kit.coreCoverage||.5)*.33){
+    slots.push({at:[ax,gy+.02,az],rot,w,d,floors:Math.max(1,Math.min(3,Math.round(h/1.65))),type:'house'});
+    addSolid(mx,my,Math.max(w,d)*.42);
+    nTotal++;
+    return true;
+  }
   p.set(ax,gy+.02,az);q.setFromAxisAngle(up,rot);
   s3.set(w,h,d);m4.compose(p,q,s3);walls.setMatrixAt(n,m4);
   walls.setColorAt(n,new THREE.Color(localWallCols[Math.floor(rand()*localWallCols.length)]).multiplyScalar(.9+rand()*.2));
@@ -309,7 +319,7 @@ function addFabric(env){
    p.set(ax+Math.sin(rot)*fz,gy+h-.85,az+Math.cos(rot)*fz);m4.compose(p,q,s3);uppers.setMatrixAt(nu,m4);nu++;
   }
   addSolid(mx,my,Math.max(w,d)*.42);
-  n++;return true;
+  n++;nTotal++;return true;
  };
  // proporções variadas: casebre, casa alta, casa comprida, torre
  const pickHouse=(r,core)=>{
@@ -322,7 +332,7 @@ function addFabric(env){
  // 1. frente de rua
  for(const rd of lay.roads){
   const pp=pointsAlong(rd.pts),step=rd.main?5.8:6.6;
-  for(let s=0;s<pp.total&&n<fabricLimit;s+=step){
+  for(let s=0;s<pp.total&&nTotal<fabricLimit;s+=step){
    const q2=pp.at(s),r=Math.hypot(q2.x,q2.y);
    if(r<r0||r>R*.99)continue;
    const nx=-q2.ty,ny=q2.tx;
@@ -340,7 +350,7 @@ function addFabric(env){
  }
  // 2. fundo dos quarteirões
  let attempts=0;
- while(n<fabricLimit&&attempts<50000){
+ while(nTotal<fabricLimit&&attempts<50000){
   attempts++;
   const r=Math.sqrt(r0*r0+rand()*(R*R-r0*r0));
   const a=rand()*Math.PI*2;
@@ -360,7 +370,7 @@ function addFabric(env){
  group.add(walls,bases,fronts);
  if(nu)group.add(uppers);
  if(ng)group.add(gables);if(nh)group.add(hips);if(nf)group.add(flats);
- return {group,count:n};
+ return {group,count:nTotal};
 }
 
 /* ---------- porto ---------- */
@@ -440,7 +450,8 @@ function landAtSafe(env,mx,my){return env.landAt?env.landAt(mx,my):true}
 /* ---------- construção da localidade ---------- */
 export function buildTownV2(env){
  const{b,cx,cy,lay,rand,climate,color,G,landAt,toW,addSolid,pathAt,footprintY,special,field,site,blueprint}=env,style=env.style||STYLES[climate]||STYLES.temperate;
- const m=new Mesher(),placed=[],smoke=[],fields=[],lamps=[],people=[],counts={shop:0,tavern:0,smithy:0};let windmill=null;const giantFoliage=new THREE.Group();giantFoliage.name='arvoresSagradasV7';
+ const m=new Mesher(),placed=[],smoke=[],fields=[],lamps=[],people=[],counts={shop:0,tavern:0,smithy:0};let windmill=null;
+ const prefabSlots=[];const architecture=env.assetPack?.architecture?.enabled?env.assetPack.architecture:null;const giantFoliage=new THREE.Group();giantFoliage.name='arvoresSagradasV7';
  const v12Foliage=new THREE.Group();v12Foliage.name='PomaresDeAlia';const v12Stats={};let v14Stats=null;
  if(Number.isFinite(lay.imperialV12?.fabricCap))lay.fabricCap=lay.imperialV12.fabricCap;
  // Nas cidades escavadas, a cidade exterior e um pequeno recinto de acesso: os verdadeiros bairros sao internos.
@@ -452,7 +463,13 @@ export function buildTownV2(env){
  const put=(type,u,v,rot,w,d,floors,opts={})=>{const rc={x:u,z:v,r:rot,hw:w/2,hd:d/2};if(!free(rc,opts.pad??.25)||!okPath(rc)||flat(u,v,Math.min(w,d)/2)>1.6)return false;
   const[x,z]=world(u,v),y=footprintY(cx+u,cy+v,Math.min(w,d)/2)+.05;
   const localStyle=opts.styleOverride||style;
-  addBuilding(m,{at:[x,y,z],rot,w,d,floors,type,style:localStyle,R:rand,smoke,gableFront:opts.gableFront});placed.push(rc);solid(rc);return true};
+  // v20: substituir de verdade a malha de parte das casas por um modelo 3D do kit
+  // local. O modelo permanece NO lote existente, sem duplicar o casario antigo.
+  const isHouse=(type==='house'||type==='shop'||type==='tavern');
+  const replace=isHouse&&architecture&&prefabSlots.length<Math.min(architecture.maxHouses||200,Math.round(lay.N*.76))&&rand()<architecture.coreCoverage;
+  if(replace)prefabSlots.push({at:[x,y,z],rot,w,d,floors,type});
+  else addBuilding(m,{at:[x,y,z],rot,w,d,floors,type,style:localStyle,R:rand,smoke,gableFront:opts.gableFront});
+  placed.push(rc);solid(rc);return true};
  const placePalace=(d)=>{
   const styleName=blueprint?.urbanV7?.palaceStyle;
   if(styleName){
@@ -792,7 +809,7 @@ export function buildTownV2(env){
   }
  }
  // ----- malha urbana da periferia
- const fabric=addFabric(env);
+ const fabric=addFabric({...env,v20Slots:prefabSlots});
  // ----- porto
  let harbour=null;try{harbour=buildHarbour({...env,cx,cy,style})}catch(err){console.warn('porto:',err)}
  // ----- moradores (só em ruas de terra firme)
@@ -808,7 +825,7 @@ export function buildTownV2(env){
  const groups=[m.group()];if(giantFoliage.children.length)groups.push(giantFoliage);if(v12Foliage.children.length)groups.push(v12Foliage);if(Object.keys(mm.k).length)groups.push(mm.group());
  if(fabric.count)groups.push(fabric.group);
  if(harbour){groups.push(harbour.mesh,...harbour.extras)}
- return{groups,people,fields,windmill,smoke,lamps,wallR,placed,fabric:fabric.count,v7:{palaces:lay.palaceComplexes?.length||0,bridges:lay.bridges?.length||0,stiltHouses:lay.marshStilts||0,treeHomes:lay.livingTreeHomes||0},v12:v12Stats,v14:v14Stats};
+ return{groups,people,fields,windmill,smoke,lamps,wallR,placed,prefabSlots,fabric:fabric.count,v7:{palaces:lay.palaceComplexes?.length||0,bridges:lay.bridges?.length||0,stiltHouses:lay.marshStilts||0,treeHomes:lay.livingTreeHomes||0},v12:v12Stats,v14:v14Stats};
 }
 
 /* ---------- pontos de interesse do ermo ---------- */

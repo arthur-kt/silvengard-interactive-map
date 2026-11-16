@@ -1,1 +1,19 @@
-{"kit":"goblin","textures":["ground","mud","wood","roofing","stone"],"quality":"mixed"}
+{
+  "kit": "goblin",
+  "textures": [
+    "ground",
+    "mud",
+    "wood",
+    "roofing",
+    "stone"
+  ],
+  "quality": "v20-rebuilt-geometry",
+  "architecture": {
+    "enabled": true,
+    "theme": "goblin",
+    "coreCoverage": 0.67,
+    "maxHouses": 260,
+    "variants": 3,
+    "description": "prefabs geometricos reais instanciados, por cultura"
+  }
+}

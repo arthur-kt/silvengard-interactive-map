@@ -357,20 +357,33 @@ function mergeParts(parts){const pos=[],nor=[];for(const g0 of parts){const g=g0
  const o=new THREE.BufferGeometry();o.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));o.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3));return o}
 const at=(g,x,y,z)=>{g.translate(x,y,z);return g};
 function treeKit(){
- const trunk=mergeParts([at(new THREE.CylinderGeometry(.13,.32,3.1,7),0,1.55,0),
-  at(new THREE.CylinderGeometry(.05,.1,1.2,5).rotateZ(.9),.55,2.7,0),
-  at(new THREE.CylinderGeometry(.05,.1,1,5).rotateZ(-1),-.5,2.5,.1)]);
- const tiers=[];for(let i=0;i<7;i++)tiers.push(at(new THREE.ConeGeometry(1.6-i*.19,2.05,9),0,1.9+i*.92,0));
+ // v20: geometria nova com ramificacoes volumetricas, raizes, coniferas
+ // mais densas, ciprestes esguios e arvores ancestrais de copas alargadas.
+ // Tudo instanciado: geometria criada 1x por tipo e reutilizada na cidade.
+ const trunk=mergeParts([at(new THREE.CylinderGeometry(.13,.34,3.35,8),0,1.67,0),
+  at(new THREE.CylinderGeometry(.07,.14,1.8,6).rotateZ(.87),.64,2.5,0),
+  at(new THREE.CylinderGeometry(.065,.15,1.55,6).rotateZ(-.88),-.72,2.4,.2),
+  at(new THREE.CylinderGeometry(.07,.14,1.35,6).rotateX(.8),0,2.1,-.57),
+  ...[0,1,2,3].map(i=>at(new THREE.CylinderGeometry(.11,.24,.88,5).rotateZ(.48+i*.13).rotateY(i*1.57),Math.cos(i*1.57)*.2,.38,Math.sin(i*1.57)*.2))]);
+ const trunkAncient=mergeParts([at(new THREE.CylinderGeometry(.22,.67,6.1,10),0,3.05,0),
+  ...[0,1,2,3,4].map(i=>at(new THREE.CylinderGeometry(.12,.23,3.5,7).rotateZ(-.78).rotateY(i*1.2566),Math.cos(i*1.2566)*1.1,4.5,Math.sin(i*1.2566)*1.1)),
+  ...[0,1,2,3,4,5].map(i=>at(new THREE.CylinderGeometry(.10,.29,2.05,6).rotateZ(.9).rotateY(i*1.0472),Math.cos(i*1.0472)*.35,.72,Math.sin(i*1.0472)*.35))]);
+ const tiers=[];
+ for(let i=0;i<6;i++)tiers.push(at(new THREE.ConeGeometry(1.70-i*.21,2.1,10),0,2.1+i*.89,0));
  const conifer=mergeParts(tiers);
- const round=mergeParts([[0,4.2,0,1.65],[1,3.7,.5,1.15],[-1,3.8,-.45,1.2],[.25,5.1,-.2,1.05],[-.2,3.5,1.05,.95],[.65,3.6,-.95,1],[ -.75,4.7,.5,.9]]
-  .map(([x,y,z,r])=>at(new THREE.IcosahedronGeometry(r,2),x,y,z)));
- const acacia=mergeParts([at(new THREE.SphereGeometry(2.3,9,6).scale(1,.38,1),0,4.6,0),
-  at(new THREE.SphereGeometry(1.35,8,5).scale(1,.4,1),1.4,4,0.4),
-  at(new THREE.SphereGeometry(1.2,8,5).scale(1,.4,1),-1.3,4.1,-.5)]);
- const palm=mergeParts([at(new THREE.CylinderGeometry(.11,.2,4.6,6),0,2.3,0),
+ const round=mergeParts([[0,4.30,0,1.55],[1.02,3.82,.5,1.13],[-1.04,4.0,-.45,1.1],[.25,5.2,-.2,1.04],[-.3,3.65,.95,.95],[.75,3.73,-1.,.88],[-.80,4.65,.52,.88]]
+  .map(([x,y,z,r])=>at(new THREE.IcosahedronGeometry(r,1),x,y,z)));
+ const ancient=mergeParts([[0,7.2,0,2.5],[1.8,6.6,.7,2],[-1.9,6.65,-.6,2.15],[.4,8.05,-.8,1.85],[-.3,6.1,1.65,1.60],[1.2,6.3,-1.75,1.5],[-1.3,7.7,1.25,1.5]]
+  .map(([x,y,z,r])=>at(new THREE.IcosahedronGeometry(r,1),x,y,z)));
+ const cypress=mergeParts([[.95,2.3,2],[.83,3.36,2],[.69,4.46,1.9],[.52,5.45,1.65],[.35,6.42,1.55],[.14,7.19,1.20]]
+  .map(([r,y,h])=>at(new THREE.ConeGeometry(r,h,10),0,y,0)));
+ const acacia=mergeParts([at(new THREE.SphereGeometry(2.3,10,6).scale(1,.36,1),0,4.6,0),
+  at(new THREE.SphereGeometry(1.35,9,6).scale(1,.38,1),1.4,4,.4),
+  at(new THREE.SphereGeometry(1.2,9,6).scale(1,.38,1),-1.3,4.1,-.5)]);
+ const palm=mergeParts([at(new THREE.CylinderGeometry(.11,.2,4.6,7),0,2.3,0),
   ...[[0,4.7,0],[.9,4.5,.4],[-.9,4.4,-.4],[.3,4.9,.9],[-.3,4.8,-.9]].map(([x,y,z],i)=>
-   at(new THREE.SphereGeometry(1.15,7,4).scale(1,.3,1.5).rotateZ(i*.4),x,y,z))]);
- return {trunk,conifer,round,acacia,palm};
+   at(new THREE.SphereGeometry(1.15,8,5).scale(1,.25,1.5).rotateZ(i*.4),x,y,z))]);
+ return {trunk,trunkAncient,conifer,round,ancient,cypress,acacia,palm};
 }
 
 export function buildForest({field,site,blocked=()=>false,pathAt=null,radius=null,seed=1}){
@@ -378,13 +391,15 @@ export function buildForest({field,site,blocked=()=>false,pathAt=null,radius=nul
  const rand=rng(seed|0);
  const climate=site.climate;
  const kit=treeKit();
- const kinds=climate==='tropical'?['palm','round','round']:
+ const kinds=site.urbanWoodland?.style==='woodland-elf'?['ancient','ancient','round','cypress','round']:
+  site.urbanWoodland?.style==='high-elf'?['round','cypress','round','ancient','conifer']:
+  climate==='tropical'?['palm','round','round']:
   climate==='arid'?['acacia','acacia']:
   climate==='boreal'||climate==='alpine'?['conifer','conifer','round']:
   climate==='cold'||climate==='tundra'||climate==='ice'?['conifer']:
   ['round','round','conifer'];
- const mats={conifer:'#5a8b50',round:'#6aa855',acacia:'#a6b261',palm:'#72ab59'};
- const lists={conifer:[],round:[],acacia:[],palm:[]};
+ const mats={conifer:'#537b50',round:'#659954',ancient:'#4f8a65',cypress:'#527d69',acacia:'#a6b261',palm:'#72ab59'};
+ const lists=Object.fromEntries(Object.keys(mats).map(k=>[k,[]]));
  const max=6200;
  let total=0;
  // sorteio por rejeição: a densidade de floresta decide onde as árvores ficam
@@ -411,7 +426,7 @@ export function buildForest({field,site,blocked=()=>false,pathAt=null,radius=nul
   if(!items.length)continue;
   const crownMat=new THREE.MeshStandardMaterial({color:mats[type],roughness:1,flatShading:false});
   const crown=new THREE.InstancedMesh(kit[type],crownMat,items.length);
-  const trunk=new THREE.InstancedMesh(kit.trunk,trunkMat,items.length);
+  const trunk=new THREE.InstancedMesh(type==='ancient'?kit.trunkAncient:kit.trunk,trunkMat,items.length);
   items.forEach(([x,z,scale,rot,shade,r],i)=>{
    p.set(x/M,field.heightM(x,z)/M-.08,z/M);q.setFromAxisAngle(up,rot);
    sc.set(scale,scale*(.9+r*.3),scale);m4.compose(p,q,sc);

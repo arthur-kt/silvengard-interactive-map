@@ -1,1 +1,18 @@
-{"kit":"northern","textures":["ground","stone","wood","roofing"],"quality":"mixed"}
+{
+  "kit": "northern",
+  "textures": [
+    "ground",
+    "stone",
+    "wood",
+    "roofing"
+  ],
+  "quality": "v20-rebuilt-geometry",
+  "architecture": {
+    "enabled": true,
+    "theme": "northern",
+    "coreCoverage": 0.59,
+    "maxHouses": 340,
+    "variants": 3,
+    "description": "prefabs geometricos reais instanciados, por cultura"
+  }
+}

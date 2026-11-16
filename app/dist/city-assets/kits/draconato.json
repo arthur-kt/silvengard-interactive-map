@@ -1,1 +1,19 @@
-{"kit":"draconato","textures":["rock","stone","wood","ground","roofing"],"quality":"mixed"}
+{
+  "kit": "draconato",
+  "textures": [
+    "rock",
+    "stone",
+    "wood",
+    "ground",
+    "roofing"
+  ],
+  "quality": "v20-rebuilt-geometry",
+  "architecture": {
+    "enabled": true,
+    "theme": "draconato",
+    "coreCoverage": 0.61,
+    "maxHouses": 260,
+    "variants": 3,
+    "description": "prefabs geometricos reais instanciados, por cultura"
+  }
+}

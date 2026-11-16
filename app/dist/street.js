@@ -7,10 +7,10 @@
 // ou voando (dois toques no espaço), com moradores que só andam em terra firme.
 import * as THREE from 'three';
 import {shared,treeMaterial} from './visuals.js?v=56';
-import {Mesher,retexture,rng,tc,PAL,STYLES} from './settlements.js?v=80';
-import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=84';
+import {Mesher,retexture,rng,tc,PAL,STYLES} from './settlements.js?v=20.0';
+import {makeLayout,buildTownV2,buildWildFeatures,climateOf,CLIMATE_NAME} from './town.js?v=20.0';
 import {siteFor,createField,M_PER_UNIT as M} from './local-field.js?v=81';
-import {buildTerrain,localGroundMaterial,buildWater,localWaterMaterial,buildForest,buildScatter,skyTexture,localRoadMaterial,buildRoads} from './local-scene.js?v=18.1';
+import {buildTerrain,localGroundMaterial,buildWater,localWaterMaterial,buildForest,buildScatter,skyTexture,localRoadMaterial,buildRoads} from './local-scene.js?v=20.0';
 import {indexLore,loreForCity} from './local-lore.js?v=56';
 import {applyCityBlueprint,applyBlueprintTerrain} from './city-plan-core.js?v=84';
 import {drawCityPlan} from './city-plan-preview.js?v=84';
@@ -18,8 +18,9 @@ import {planUrbanV7Site,bridgeDeckHeight} from './urban-v7-core.js?v=70';
 import {buildDwarvenInterior,drawUndergroundPlan,caveFlightBounds} from './dwarven-interior.js?v=67';
 import {resolveMaterialPreset} from './material-presets.js?v=84';
 import {preloadCC0Textures,releaseCC0Textures} from './cc0-textures.js?v=19';
-import {createCityAssetManager} from './city-assets-v19.js?v=19';
+import {createCityAssetManager} from './city-assets-v19.js?v=20.0';
 import {mountCityModelsV19} from './city-models-v19.js?v=19';
+import {mountArchitecturalKitV20} from './city-architecture-v20.js?v=20.0';
 
 const EYE_M=1.72, WALK_M=2.8, RUN_M=10.5, FLY_M=110, FLY_V=45, CAVE_FLY_M=16, CAVE_FLY_V=10, JUMP_V=5.9, GRAV=17.5;
 const EYE=EYE_M/M, WALK=WALK_M/M, RUN=RUN_M/M, FLY=FLY_M/M, FLYV=FLY_V/M, CAVE_FLY=CAVE_FLY_M/M, CAVE_FLYV=CAVE_FLY_V/M, JUMP=JUMP_V/M, G=GRAV/M;
@@ -612,9 +613,12 @@ export function createStreetMode(ctx){
    if(lay){
     progress('Construindo ruas, casas e marcos históricos…');
     const t=buildTownV2({b:city,cx,cy,lay,rand,climate,color,G:Gmap,landAt,
-     toW,addSolid,pathAt:pathAtLocal,footprintY,special,field,site,blueprint,blocked:blockedAt,style,snow:site.snowy,production});
+     toW,addSolid,pathAt:pathAtLocal,footprintY,special,field,site,blueprint,blocked:blockedAt,style,snow:site.snowy,production,assetPack});
     if(S.districtFocusKey&&lay?.districts?.length){const focus=lay.districts.find(d=>d.key===S.districtFocusKey);if(focus)S.districtFocusLabel=focus.label||focus.key}
     t.groups.forEach(g=>root.add(g));
+    // 3D instanciado por cultura: carregado apenas aqui, nao no mapa-mundi.
+    progress('Aplicando os novos modelos 3D de casas…');
+    S.architectureStats=mountArchitecturalKitV20({assetPack,slots:t.prefabSlots||[],root});
     S.built=t;buildPeople(t.people||[]);addFields(t.fields);addWindmill(t.windmill);addSmoke(t.smoke);lamps=t.lamps||[];
     roadsMat=localRoadMaterial({snow:site.snowy?.55:0,preset:materialPreset});
     const roads=buildRoads({roads:lay.roads,cx,cy,plaza:lay.fort?0:lay.plaza,squares:lay.squares||[],heightAt:(u,v)=>Gmap(cx+u,cy+v),toW,urbanR:lay.Rt*.94,material:roadsMat});
@@ -706,6 +710,7 @@ export function createStreetMode(ctx){
    const extra=city?(site.port?' · porto':'')+(lay.walled?' · muralhas':''):'';
    const profileEl=$h('#svBlueprint');
    profileEl.textContent=blueprint?blueprint.patternLabel+' · base '+(blueprint.source?.referenceName||'contexto historico')+(isElucitorCity(city,blueprint)?(S.districtFocusLabel?' · corte distrital ampliado':' · visão geral ampliada'):'')+' · planta procedural':'';
+   if(S.architectureStats?.instances)profileEl.textContent+=` · ${S.architectureStats.instances} casas com modelos 3D v20 (${S.architectureStats.themes[0]})`;
    if(blueprint?.imperialV12?.kind)profileEl.textContent+=' · '+(blueprint.urbanIdentityV12||blueprint.classification?.imperialProvince||'Elucitor');
    profileEl.hidden=!blueprint;
    $h('#svPlan').hidden=!lay;
@@ -745,7 +750,7 @@ export function createStreetMode(ctx){
   gmat?.dispose();wmat?.dispose();gmatBand?.dispose();roadsMat?.dispose();gmat=null;wmat=null;gmatBand=null;roadsMat=null;
   grassMat?.dispose();grassMat=null;
   S.field=null;S.site=null;S.lay=null;nearInfo=null;
-  cityPackages.leave();releaseCC0Textures();S.assetPack=null;S.modelStats=null;
+  cityPackages.leave();releaseCC0Textures();S.assetPack=null;S.modelStats=null;S.architectureStats=null;
   S.interior=false;S.interiorData=null;S.exteriorPose=null;S.surfaceVisibility=null;
  }
  function exit(silent){
@@ -924,7 +929,7 @@ export function createStreetMode(ctx){
   debug:{
    toggleInterior:force=>toggleInterior(force),
    interior:()=>S.interior?{room:S.interiorData?.roomAt(S.x-S.cx,S.y-S.cy),city:S.curCity?.i,x:S.x-S.cx,z:S.y-S.cy}:null,
-   state:()=>({x:S.x,y:S.y,cx:S.cx,cy:S.cy,feet:S.feet,yaw:S.yaw,pitch:S.pitch,flying:S.flying,grounded:S.grounded,city:S.curCity?.i,radius:S.cityR,timing:S.timing,cityKit:S.assetPack?.kit||null,models:S.modelStats||null,
+   state:()=>({x:S.x,y:S.y,cx:S.cx,cy:S.cy,feet:S.feet,yaw:S.yaw,pitch:S.pitch,flying:S.flying,grounded:S.grounded,city:S.curCity?.i,radius:S.cityR,timing:S.timing,cityKit:S.assetPack?.kit||null,models:S.modelStats||null,architecture:S.architectureStats||null,
     site:S.site?{water:S.site.waterKind,shore:S.site.shoreDistM,lake:S.site.lakeR,ranges:S.site.ranges.map(r=>({d:r.distM,h:r.heightM}))}:null}),
    pose:(x,y,yaw,pitch=.0)=>{if(!S.active)return false;S.x=x;S.y=y;if(yaw!=null)S.yaw=yaw;S.pitch=pitch;S.feet=Gmap(x,y);S.vy=0;S.grounded=true;return true},
    look:(yaw,pitch=0)=>{S.yaw=yaw;S.pitch=pitch;return true},

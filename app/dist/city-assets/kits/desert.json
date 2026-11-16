@@ -1,1 +1,19 @@
-{"kit":"desert","textures":["ground","stone","mud","wood","roofing"],"quality":"mixed"}
+{
+  "kit": "desert",
+  "textures": [
+    "ground",
+    "stone",
+    "mud",
+    "wood",
+    "roofing"
+  ],
+  "quality": "v20-rebuilt-geometry",
+  "architecture": {
+    "enabled": true,
+    "theme": "desert",
+    "coreCoverage": 0.55,
+    "maxHouses": 260,
+    "variants": 3,
+    "description": "prefabs geometricos reais instanciados, por cultura"
+  }
+}

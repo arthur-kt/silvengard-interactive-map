@@ -117,6 +117,12 @@ export function addHouse(m,{at,rot=0,w=1.8,d=2.2,h=1.7,roof=1.1,level=0,stone=fa
 }
 export function addTower(m,{at,r=1,h=4,sides=8,cap='roof',capH=2,crenel=false,tint=tc(PAL.stone),capTint,slits=false}){
  m.cyl('stone',r*1.08,r*.96,h,sides,{at,tint,loc:[at[0]*.7,0,at[2]*.7]},false);
+ // v20: cintas de cantaria, sapata de fundacao e machicoulis em relevo.
+ m.cyl('stone',r*1.22,r*1.06,.38,sides,{at:[at[0],at[1]-.16,at[2]],tint:tc('#a69c8f',.96)});
+ for(const band of [.29,.72,.97])m.cyl('stone',r*1.12,r*1.1,.14,sides,{at:[at[0],at[1]+h*band,at[2]],tint:tc('#a79a88',.94)},false);
+ if(r>=1.2)for(let i=0;i<Math.min(10,sides);i++){const a=i/Math.min(10,sides)*Math.PI*2;
+  m.box('stone',.34,.42,.44,{at:[at[0]+Math.cos(a)*r*.98,at[1]+h-.32,at[2]+Math.sin(a)*r*.98],rot:-a,tint:tc('#b8aa96',.95)});
+ }
  if(crenel){for(let i=0;i<sides*2;i++){const a=i/(sides*2)*Math.PI*2;m.box('stone',.42,.42,.3,{at:[at[0]+Math.cos(a)*r*.98,at[1]+h,at[2]+Math.sin(a)*r*.98],rot:-(a+Math.PI/2),tint})}m.cyl('stone',r*1.05,r*1.05,.12,sides,{at:[at[0],at[1]+h-.12,at[2]],tint:tc(PAL.stone,.85)});}
  else m.cyl(cap==='gold'?'gold':'roof',r*1.35,0,capH,sides,{at:[at[0],at[1]+h,at[2]],tint:capTint||(cap==='gold'?[1,1,1]:tc(PAL.roof)),loc:[at[0],0,at[2]]});
  if(slits)for(let i=0;i<3;i++){const a=i*2.1+.4;m.box('glass',.08,.5,.06,{at:[at[0]+Math.cos(a)*r*1.0,at[1]+h*.6,at[2]+Math.sin(a)*r*1.0],rot:-(a+Math.PI/2)})}

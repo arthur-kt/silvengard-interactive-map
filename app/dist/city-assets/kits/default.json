@@ -1,1 +1,18 @@
-{"kit":"default","textures":["ground","stone","wood","roofing"],"quality":"procedural"}
+{
+  "kit": "default",
+  "textures": [
+    "ground",
+    "stone",
+    "wood",
+    "roofing"
+  ],
+  "quality": "v20-rebuilt-geometry",
+  "architecture": {
+    "enabled": true,
+    "theme": "timber",
+    "coreCoverage": 0.54,
+    "maxHouses": 260,
+    "variants": 3,
+    "description": "prefabs geometricos reais instanciados, por cultura"
+  }
+}

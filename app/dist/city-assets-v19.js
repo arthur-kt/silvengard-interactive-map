@@ -17,12 +17,13 @@ const record=(cityId,man,kit)=>({version:V19_ASSET_VERSION,cityId,
  kit:man.kit||'default',
  textures:safeList([...(kit.textures||[]),...(man.textures||[])],v=>SLOTS.has(v)),
  models:[...(kit.models||[]),...(man.models||[])].filter(validModel).slice(0,LIMIT_MODELS),
- quality:man.quality||kit.quality||'procedural'});
+ quality:man.quality||kit.quality||'procedural',
+ architecture:kit.architecture?.enabled?{enabled:true,theme:kit.architecture.theme||'timber',coreCoverage:Math.min(.75,Math.max(.10,Number(kit.architecture.coreCoverage)||.52)),maxHouses:Math.min(450,Math.max(8,Number(kit.architecture.maxHouses)||290))}:null});
 
 export function createCityAssetManager({fetcher=fetch,base='./city-assets',maxMetadata=2}={}){
  const cache=new Map();let active=null;
  const getJSON=async(path,signal)=>{
-  const res=await fetcher(path,{signal,cache:'force-cache'});
+  const res=await fetcher(path,{signal,cache:'no-cache'}); // v20: nao reutilizar JSON da v19
   if(!res?.ok)throw new Error(`Pacote urbano indisponível: ${path} (${res?.status||'sem resposta'})`);
   return res.json();
  };
