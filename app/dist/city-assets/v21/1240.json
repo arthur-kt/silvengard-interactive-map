@@ -1,0 +1,39 @@
+{
+  "version": 21,
+  "cityId": 1240,
+  "cityName": "Castamor",
+  "cultureKit": "imperial",
+  "urbanProfile": "fortress-cliff-v21",
+  "loadWhen": "enter-local-view",
+  "noPreview": true,
+  "allowBackgroundPreload": false,
+  "vegetation": [
+    {
+      "species": "spruce",
+      "model": "assets/optimized/vegetation/spruce.glb",
+      "source": "assets/licenses/ASSETS.md",
+      "role": "tree"
+    },
+    {
+      "species": "pine",
+      "model": "assets/optimized/vegetation/pine.glb",
+      "source": "assets/licenses/ASSETS.md",
+      "role": "tree"
+    },
+    {
+      "species": "birch",
+      "model": "assets/optimized/vegetation/birch.glb",
+      "source": "assets/licenses/ASSETS.md",
+      "role": "tree"
+    },
+    {
+      "species": "oak-young",
+      "model": "assets/optimized/vegetation/oak-young.glb",
+      "source": "assets/licenses/ASSETS.md",
+      "role": "tree"
+    }
+  ],
+  "legacyResidentialRenderer": false,
+  "fallback": "v21-original-lowpoly",
+  "notes": "As casas e árvores são instanciadas e carregadas somente na cena local. Nenhum dado do mapa político é modificado."
+}

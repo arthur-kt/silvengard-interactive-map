@@ -62,7 +62,7 @@ export function planUrbanV7Site(site,lay,blueprint){
  if(arch==='high-elf'||arch==='woodland-elf')site.urbanWoodland={style:arch,density:arch==='woodland-elf'?.70:.58};
  const v7=blueprint.urbanV7||{};
  site.urbanTerraces=(v7.terraces||[]).map(t=>{
-  const spec=blueprint.urbanDesign?.districts?.find(d=>d.kind===t.kind);
+  const spec=lay.v21?lay.customDistricts?.find(d=>d.kind===t.kind):blueprint.urbanDesign?.districts?.find(d=>d.kind===t.kind);
   if(!spec)return null;
   const point=blueprintDistrictMetres(lay,spec,site);
   return {x:point.x,z:point.z,radiusM:Math.max(42,lay.Rt*V7_M*(t.radiusFactor||.27)),heightM:t.heightM,label:spec.label};

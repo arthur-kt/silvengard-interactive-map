@@ -1,0 +1,45 @@
+{
+  "version": 21,
+  "cityId": 7,
+  "cityName": "Elucitor",
+  "cultureKit": "imperial",
+  "urbanProfile": "imperial-capital-v21",
+  "loadWhen": "enter-local-view",
+  "noPreview": true,
+  "allowBackgroundPreload": false,
+  "vegetation": [
+    {
+      "species": "oak-old",
+      "model": "assets/optimized/vegetation/oak-old.glb",
+      "source": "assets/licenses/ASSETS.md",
+      "role": "tree"
+    },
+    {
+      "species": "oak-young",
+      "model": "assets/optimized/vegetation/oak-young.glb",
+      "source": "assets/licenses/ASSETS.md",
+      "role": "tree"
+    },
+    {
+      "species": "cypress",
+      "model": "assets/optimized/vegetation/cypress.glb",
+      "source": "assets/licenses/ASSETS.md",
+      "role": "tree"
+    },
+    {
+      "species": "birch",
+      "model": "assets/optimized/vegetation/birch.glb",
+      "source": "assets/licenses/ASSETS.md",
+      "role": "tree"
+    },
+    {
+      "species": "willow",
+      "model": "assets/optimized/vegetation/willow.glb",
+      "source": "assets/licenses/ASSETS.md",
+      "role": "tree"
+    }
+  ],
+  "legacyResidentialRenderer": false,
+  "fallback": "v21-original-lowpoly",
+  "notes": "As casas e árvores são instanciadas e carregadas somente na cena local. Nenhum dado do mapa político é modificado."
+}

@@ -1,1 +1,17 @@
-{"version":19,"cityId":7,"kit":"imperial","models":[{"file":"imperial-manor.json","district":"noble","scale":1}]}
+{
+  "version": 19,
+  "cityId": 7,
+  "kit": "imperial",
+  "models": [
+    {
+      "file": "imperial-manor.json",
+      "district": "noble",
+      "scale": 1
+    }
+  ],
+  "urbanVersion": 21,
+  "urbanProfile": "imperial-capital-v21",
+  "loadWhen": "enter-local-view",
+  "noPreview": true,
+  "allowBackgroundPreload": false
+}

@@ -21,6 +21,9 @@ import {preloadCC0Textures,releaseCC0Textures} from './cc0-textures.js?v=19';
 import {createCityAssetManager} from './city-assets-v19.js?v=20.0';
 import {mountCityModelsV19} from './city-models-v19.js?v=19';
 import {mountArchitecturalKitV20} from './city-architecture-v20.js?v=20.0';
+import {mountArchitecturalKitV21} from './city-architecture-v21.js';
+import {mountPilotForestV21} from './urban-v21-forest.js';
+import {applyPilotSiteV21,preparePilotLayoutV21,isV21Pilot} from './urban-v21-core.js';
 
 const EYE_M=1.72, WALK_M=2.8, RUN_M=10.5, FLY_M=110, FLY_V=45, CAVE_FLY_M=16, CAVE_FLY_V=10, JUMP_V=5.9, GRAV=17.5;
 const EYE=EYE_M/M, WALK=WALK_M/M, RUN=RUN_M/M, FLY=FLY_M/M, FLYV=FLY_V/M, CAVE_FLY=CAVE_FLY_M/M, CAVE_FLYV=CAVE_FLY_V/M, JUMP=JUMP_V/M, G=GRAV/M;
@@ -476,6 +479,7 @@ export function createStreetMode(ctx){
   let blueprint=city?(await loadBlueprints())?.cities?.[String(city.i)]||null:null;
   if(shouldPromptElucitorDistrict(city,blueprint,opts)){openElucitorDistrictSelector({city,blueprint,mx,my});return;}
   S.entering=true;
+  S.enterAbort=new AbortController();
   let cx=city?city.x:mx,cy=city?city.y:my;
   if(!city){const land=findLand(cx,cy);if(!land){S.entering=false;toast?.('Escolha um ponto em terra firme.');return}[cx,cy]=land}
   if(!S.field&&!cellAt(cx,cy)){S.entering=false;toast?.('Escolha um ponto em terra firme.');return}
@@ -484,7 +488,7 @@ export function createStreetMode(ctx){
   await new Promise(r=>setTimeout(r,380));
   try{
    progress('Preparando os recursos desta localidade…');
-   const assetPack=city?await cityPackages.load(city.i,{onProgress:progress}):{cityId:null,kit:'default',textures:['ground','stone','wood','roofing'],models:[]};
+   const assetPack=city?await cityPackages.load(city.i,{onProgress:progress,signal:S.enterAbort.signal}):{cityId:null,kit:'default',textures:['ground','stone','wood','roofing'],models:[]};
    S.assetPack=assetPack;
    let lore=null,production=[];
    if(city){
@@ -504,6 +508,7 @@ export function createStreetMode(ctx){
    const t0=performance.now();
    const site=siteFor({D,point:[cx,cy],cellAt,surface,population:pop,city});
    applyBlueprintTerrain(site,blueprint);
+   applyPilotSiteV21(site,blueprint);
    const districtChoice=isElucitorCity(city,blueprint)?(opts.districtKey||'overview'):'';
    const districtScale=isElucitorCity(city,blueprint)?(districtChoice&&districtChoice!=='overview'?1.34:1.16):1;
    if(isElucitorCity(city,blueprint)){
@@ -538,12 +543,14 @@ export function createStreetMode(ctx){
     fort=!!(cls.startsWith('Forte')&&pop<5000&&!city?.capital&&blueprint?.imperialV12?.kind!=='rimae-fort');
    const rand=rng(blueprint?.seed??(Math.floor(cx*13+cy*7)+1));
    const kind=!city?'wild':blueprint?.pattern==='ruins'?'ruins':blueprint?.pattern==='steppe-camp'?'camp':fort?'fort':city.capital?'capital':(pop<1500||cls==='Vila'||cls==='Povoado')?'village':site.port?'port':'town';
-   const lay=city?makeLayout({pop,capital:!!city.capital,village:kind==='village',fort,rand,port:site.port,kind}):null;
+   const lay=city?makeLayout({pop,capital:!!city.capital,village:kind==='village',fort,rand,port:site.port,kind,
+    radiusUnits:isV21Pilot(city?.i)?site.cityR/M:null}):null;
    S.lay=lay;
    if(lay){
     lay.cx=cx;lay.cy=cy;
     lay.walled=(!!(city.walls||lay.capital||city.citadel)||!!tr?.walls)&&!lay.fort&&!special&&(pop>1200||!!city.citadel);
     applyCityBlueprint(lay,blueprint,site);
+    preparePilotLayoutV21(lay,site,blueprint);
     planUrbanV7Site(site,lay,blueprint);
     if(S.districtFocusKey&&lay.districts?.length){
      const focus=lay.districts.find(d=>d.kind===S.districtFocusKey||d.label===S.districtFocusKey);
@@ -618,7 +625,10 @@ export function createStreetMode(ctx){
     t.groups.forEach(g=>root.add(g));
     // 3D instanciado por cultura: carregado apenas aqui, nao no mapa-mundi.
     progress('Aplicando os novos modelos 3D de casas…');
-    S.architectureStats=mountArchitecturalKitV20({assetPack,slots:t.prefabSlots||[],root});
+    S.architectureStats=lay.v21?
+     mountArchitecturalKitV21({cityId:city.i,assetPack,slots:t.prefabSlots||[],root}):
+     mountArchitecturalKitV20({assetPack,slots:t.prefabSlots||[],root});
+    S.urbanV21=t.urbanV21||null;
     S.built=t;buildPeople(t.people||[]);addFields(t.fields);addWindmill(t.windmill);addSmoke(t.smoke);lamps=t.lamps||[];
     roadsMat=localRoadMaterial({snow:site.snowy?.55:0,preset:materialPreset});
     const roads=buildRoads({roads:lay.roads,cx,cy,plaza:lay.fort?0:lay.plaza,squares:lay.squares||[],heightAt:(u,v)=>Gmap(cx+u,cy+v),toW,urbanR:lay.Rt*.94,material:roadsMat});
@@ -638,9 +648,17 @@ export function createStreetMode(ctx){
    // floresta e pedras
    const blockedLocal=(x,z,r)=>{const mx=cx+x/M,my=cy+z/M;return blockedAt(mx,my,r/M)};
    const tTown=performance.now();
-   forest=buildForest({field,site,blocked:blockedLocal,
-    pathAt:lay?(x,z)=>pathAtLocal(x/M,z/M):null,
-    radius:Math.min(2600,Math.max(1500,site.cityR*2.2)),seed:Math.floor(cx*7+cy*3)});
+   if(lay?.v21){
+    progress('Carregando árvores GLB e arborizando jardins por bioma…');
+    const planted=await mountPilotForestV21({cityId:city.i,field,site,blocked:blockedLocal,
+     pathAt:(x,z)=>pathAtLocal(x/M,z/M),anchors:S.built?.treeAnchorsV21||[],seed:Math.floor(cx*7+cy*3),signal:S.enterAbort.signal,onProgress:progress});
+    forest=planted.group;S.forestV21=planted.stats;
+   }else{
+    forest=buildForest({field,site,blocked:blockedLocal,
+     pathAt:lay?(x,z)=>pathAtLocal(x/M,z/M):null,
+     radius:Math.min(2600,Math.max(1500,site.cityR*2.2)),seed:Math.floor(cx*7+cy*3)});
+    S.forestV21=null;
+   }
    forest.position.set(cx-W/2,0,cy-H/2);
    root.add(forest);
    scatter=buildScatter({field,site,blocked:blockedLocal,seed:Math.floor(cx+cy*3)});
@@ -710,7 +728,10 @@ export function createStreetMode(ctx){
    const extra=city?(site.port?' · porto':'')+(lay.walled?' · muralhas':''):'';
    const profileEl=$h('#svBlueprint');
    profileEl.textContent=blueprint?blueprint.patternLabel+' · base '+(blueprint.source?.referenceName||'contexto historico')+(isElucitorCity(city,blueprint)?(S.districtFocusLabel?' · corte distrital ampliado':' · visão geral ampliada'):'')+' · planta procedural':'';
-   if(S.architectureStats?.instances)profileEl.textContent+=` · ${S.architectureStats.instances} casas com modelos 3D v20 (${S.architectureStats.themes[0]})`;
+   if(S.architectureStats?.instances){
+    if(lay?.v21)profileEl.textContent+=` · v21: ${S.architectureStats.instances} edifícios culturais, ${S.forestV21?.newTrees||0} árvores GLB (${S.architectureStats.themes[0]})`;
+    else profileEl.textContent+=` · ${S.architectureStats.instances} casas com modelos 3D v20 (${S.architectureStats.themes[0]})`;
+   }
    if(blueprint?.imperialV12?.kind)profileEl.textContent+=' · '+(blueprint.urbanIdentityV12||blueprint.classification?.imperialProvince||'Elucitor');
    profileEl.hidden=!blueprint;
    $h('#svPlan').hidden=!lay;
@@ -730,8 +751,13 @@ export function createStreetMode(ctx){
    progress('Cidade pronta. Entrando…');
    S.active=true;S.t0=0;document.body.classList.add('street');hud.hidden=false;setMode();
    $h('#svPause').classList.add('show');
-   S.entering=false;
-  }catch(err){console.error('street:',err);S.entering=false;toast?.('Não foi possível entrar no local.');exit(true)}
+   S.entering=false;S.enterAbort=null;
+  }catch(err){
+   if(err?.name!=='AbortError')console.error('street:',err);
+   S.entering=false;S.enterAbort?.abort();S.enterAbort=null;
+   toast?.('Não foi possível entrar no local: '+(err?.message||'erro desconhecido'));
+   exit(true)
+  }
   fade.classList.remove('on');
  }
 
@@ -750,10 +776,11 @@ export function createStreetMode(ctx){
   gmat?.dispose();wmat?.dispose();gmatBand?.dispose();roadsMat?.dispose();gmat=null;wmat=null;gmatBand=null;roadsMat=null;
   grassMat?.dispose();grassMat=null;
   S.field=null;S.site=null;S.lay=null;nearInfo=null;
-  cityPackages.leave();releaseCC0Textures();S.assetPack=null;S.modelStats=null;S.architectureStats=null;
+  cityPackages.leave();releaseCC0Textures();S.assetPack=null;S.modelStats=null;S.architectureStats=null;S.urbanV21=null;S.forestV21=null;
   S.interior=false;S.interiorData=null;S.exteriorPose=null;S.surfaceVisibility=null;
  }
  function exit(silent){
+  if(S.entering){S.enterAbort?.abort();S.entering=false}
   if(!S.active&&!silent)return;
   if(S.interior)toggleInterior(false);
   if(document.pointerLockElement)document.exitPointerLock?.();
@@ -929,7 +956,7 @@ export function createStreetMode(ctx){
   debug:{
    toggleInterior:force=>toggleInterior(force),
    interior:()=>S.interior?{room:S.interiorData?.roomAt(S.x-S.cx,S.y-S.cy),city:S.curCity?.i,x:S.x-S.cx,z:S.y-S.cy}:null,
-   state:()=>({x:S.x,y:S.y,cx:S.cx,cy:S.cy,feet:S.feet,yaw:S.yaw,pitch:S.pitch,flying:S.flying,grounded:S.grounded,city:S.curCity?.i,radius:S.cityR,timing:S.timing,cityKit:S.assetPack?.kit||null,models:S.modelStats||null,architecture:S.architectureStats||null,
+   state:()=>({x:S.x,y:S.y,cx:S.cx,cy:S.cy,feet:S.feet,yaw:S.yaw,pitch:S.pitch,flying:S.flying,grounded:S.grounded,city:S.curCity?.i,radius:S.cityR,timing:S.timing,cityKit:S.assetPack?.kit||null,models:S.modelStats||null,architecture:S.architectureStats||null,urbanV21:S.urbanV21||null,forestV21:S.forestV21||null,
     site:S.site?{water:S.site.waterKind,shore:S.site.shoreDistM,lake:S.site.lakeR,ranges:S.site.ranges.map(r=>({d:r.distM,h:r.heightM}))}:null}),
    pose:(x,y,yaw,pitch=.0)=>{if(!S.active)return false;S.x=x;S.y=y;if(yaw!=null)S.yaw=yaw;S.pitch=pitch;S.feet=Gmap(x,y);S.vy=0;S.grounded=true;return true},
    look:(yaw,pitch=0)=>{S.yaw=yaw;S.pitch=pitch;return true},

@@ -1,1 +1,11 @@
-{"version":19,"cityId":3,"kit":"northern","models":[]}
+{
+  "version": 19,
+  "cityId": 3,
+  "kit": "northern",
+  "models": [],
+  "urbanVersion": 21,
+  "urbanProfile": "northern-royal-v21",
+  "loadWhen": "enter-local-view",
+  "noPreview": true,
+  "allowBackgroundPreload": false
+}

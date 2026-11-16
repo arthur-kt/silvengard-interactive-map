@@ -1,0 +1,19 @@
+SILVENGARD ATLAS — ATUALIZACAO V21 — 16/11/2026
+================================================
+
+DOIS PACOTES, SELECIONE UM:
+- Silvengard_Atlas_Hotfix_v21_Reurbanizacao_Assets3D.zip: somente arquivos novos/alterados. Extrair SOBRE a pasta silvengard-interactive-map da instalacao de origem enviada.
+- Silvengard_Atlas_Upgrade_v21_Reurbanizacao_Assets3D.zip: copia completa do projeto de origem enviado, preservando exe, runtime Node e dados anteriores, ja com a v21 aplicada. Extrair em pasta separada (ou substituir a instalacao somente apos backup).
+
+ANTES DE INSTALAR: fazer backup de toda a pasta funcional, incluindo os salvos.
+NUNCA excluir os JPEGs em app/dist/textures/cc0 nem os bancos/campanhas salvas.
+
+EM WINDOWS: execute o Silvengard-Atlas.exe original na pasta extraida.
+A versao v21 afeta o explorador de cidades, NAO redesenha fronteiras nem edita world.json.
+Cidades piloto: 7 ELUCITOR, 1240 CASTAMOR, 1 VELAFFELD, 3 ASGORATH.
+
+ATENCAO: As arvores GLB fornecidas sao originais do projeto. A integracao
+com Quaternius/Kenney continua pendente; nao confundir este pacote com
+uma entrega concluida de modelos 3D comerciais de terceiros.
+Para detalhes, consulte desenvolvimento/documentacao/V21_CHANGELOG.md,
+V21_PIPELINE_ATUAL.md, V21_TESTES.md e app/dist/assets/licenses/ASSETS.md.

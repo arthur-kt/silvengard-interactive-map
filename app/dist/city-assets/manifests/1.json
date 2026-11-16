@@ -1,1 +1,17 @@
-{"version":19,"cityId":1,"kit":"high-elf","models":[{"file":"high-elf-house.json","district":"noble","scale":1}]}
+{
+  "version": 19,
+  "cityId": 1,
+  "kit": "high-elf",
+  "models": [
+    {
+      "file": "high-elf-house.json",
+      "district": "noble",
+      "scale": 1
+    }
+  ],
+  "urbanVersion": 21,
+  "urbanProfile": "high-elf-organic-v21",
+  "loadWhen": "enter-local-view",
+  "noPreview": true,
+  "allowBackgroundPreload": false
+}

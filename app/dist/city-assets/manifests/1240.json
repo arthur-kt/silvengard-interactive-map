@@ -1,1 +1,11 @@
-{"version":19,"cityId":1240,"kit":"imperial","models":[]}
+{
+  "version": 19,
+  "cityId": 1240,
+  "kit": "imperial",
+  "models": [],
+  "urbanVersion": 21,
+  "urbanProfile": "fortress-cliff-v21",
+  "loadWhen": "enter-local-view",
+  "noPreview": true,
+  "allowBackgroundPreload": false
+}
